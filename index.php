@@ -1,4 +1,5 @@
 <?php
+include_once "System/Connect.php";
 require "system/myFunctions.php";
 require "system/requestHandel.php";
 ?>
