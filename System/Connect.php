@@ -1,6 +1,6 @@
 <?php
 
-$con = new mysqli('localhost', 'root','' , 'IEBOOK');
+$con = new mysqli('localhost', 'root','' , 'iebook');
 
 function Close_DB(){
     global $con;
