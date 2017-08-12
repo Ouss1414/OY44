@@ -23,6 +23,9 @@ require "system/requestHandel.php";
 <script src="http://yui.yahooapis.com/2.8.0r4/build/button/button-min.js"></script>
 <script src="http://yui.yahooapis.com/2.8.0r4/build/editor/editor-min.js"></script>
 
+</head>
+
+
 <style type="text/css">
     .yui-skin-sam .yui-toolbar-container .yui-toolbar-titlebar h2 {
         display: none;}

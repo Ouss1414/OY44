@@ -7,14 +7,13 @@ $mysqli = new mysqli('localhost' , 'root' , '' ,'iebook');
 if(isset($_POST['btn-login']))
 {
     $UserNameLog = $_POST['Username'];
-    $passwordLog = $_POST['Password'];
+    $passwordLog = md5($_POST['Password']);
 
 
     $result = $mysqli->query("SELECT * FROM user WHERE User_Name='$UserNameLog' AND Password='$passwordLog'");
 
     if ($result->num_rows == 0) {
-
-        echo " <script > alert('wrong details');</script > ";
+        echo " <script> alert('wrong details');</script > ";
     } else {
         $_SESSION['user']  = $UserNameLog ;
 
