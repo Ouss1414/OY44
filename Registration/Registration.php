@@ -3,132 +3,136 @@ if (isset($_SESSION['user'])) {
     echo '<meta http-equiv="refresh" content="0; \'index.php?pid=Home\'"/>';
 }else{
     echo '
-        <div class="container" style="margin-top: 10%; margin-bottom: 10%">
-            <section id="content">
-                <form action="Registration/registration_process.php" method="post" id="form_register" name="form_register">
-                    <h1 style="text-transform: uppercase">Sign up</h1>
-                    
-                    <div>
-                    <i class="w3-text-red w3-margin-right"></i>
-                        <input type="text" name="Fname" placeholder="First name" id="Fname" />
-                        <p id="msg-Fname" style="color: red; font-size: 11px; margin-top: -5px"></p>
-                    </div>
-                    
-                    <div>
-                    <i class="w3-text-red w3-margin-right"></i>
-                        <input type="text" name="Lname" placeholder="Last name"  id="Lname" />
-                        <p id="msg-Lname" style="color: red; font-size: 11px; margin-top: -5px"></p>
-                    </div>
-                    
-                    <div>
-                    <i class="w3-text-red w3-margin-right"></i>
-                        <input type="date" name="Date_of_berth" placeholder="Date of berth" id="Date_of_berth"/>
-                    </div>
-                    
-                    <div>
-                    <i class="w3-text-red w3-margin-right" style="margin-left: -10px">*</i>
-                        <input type="text" name="username" placeholder="Username" required="" id="username" />
-                        <p id="msg-username" style="color: red; font-size: 11px; margin-top: -5px"></p>
-                    </div>
-                    
-                    <div>
-                    <i class="w3-text-red w3-margin-right" style="margin-left: -10px">*</i>
-                        <input type="text" name="email" placeholder="Email" required="" id="email" />
-                        <p id="msg-email" style="color: red; font-size: 11px; margin-top: -5px"></p>
-                    </div>
-                    
-                    <div>
-                    <i class="w3-text-red w3-margin-right" style="margin-left: -10px">*</i>
-                        <input type="password" name="password" placeholder="Password" required="" id="password" />
-                        <p id="msg-password" style="color: red; font-size: 11px; margin-top: -5px"></p>
-                    </div>
-                    
-                    <div>
-                    <i class="w3-text-red w3-margin-right" style="margin-left: -10px">*</i>
-                        <input type="password" name="confirm_password" placeholder="Confirm Password" required="" id="confirm_password" />
-                        <p id="msg-confirm-password" style="color: red; font-size: 11px; margin-top: -5px"></p>
-                    </div>
-                    
-                    <div>
-                        <fieldset style="margin-left: 45px; margin-right: 25px; margin-bottom: 10px">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://bootswatch.com/yeti/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/BootStrap.css">
+</head>
+<body>
+        <div class="container well" style="margin-top: 50px">
+        <div class="w3-margin-top w3-margin-left w3-padding-small w3-center w3-hover-text-gray w3-text-blue">
+            <a href="../index.php?pid=Home" style="text-transform: uppercase">Home</a> -
+            <a href="../index.php?pid=Login" style="text-transform: uppercase">Login</a> 
+         </div>
+         
+            <form id="register-form" method="post" action="Registration_process.php">
+                    <legend style="text-transform: uppercase">Sign up</legend>
+        
+                <div class="form-group col-md-6">
+                    <input class="form-control" name="firstName" placeholder="First name" type="text">
+                </div>
+        
+                <div class="form-group col-md-6">
+                    <input class="form-control" name="secondName" placeholder="Last name" type="text">
+                </div>
+        
+                <div class="form-group col-md-12">
+                    <input class="form-control" name="email" placeholder="Email address - Ex : ( example@example.com )" type="email">
+                </div>
+        
+                <div class="form-group col-md-4">
+                    <input class="form-control" name="username" placeholder="User name" type="text">
+                </div>
+        
+                <div class="form-group col-md-4">
+                    <input class="form-control" name="phone" placeholder="Phone number" type="tel">
+                </div>
+        
+                <div class="form-group col-md-4">
+                    <input class="form-control" type="text" name="Academic_Number" placeholder="Academic number" id="Academic_Number" />
+                </div>
+        
+                <div class="clearfix">
+                </div>
+        
+                <div class="form-group col-md-6">
+                    <input class="form-control" name="password" id="password" placeholder="Password" type="password">
+                </div>
+                <div class="form-group col-md-6">
+                    <input class="form-control" name="password2" placeholder="Re-enter password" type="password">
+                </div>
+                <div class="clearfix">
+                </div>
+        
+                <div class="form-group col-md-12">
+                    <input class="form-control" name="website" placeholder="Website - Ex : ( http://www.example.com )" type="url">
+                </div>
+        
+                <div class="form-group col-md-6">
+                    <input class="form-control" type="date" name="Date_of_berth" placeholder="Date of berth" id="Date_of_berth"/>
+                </div>
+        
+                <div class="form-group col-md-6">
+                    <select class="form-control" name="country">
+                        <option value="null">Choose Country ---</option>
+                        <option value="Saudi Arabia">Saudi Arabia</option>
+                    </select>
+                </div>
+        
+                <div class="form-group col-md-6">
+                    <select class="form-control" name="city">
+                        <option value="null" style="width: 200px">Choose City ---</option>
+                        <option value="madinah">Madinah</option>
+                    </select>
+                </div>
+        
+                <div class="form-group col-md-6">
+                    <select class="form-control" name="university">
+                        <option value="null">Choose University ---</option>
+                        <option value="taibah">Taibah University</option>
+                    </select>
+                </div>
+        
+                <div class="form-group col-md-6">
+                    <select class="form-control" name="college">
+                        <option value="null">Choose College ---</option>
+                        <option value="College of Computer Science and Engineering">College of Computer Science and Engineering</option>
+                    </select>
+                </div>
+        
+                <div class="form-group col-md-6">
+                    <select class="form-control" name="department">
+                        <option value="null">Choose Department ---</option>
+                        <option value="CS">CS</option>
+                    </select>
+                </div>
+        
+                <div class="form-group col-md-12">
+                    <div style="margin-left: 45px; margin-right: 25px; margin-bottom: 10px">
                         <legend>Gender</legend>
                         <label style="margin-right: 10px"><input type="radio" value="Male" name="gender" id="M_gender" checked required/> Male</label>
                         <label><input type="radio" value="Female" name="gender" id="F_gender" required/> Female</label>
-                        </fieldset>
                     </div>
-                    
-                    <div>
-                    <i class="w3-text-red w3-margin-right"></i>
-                        <select name="country">
-                            <option value="null">Choose Country ---</option>
-                            <option value="Saudi Arabia">Saudi Arabia</option>
-                        </select>
+                </div>
+        
+                <div class="form-group col-md-12">
+                    <div class="checkbox">
+                        <label>
+                            <input id="terms" name="terms" type="checkbox">
+                            <i>I have read, consent and agree to Company is User Agreement and Privacy Policy
+                            (including the processing and disclosing of my personal data), and I am of
+                            legal age. I understand that I can change my communication preferences at any
+                                time. Please read the Key Payment and ServiceInformation.</i>
+                        </label>
                     </div>
-                    
-                    <div>
-                    <i class="w3-text-red w3-margin-right"></i>
-                        <select name="city">
-                            <option value="null">Choose City ---</option>
-                            <option value="madinah">Madinah</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                    <i class="w3-text-red w3-margin-right"></i>
-                        <select name="university">
-                            <option value="null">Choose University ---</option>
-                            <option value="taibah">Taibah University</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                    <i class="w3-text-red w3-margin-right"></i>
-                        <select name="college">
-                            <option value="null">Choose College ---</option>
-                            <option value="College of Computer Science and Engineering">College of Computer Science and Engineering</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                    <i class="w3-text-red w3-margin-right"></i>
-                        <select name="department">
-                            <option value="null">Choose Department ---</option>
-                            <option value="CS">CS</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                    <i class="w3-text-red w3-margin-right"></i>
-                        <input type="text" name="Phone_Number" placeholder="Phone Number" id="Phone_Number" />
-                        <p id="msg-phone" style="color: red; font-size: 11px; margin-top: -5px"></p>
-                    </div>
-                    
-                    <div>
-                    <i class="w3-text-red w3-margin-right"></i>
-                        <input type="text" name="Academic_Number" placeholder="Academic Number" id="Academic_Number" />
-                    </div>
-                    
-                    <div>
-                    <i class="w3-text-red w3-margin-right"></i>
-                        <input type="url" name="website" placeholder="Your website" id="website" />
-                        <p id="msg-website" style="color: red; font-size: 11px; margin-top: -5px"></p>
-                    </div>
-                    
-                    <div>
-                        <input type="submit" name="Sign_up" value="Sgin up" />
-                    </div>
-                    
-                    <div>
-                        <input type="reset" name="reset" value="Reset" />
-                    </div>
-                    
-                </form><!-- form -->
-                <div class="button">
-                    if you have account, please <a href="index.php?pid=Login">Login</a>
-                </div><!-- button -->
-            </section><!-- content -->
-        </div><!-- container -->
-    ';
+                </div>
+                <div>
+                    <input class="btn btn-primary" id="submit-button" type="submit" value="Sign Up">
+                </div>
+        
+            </form>
+        </div>
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+<script src="validation.js"></script>
+
+</body>
+</html>
+';
 }
 
 ?>

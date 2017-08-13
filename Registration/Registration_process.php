@@ -14,12 +14,12 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$Fname = $conn->real_escape_string($_POST['Fname']);
-$Lname = $conn->real_escape_string($_POST['Lname']);
+$Fname = $conn->real_escape_string($_POST['firstName']);
+$Lname = $conn->real_escape_string($_POST['secondName']);
 $email = $conn->real_escape_string($_POST['email']);
 $username = $conn->real_escape_string($_POST['username']);
 $password = md5($_POST['password']);
-$Phone_Number = $conn->real_escape_string($_POST['Phone_Number']);
+$Phone_Number = $conn->real_escape_string($_POST['phone']);
 $gender = $conn->real_escape_string($_POST['gender']);
 $Date_of_berth = $conn->real_escape_string($_POST['Date_of_berth']);
 $country = $conn->real_escape_string($_POST['country']);

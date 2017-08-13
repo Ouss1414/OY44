@@ -2,6 +2,7 @@
 
 session_start();
 
+$msg_login = "";
 $mysqli = new mysqli('localhost' , 'root' , '' ,'iebook');
 
 if(isset($_POST['btn-login']))
@@ -12,8 +13,8 @@ if(isset($_POST['btn-login']))
 
     $result = $mysqli->query("SELECT * FROM user WHERE User_Name='$UserNameLog' AND Password='$passwordLog'");
 
-    if ($result->num_rows == 0) {
-        echo " <script> alert('wrong details');</script > ";
+    if ($result->num_rows != 1) {
+        $msg_login = '<div class="w3-text-red">The username or password uncorrect</div>';
     } else {
         $_SESSION['user']  = $UserNameLog ;
 
@@ -31,7 +32,7 @@ if(isset($_POST['btn-login']))
     } else {
         echo ' <div class="container" style="margin-top: 10%; margin-bottom: 10%">
                     <section id="content">
-                        <form action="Login/Login.php" method="post" class="sending-form">
+                        <form action="" method="post" class="sending-form">
                             <h1 style="text-transform: uppercase">Login</h1>
                             <div>
                                 <input type="text" name="Username" placeholder="Username" required="" id="username" />
@@ -39,13 +40,16 @@ if(isset($_POST['btn-login']))
                             <div>
                                 <input type="password" name="Password" placeholder="Password" required="" id="password" />
                             </div>
+                            <div>' .
+                            $msg_login
+                            .'</div>
                             <div>
                                 <input type="submit" name="btn-login" value="Log in" />
                                 <a href="#">Lost your password?</a>
                             </div>
                         </form><!-- form -->
                         <div class="button">
-                            if you don\'t have account, please <a href="index.php?pid=Sign_up">Sign up</a>
+                            if you don\'t have account, please <a href="Registration/Registration.php">Sign up</a>
                         </div><!-- button -->
                     </section><!-- content -->
                 </div><!-- container --> ';
