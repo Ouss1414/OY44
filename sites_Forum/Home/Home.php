@@ -72,53 +72,10 @@
                 <div class="w3-container w3-padding-32" style="text-transform: uppercase;" id="University">
                     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">University</h3>
                 </div>
-
                 <div class="w3-row-padding" style="margin-left: 5%; margin-bottom: 5%">
-                    <div class="w3-col l3 m6 w3-margin-bottom" style="margin: 0 20px 0 20px">
-                        <div class="w3-display-container">
-                            <div class="w3-display-topleft w3-black w3-padding" style="text-transform: uppercase;">Taibah University</div>
-                            <img src="Images/taibah_university.gif" alt="Taibah University" onclick="window.location.href='index.php?pid=Colleges&uni=taibah'" style="margin-left: 20%;cursor: pointer; width:150px;height: 175px">
-
-                        </div>
-                    </div>
-                    <div class="w3-col l3 m6 w3-margin-bottom" style="margin: 0 20px 0 20px">
-                        <div class="w3-display-container">
-                            <div class="w3-display-topleft w3-black w3-padding" style="text-transform: uppercase;">Taibah University</div>
-                            <img src="Images/taibah_university.gif" alt="Taibah University" onclick="window.location.href='index.php?pid=Colleges&uni=taibah'" style="margin-left: 20%;cursor: pointer; width:150px;height: 175px">
-
-                        </div>
-                    </div>
-                    <div class="w3-col l3 m6 w3-margin-bottom" style="margin: 0 20px 0 20px">
-                        <div class="w3-display-container">
-                            <div class="w3-display-topleft w3-black w3-padding" style="text-transform: uppercase;">Taibah University</div>
-                            <img src="Images/taibah_university.gif" alt="Taibah University" onclick="window.location.href='index.php?pid=Colleges&uni=taibah'" style="margin-left: 20%;cursor: pointer; width:150px;height: 175px">
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w3-row-padding" style="margin-left: 5%;margin-bottom: 5%">
-                    <div class="w3-col l3 m6 w3-margin-bottom" style="margin: 0 20px 0 20px">
-                        <div class="w3-display-container">
-                            <div class="w3-display-topleft w3-black w3-padding" style="text-transform: uppercase;">Taibah University</div>
-                            <img src="Images/taibah_university.gif" alt="Taibah University" onclick="window.location.href='index.php?pid=Colleges&uni=taibah'" style="margin-left: 20%;cursor: pointer; width:150px;height: 175px">
-
-                        </div>
-                    </div>
-                    <div class="w3-col l3 m6 w3-margin-bottom" style="margin: 0 20px 0 20px">
-                        <div class="w3-display-container">
-                            <div class="w3-display-topleft w3-black w3-padding" style="text-transform: uppercase;">Taibah University</div>
-                            <img src="Images/taibah_university.gif" alt="Taibah University" onclick="window.location.href='index.php?pid=Colleges&uni=taibah'" style="margin-left: 20%;cursor: pointer; width:150px;height: 175px">
-
-                        </div>
-                    </div>
-                    <div class="w3-col l3 m6 w3-margin-bottom" style="margin: 0 20px 0 20px">
-                        <div class="w3-display-container">
-                            <div class="w3-display-topleft w3-black w3-padding" style="text-transform: uppercase;">Taibah University</div>
-                            <img src="Images/taibah_university.gif" alt="Taibah University" onclick="window.location.href='index.php?pid=Colleges&uni=taibah'" style="margin-left: 20%;cursor: pointer; width:150px;height: 175px">
-
-                        </div>
-                    </div>
+                    <?php
+                    HomeOprations();
+                    ?>
                 </div>
             </div>
         </div>
