@@ -18,7 +18,11 @@ if(isset($_POST['btn-login']))
     } else {
         $_SESSION['user']  = $UserNameLog ;
 
-        header('Location: http://localhost/OY44/');
+        if(!empty($_GET['uni'])) {
+            header("Location: http://localhost/OY44/index.php?pid=Colleges&uni=$_GET[uni]");
+        }else{
+            header('Location: http://localhost/OY44/index.php?pid=Home');
+        }
     }
 
 }

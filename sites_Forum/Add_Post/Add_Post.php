@@ -2,9 +2,9 @@
 
 if (isset($_SESSION['user'])){
 
-    $university = $_GET['uni'];
-    $college = $_GET['college'];
-    $department = $_GET['dep'];
+    $Name_University = $_GET['uni'];
+    $Name_College = $_GET['college'];
+    $Name_Department = $_GET['dep'];
 
 echo '
         <div class="w3-margin-top w3-margin-left w3-padding-small w3-hover-text-gray w3-text-blue">

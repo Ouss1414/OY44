@@ -57,38 +57,9 @@
 <!-- Home Page -->
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:40px">
     <div class="w3-row">
-
-        <div class="w3-col m2">
-            <div class="w3-card-2 w3-round w3-white w3-padding-16 w3-center w3-margin-top" style="width: 220px;height: 600px">
-                <p>ADS</p>
-            </div>
-        </div>
-
-        <!-- Page content -->
-        <div class="w3-col m8">
-            <div class="w3-container w3-card-2 w3-white w3-round w3-margin" style="max-width:1050px;">
-
-                <!-- University Section -->
-                <div class="w3-container w3-padding-32" style="text-transform: uppercase;" id="University">
-                    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">University</h3>
-                </div>
-                <div class="w3-row-padding" style="margin-left: 5%; margin-bottom: 5%">
-                    <?php
-                    HomeOprations();
-                    ?>
-                </div>
-            </div>
-        </div>
-        <div class="w3-col m2">
-            <div class="w3-card-2 w3-round w3-white w3-padding-16 w3-center w3-margin-top" style="width: 220px;height: 600px">
-                <p>ADS</p>
-            </div>
-        </div>
-
+        <?php
+        HomeOprations();
+        ?>
     </div>
     <!-- End page content -->
 </div>
-
-
-</body>
-</html>
