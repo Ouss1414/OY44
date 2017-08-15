@@ -92,8 +92,6 @@ require "System/DBoprations.php";
             break;
         case "Login" : include_once "Login/Login.php";
             break;
-        case "Sign_up" : include_once "Registrations/Registration.php";
-            break;
         case "Department" : include_once "sites_Forum/Department/Department.php";
             break;
         case "Posts" : include_once "sites_Forum/Posts/Posts.php";

@@ -5,6 +5,7 @@ function CollegeOprations($Name_University){
 
     $con = new mysqli('localhost', 'root','' , 'iebook');
 
+    // University
     $sql_University = "SELECT * FROM university WHERE Name = '$Name_University'";
     $result_University = $con->query($sql_University);
     if($result_University->num_rows > 0) {
@@ -12,33 +13,49 @@ function CollegeOprations($Name_University){
             $Id_University = $row_University['Id'];
         }
     }
-    $sql_College = "SELECT * FROM college WHERE University_Id = $Id_University";
-    $result_college = $con->query($sql_College);
-    if($result_college->num_rows > 0) {
-        while ($row = $result_college->fetch_assoc()) {
-             echo '
+        echo '
                 <div class="w3-margin-top w3-margin-left w3-padding-small w3-hover-text-gray w3-text-blue">
                     <a href="index.php?pid=Home" style="text-transform: uppercase">Home</a> -
                     <a href="index.php#University" style="text-transform: uppercase">'. $Name_University .'</a> - COLLEGES
                 </div>
-                
-                <!-- Grid -->
-                <div class="w3-row-padding w3-margin-bottom w3-margin" id="plans">
-                    <div class="w3-third w3-margin-bottom">
-                        <ul class="w3-ul w3-border w3-center w3-hover-shadow">
-                            <li class="w3-theme-d2 w3-xlarge w3-padding-32">College of Computer Science and Engineering</li>
-                            <li class="w3-padding-16"><a href="index.php?pid=Department&uni=taibah&college=Computer_Science_and_Engineering&dep=CS"><b>CS</b></a></li>
-                            <li class="w3-padding-16"><a href="index.php?pid=Department&uni=taibah&college=Computer_Science_and_Engineering&dep=IT"><b>IT</b></a></li>
-                            <li class="w3-padding-16"><a href="index.php?pid=Department&uni=taibah&college=Computer_Science_and_Engineering&dep=IS"><b>IS</b></a></li>
-                            <li class="w3-padding-16"><a href="index.php?pid=Department&uni=taibah&college=Computer_Science_and_Engineering&dep=link_4"><b>link 4</b></a></li>
-                            <li class="w3-padding-16"><a href="index.php?pid=Department&uni=taibah&college=Computer_Science_and_Engineering&dep=link_5"><b>link 5</b></a></li>
-                            <li class="w3-padding-16"><a href="index.php?pid=Department&uni=taibah&college=Computer_Science_and_Engineering&dep=link_6"><b>link 6</b></a></li>
-                        </ul>
-                    </div>
-                </div>
             ';
+
+        //College
+        $sql_College = "SELECT * FROM college WHERE University_Id = $Id_University";
+        $result_college = $con->query($sql_College);
+        if($result_college->num_rows > 0) {
+            while ($row_College = $result_college->fetch_assoc()) {
+                $Id_College = $row_College['Id'];
+                $Name_College = $row_College['Name'];
+
+            // Department
+            $sql_Department = "SELECT * FROM department WHERE College_Id = $Id_College ";
+            $result_Department = $con->query($sql_Department);
+            if ($result_Department->num_rows > 0) {
+                echo '
+                        <!-- Grid -->
+                        <div class="w3-row-padding w3-margin-bottom w3-margin" id="plans">
+                            <div class="w3-third w3-margin-bottom">
+                                <ul class="w3-ul w3-border w3-center w3-hover-shadow">
+                                   <li class="w3-theme-d2 w3-large w3-padding-32">College of ' . $Name_College . '</li>
+                    ';
+                while ($row_Department = $result_Department->fetch_assoc()) {
+                    $Name_Department = $row_Department['Name'];
+                    echo '
+                        <li class="w3-padding-16"><a href="index.php?pid=Department&uni=' . $Name_University . '&college=' . $Name_College . '&dep=' . $Name_Department . '"><b>' . $Name_Department . '</b></a></li>            
+                         ';
+                }
+                echo '
+                                </ul>
+                            </div>
+                         </div>
+                     ';
+            }else {
+                echo '<div class="w3-text-red w3-padding-48 w3-center" style="margin-top: 12%; margin-bottom: 20%;font-size: 40px; text-transform: uppercase">' . $Name_University . ' It currently has no colleges</div>';
+            }
         }
     }
+    mysqli_close($con);
 }
 
 function HomeOprations(){

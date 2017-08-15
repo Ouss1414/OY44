@@ -6,6 +6,7 @@ if (isset($_SESSION['user'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>My University | Sign Up </title>
     <meta charset="UTF-8">
     <link href="https://bootswatch.com/yeti/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/BootStrap.css">

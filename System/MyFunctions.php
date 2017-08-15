@@ -40,9 +40,6 @@ function isAuth($PageID){
         case "Login" :
             $redirectToPage = "Login";
             break;
-        case "Sign_up" :
-            $redirectToPage = "Sign_up";
-            break;
         case "Department" :
             $redirectToPage = "Department";
             break;
