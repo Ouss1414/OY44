@@ -10,7 +10,7 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
             <a href="index.php#University" style="text-transform: uppercase">'.$Name_University.'</a> -
             <a href="index.php?pid=Colleges&uni='.$Name_University.'" style="text-transform: uppercase">College_of_'.$Name_College.' </a> -
             <a href="index.php?pid=Department&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'" style="text-transform: uppercase"> '.$Name_Department.'</a> -
-            <a href="index.php?pid=Posts&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'" style="text-transform: uppercase"> '.$Name_Subject.'</a>
+            <a href="index.php?pid=Posts&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'&sub='.$Name_Subject.'" style="text-transform: uppercase"> '.$Name_Subject.'</a>
         </div>
         
         <div class="w3-row">
@@ -37,10 +37,10 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
             <div class="w3-col m10">
         
                 <!-- Background Post -->
-                <div class="w3-card-2 w3-round w3-white w3-padding-16 w3-center w3-margin" style="width: 95%;min-height: 400px">
+                <div class="w3-card-2 w3-round w3-white w3-padding-16 w3-margin" style="width: 95%;min-height: 400px">
         
                     <!-- Head Posts -->
-                    <div class="w3-display-container w3-margin-bottom">
+                    <div class="w3-display-container w3-center w3-margin-bottom">
                         <div class="w3-display-topleft w3-dark-grey w3-padding" style="text-transform: uppercase;margin-top: 10px;width: 100%">Subject: '.$row_Post['Subject'].'</div>
                     </div>
         
@@ -51,9 +51,12 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
                     <div class="w3-row" style="margin: 5px 0 0 50px;">
                         <div  class="w3-padding" style="width: 95%; min-height: 110px;margin-left: 2.5%;">
                             <div class="w3-col s1">
-                                <div class="w3-row s1 w3-text-black" style="text-align: left;margin: 5px;width: 1000px">Date: <i>'.$row_Post['Date'].'</i></div>
+                                <div class="w3-row s1 w3-text-black" style="text-align: left;margin: 5px;width: 1000px">Date: <i>'.$row_Post['Date_Post'].'</i></div>
                                 <div class="w3-row s1 w3-text-black" style="text-align: left;margin: 5px;width: 1000px">writer: <i>'.$Name_User.'</i></div>
-                                <div class="w3-row s1 w3-text-black" style="text-align: left;margin: 5px;width: 1000px">Number of Likes: <i>'.$row_Post['Like'].' </i></div>
+                                <div class="w3-row w3-margin-bottom" style="display: inline">
+                                    <div title="LIKE" class="fa fa-thumbs-up w3-large w3-hover-green w3-padding" style="min-width: 70px;"> '.$row_Post['Like'].' </div>
+                                    <div title="DISLIKE" class="fa fa-thumbs-down w3-large w3-hover-red w3-padding" style="min-width: 70px;"> '.$row_Post['Dislike'].' </div>
+                                </div>   
                             </div>
                         </div>
                     </div>
@@ -76,7 +79,7 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
                 echo '
                     <!-- right column -->
                     <div class="w3-col m2">
-                        <div class="w3-card-2 w3-round w3-white w3-padding-16 w3-center w3-margin-top" style="width: 230px;height: 630px">
+                        <div class="w3-card-2 w3-round w3-white w3-padding-16 w3-center w3-margin-top" style="margin-left: -10%; width: 230px;height: 630px">
                             <div><img src="Images/'.$row_Ads['Image'].'" alt="advertising" /></div>
                         </div>
                     </div>
@@ -156,7 +159,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                                 <div class="w3-col s1">
                                     <div class="w3-row s1 w3-text-light-gray w3-hover-text-black" style="text-align: left;margin: 5px;width: 1000px">Subject: <i>' . $row_Post['Subject'] . '</i></div>
                                     <div class="w3-row s1 w3-text-light-gray w3-hover-text-black" style="text-align: left;margin: 5px;width: 1000px">writer: <i>' . $Name_User . '</i></div>
-                                    <div class="w3-row s1 w3-text-light-gray w3-hover-text-black" style="text-align: left;margin: 5px;width: 1000px">Date: <i>'.$row_Post['Date'].'</i></div>
+                                    <div class="w3-row s1 w3-text-light-gray w3-hover-text-black" style="text-align: left;margin: 5px;width: 1000px">Date: <i>'.$row_Post['Date_Post'].'</i></div>
                                 </div>
                             </div>
                         </div>
@@ -216,7 +219,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                                 <div class="w3-col s1">
                                     <div class="w3-row s1 w3-text-light-gray w3-hover-text-black" style="text-align: left;margin: 5px;width: 1000px">Subject: <i>' . $row_Post['Subject'] . '</i></div>
                                     <div class="w3-row s1 w3-text-light-gray w3-hover-text-black" style="text-align: left;margin: 5px;width: 1000px">writer: <i>' . $Name_User . '</i></div>
-                                    <div class="w3-row s1 w3-text-light-gray w3-hover-text-black" style="text-align: left;margin: 5px;width: 1000px">Date: <i>'.$row_Post['Date'].'</i></div>
+                                    <div class="w3-row s1 w3-text-light-gray w3-hover-text-black" style="text-align: left;margin: 5px;width: 1000px">Date: <i>'.$row_Post['Date_Post'].'</i></div>
                                 </div>
                             </div>
                         </div>
@@ -275,7 +278,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                                 <div class="w3-col s1">
                                     <div class="w3-row s1 w3-text-light-gray w3-hover-text-black" style="text-align: left;margin: 5px;width: 1000px">Subject: <i>' . $row_Post['Subject'] . '</i></div>
                                     <div class="w3-row s1 w3-text-light-gray w3-hover-text-black" style="text-align: left;margin: 5px;width: 1000px">writer: <i>' . $Name_User . '</i></div>
-                                    <div class="w3-row s1 w3-text-light-gray w3-hover-text-black" style="text-align: left;margin: 5px;width: 1000px">Date: <i>'.$row_Post['Date'].'</i></div>
+                                    <div class="w3-row s1 w3-text-light-gray w3-hover-text-black" style="text-align: left;margin: 5px;width: 1000px">Date: <i>'.$row_Post['Date_Post'].'</i></div>
                                 </div>
                             </div>
                         </div>
@@ -315,6 +318,7 @@ function CollegeOprations($Name_University){
                     <a href="index.php?pid=Home" style="text-transform: uppercase">Home</a> -
                     <a href="index.php#University" style="text-transform: uppercase">'. $Name_University .'</a> - COLLEGES
                 </div>
+                <div class="w3-row">
             ';
 
         //College
@@ -330,27 +334,28 @@ function CollegeOprations($Name_University){
             $result_Department = $con->query($sql_Department);
             if ($result_Department->num_rows > 0) {
                 echo '
-                        <!-- Grid -->
+                    <!-- Grid -->
+                    <div class="w3-col m4" style="min-height: 300px">
                         <div class="w3-row-padding w3-margin-bottom w3-margin" id="plans">
-                            <div class="w3-third w3-margin-bottom">
                                 <ul class="w3-ul w3-border w3-center w3-hover-shadow">
                                    <li class="w3-theme-d2 w3-large w3-padding-32">College of ' . $Name_College . '</li>
                     ';
-                while ($row_Department = $result_Department->fetch_assoc()) {
-                    $Name_Department = $row_Department['Name'];
-                    echo '
-                        <li class="w3-padding-16"><a href="index.php?pid=Department&uni=' . $Name_University . '&college=' . $Name_College . '&dep=' . $Name_Department . '"><b>' . $Name_Department . '</b></a></li>            
-                         ';
+                                    while ($row_Department = $result_Department->fetch_assoc()) {
+                                        $Name_Department = $row_Department['Name'];
+                                        echo '
+                                            <li class="w3-padding-16"><a href="index.php?pid=Department&uni=' . $Name_University . '&college=' . $Name_College . '&dep=' . $Name_Department . '"><b>' . $Name_Department . '</b></a></li>            
+                                             ';
                 }
                 echo '
                                 </ul>
-                            </div>
-                         </div>
-                     ';
+                        </div>
+                     </div>
+                    ';
             }else {
                 echo '<div class="w3-text-red w3-padding-48 w3-center" style="margin-top: 12%; margin-bottom: 20%;font-size: 40px; text-transform: uppercase">' . $Name_University . ' It currently has no colleges</div>';
             }
         }
+        echo '</div>';
     }
     mysqli_close($con);
 }
@@ -376,7 +381,7 @@ function HomeOprations(){
         
         <!-- Page content -->
         <div class="w3-col m8">
-            <div class="w3-container w3-card-2 w3-white w3-round w3-margin" style="max-width:1050px;">
+            <div class="w3-container w3-card-2 w3-white w3-round" style="max-width:1050px;margin: 16px 16px 16px 37px;">
         
                 <!-- University Section -->
                 <div class="w3-container w3-padding-32" style="text-transform: uppercase;" id="University">

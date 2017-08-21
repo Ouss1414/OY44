@@ -56,7 +56,7 @@
 
 <!-- Home Page -->
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:40px">
-    <div class="w3-row">
+    <div class="w3-row" style="margin-right: 20px">
         <?php
         HomeOprations();
         ?>
