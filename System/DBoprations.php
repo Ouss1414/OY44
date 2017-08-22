@@ -43,7 +43,7 @@ function Edit_Profile(){
                     </div>
 
                     <div class="form-group col-md-4">
-                        <input class="form-control" name="phone" value="'.$row_User['Phone_Number'].'" placeholder="Phone number" type="tel"">
+                        <input class="form-control" name="phone" value="'.$row_User['Phone_Number'].'" placeholder="Phone number" type="text">
                     </div>
 
                     <div class="form-group col-md-4">
