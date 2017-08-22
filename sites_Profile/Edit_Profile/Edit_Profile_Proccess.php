@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $Fname = $con->real_escape_string($_POST['firstName']);
     $Lname = $con->real_escape_string($_POST['secondName']);
     $email = $con->real_escape_string($_POST['email']);
-    $password = md5($_POST['password']);
+    $password = $_POST['password'];
     $Phone_Number = $con->real_escape_string($_POST['phone']);
     $gender = $con->real_escape_string($_POST['gender']);
     $Date_of_berth = $con->real_escape_string($_POST['Date_of_berth']);
@@ -30,10 +30,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $Name_User = $_SESSION['user'];
 
+//User
+$sql_User = "SELECT * FROM user WHERE  User_Name = '$Name_User'";
+$result_user = $con->query($sql_User);
+if ($result_user->num_rows > 0) {
+    while ($row_User = $result_user->fetch_assoc()) {
+        $Pass_User = $row_User['Password'];
+
+        if ($Pass_User === $password){
+            $Pass_User = $_POST['password'];
+        }else{
+            $Pass_User = md5($password);
+        }
+    }
+}
     $sql = "UPDATE user SET First_Name='$Fname',
                         Last_Name='$Lname',
                         Email='$email',
-                        Password='$password',
+                        Password='$Pass_User',
                         Phone_Number='$Phone_Number',
                         Gender='$gender',
                         Date_Of_Birth='$Date_of_berth',
