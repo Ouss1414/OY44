@@ -1,11 +1,10 @@
 <?php
 
-
 function login(){
     if(isset($_SESSION['user'])){
         echo '
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>
-        <a href="index.php?pid=Edit_Profile" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
+        <a href="sites_Profile/Edit_Profile/Edit_Profile.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
         <div class="w3-dropdown-hover w3-hide-small">
             <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>
@@ -48,12 +47,6 @@ function isAuth($PageID){
             break;
         case "Add_Post" :
             $redirectToPage = "Add_Post";
-            break;
-        case "Edit_Profile" :
-            $redirectToPage = "Edit_Profile";
-            break;
-        case "Sign Up" :
-            $redirectToPage = "Sign Up";
             break;
         default :
             $redirectToPage = "Home";

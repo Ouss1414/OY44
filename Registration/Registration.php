@@ -1,9 +1,45 @@
 <?php
+session_start();
+include_once "../System/Connect.php";
+require "../System/myFunctions.php";
+require "../System/requestHandel.php";
+require '../System/DBoprations.php';
+
 if (isset($_SESSION['user'])) {
     echo '<meta http-equiv="refresh" content="0; \'index.php?pid=Home\'"/>';
 }else{
     echo '
-        <div class="container well" style="margin-top: 80px;background-color: #f1f1f1">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My University | Sign Up </title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../CSS/w3-theme-blue-grey.css">
+    <link href="https://bootswatch.com/yeti/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/BootStrap.css">
+    <link rel=\'stylesheet\' href=\'https://fonts.googleapis.com/css?family=Open+Sans\'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+        <a href="../index.php?pid=Home" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Home</a>
+        <a href="../index.php?pid=Login" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="Log in"><i class="fa fa-sign-in"></i></a>
+    </div>
+</div>
+
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
+</div>
+
+        <div class="container well" style="margin-top: 80px">
          
             <form id="register-form" method="post" action="Registration_process.php">
                     <legend style="text-transform: uppercase">Sign up</legend>
@@ -113,6 +149,13 @@ if (isset($_SESSION['user'])) {
             </form>
         </div>
 
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+<script src="validation.js"></script>
+
+</body>
+</html>
 ';
 }
 

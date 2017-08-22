@@ -17,14 +17,14 @@ function Edit_Profile(){
                     <!-- left column -->
                     <div class="w3-row m3 w3-margin-bottom">
                         <div class="w3-center">
-                            <img src="Images/Icons/avatar2.png" class="w3-circle" alt="avatar" style="width: 100px;height: 100px">
+                            <img src="../../Images/Icons/avatar2.png" class="w3-circle" alt="avatar" style="width: 100px;height: 100px">
                             <h6>Upload a different photo...</h6>
                             <input type="file" title="upload photo" style="margin-left: 37%">
                         </div>
                     </div>
 
                     <!-- edit form column -->
-                    <form id="Edit-Profile-form" method="post" action="sites_Profile/Edit_Profile/Edit_Profile_Proccess.php">
+                    <form id="Edit-Profile-form" method="post" action="Edit_Profile_Proccess.php">
 
                     <div class="form-group col-md-6">
                         <input class="form-control" name="firstName" value="'.$row_User['First_Name'].'" placeholder="First name" type="text">
@@ -43,7 +43,7 @@ function Edit_Profile(){
                     </div>
 
                     <div class="form-group col-md-4">
-                        <input class="form-control" name="phone" value="'.$row_User['Phone_Number'].'" placeholder="Phone number" type="text">
+                        <input class="form-control" name="phone" value="'.$row_User['Phone_Number'].'" placeholder="Phone number" type="tel"">
                     </div>
 
                     <div class="form-group col-md-4">

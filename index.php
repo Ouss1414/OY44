@@ -6,8 +6,7 @@ require "system/requestHandel.php";
 require "System/DBoprations.php";
 ?>
 <!DOCTYPE html>
-<html style="background-color: #f1f1f1">
-<head>
+<html>
 <title>My University | <?= $PageID ?></title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +23,7 @@ require "System/DBoprations.php";
 <script src="http://yui.yahooapis.com/2.8.0r4/build/menu/menu-min.js"></script>
 <script src="http://yui.yahooapis.com/2.8.0r4/build/button/button-min.js"></script>
 <script src="http://yui.yahooapis.com/2.8.0r4/build/editor/editor-min.js"></script>
-<link href="https://bootswatch.com/yeti/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 
@@ -39,8 +38,8 @@ require "System/DBoprations.php";
     html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 </style>
 
-<body style="background-color: #f1f1f1">
-
+<body>
+<!-- test -->
 <!-- Navbar -->
 <div class="w3-top">
     <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
@@ -52,7 +51,13 @@ require "System/DBoprations.php";
     </div>
 </div>
 
-
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
+</div>
 
 <!-- Switchs -->
 
@@ -91,10 +96,6 @@ require "System/DBoprations.php";
             break;
         case "Posts" : include_once "sites_Forum/Posts/Posts.php";
             break;
-        case "Edit_Profile" : include_once "sites_Profile/Edit_Profile/Edit_Profile.php";
-            break;
-        case "Sign Up" : include_once "Registration/Registration.php";
-            break;
         case "Add_Post" : include_once "sites_Forum/Add_Post/Add_Post.php";
             break;
         default: include_once "sites_Forum/Home/Home.php";
@@ -103,7 +104,7 @@ require "System/DBoprations.php";
 ?>
 <!-- Footer -->
 
-<footer class="w3-container w3-theme-d5 w3-center" style="margin-top: 50px; padding-top: 15px">
+<footer class="w3-container w3-theme-d5 w3-center" style="margin-top: 50px">
     <p>Powered by <a href="#" target="_blank">Ready Team</a></p>
 </footer>
 
@@ -132,13 +133,8 @@ require "System/DBoprations.php";
     }
 </script>
 
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="JS/JS_Slider.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
-<script src="sites_Profile/Edit_Profile/validation.js"></script>
-<script src="Registration/validation.js"></script>
 
 </body>
 </html>
