@@ -3,20 +3,7 @@ if (isset($_SESSION['user'])) {
     echo '<meta http-equiv="refresh" content="0; \'index.php?pid=Home\'"/>';
 }else{
     echo '
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>My University | Sign Up </title>
-    <meta charset="UTF-8">
-    <link href="https://bootswatch.com/yeti/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../CSS/BootStrap.css">
-</head>
-<body>
-        <div class="container well" style="margin-top: 50px">
-        <div class="w3-margin-top w3-margin-left w3-padding-small w3-center w3-hover-text-gray w3-text-blue">
-            <a href="../index.php?pid=Home" style="text-transform: uppercase">Home</a> -
-            <a href="../index.php?pid=Login" style="text-transform: uppercase">Login</a> 
-         </div>
+        <div class="container well" style="margin-top: 80px;background-color: #f1f1f1">
          
             <form id="register-form" method="post" action="Registration_process.php">
                     <legend style="text-transform: uppercase">Sign up</legend>
@@ -126,13 +113,6 @@ if (isset($_SESSION['user'])) {
             </form>
         </div>
 
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
-<script src="validation.js"></script>
-
-</body>
-</html>
 ';
 }
 

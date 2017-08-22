@@ -46,11 +46,14 @@ function isAuth($PageID){
         case "Posts" :
             $redirectToPage = "Posts";
             break;
+        case "Add_Post" :
+            $redirectToPage = "Add_Post";
+            break;
         case "Edit_Profile" :
             $redirectToPage = "Edit_Profile";
             break;
-        case "Add_Post" :
-            $redirectToPage = "Add_Post";
+        case "Sign Up" :
+            $redirectToPage = "Sign Up";
             break;
         default :
             $redirectToPage = "Home";

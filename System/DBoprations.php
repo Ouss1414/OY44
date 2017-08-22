@@ -1,5 +1,139 @@
 <?php
 
+
+function Edit_Profile(){
+
+    $con = new mysqli('localhost','root','','iebook');
+
+    $Name_User = $_SESSION['user'];
+
+    //User
+    $sql_User = "SELECT * FROM user WHERE  User_Name = '$Name_User'";
+    $result_user = $con->query($sql_User);
+    if ($result_user->num_rows > 0) {
+        while ($row_User = $result_user->fetch_assoc()) {
+            echo '
+        <div class="w3-row" style="padding: 20px;  margin-left: 10%; margin-right: 10%">
+                    <!-- left column -->
+                    <div class="w3-row m3 w3-margin-bottom">
+                        <div class="w3-center">
+                            <img src="Images/Icons/avatar2.png" class="w3-circle" alt="avatar" style="width: 100px;height: 100px">
+                            <h6>Upload a different photo...</h6>
+                            <input type="file" title="upload photo" style="margin-left: 37%">
+                        </div>
+                    </div>
+
+                    <!-- edit form column -->
+                    <form id="Edit-Profile-form" method="post" action="sites_Profile/Edit_Profile/Edit_Profile_Proccess.php">
+
+                    <div class="form-group col-md-6">
+                        <input class="form-control" name="firstName" value="'.$row_User['First_Name'].'" placeholder="First name" type="text">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <input class="form-control" name="secondName" value="'.$row_User['Last_Name'].'" placeholder="Last name" type="text">
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <input class="form-control" name="email" value="'.$row_User['Email'].'" placeholder="Email address - Ex : ( example@example.com )" type="email">
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <input class="form-control" name="username" value="'.$row_User['User_Name'].'" placeholder="User name" type="text" disabled>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <input class="form-control" name="phone" value="'.$row_User['Phone_Number'].'" placeholder="Phone number" type="text">
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <input class="form-control" type="text" name="Academic_Number" value="'.$row_User['Academic_Number'].'" placeholder="Academic number" id="Academic_Number" />
+                    </div>
+
+                    <div class="clearfix">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <input class="form-control" name="password" value="'.$row_User['Password'].'" id="password" placeholder="Password" type="password">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input class="form-control" name="password2" value="'.$row_User['Password'].'" placeholder="Re-enter password" type="password">
+                    </div>
+                    <div class="clearfix">
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <input class="form-control" name="website" value="'.$row_User['Web_Site'].'" placeholder="Website - Ex : ( http://www.example.com )" type="url">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <input class="form-control" type="date" name="Date_of_berth" value="'.$row_User['Date_Of_Birth'].'" placeholder="Date of berth" id="Date_of_berth"/>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <select class="form-control" name="country">
+                        <option value="'.$row_User['Country'].'">'.$row_User['Country'].'</option>
+                            <option value="null">Choose Country ---</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <select class="form-control" name="city">
+                            <option value="'.$row_User['City'].'">'.$row_User['City'].'</option>
+                            <option value="null" style="width: 200px">Choose City ---</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <select class="form-control" name="university">
+                            <option value="'.$row_User['University'].'">'.$row_User['University'].'</option>
+                            <option value="null">Choose University ---</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <select class="form-control" name="college">
+                            <option value="'.$row_User['College'].'">'.$row_User['College'].'</option>
+                            <option value="null">Choose College ---</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <select class="form-control" name="department">
+                            <option value="'.$row_User['Department'].'">'.$row_User['Department'].'</option>
+                            <option value="null">Choose Department ---</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <div style="margin-left: 45px; margin-right: 25px; margin-bottom: 10px">
+                            <legend>Gender</legend>
+                            ';
+            if ($row_User['Gender'] == 'M'){
+                echo '<label style="margin-right: 10px"><input type="radio" value="Male" name="gender" id="M_gender" checked required/> Male</label>
+                      <label><input type="radio" value="Female" name="gender" id="F_gender" required/> Female</label>
+                    ';
+            }else{
+                echo '
+                      <label style="margin-right: 10px"><input type="radio" value="Male" name="gender" id="M_gender" required/> Male</label>
+                      <label><input type="radio" value="Female" name="gender" id="F_gender" checked required/> Female</label>
+                     ';
+
+                 }
+            echo '
+                        </div>
+                    </div>
+                 <div>
+                    <input class="btn btn-primary" id="submit-button" type="submit" value="Edit Profile">
+                 </div>
+
+                </form>
+        </div>
+    ';
+        }
+    }
+}
+
 function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Subject){
 
     $con = new mysqli('localhost','root','','iebook');
