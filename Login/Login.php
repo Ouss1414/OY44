@@ -53,7 +53,7 @@ if(isset($_POST['btn-login']))
                             </div>
                         </form><!-- form -->
                         <div class="button">
-                            if you don\'t have account, please <a href="index.php?pid=Sign Up">Sign up</a>
+                            if you don\'t have account, please <a href="Registration/Registration.php">Sign up</a>
                         </div><!-- button -->
                     </section><!-- content -->
                 </div><!-- container --> ';
