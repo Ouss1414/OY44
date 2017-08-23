@@ -1,5 +1,222 @@
 <?php
 
+function Profile(){
+
+    $con = new mysqli('localhost','root','','iebook');
+
+    $Name_User = $_SESSION['user'];
+
+    //User
+    $sql_User = "SELECT * FROM user WHERE  User_Name = '$Name_User'";
+    $result_user = $con->query($sql_User);
+    if ($result_user->num_rows > 0) {
+        while ($row_User = $result_user->fetch_assoc()) {
+            if (empty($row_User['Image'])) {
+                $row_User['Image'] = 'defult.png';
+            }
+            echo '
+                <!-- Page Container -->
+                <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+                    <!-- The Grid -->
+                    <div class="w3-row">
+                        <!-- Left Column -->
+                        <div class="w3-col m3">
+                            <!-- Profile -->
+                            <div class="w3-card-2 w3-round w3-white">
+                                <div class="w3-container">
+                                    <h4 class="w3-center">'.$row_User['First_Name'] . " " . $row_User['Last_Name'] .'</h4>
+                                    <p class="w3-center"><img src="Images/Pic/'.$row_User['Image'].'" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+                                    <div class="w3-center"><p><button class="w3-btn w3-border" style="min-width: 100px"> FOLLOW </button> <button class="w3-btn w3-border" style="min-width: 100px"> CV </button></p></div>
+                                    <hr>
+                                    <p style="text-transform: uppercase"><i class="fa fa-university fa-fw w3-margin-right w3-text-theme"></i>'.$row_User['University']. "," . $row_User['Department'] .'</p>
+                                    <p style="text-transform: uppercase"><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> '.$row_User['Country'] . "," . $row_User['City'] .'</p>
+                                    <p style="text-transform: uppercase"><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>'.$row_User['Date_Of_Birth'].'</p>
+                                </div>
+                            </div>
+                             <br>
+                
+                            <!-- Accordion -->
+                            <div class="w3-card-2 w3-round">
+                                <div class="w3-white">
+                                    <button onclick="myFunction(\'Demo1\')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
+                                    <div id="Demo1" class="w3-hide w3-container">
+                                        <p class="w3-text-red">Coming Soon ...</p>
+                                    </div>
+                                    <button onclick="myFunction(\'Demo2\')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
+                                    <div id="Demo2" class="w3-hide w3-container">
+                                        <p class="w3-text-red">Coming Soon ...</p>
+                                    </div>
+                                    <button onclick="myFunction(\'Demo3\')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
+                                    <div id="Demo3" class="w3-hide w3-container">
+                                        <div class="w3-row-padding">
+                                            <br>
+                                            <div class="w3-half">
+                                                <img src="Images/lights.jpg" style="width:100%" class="w3-margin-bottom">
+                                            </div>
+                                            <div class="w3-half">
+                                                <img src="Images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+                                            </div>
+                                            <div class="w3-half">
+                                                <img src="Images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
+                                            </div>
+                                            <div class="w3-half">
+                                                <img src="Images/forest.jpg" style="width:100%" class="w3-margin-bottom">
+                                            </div>
+                                            <div class="w3-half">
+                                                <img src="Images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+                                            </div>
+                                            <div class="w3-half">
+                                                <img src="Images/fjords.jpg" style="width:100%" class="w3-margin-bottom">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                             <!-- Interests -->
+                            <div class="w3-card-2 w3-round w3-white w3-hide-small">
+                                <div class="w3-container">
+                                    <p>Interests</p>
+                                    <p>
+                                        <span class="w3-tag w3-small w3-theme-d5">News</span>
+                                        <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
+                                        <span class="w3-tag w3-small w3-theme-d3">Labels</span>
+                                        <span class="w3-tag w3-small w3-theme-d2">Games</span>
+                                        <span class="w3-tag w3-small w3-theme-d1">Friends</span>
+                                        <span class="w3-tag w3-small w3-theme">Games</span>
+                                        <span class="w3-tag w3-small w3-theme-l1">Friends</span>
+                                        <span class="w3-tag w3-small w3-theme-l2">Food</span>
+                                        <span class="w3-tag w3-small w3-theme-l3">Design</span>
+                                        <span class="w3-tag w3-small w3-theme-l4">Art</span>
+                                        <span class="w3-tag w3-small w3-theme-l5">Photos</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <br>
+                
+                            <!-- Alert Box -->
+                            <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+                        <span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-theme-l3 w3-display-topright">
+                          <i class="fa fa-remove"></i>
+                        </span>
+                                <p><strong>Hey!</strong></p>
+                                <p>People are looking at your profile. Find out who.</p>
+                            </div>
+                
+                            <!-- End Left Column -->
+                        </div>
+                
+                        <!-- Middle Column -->
+                        <div class="w3-col m7">
+                
+                            <div class="w3-row-padding">
+                                <div class="w3-col m12">
+                                    <div class="w3-card-2 w3-round w3-white">
+                                        <div class="w3-container w3-padding">
+                                            <h6 class="w3-opacity">Social Media template by w3.css</h6>
+                                            <p contenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p>
+                                            <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                                <span class="w3-right w3-opacity">1 min</span>
+                                <h4>John Doe</h4><br>
+                                <hr class="w3-clear">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <div class="w3-row-padding" style="margin:0 -16px">
+                                    <div class="w3-half">
+                                        <img src="Images/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+                                    </div>
+                                    <div class="w3-half">
+                                        <img src="Images/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+                                    </div>
+                                </div>
+                                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+                                <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+                            </div>
+                
+                            <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+                                <img src="Images/Icons/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                                <span class="w3-right w3-opacity">16 min</span>
+                                <h4>Jane Doe</h4><br>
+                                <hr class="w3-clear">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+                                <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+                            </div>
+                
+                            <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+                                <img src="Images/Icons/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                                <span class="w3-right w3-opacity">32 min</span>
+                                <h4>Angie Jane</h4><br>
+                                <hr class="w3-clear">
+                                <p>Have you seen this?</p>
+                                <img src="Images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+                                <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+                            </div>
+                
+                            <!-- End Middle Column -->
+                        </div>
+                
+                        <!-- Right Column -->
+                        <div class="w3-col m2">
+                            <div class="w3-card-2 w3-round w3-white w3-center">
+                                <div class="w3-container">
+                                    <p>Upcoming Events:</p>
+                                    <img src="Images/forest.jpg" alt="Forest" style="width:100%;">
+                                    <p><strong>Holiday</strong></p>
+                                    <p>Friday 15:00</p>
+                                    <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
+                                </div>
+                            </div>
+                            <br>
+                
+                            <div class="w3-card-2 w3-round w3-white w3-center">
+                                <div class="w3-container">
+                                    <p>Friend Request</p>
+                                    <img src="Images/Icons/avatar6.png" alt="Avatar" style="width:50%"><br>
+                                    <span>Jane Doe</span>
+                                    <div class="w3-row w3-opacity">
+                                        <div class="w3-half">
+                                            <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
+                                        </div>
+                                        <div class="w3-half">
+                                            <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                
+                            <div class="w3-card-2 w3-round w3-white w3-padding-16 w3-center">
+                                <p>ADS</p>
+                            </div>
+                            <br>
+                
+                            <div class="w3-card-2 w3-round w3-white w3-padding-32 w3-center">
+                                <p><i class="fa fa-bug w3-xxlarge"></i></p>
+                            </div>
+                
+                            <!-- End Right Column -->
+                        </div>
+                
+                        <!-- End Grid -->
+                    </div>
+                
+                    <!-- End Page Container -->
+                </div>
+                <br>
+                ';
+        }
+    }
+}
+
 function getPic(){
     $con = new mysqli('localhost','root','','iebook');
     $Name_User = $_SESSION['user'];
@@ -9,7 +226,9 @@ function getPic(){
     $result_user = $con->query($sql_User);
     if ($result_user->num_rows > 0) {
         while ($row_User = $result_user->fetch_assoc()) {
-
+                if (empty($row_User['Image'])) {
+                    $row_User['Image'] = 'defult.png';
+                }
             echo '
                 <a href="../../index.php?pid=Profile" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account"><img src="../../Images/Pic/'.$row_User['Image'].'" class="w3-circle" style="height:25px;width:25px" alt="Avatar"></a> 
                 ';
@@ -28,7 +247,10 @@ function Edit_Profile(){
     $result_user = $con->query($sql_User);
     if ($result_user->num_rows > 0) {
         while ($row_User = $result_user->fetch_assoc()) {
-            echo '
+                if (empty($row_User['Image'])) {
+                    $row_User['Image'] = 'defult.png';
+                }
+      echo '
         <div class="w3-row" style="padding: 20px;  margin-left: 10%; margin-right: 10%">
 
                     <!-- edit form column -->
@@ -36,8 +258,10 @@ function Edit_Profile(){
                     <!-- left column -->
                     <div class="w3-row m3 w3-margin-bottom">
                         <div class="w3-center">
+                        <label>
                             <img src="../../Images/Pic/'.$row_User['Image'].'" class="w3-circle" alt="avatar" style="width: 100px;height: 100px">
-                            <input type="file" name="photo" title="upload photo" style="margin-left: 41%; margin-top: 15px; margin-bottom: 15px">
+                            <input type="file" name="photo" title="upload photo" style="margin-top: 15px; margin-bottom: 15px" accept="image/*">
+                        </label>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
@@ -87,35 +311,45 @@ function Edit_Profile(){
                     <div class="form-group col-md-6">
                         <select class="form-control" name="country">
                         <option value="'.$row_User['Country'].'">'.$row_User['Country'].'</option>
-                            <option value="null">Choose Country ---</option>
+                            <optgroup label="Choose Country ---">
+                                <option value="Soudi Arabia">Soudi Arabia</option>
+                            </optgroup>
                         </select>
                     </div>
 
                     <div class="form-group col-md-6">
                         <select class="form-control" name="city">
                             <option value="'.$row_User['City'].'">'.$row_User['City'].'</option>
-                            <option value="null" style="width: 200px">Choose City ---</option>
+                            <optgroup label="Choose City ---" style="width: 200px">
+                                <option value="Madinah">Madinah</option>
+                            </optgroup>
                         </select>
                     </div>
 
                     <div class="form-group col-md-6">
                         <select class="form-control" name="university">
                             <option value="'.$row_User['University'].'">'.$row_User['University'].'</option>
-                            <option value="null">Choose University ---</option>
+                            <optgroup label="Choose University ---">
+                                <option value="Taibah University">Taibah University</option>
+                            </optgroup>
                         </select>
                     </div>
 
                     <div class="form-group col-md-6">
                         <select class="form-control" name="college">
                             <option value="'.$row_User['College'].'">'.$row_User['College'].'</option>
-                            <option value="null">Choose College ---</option>
+                            <optgroup label="Choose College ---">
+                                <option value="College Of Computer Science and Engineering">College Of Computer Science and Engineering</option>
+                            </optgroup>
                         </select>
                     </div>
 
                     <div class="form-group col-md-6">
                         <select class="form-control" name="department">
                             <option value="'.$row_User['Department'].'">'.$row_User['Department'].'</option>
-                            <option value="null">Choose Department ---</option>
+                            <optgroup label="Choose Department ---">
+                                <option value="CS">CS</option>
+                            </optgroup>
                         </select>
                     </div>
 

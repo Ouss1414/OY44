@@ -43,6 +43,9 @@ if ($result_user->num_rows > 0) {
     while ($row_User = $result_user->fetch_assoc()) {
         $Pass_User = $row_User['Password'];
 
+        if (empty($pic)){
+            $pic = $row_User['Image'];
+        }
         if ($Pass_User === $password){
             $Pass_User = $_POST['password'];
         }else{
@@ -69,7 +72,8 @@ if ($result_user->num_rows > 0) {
     $con->query($sql);
 
     // Writes the photo to the server
-    if((($_FILES["photo"]["type"] == "image/jpeg") || ($_FILES["photo"]["type"] == "image/png")) && ($_FILES["photo"]["size"] < 100000000)){
+    if(($_FILES["photo"]["size"] < 10000000000)){
+
         move_uploaded_file($_FILES['photo']['tmp_name'], $target);
 
         // Tells you if its all ok
@@ -81,13 +85,12 @@ if ($result_user->num_rows > 0) {
         } else {
             echo "Error: " . $sql . "<br>" . $con->error;
         }
-    }
-    else {
+    } else {
 
-// Gives and error if its not
-        echo "Sorry, there was a problem uploading your file.";
+        // Gives and error if its not
+        echo '<div style="font-size: 32px; font-family: Tahoma; margin-top: 20%" align="center">Sorry, there was a problem uploading your file.</div>';
+        echo '<meta http-equiv="refresh" content="1; \'/OY44/sites_Profile/Edit_Profile/Edit_Profile.php"/>';
     }
-
 
     mysqli_close($con);
 }

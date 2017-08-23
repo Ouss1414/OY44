@@ -90,36 +90,46 @@ if (isset($_SESSION['user'])) {
         
                 <div class="form-group col-md-6">
                     <select class="form-control" name="country">
-                        <option value="null">Choose Country ---</option>
-                        <option value="Saudi Arabia">Saudi Arabia</option>
+                        <optgroup label="Country">
+                            <option value="">Choose Country ---</option>
+                            <option value="Soudi Arabia">Soudi Arabia</option>
+                        </optgroup>
                     </select>
                 </div>
         
                 <div class="form-group col-md-6">
                     <select class="form-control" name="city">
-                        <option value="null" style="width: 200px">Choose City ---</option>
-                        <option value="madinah">Madinah</option>
+                        <optgroup label="City" style="width: 200px">
+                            <option value="">Choose City ---</option>
+                            <option value="Madinah">Madinah</option>
+                        </optgroup>
                     </select>
                 </div>
         
                 <div class="form-group col-md-6">
                     <select class="form-control" name="university">
-                        <option value="null">Choose University ---</option>
-                        <option value="taibah">Taibah University</option>
+                        <optgroup label="University">
+                            <option value="">Choose University ---</option>
+                            <option value="Taibah University">Taibah University</option>
+                        </optgroup>
                     </select>
                 </div>
         
                 <div class="form-group col-md-6">
                     <select class="form-control" name="college">
-                        <option value="null">Choose College ---</option>
-                        <option value="College of Computer Science and Engineering">College of Computer Science and Engineering</option>
+                        <optgroup label="College">
+                            <option value="">Choose College ---</option>
+                            <option value="College Of Computer Science and Engineering">College Of Computer Science and Engineering</option>
+                        </optgroup>
                     </select>
                 </div>
         
                 <div class="form-group col-md-6">
                     <select class="form-control" name="department">
-                        <option value="null">Choose Department ---</option>
-                        <option value="CS">CS</option>
+                        <optgroup label="Department">
+                            <option value="">Choose Department ---</option>
+                           <option value="CS">CS</option>
+                        </optgroup>
                     </select>
                 </div>
         
