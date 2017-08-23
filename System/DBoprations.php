@@ -1,5 +1,21 @@
 <?php
 
+function getPic(){
+    $con = new mysqli('localhost','root','','iebook');
+    $Name_User = $_SESSION['user'];
+
+    //User
+    $sql_User = "SELECT Image FROM user WHERE  User_Name = '$Name_User'";
+    $result_user = $con->query($sql_User);
+    if ($result_user->num_rows > 0) {
+        while ($row_User = $result_user->fetch_assoc()) {
+
+            echo '
+                <a href="../../index.php?pid=Profile" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account"><img src="../../Images/Pic/'.$row_User['Image'].'" class="w3-circle" style="height:25px;width:25px" alt="Avatar"></a> 
+                ';
+        }
+    }
+}
 
 function Edit_Profile(){
 
@@ -14,18 +30,16 @@ function Edit_Profile(){
         while ($row_User = $result_user->fetch_assoc()) {
             echo '
         <div class="w3-row" style="padding: 20px;  margin-left: 10%; margin-right: 10%">
+
+                    <!-- edit form column -->
+           <form id="Edit-Profile-form" method="post" action="Edit_Profile_Proccess.php" enctype="multipart/form-data">
                     <!-- left column -->
                     <div class="w3-row m3 w3-margin-bottom">
                         <div class="w3-center">
-                            <img src="../../Images/Icons/avatar2.png" class="w3-circle" alt="avatar" style="width: 100px;height: 100px">
-                            <h6>Upload a different photo...</h6>
-                            <input type="file" title="upload photo" style="margin-left: 37%">
+                            <img src="../../Images/Pic/'.$row_User['Image'].'" class="w3-circle" alt="avatar" style="width: 100px;height: 100px">
+                            <input type="file" name="photo" title="upload photo" style="margin-left: 41%; margin-top: 15px; margin-bottom: 15px">
                         </div>
                     </div>
-
-                    <!-- edit form column -->
-                    <form id="Edit-Profile-form" method="post" action="Edit_Profile_Proccess.php">
-
                     <div class="form-group col-md-6">
                         <input class="form-control" name="firstName" value="'.$row_User['First_Name'].'" placeholder="First name" type="text">
                     </div>
@@ -238,18 +252,18 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
 
     echo '
         <div class="w3-margin-top w3-margin-left w3-padding-small w3-hover-text-gray w3-text-blue">
-            <a href="index.php?pid=Home">Home</a> -
-            <a href="index.php#University" style="text-transform: uppercase"> '.$Name_University.'</a> -
+            <a href="index.php?pid=Home">Home</a>  -
+            <a href="index.php#University" style="text-transform: uppercase"> '.$Name_University.'</a>  -
             <a href="index.php?pid=Colleges&uni='.$Name_University.'" style="text-transform: uppercase">College_of_ '.$Name_College.' </a> -
             <a href="index.php?pid=Department&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'" style="text-transform: uppercase"> '.$Name_Department.'</a>
         </div>
         
         <div class="w3-row w3-card-2 w3-margin-top w3-margin-left w3-margin-right w3-padding">
-            <a href="index.php?pid=Add_Post&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'" class="w3-button w3-border" style="text-decoration: none">Add Post</a> -
+            <a href="index.php?pid=Add_Post&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'" class="w3-button w3-border" style="text-decoration: none">Add Post</a>  -
             <select class="w3-theme-2 w3-margin" style="width: 15%">
                 <option value="null">Sort --- </option>
-                <option value="date">Date</option>
-                <option value="name">Name</option>
+                <option value="ORDER BY Date_Post DESC">Date</option>
+                <option value="ORDER BY Subject ASC">Name</option>
             </select>
         </div>
         
@@ -298,8 +312,8 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                             </div>
                         </div>
                         <div class="w3-dark-grey" style="width: 95%;margin-left: 2.5%;padding-bottom: 3px;padding-top: 3px">
-                            <div title="LIKE" class="fa fa-thumbs-up w3-large w3-hover-green w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Like'].' </div>
-                            <div title="DISLIKE" class="fa fa-thumbs-down w3-large w3-hover-red w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Dislike'].' </div>
+                            <div title="LIKE" class="fa fa-thumbs-up w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Like'].' </div>
+                            <div title="DISLIKE" class="fa fa-thumbs-down w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Dislike'].' </div>
                         </div>
                     ';
                 }
@@ -358,8 +372,8 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                             </div>
                         </div>
                         <div class="w3-dark-grey" style="width: 95%;margin-left: 2.5%;padding-bottom: 3px;padding-top: 3px">
-                            <div title="LIKE" class="fa fa-thumbs-up w3-large w3-hover-green w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Like'].' </div>
-                            <div title="DISLIKE" class="fa fa-thumbs-down w3-large w3-hover-red w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Dislike'].' </div>
+                            <div title="LIKE" class="fa fa-thumbs-up w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Like'].' </div>
+                            <div title="DISLIKE" class="fa fa-thumbs-down w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Dislike'].' </div>
                         </div>
                     ';
         }
@@ -417,8 +431,8 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                             </div>
                         </div>
                         <div class="w3-dark-grey" style="width: 95%;margin-left: 2.5%;padding-bottom: 3px;padding-top: 3px">
-                                <div title="LIKE" class="fa fa-thumbs-up w3-large w3-hover-green w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Like'].' </div>
-                                <div title="DISLIKE" class="fa fa-thumbs-down w3-large w3-hover-red w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Dislike'].' </div>
+                                <div title="LIKE" class="fa fa-thumbs-up w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Like'].' </div>
+                                <div title="DISLIKE" class="fa fa-thumbs-down w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Dislike'].' </div>
                             </div>
                     ';
             }

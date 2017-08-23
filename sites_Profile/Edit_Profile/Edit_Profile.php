@@ -35,7 +35,7 @@
             </div>
         </div>
         <a href="../../Login/Logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="Log out"><i class="fa fa-sign-out"></i></a>
-        <a href="../../index.php?pid=Profile" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account"><img src="../../Images/Icons/avatar2.png" class="w3-circle" style="height:25px;width:25px" alt="Avatar"></a>
+        <?php getPic(); ?>
 
     </div>
 </div>
