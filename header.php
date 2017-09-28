@@ -20,7 +20,7 @@ if (empty($_GET["pid"])){
         <div class="w3-right w3-hide-small" style="text-transform: uppercase;">
             <a href="index.php?pid=Home" class="w3-bar-item w3-button">Home</a>
             <a href="index.php#University" class="w3-bar-item w3-button">University</a>
-            <a href="index.php?pid=IEBook" class="w3-bar-item w3-button">IEBook</a>
+            <a href="index.php#IEBook" class="w3-bar-item w3-button">IEBook</a>
             <a href="index.php?pid=About" class="w3-bar-item w3-button">About</a>
             <a href="index.php?pid=Contact" class="w3-bar-item w3-button">Contact</a>
         </div>

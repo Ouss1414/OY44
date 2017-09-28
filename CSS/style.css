@@ -311,11 +311,11 @@ form:after {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec151', endColorstr='#fee79a',GradientType=0 );
 }
 
+/* list catagories */
 .list {
 	text-transform: uppercase;
-	border: #616161 1px solid;
 	padding-bottom: 10px;
-	max-width: 250px;
+	max-width: 300px;
 	margin-left: 15px;
 }
 .list ul{
@@ -324,14 +324,116 @@ form:after {
 .list li{
 	cursor: pointer;
 	padding: 5px;
-	border-bottom: 1px solid;
 }
 .list li:hover{
 	background-color: #4D636F;
 	color: whitesmoke;
 }
+hr{
+	color: #4D636F;
+	border: .5px solid;
+	margin: 0px;
+}
 
-.Book {
-	margin-left: 15px;
-	border: 1px solid;
+
+
+/*book*/
+
+.Book ul {
+	list-style-type: none;
+}
+
+.s-product-tooltip{
+	background: #3a3a3a;
+	border-radius: 5px;
+	color: whitesmoke;
+	font-size: 13px;
+	position: relative;
+	text-align: left;
+	top: -40px;
+	left:-350px;
+	line-height: 25px;
+	display:none;
+	padding:20px;
+	width: 300px;
+
+}
+.s-product-tooltip:after{
+	content:'';
+	position:absolute;
+	right:-5px;
+	top: 15px;
+	width:10px;
+	height:10px;
+	border-bottom:5px solid #3a3a3a;
+	border-right:5px solid #3a3a3a;
+	background:#3a3a3a;
+	margin-left:-5px;
+	-moz-transform:rotate(45deg);
+	-webkit-transform:rotate(45deg);
+	transform:rotate(45deg);
+}
+.s-product{
+	margin-left:30px;
+	margin-top:30px;
+	margin-right:30px;
+	margin-bottom:70px;
+	float:left;
+	position:relative;
+	cursor:pointer;
+}
+.s-product:hover img {
+	opacity: 0.5;
+}
+.s-product:hover h6 {
+	opacity: 0.5;
+}
+.s-product:hover span {
+	opacity: 0.5;
+}
+.s-product:hover .fa-book {
+	opacity: 1;
+}.s-product:hover .fa-heart {
+	opacity: 1;
+}
+.s-product:hover .s-product-tooltip{
+	display:block;
+	position:absolute;
+}
+
+.s-product-hover ul{
+	top: 50%;
+	left: 50%;
+	transform: translate(-10%,150%);
+	font-size: 25px;
+	display: flex;
+	color: #474544;
+}
+.fa-heart {
+	margin: 5px;
+	padding: 10px;
+	opacity: .5;
+}
+.fa-book {
+	margin: 5px;
+	padding: 10px;
+	opacity: .5;
+}
+
+.fa-heart:hover {
+	background: #4D636F;
+	border-radius: 45px;
+	color: whitesmoke;
+}
+.fa-book:hover {
+	background: #4D636F;
+	border-radius: 100px;
+	color: whitesmoke;
+}
+
+.s-product h6{
+	margin-top: -30px;
+	text-transform: uppercase;
+	color: #4D636F;
+	font-size: 16px;
 }

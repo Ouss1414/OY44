@@ -63,3 +63,12 @@
     </div>
     <!-- End page content -->
 </div>
+<div class="w3-container w3-content w3-card-2 w3-white w3-round" style="max-width:1200px; margin-top: 20px">
+    <!-- University Section -->
+    <div class="w3-container w3-padding-32" style="text-transform: uppercase;" id="IEBook">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">IEBook</h3>
+    </div>
+    <div class="w3-row w3-center" style="padding-bottom: 32px;">
+        <img src="Images/IEBook/bg-1.gif" width="80%" onclick="location.href='http://localhost/OY44/index.php?pid=IEBook'" style="cursor: pointer">
+    </div>
+</div>
