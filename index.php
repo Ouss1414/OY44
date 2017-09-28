@@ -64,19 +64,21 @@ require "System/DBoprations.php";
 <?php
     //switch for header
     switch($PageID){
-        case "Contact" : include_once "sites_Forum/header.php";
+        case "Contact" : include_once "header.php";
             break;
-        case "Home" : include_once "sites_Forum/header.php";
+        case "Home" : include_once "header.php";
             break;
-        case "About" : include_once "sites_Forum/header.php";
+        case "About" : include_once "header.php";
             break;
-        case "Colleges" : include_once "sites_Forum/header.php";
+        case "Colleges" : include_once "header.php";
             break;
-        case "Department" : include_once "sites_Forum/header.php";
+        case "Department" : include_once "header.php";
             break;
-        case "Posts" : include_once "sites_Forum/header.php";
+        case "Posts" : include_once "header.php";
             break;
-        case "Add_Post" : include_once "sites_Forum/header.php";
+        case "Add_Post" : include_once "header.php";
+            break;
+        case "IEBook" : include_once "header.php";
             break;
     }
 
@@ -97,6 +99,8 @@ require "System/DBoprations.php";
         case "Posts" : include_once "sites_Forum/Posts/Posts.php";
             break;
         case "Add_Post" : include_once "sites_Forum/Add_Post/Add_Post.php";
+            break;
+        case "IEBook" : include_once "sites_Iebook/Home/Home.php";
             break;
         default: include_once "sites_Forum/Home/Home.php";
             break;

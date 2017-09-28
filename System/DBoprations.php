@@ -1,5 +1,6 @@
 <?php
 
+
 function Profile(){
 
     $con = new mysqli('localhost','root','','iebook');
@@ -105,7 +106,9 @@ function Profile(){
                 
                             <!-- End Left Column -->
                         </div>
-                
+                ';
+
+                echo '
                         <!-- Middle Column -->
                         <div class="w3-col m7">
                 
@@ -113,8 +116,7 @@ function Profile(){
                                 <div class="w3-col m12">
                                     <div class="w3-card-2 w3-round w3-white">
                                         <div class="w3-container w3-padding">
-                                            <h6 class="w3-opacity">Social Media template by w3.css</h6>
-                                            <p contenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p>
+                                            <p><input type="text" class="w3-border w3-padding" placeholder="Express what is inside you ..." style="width: 100%;"></p>
                                             <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button>
                                         </div>
                                     </div>

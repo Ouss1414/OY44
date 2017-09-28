@@ -63,6 +63,9 @@ function isAuth($PageID){
         case "Add_Post" :
             $redirectToPage = "Add_Post";
             break;
+        case "IEBook" :
+            $redirectToPage = "IEBook";
+            break;
         default :
             $redirectToPage = "Home";
             break;

@@ -310,3 +310,28 @@ form:after {
 	background: linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec151', endColorstr='#fee79a',GradientType=0 );
 }
+
+.list {
+	text-transform: uppercase;
+	border: #616161 1px solid;
+	padding-bottom: 10px;
+	max-width: 250px;
+	margin-left: 15px;
+}
+.list ul{
+	margin-left: 15px;
+}
+.list li{
+	cursor: pointer;
+	padding: 5px;
+	border-bottom: 1px solid;
+}
+.list li:hover{
+	background-color: #4D636F;
+	color: whitesmoke;
+}
+
+.Book {
+	margin-left: 15px;
+	border: 1px solid;
+}
