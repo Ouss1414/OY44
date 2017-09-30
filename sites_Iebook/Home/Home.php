@@ -64,53 +64,17 @@
     <div class="list w3-col s3">
         <h3 class="w3-card w3-center w3-padding-16" style="color: #4D636F;">categories</h3>
         <div class="w3-card w3-padding-small">
-            <p>
-                <li><a>ALL</a></li>
-            <hr>
-                <li><a>Programing</a></li>
-            <hr>
-                <li><a>History</a></li>
-            <hr>
-                <li><a>Math</a></li>
-            </ul>
+            <?php
+                Catagories();
+            ?>
         </div>
     </div>
 
     <div class="Book w3-col s9">
             <ul>
-                <div class="w3-container w3-card w3-padding-small w3-margin w3-col s3">
-                    <li>
-                        <div class="s-product" style="width:155px;">
-                            <div class="s-product-img">
-                                <img src="images/IEBook/Android.jpg" alt="" width="100%" height="217">
-                                <div class="s-product-hover">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-book"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="s-product-tooltip">
-                                    <ul class="book-detail-list">
-                                        <li style="display: inline;">andriod</li><li style="display: inline; color:darkgray;"> |  Price: <span>$</span>Free</li>
-                                        <li>Writed by <span class="theme-color">oussama almalawi</span></li>
-                                        <li>60 pages</li>
-                                    </ul>
-                                    <p><span>Summary</span>From advanced selectors to generated content to web fonts, and from gradients, shadows, and rounded corners to elegant animations,</p>
-                                    <ul class="rating-stars" style="display: flex">
-                                        <li><span>Rating</span></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star-half-o"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <h6><a href="book-detail.php">android</a></h6>
-                            <span>oussama almalawi</span>
-                        </div>
-                    </li>
-                </div>
+                <?php
+                    Show_Books();
+                ?>
             </ul>
     </div>
 </div>

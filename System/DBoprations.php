@@ -1,5 +1,98 @@
 <?php
 
+function Catagories(){
+
+    $con = new mysqli('localhost','root','','iebook');
+
+    if(empty($_GET['List'])){
+        $_GET['List'] = 'All';
+    }
+    echo'
+        <ul>
+            <li id="All" onclick="location.href=\'http://localhost/OY44/index.php?pid=IEBook&List=All\'"><a>ALL</a></li>
+            ';
+    if ($_GET['List'] == 'All' ){
+        echo "
+             <script>
+             document.getElementById('All').style.background = '#4D636F';
+             document.getElementById('All').style.color = 'white';
+             </script>
+             ";
+    }
+
+    //list
+    $sql_list = "SELECT distinct Catagories FROM book";
+    $result_list = $con->query($sql_list);
+    if ($result_list->num_rows > 0) {
+        while ($row_list = $result_list->fetch_assoc()) {
+
+            echo '
+                  <hr>
+                  <li id="'.$row_list['Catagories'].'" onclick="location.href=\'http://localhost/OY44/index.php?pid=IEBook&List=' . $row_list['Catagories'] . '\'"><a>' . $row_list['Catagories'] . '</a></li>
+                ';
+            if ($_GET['List'] == $row_list['Catagories'] ){
+                echo "
+                     <script>
+                     document.getElementById('".$row_list['Catagories']."').style.background = '#4D636F';
+                     document.getElementById('".$row_list['Catagories']."').style.color = 'white';
+                     </script>
+                    ";
+            }
+        }
+
+    }
+
+        echo '
+                </ul>
+             ';
+}
+
+function Show_Books(){
+    $con = new mysqli('localhost','root','','iebook');
+
+    //Books
+    $sql_Book = "SELECT * FROM book,user WHERE User_Id=Id AND Available='1'";
+    $result_book = $con->query($sql_Book);
+    if ($result_book->num_rows > 0) {
+        while ($row_book = $result_book->fetch_assoc()) {
+            echo '
+                    <div class="w3-container w3-card w3-padding-small w3-margin w3-col s3">
+                                    <li>
+                                        <div class="s-product" style="width:155px;">
+                                            <div class="s-product-img">
+                                                <img src="Upload_Books/'.$row_book['Image_Book'].'" alt="" width="100%" height="217">
+                                                <div class="s-product-hover">
+                                                    <ul>
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="javascript:void(0)"><i class="fa fa-book"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="s-product-tooltip">
+                                                    <ul class="book-detail-list">
+                                                        <li style="display: inline;">'.$row_book['Name_Book'].'</li><li style="display: inline; color:darkgray;"> |  Price: <span>$</span>'.$row_book['Price'].'</li>
+                                                        <li>Writed by <span class="theme-color">'.$row_book['First_Name']." ". $row_book['Last_Name'] .'</span></li>
+                                                        <li>'.$row_book['Page'].'</li>
+                                                    </ul>
+                                                    <p><span>Summary </span>'.$row_book['Summary'].'</p>
+                                                    <ul class="rating-stars" style="display: flex">
+                                                        <li><span>Rating </span> </li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star-half-o"></i></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <h6><a href="">'.$row_book['Name_Book'].'</a></h6>
+                                            <span>'.$row_book['First_Name']." ". $row_book['Last_Name'] .'</span>
+                                        </div>
+                                    </li>
+                                </div>
+    ';
+        }
+    }
+}
 
 function Profile(){
 
