@@ -9,7 +9,7 @@ function Catagories(){
     }
     echo'
         <ul>
-            <li id="All" onclick="location.href=\'http://localhost/OY44/index.php?pid=IEBook&List=All\'"><a>ALL</a></li>
+            <li id="All" onclick="location.href=\'http://localhost/OY44/index.php?pid=IEBook&List=All#IEBook\'"><a>ALL</a></li>
             ';
     if ($_GET['List'] == 'All' ){
         echo "
@@ -28,7 +28,7 @@ function Catagories(){
 
             echo '
                   <hr>
-                  <li id="'.$row_list['Catagories'].'" onclick="location.href=\'http://localhost/OY44/index.php?pid=IEBook&List=' . $row_list['Catagories'] . '\'"><a>' . $row_list['Catagories'] . '</a></li>
+                  <li id="'.$row_list['Catagories'].'" onclick="location.href=\'http://localhost/OY44/index.php?pid=IEBook&List=' . $row_list['Catagories'] . '#IEBook\'"><a>' . $row_list['Catagories'] . '</a></li>
                 ';
             if ($_GET['List'] == $row_list['Catagories'] ){
                 echo "
@@ -47,8 +47,9 @@ function Catagories(){
              ';
 }
 
-function Show_Books(){
-    if(empty($_GET['page'])){
+function Show_Books()
+{
+    if (empty($_GET['page'])) {
         $_GET['page'] = '1';
     }
 
@@ -56,24 +57,42 @@ function Show_Books(){
             <div class="Book w3-col s9">
                 <ul>
             ';
-    $con = new mysqli('localhost','root','','iebook');
+    $con = new mysqli('localhost', 'root', '', 'iebook');
     $results_per_page = 6;
 
     isset($_GET['page']) ? $page = $_GET['page'] : $page = 0;
 
-    if ($page > 1){
+    if ($page > 1) {
         $this_page_first_result = ($page * $results_per_page) - $results_per_page;
-    }else{
-        $this_page_first_result = 0 ;
+    } else {
+        $this_page_first_result = 0;
+    }
+
+    $lisst = $_GET['List'];
+
+    switch ($lisst) {
+        case "All" :
+            $sql = "SELECT * FROM book";
+            break;
+        default :
+            $sql = "SELECT Catagories FROM book WHERE Catagories='$lisst'";
     }
 
     //Books
-    $result_book = $con->query("SELECT * FROM book");
+    $result_book = $con->query($sql);
     $number_of_results = $result_book->num_rows;
 
     $totalPages = $number_of_results / $results_per_page;
 
-    $result_book = $con->query("SELECT * FROM book,user WHERE User_Id=Id AND Available='1' LIMIT $this_page_first_result, $results_per_page");
+    switch ($lisst) {
+        case "All" :
+            $sql = "SELECT * FROM book,user WHERE User_Id=Id AND Available='1' LIMIT $this_page_first_result, $results_per_page";
+            break;
+        default :
+            $sql = "SELECT * FROM book,user WHERE User_Id=Id AND Available='1' AND Catagories='$lisst' LIMIT $this_page_first_result, $results_per_page";
+    }
+
+    $result_book = $con->query($sql);
     if ($result_book->num_rows > 0) {
         while ($row_book = $result_book->fetch_assoc()) {
             echo '
@@ -81,7 +100,7 @@ function Show_Books(){
                                     <li>
                                         <div class="s-product" style="width:155px;">
                                             <div class="s-product-img">
-                                                <img src="Upload_Books/'.$row_book['Image_Book'].'" alt="" width="100%" height="217">
+                                                <img src="Upload_Books/' . $row_book['Image_Book'] . '" alt="" width="100%" height="217">
                                                 <div class="s-product-hover">
                                                     <ul>
                                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -90,11 +109,11 @@ function Show_Books(){
                                                 </div>
                                                 <div class="s-product-tooltip">
                                                     <ul class="book-detail-list" style="margin-left: -40px; margin-bottom: -20px">
-                                                        <li style="display: inline;">'.$row_book['Name_Book'].'</li><li style="display: inline; color:darkgray;"> |  Price: <span>$</span>'.$row_book['Price'].'</li>
-                                                        <li>Writed by : <span class="theme-color">'.$row_book['First_Name']." ". $row_book['Last_Name'] .'</span></li>
-                                                        <li>Pages : <span>'.$row_book['Page'].'</span></li>
+                                                        <li style="display: inline;">' . $row_book['Name_Book'] . '</li><li style="display: inline; color:darkgray;"> |  Price: <span>$</span>' . $row_book['Price'] . '</li>
+                                                        <li>Writed by : <span class="theme-color">' . $row_book['First_Name'] . " " . $row_book['Last_Name'] . '</span></li>
+                                                        <li>Pages : <span>' . $row_book['Page'] . '</span></li>
                                                     </ul>
-                                                    <p>Summary : <span>'.$row_book['Summary'].'</span></p>
+                                                    <p>Summary : <span>' . $row_book['Summary'] . '</span></p>
                                                     <ul class="rating-stars" style="display: flex">
                                                         <li><span>Rating: </span> </li>
                                                         <li style="margin-left: 7px;"><i class="fa fa-star"></i></li>
@@ -105,8 +124,8 @@ function Show_Books(){
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <h6><a href="">'.$row_book['Name_Book'].'</a></h6>
-                                            <span>'.$row_book['First_Name']." ". $row_book['Last_Name'] .'</span>
+                                            <h6><a href="">' . $row_book['Name_Book'] . '</a></h6>
+                                            <span>' . $row_book['First_Name'] . " " . $row_book['Last_Name'] . '</span>
                                         </div>
                                     </li>
                                 </div>
@@ -121,9 +140,23 @@ function Show_Books(){
     ';
 
     // display the links to the pages
-    for ($page = 1 ; $page <= $totalPages ; $page++) {
-        print '<a id="'.$page.'" class="page" href="index.php?pid=IEBook&List='.$_GET['List'].'&page=' . $page . '">' . $page . '</a>';
+    if ($lisst != 'All') {
+        $totalPages++;
     }
+
+    if ($page > 1) {
+        print '<a style="margin: 2px;" id="Previous" class="page" href="index.php?pid=IEBook&List=' . $_GET['List'] . '&page=' . $page = $page - 1 . '#IEBook">Prev</a>';
+    }
+
+    for ($page = 1; $page <= $totalPages; $page++) {
+        print '<a style="margin: 2px;" id="' . $page . '" class="page" href="index.php?pid=IEBook&List=' . $_GET['List'] . '&page=' . $page . '#IEBook">' . $page . '</a>';
+    }
+
+    $page--;
+    if ($_GET['page'] != $page) {
+        print '<a style="margin: 2px;" id="Next" class="page" href="index.php?pid=IEBook&List=' . $_GET['List'] . '&page=' . $page++ . '#IEBook">Next</a>';
+    }
+
     echo "
         </div>
           <script>
