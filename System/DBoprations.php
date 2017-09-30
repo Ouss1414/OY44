@@ -48,11 +48,32 @@ function Catagories(){
 }
 
 function Show_Books(){
+    if(empty($_GET['page'])){
+        $_GET['page'] = '1';
+    }
+
+    echo '
+            <div class="Book w3-col s9">
+                <ul>
+            ';
     $con = new mysqli('localhost','root','','iebook');
+    $results_per_page = 6;
+
+    isset($_GET['page']) ? $page = $_GET['page'] : $page = 0;
+
+    if ($page > 1){
+        $this_page_first_result = ($page * $results_per_page) - $results_per_page;
+    }else{
+        $this_page_first_result = 0 ;
+    }
 
     //Books
-    $sql_Book = "SELECT * FROM book,user WHERE User_Id=Id AND Available='1'";
-    $result_book = $con->query($sql_Book);
+    $result_book = $con->query("SELECT * FROM book");
+    $number_of_results = $result_book->num_rows;
+
+    $totalPages = $number_of_results / $results_per_page;
+
+    $result_book = $con->query("SELECT * FROM book,user WHERE User_Id=Id AND Available='1' LIMIT $this_page_first_result, $results_per_page");
     if ($result_book->num_rows > 0) {
         while ($row_book = $result_book->fetch_assoc()) {
             echo '
@@ -68,19 +89,19 @@ function Show_Books(){
                                                     </ul>
                                                 </div>
                                                 <div class="s-product-tooltip">
-                                                    <ul class="book-detail-list">
+                                                    <ul class="book-detail-list" style="margin-left: -40px; margin-bottom: -20px">
                                                         <li style="display: inline;">'.$row_book['Name_Book'].'</li><li style="display: inline; color:darkgray;"> |  Price: <span>$</span>'.$row_book['Price'].'</li>
-                                                        <li>Writed by <span class="theme-color">'.$row_book['First_Name']." ". $row_book['Last_Name'] .'</span></li>
-                                                        <li>'.$row_book['Page'].'</li>
+                                                        <li>Writed by : <span class="theme-color">'.$row_book['First_Name']." ". $row_book['Last_Name'] .'</span></li>
+                                                        <li>Pages : <span>'.$row_book['Page'].'</span></li>
                                                     </ul>
-                                                    <p><span>Summary </span>'.$row_book['Summary'].'</p>
+                                                    <p>Summary : <span>'.$row_book['Summary'].'</span></p>
                                                     <ul class="rating-stars" style="display: flex">
-                                                        <li><span>Rating </span> </li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star-half-o"></i></li>
+                                                        <li><span>Rating: </span> </li>
+                                                        <li style="margin-left: 7px;"><i class="fa fa-star"></i></li>
+                                                        <li style="margin-left: 7px;"><i class="fa fa-star"></i></li>
+                                                        <li style="margin-left: 7px;"><i class="fa fa-star"></i></li>
+                                                        <li style="margin-left: 7px;"><i class="fa fa-star"></i></li>
+                                                        <li style="margin-left: 7px;"><i class="fa fa-star-half-o"></i></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -92,6 +113,24 @@ function Show_Books(){
     ';
         }
     }
+
+    echo '
+            </ul>
+        </div>
+        <div class="div_page">
+    ';
+
+    // display the links to the pages
+    for ($page = 1 ; $page <= $totalPages ; $page++) {
+        print '<a id="'.$page.'" class="page" href="index.php?pid=IEBook&List='.$_GET['List'].'&page=' . $page . '">' . $page . '</a>';
+    }
+    echo "
+        </div>
+          <script>
+              document.getElementById('".$_GET['page']."').style.background = '#4D636F';
+              document.getElementById('".$_GET['page']."').style.color = 'white';
+          </script>
+         ";
 }
 
 function Profile(){

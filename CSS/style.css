@@ -437,3 +437,17 @@ hr{
 	color: #4D636F;
 	font-size: 16px;
 }
+.div_page{
+	margin-left: 50%;
+}
+
+.page{
+	font-size: 16px;
+	border-radius: 45px;
+	padding-right: 7px;
+	padding-left: 7px;
+}
+.page:hover{
+	background: #4D636F;
+	color: whitesmoke;
+}

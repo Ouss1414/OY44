@@ -70,13 +70,11 @@
         </div>
     </div>
 
-    <div class="Book w3-col s9">
-            <ul>
+
                 <?php
                     Show_Books();
                 ?>
-            </ul>
-    </div>
+
 </div>
 
 
