@@ -451,3 +451,24 @@ hr{
 	background: #4D636F;
 	color: whitesmoke;
 }
+
+.Exam_btn{
+	margin-top: 40px;
+	margin-left: 55%;
+	background: #4D636F;
+	color: whitesmoke;
+	width: 100%;
+}
+.Exam_btn:hover{
+	opacity: .7;
+}
+.img_auther{
+	margin-top: 30px;
+	margin-left: 10%;
+}
+
+.rating{
+	position: absolute;
+	margin-left: 76%;
+	margin-top: 15px;
+}

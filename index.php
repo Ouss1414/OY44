@@ -78,6 +78,8 @@ require "System/DBoprations.php";
             break;
         case "Add_Post" : include_once "header.php";
             break;
+        case "Show_Book" : include_once "header.php";
+            break;
         case "IEBook" : include_once "header.php";
             break;
     }
@@ -99,6 +101,8 @@ require "System/DBoprations.php";
         case "Posts" : include_once "sites_Forum/Posts/Posts.php";
             break;
         case "Add_Post" : include_once "sites_Forum/Add_Post/Add_Post.php";
+            break;
+        case "Show_Book" : include_once "sites_Iebook/Show_Book/Show_Book.php";
             break;
         case "IEBook" : include_once "sites_Iebook/Home/Home.php";
             break;

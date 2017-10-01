@@ -66,6 +66,9 @@ function isAuth($PageID){
         case "IEBook" :
             $redirectToPage = "IEBook";
             break;
+        case "Show_Book" :
+            $redirectToPage = "Show_Book";
+            break;
         default :
             $redirectToPage = "Home";
             break;

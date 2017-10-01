@@ -1,5 +1,49 @@
 <?php
 
+function Show_Book(){
+    $con = new mysqli('localhost','root','','iebook');
+
+    if(empty($_GET['Serial'])){
+        echo '<script>location.href="http://localhost/OY44/index.php?pid=IEBook"</script>
+              <div class="w3-row">
+             ';
+    }
+
+    $Serial_Book = $_GET["Serial"];
+    $result = $con->query("SELECT Location,Name_Book FROM book WHERE Serial='$Serial_Book'");
+    if($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '
+                <embed class="w3-right" style="margin-top:10px; margin-right:10px;" src="Upload_Books/' . $row["Location"] . '" width="800px" height="600px"></embed>
+            </div>
+            ';
+        }
+    }
+    echo '
+        <div class="w3-row m5">
+        
+            <div class="Exam_btn w3-col s1">
+                <button class="w3-btn" name="exam" value="exam">Answer Questions</button>
+            </div>
+            
+            <div class="img_auther w3-col s2">
+                 <img src="Images/Pic/defult.png" width="50px" height="50px">
+            </div>
+            
+            <div class="rating w3-col s3 w3-right">
+                <p style="margin-left: 30px">oussama almalawi</p>
+                    <ul class="rating-stars" style="display: flex;list-style-type: none;">
+                        <li style="margin-left: 7px;"><i class="fa fa-star"></i></li>
+                        <li style="margin-left: 7px;"><i class="fa fa-star"></i></li>
+                        <li style="margin-left: 7px;"><i class="fa fa-star"></i></li>
+                        <li style="margin-left: 7px;"><i class="fa fa-star"></i></li>
+                        <li style="margin-left: 7px;"><i class="fa fa-star-half-o"></i></li>
+                    </ul>
+            </div>
+        </div>
+    ';
+}
+
 function Catagories(){
 
     $con = new mysqli('localhost','root','','iebook');
@@ -104,7 +148,7 @@ function Show_Books()
                                                 <div class="s-product-hover">
                                                     <ul>
                                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                        <li><a href="javascript:void(0)"><i class="fa fa-book"></i></a></li>
+                                                        <li><a href="index.php?pid=Show_Book&Serial='.$row_book['Serial'].'"><i class="fa fa-book"></i></a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="s-product-tooltip">
