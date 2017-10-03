@@ -77,5 +77,16 @@
 
 </div>
 
+<div class="w3-row m7 w3-card-2 w3-margin w3-container w3-round w3-white" style="padding-bottom: 20px">
+    <!-- University Section -->
+    <div class="w3-container w3-padding-32" style="text-transform: uppercase;" id="Coming_Soon">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Coming Soon</h3>
+    </div>
+
+    <div class="w3-row">
+
+    </div>
+</div>
+
 
 <!-- End Contant -->
