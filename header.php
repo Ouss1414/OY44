@@ -10,7 +10,7 @@ if (empty($_GET["pid"])){
 <div style="margin-top: 50px;">
     <div class="w3-bar w3-white w3-wide w3-padding w3-card-2">
         <?php
-            if ($PageID == 'IEBook'){
+            if ($PageID == 'IEBook' || $PageID == 'Show_Book'){
                 echo '<a href="index.php?pid=IEBook" class="w3-bar-item w3-button"><b>IEB</b>ook</a>';
             }else{
                 echo '<a href="index.php?pid=Home" class="w3-bar-item w3-button"><b>MY</b> University</a>';

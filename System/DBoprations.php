@@ -91,7 +91,7 @@ function Catagories(){
              ';
 }
 
-function Show_Books()
+function List_Books()
 {
     if (empty($_GET['page'])) {
         $_GET['page'] = '1';
