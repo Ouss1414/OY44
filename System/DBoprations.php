@@ -743,6 +743,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                     if ($result_user->num_rows > 0) {
                         while ($row_User = $result_user->fetch_assoc()) {
                             $Name_User = 'D.' . $row_User['User_Name'];
+                            $Name_User2 = $row_User['User_Name'];
                         }
                     }else{continue;}
                     echo'
@@ -759,6 +760,13 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                         <div class="w3-dark-grey" style="width: 95%;margin-left: 2.5%;padding-bottom: 3px;padding-top: 3px">
                             <div title="LIKE" class="fa fa-thumbs-up w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Like'].' </div>
                             <div title="DISLIKE" class="fa fa-thumbs-down w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Dislike'].' </div>
+                            ';
+                    if($_SESSION['user'] == $Name_User2) {
+                        echo '
+                            <div class="w3-padding" style="display:inline;"> <button class="w3-btn w3-red" name="DELETE" value="DELETE" id="DELETE" onclick="Delete()">DELETE</button></div>
+                        ';
+                    }
+                    echo '
                         </div>
                     ';
                 }
@@ -802,6 +810,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                     if ($result_user->num_rows > 0) {
                         while ($row_User = $result_user->fetch_assoc()) {
                             $Name_User = 'D.' . $row_User['User_Name'];
+                            $Name_User2 = $row_User['User_Name'];
                         }
                     }else{continue;}
 
@@ -819,6 +828,13 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                         <div class="w3-dark-grey" style="width: 95%;margin-left: 2.5%;padding-bottom: 3px;padding-top: 3px">
                             <div title="LIKE" class="fa fa-thumbs-up w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Like'].' </div>
                             <div title="DISLIKE" class="fa fa-thumbs-down w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Dislike'].' </div>
+                            ';
+                    if($_SESSION['user'] == $Name_User2) {
+                        echo '
+                            <div class="w3-padding" style="display:inline;"> <button class="w3-btn w3-red" name="DELETE" value="DELETE" id="DELETE" onclick="Delete()">DELETE</button></div>
+                        ';
+                    }
+                    echo '
                         </div>
                     ';
         }
@@ -878,6 +894,13 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                         <div class="w3-dark-grey" style="width: 95%;margin-left: 2.5%;padding-bottom: 3px;padding-top: 3px">
                                 <div title="LIKE" class="fa fa-thumbs-up w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Like'].' </div>
                                 <div title="DISLIKE" class="fa fa-thumbs-down w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Dislike'].' </div>
+                                ';
+                if ($_SESSION['user'] == $Name_User) {
+                    echo '
+                                <div class="w3-padding" style="display:inline;"> <button class="w3-btn w3-red" name="DELETE" value="DELETE" id="DELETE" onclick="Delete()">DELETE</button></div>
+                            ';
+                }
+                echo '
                             </div>
                     ';
             }
