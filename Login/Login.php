@@ -20,6 +20,8 @@ if(isset($_POST['btn-login']))
 
         if(!empty($_GET['uni'])) {
             header("Location: http://localhost/OY44/index.php?pid=Colleges&uni=$_GET[uni]");
+        }else if(!empty($_GET['Serial'])) {
+            header("Location: http://localhost/OY44/index.php?pid=Show_Book&Serial=$_GET[Serial]");
         }else{
             header('Location: http://localhost/OY44/index.php?pid=Home');
         }
