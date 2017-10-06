@@ -106,6 +106,8 @@ require "System/DBoprations.php";
             break;
         case "IEBook" : include_once "sites_Iebook/Home/Home.php";
             break;
+        case "Delete" : include_once "System/Delete.php";
+            break;
         default: include_once "sites_Forum/Home/Home.php";
             break;
     }
