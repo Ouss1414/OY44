@@ -620,9 +620,12 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
                     $result_user = $con->query($sql_User);
                     if ($result_user->num_rows > 0) {
                         while ($row_User = $result_user->fetch_assoc()) {
-                            if($row_User['User_Type'] = 'dean' || $row_User['User_Type'] = 'doctor' )
+                            if($row_User['User_Type'] = 'dean' || $row_User['User_Type'] = 'doctor' ){
                             $Name_User = 'D.' . $row_User['User_Name'];
-                            else $Name_User = $row_User['User_Name'];
+                            $Name_User2 = $row_User['User_Name'];
+                            }else{
+                                $Name_User = $row_User['User_Name'];
+                            }
                         }
                     }
          echo '
@@ -649,6 +652,13 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
                                 <div class="w3-row w3-margin-bottom" style="display: inline">
                                     <div title="LIKE" class="fa fa-thumbs-up w3-large w3-hover-green w3-padding" style="min-width: 70px;"> '.$row_Post['Like'].' </div>
                                     <div title="DISLIKE" class="fa fa-thumbs-down w3-large w3-hover-red w3-padding" style="min-width: 70px;"> '.$row_Post['Dislike'].' </div>
+                                ';
+                    if($_SESSION['user'] == $Name_User2) {
+                        echo '
+                            <div class="w3-padding" style="margin-bottom: 5px"> <button class="w3-btn w3-red" name="DELETE" value="DELETE" id="DELETE"  onclick="location.href=\'http://localhost/OY44/index.php?pid=Delete&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'&PostID='.$row_Post['Id'].'&Subject='.$row_Post['Subject'].'\'">DELETE</button></div>
+                        ';
+                    }
+                    echo '
                                 </div>   
                             </div>
                         </div>
