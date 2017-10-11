@@ -10,16 +10,12 @@ function Show_Book(){
     }
 
     $Serial_Book = $_GET["Serial"];
-    $result = $con->query("SELECT Location,Name_Book FROM book WHERE Serial='$Serial_Book'");
+    $result = $con->query("SELECT * FROM book,user WHERE User_Id=Id AND Serial='$Serial_Book'");
     if($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             echo '
                 <embed class="w3-right" style="margin-top:10px; margin-right:10px;" src="Upload_Books/' . $row["Location"] . '" width="800px" height="600px"></embed>
             </div>
-            ';
-        }
-    }
-    echo '
         <div class="w3-row m5">
         
             <div class="Exam_btn w3-col s1">
@@ -27,11 +23,11 @@ function Show_Book(){
             </div>
             
             <div class="img_auther w3-col s2">
-                 <img src="Images/Pic/defult.png" width="50px" height="50px">
+                 <img src="Images/Pic/'.$row['Image'].'" width="50px" height="50px">
             </div>
             
             <div class="rating w3-col s3 w3-right">
-                <p style="margin-left: 30px">oussama almalawi</p>
+                <p style="margin-left: 30px">'.$row['First_Name'] ." ".$row['Last_Name'].'</p>
                     <ul class="rating-stars" style="display: flex;list-style-type: none;">
                         <li style="margin-left: 7px;"><i class="fa fa-star"></i></li>
                         <li style="margin-left: 7px;"><i class="fa fa-star"></i></li>
@@ -42,6 +38,8 @@ function Show_Book(){
             </div>
         </div>
     ';
+        }
+    }
 }
 
 function Catagories(){
@@ -773,7 +771,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                             ';
                     if($_SESSION['user'] == $Name_User2) {
                         echo '
-                            <div class="w3-padding" style="display:inline;"> <button class="w3-btn w3-red" name="DELETE" value="DELETE" id="DELETE"  onclick="location.href=\'http://localhost/OY44/index.php?pid=Delete&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'&PostID='.$row_Post['Id'].'&Subject='.$row_Post['Subject'].'\'">DELETE</button></div>
+                            <div class="w3-padding fa fa-trash w3-btn w3-red" style="display:inline;" name="DELETE" value="DELETE" id="DELETE"  onclick="location.href=\'http://localhost/OY44/index.php?pid=Delete&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'&PostID='.$row_Post['Id'].'&Subject='.$row_Post['Subject'].'\'"></div>
                         ';
                     }
                     echo '
@@ -841,7 +839,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                             ';
                     if($_SESSION['user'] == $Name_User2) {
                         echo '
-                            <div class="w3-padding" style="display:inline;"> <button class="w3-btn w3-red" name="DELETE" value="DELETE" id="DELETE"  onclick="location.href=\'http://localhost/OY44/index.php?pid=Delete&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'&PostID='.$row_Post['Id'].'&Subject='.$row_Post['Subject'].'\'">DELETE</button></div>
+                            <div class="w3-padding fa fa-trash w3-btn w3-red" style="display:inline;" name="DELETE" value="DELETE" id="DELETE"  onclick="location.href=\'http://localhost/OY44/index.php?pid=Delete&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'&PostID='.$row_Post['Id'].'&Subject='.$row_Post['Subject'].'\'"></div>
                         ';
                     }
                     echo '
@@ -907,7 +905,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                                 ';
                 if ($_SESSION['user'] == $Name_User) {
                     echo '
-                                <div class="w3-padding" style="display:inline;"> <button class="w3-btn w3-red" name="DELETE" value="DELETE" id="DELETE"  onclick="location.href=\'http://localhost/OY44/index.php?pid=Delete&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'&PostID='.$row_Post['Id'].'&Subject='.$row_Post['Subject'].'\'">DELETE</button></div>
+                                <div class="w3-padding fa fa-trash w3-btn w3-red" style="display:inline;" name="DELETE" value="DELETE" id="DELETE"  onclick="location.href=\'http://localhost/OY44/index.php?pid=Delete&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'&PostID='.$row_Post['Id'].'&Subject='.$row_Post['Subject'].'\'"></div>
                             ';
                 }
                 echo '
