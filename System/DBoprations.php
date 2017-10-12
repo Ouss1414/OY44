@@ -653,7 +653,7 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
                                 ';
                     if($_SESSION['user'] == $Name_User2) {
                         echo '
-                            <div class="w3-padding" style="margin-bottom: 5px"> <button class="w3-btn w3-red" name="DELETE" value="DELETE" id="DELETE"  onclick="location.href=\'http://localhost/OY44/index.php?pid=Delete&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'&PostID='.$row_Post['Id'].'&Subject='.$row_Post['Subject'].'\'">DELETE</button></div>
+                            <div class="w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="DELETE" value="DELETE" id="DELETE"  onclick="location.href=\'http://localhost/OY44/index.php?pid=Delete&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'&PostID='.$row_Post['Id'].'&Subject='.$row_Post['Subject'].'\'"></div>
                         ';
                     }
                     echo '
