@@ -618,11 +618,12 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
                     $result_user = $con->query($sql_User);
                     if ($result_user->num_rows > 0) {
                         while ($row_User = $result_user->fetch_assoc()) {
-                            if($row_User['User_Type'] = 'dean' || $row_User['User_Type'] = 'doctor' ){
+                            if($row_User['User_Type'] == 'dean' || $row_User['User_Type'] == 'doctor' ){
                             $Name_User = 'D.' . $row_User['User_Name'];
                             $Name_User2 = $row_User['User_Name'];
                             }else{
                                 $Name_User = $row_User['User_Name'];
+                                $Name_User2 = $row_User['User_Name'];
                             }
                         }
                     }
@@ -653,7 +654,7 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
                                 ';
                     if($_SESSION['user'] == $Name_User2) {
                         echo '
-                            <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" id="'.$row_Post['Id'].'" value="uni='.$_GET['uni'].'&college='.$_GET['college'].'&dep='.$_GET['dep'].'"></div>
+                            <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="'.$row_Post['Subject'].'" id="'.$row_Post['Id'].'" value="uni='.$_GET['uni'].'&college='.$_GET['college'].'&dep='.$_GET['dep'].'"></div>
                         ';
                     }
                     echo '
