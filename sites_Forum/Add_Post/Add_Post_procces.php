@@ -65,8 +65,7 @@ if($result_Department->num_rows > 0) {
 
 
 if ($con->query($sql) === TRUE) {
-    echo '<div class="w3-center w3-xxlarge w3-text-green">New record created successfully</div>';
-    echo '<meta http-equiv="refresh" content="3; \'/OY44/index.php?pid=Department&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'"/>';
+    echo '<meta http-equiv="refresh" content="0; \'/OY44/index.php?pid=Department&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'"/>';
 } else {
     echo "Error: " . $sql . "<br>" . $con->error;
 }
