@@ -78,10 +78,7 @@ if ($result_user->num_rows > 0) {
 
         // Tells you if its all ok
         if ($con->query($sql) === TRUE) {
-            echo '<div style="font-size: 32px; font-family: Tahoma; margin-top: 20%" align="center">Edit successfully<br>
-                    The file "'. basename( $_FILES['photo']['name']).' " has been uploaded, and your information has been added to the directory
-                    </div>';
-            echo '<meta http-equiv="refresh" content="1; \'/OY44/sites_Profile/Edit_Profile/Edit_Profile.php"/>';
+            echo '<meta http-equiv="refresh" content="0; \'/OY44/sites_Profile/Edit_Profile/Edit_Profile.php"/>';
         } else {
             echo "Error: " . $sql . "<br>" . $con->error;
         }

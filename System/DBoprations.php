@@ -21,9 +21,13 @@ function Show_Book(){
             <div class="Exam_btn w3-col s1">
                 <button class="w3-btn" name="exam" value="exam">Answer Questions</button>
             </div>
-            
+            ';
+            if (empty($row['Image'])) {
+                $row['Image'] = 'defult.png';
+            }
+                echo '
             <div class="img_auther w3-col s2">
-                 <img src="Images/Pic/'.$row['Image'].'" width="50px" height="50px">
+                 <img src="Images/Pic/' . $row['Image'] . '" width="50px" height="50px">
             </div>
             
             <div class="rating w3-col s3 w3-right">
