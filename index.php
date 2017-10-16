@@ -146,7 +146,6 @@ require "System/DBoprations.php";
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="JS/JS_Slider.js"></script>
 <script src="System/delete.js"></script>
-<script src="sites_Forum/Add_Post/add_post.js"></script>
 
 </body>
 </html>
