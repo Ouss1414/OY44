@@ -327,8 +327,10 @@ function Profile(){
                                 <div class="w3-col m12">
                                     <div class="w3-card-2 w3-round w3-white">
                                         <div class="w3-container w3-padding">
-                                            <p><input type="text" class="w3-border w3-padding" placeholder="Express what is inside you ..." style="width: 100%;"></p>
-                                            <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button>
+                                        <form>
+                                            <p><input type="text" id="Add_Post" class="w3-border w3-padding" placeholder="Express what is inside you ..." style="width: 100%;"></p>
+                                            <button type="reset" class="button_add_post w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>
