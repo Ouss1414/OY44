@@ -26,7 +26,7 @@ require "System/DBoprations.php";
 
 </head>
 
-
+<!--test git -->
 <style type="text/css">
     .yui-skin-sam .yui-toolbar-container .yui-toolbar-titlebar h2 {
         display: none;}
@@ -146,7 +146,6 @@ require "System/DBoprations.php";
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="JS/JS_Slider.js"></script>
 <script src="System/delete.js"></script>
-<script src="System/Add_Post_Profile.js"></script>
 
 </body>
 </html>
