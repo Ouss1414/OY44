@@ -319,27 +319,35 @@ function Profile(){
                         </div>
                 ';
 
+            $user_id = $row_User['Id'];
+
                 echo '
                         <!-- Middle Column -->
                         <div class="w3-col m7">
-                
                             <div class="w3-row-padding">
                                 <div class="w3-col m12">
                                     <div class="w3-card-2 w3-round w3-white">
                                         <div class="w3-container w3-padding">
                                         <form>
                                             <p><input type="text" id="Add_Post" class="w3-border w3-padding" placeholder="Express what is inside you ..." style="width: 100%;"></p>
-                                            <button type="reset" class="button_add_post w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button>
+                                            <button type="reset" class="button_add_post w3-button w3-theme" id="'.$user_id.'"><i class="fa fa-pencil"></i>  Post</button>
                                         </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                
+                ';
+
+            //Post_Profile
+            $sql_Post_Profile = "SELECT * FROM post_profile WHERE  User_Id = '$user_id'";
+            $result_Post_Profile = $con->query($sql_Post_Profile);
+            if ($result_Post_Profile->num_rows > 0) {
+                while ($row_Post_Profile = $result_Post_Profile->fetch_assoc()) {
+                    echo '
                             <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
-                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                                <img src="Images/pic/' . $row_User['Image'] . '" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px;height: 55px">
                                 <span class="w3-right w3-opacity">1 min</span>
-                                <h4>John Doe</h4><br>
+                                <h4>' . $row_User['First_Name'] . " " . $row_User['Last_Name'] . '</h4><br>
                                 <hr class="w3-clear">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                 <div class="w3-row-padding" style="margin:0 -16px">
@@ -353,32 +361,36 @@ function Profile(){
                                 <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
                                 <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
                             </div>
-                
-                            <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
-                                <img src="Images/Icons/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-                                <span class="w3-right w3-opacity">16 min</span>
-                                <h4>Jane Doe</h4><br>
-                                <hr class="w3-clear">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
-                                <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
-                            </div>
-                
-                            <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
-                                <img src="Images/Icons/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-                                <span class="w3-right w3-opacity">32 min</span>
-                                <h4>Angie Jane</h4><br>
-                                <hr class="w3-clear">
-                                <p>Have you seen this?</p>
-                                <img src="Images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
-                                <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
-                            </div>
-                
+                ';
+                }
+            }
+//                            <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+//                                <img src="Images/Icons/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+//                                <span class="w3-right w3-opacity">16 min</span>
+//                                <h4>Jane Doe</h4><br>
+//                                <hr class="w3-clear">
+//                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+//                                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+//                                <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+//                            </div>
+//
+//                            <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+//                                <img src="Images/Icons/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+//                                <span class="w3-right w3-opacity">32 min</span>
+//                                <h4>Angie Jane</h4><br>
+//                                <hr class="w3-clear">
+//                                <p>Have you seen this?</p>
+//                                <img src="Images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+//                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+//                                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+//                                <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+//                            </div>
+                echo '
                             <!-- End Middle Column -->
                         </div>
-                
+                ';
+
+                echo '
                         <!-- Right Column -->
                         <div class="w3-col m2">
                             <div class="w3-card-2 w3-round w3-white w3-center">
