@@ -10,7 +10,7 @@ $(document).ready(function(){
             success:function(data) {
                 if(data) { // Sucess
                     alert("The Post " + sub + " Deleted")
-                    location.href="index.php?pid=Department&"+uni
+                    location.href="index.php?"+uni
                 } else { // Error }
                     alert("Error, Please try again>")
                 }

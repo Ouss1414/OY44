@@ -320,6 +320,7 @@ function Profile(){
                 ';
 
             $user_id = $row_User['Id'];
+            $user_name = $row_User['User_Name'];
 
                 echo '
                         <!-- Middle Column -->
@@ -366,7 +367,14 @@ function Profile(){
                                 echo '
                                 <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
                                 <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
-                            </div>
+                                ';
+                                if($_SESSION['user'] == $user_name) {
+                                    echo '
+                            <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="'.$row_Post_Profile['Subject'].'" id="'.$row_Post_Profile['Id'].'" value="pid=Profile"></div>
+                        ';
+                                }
+                echo '
+                  </div>
                 ';
                 }
             }
@@ -678,7 +686,7 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
                                 ';
                     if($_SESSION['user'] == $Name_User2) {
                         echo '
-                            <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="'.$row_Post['Subject'].'" id="'.$row_Post['Id'].'" value="uni='.$_GET['uni'].'&college='.$_GET['college'].'&dep='.$_GET['dep'].'"></div>
+                            <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="'.$row_Post['Subject'].'" id="'.$row_Post['Id'].'" value="pid=Department&uni='.$_GET['uni'].'&college='.$_GET['college'].'&dep='.$_GET['dep'].'"></div>
                         ';
                     }
                     echo '
@@ -796,7 +804,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                             ';
                     if($_SESSION['user'] == $Name_User2) {
                         echo '
-                            <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="'.$row_Post['Subject'].'" id="'.$row_Post['Id'].'" value="uni='.$_GET['uni'].'&college='.$_GET['college'].'&dep='.$_GET['dep'].'"></div>
+                            <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="'.$row_Post['Subject'].'" id="'.$row_Post['Id'].'" value="pid=Department&uni='.$_GET['uni'].'&college='.$_GET['college'].'&dep='.$_GET['dep'].'"></div>
                         ';
                     }
                     echo '
@@ -864,7 +872,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                             ';
                     if($_SESSION['user'] == $Name_User2) {
                         echo '
-                            <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="'.$row_Post['Subject'].'" id="'.$row_Post['Id'].'" value="uni='.$_GET['uni'].'&college='.$_GET['college'].'&dep='.$_GET['dep'].'"></div>
+                            <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="'.$row_Post['Subject'].'" id="'.$row_Post['Id'].'" value="pid=Department&uni='.$_GET['uni'].'&college='.$_GET['college'].'&dep='.$_GET['dep'].'"></div>
                         ';
                     }
                     echo '
@@ -930,7 +938,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                                 ';
                 if ($_SESSION['user'] == $Name_User) {
                     echo '
-                                <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="'.$row_Post['Subject'].'" id="'.$row_Post['Id'].'" value="uni='.$_GET['uni'].'&college='.$_GET['college'].'&dep='.$_GET['dep'].'"></div>
+                                <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="'.$row_Post['Subject'].'" id="'.$row_Post['Id'].'" value="pid=Department&uni='.$_GET['uni'].'&college='.$_GET['college'].'&dep='.$_GET['dep'].'"></div>
                             ';
                 }
                 echo '

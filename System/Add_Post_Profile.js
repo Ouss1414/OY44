@@ -8,9 +8,9 @@ $(document).ready(function(){
             data:{ delete_id: del_id, User_Id: user_id },
             success:function(data) {
                 if(data) { // Sucess
-
+                    location.href="index.php?pid=Profile"
                 } else { // Error }
-                    alert("Error, Please try again>")
+                    location.href="index.php?pid=Profile"
                 }
             }
         });

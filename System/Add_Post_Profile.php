@@ -53,11 +53,7 @@ if ($result_user->num_rows > 0) {
 
 $sql = "INSERT INTO post (Message, Date_Post, User_Id , University_Id, College_Id, Department_Id)
                   VALUES ('$post', '$date', '$User_Ids', '$Id_University', '$Id_College', '$Id_Department')";
+mysqli_query($con, $sql);
 
-if (mysqli_query($con, $sql)) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($con);
-}
 
 ?>
