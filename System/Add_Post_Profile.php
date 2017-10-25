@@ -3,7 +3,6 @@
 $post = $_POST['delete_id'];
 $User_Ids = $_POST['User_Id'];
 $date = date("Y/m/d m:i:s");
-$Name_User = $_SESSION['user'];
 
 $servername = "localhost";
 $username = "root";
