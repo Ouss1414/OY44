@@ -339,25 +339,31 @@ function Profile(){
                 ';
 
             //Post_Profile
-            $sql_Post_Profile = "SELECT * FROM post_profile WHERE  User_Id = '$user_id'";
+            $sql_Post_Profile = "SELECT * FROM post WHERE  User_Id = '$user_id' ORDER BY Date_Post DESC ";
             $result_Post_Profile = $con->query($sql_Post_Profile);
             if ($result_Post_Profile->num_rows > 0) {
                 while ($row_Post_Profile = $result_Post_Profile->fetch_assoc()) {
                     echo '
                             <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
                                 <img src="Images/pic/' . $row_User['Image'] . '" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px;height: 55px">
-                                <span class="w3-right w3-opacity">1 min</span>
+                                <span class="w3-right w3-opacity">'.$row_Post_Profile['Date_Post'].'</span>
                                 <h4>' . $row_User['First_Name'] . " " . $row_User['Last_Name'] . '</h4><br>
                                 <hr class="w3-clear">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <p>' . $row_Post_Profile['Message'] . '.</p>
+                  ';
+                    if (!empty($row_Post_Profile['Image'])){
+                        echo '
                                 <div class="w3-row-padding" style="margin:0 -16px">
                                     <div class="w3-half">
-                                        <img src="Images/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+                                        <img src="Images/'.$result_Post_Profile['Image'].'" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
                                     </div>
                                     <div class="w3-half">
-                                        <img src="Images/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+                                        <img src="Images/'.$result_Post_Profile['Image'].'" style="width:100%" alt="Nature" class="w3-margin-bottom">
                                     </div>
                                 </div>
+                                ';
+                    }
+                                echo '
                                 <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
                                 <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
                             </div>
