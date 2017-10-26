@@ -329,10 +329,8 @@ function Profile(){
                                 <div class="w3-col m12">
                                     <div class="w3-card-2 w3-round w3-white">
                                         <div class="w3-container w3-padding">
-                                        <form>
                                             <p><input type="text" id="Add_Post" class="w3-border w3-padding" placeholder="Express what is inside you ..." style="width: 100%;"></p>
                                             <button type="reset" class="button_add_post w3-button w3-theme" id="'.$user_id.'"><i class="fa fa-pencil"></i>  Post</button>
-                                        </form>
                                         </div>
                                     </div>
                                 </div>
@@ -350,7 +348,7 @@ function Profile(){
                                 <span class="w3-right w3-opacity">'.$row_Post_Profile['Date_Post'].'</span>
                                 <h4>' . $row_User['First_Name'] . " " . $row_User['Last_Name'] . '</h4><br>
                                 <hr class="w3-clear">
-                                <p>' . $row_Post_Profile['Message'] . '.</p>
+                                <p class="Post-Prof" id="' . $row_Post_Profile['Message'] . '">' . $row_Post_Profile['Message'] . '.</p>
                   ';
                     if (!empty($row_Post_Profile['Image'])){
                         echo '
@@ -365,12 +363,12 @@ function Profile(){
                                 ';
                     }
                                 echo '
-                                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
-                                <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+                                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  '. $row_Post_Profile['Like'] .'</button>
+                                <button type="button" class="w3-button w3-margin-bottom w3-red"><i class="fa fa-thumbs-down"></i>  '. $row_Post_Profile ['Dislike'].'</button>
                                 ';
                                 if($_SESSION['user'] == $user_name) {
                                     echo '
-                            <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="'.$row_Post_Profile['Subject'].'" id="'.$row_Post_Profile['Id'].'" value="pid=Profile"></div>
+                            <div class="delete_data w3-padding fa fa-trash w3-btn w3-red right" style="margin-bottom: 5px" name="'.$row_Post_Profile['Subject'].'" id="'.$row_Post_Profile['Id'].'" value="pid=Profile"></div>
                         ';
                                 }
                 echo '

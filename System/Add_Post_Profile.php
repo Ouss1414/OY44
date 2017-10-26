@@ -51,9 +51,13 @@ if ($result_user->num_rows > 0) {
     }
 }
 
-$sql = "INSERT INTO post (Message, Date_Post, User_Id , University_Id, College_Id, Department_Id)
+if(!empty($post) && !ctype_space($post) && !empty($User_Ids) && !ctype_space($User_Ids) && !empty($date) && !ctype_space($date)) {
+    $sql = "INSERT INTO post (Message, Date_Post, User_Id , University_Id, College_Id, Department_Id)
                   VALUES ('$post', '$date', '$User_Ids', '$Id_University', '$Id_College', '$Id_Department')";
-mysqli_query($con, $sql);
+    mysqli_query($con, $sql);
+}else {
+    return false;
+}
 
 
 ?>
