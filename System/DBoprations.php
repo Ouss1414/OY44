@@ -198,9 +198,10 @@ function List_Books()
         print '<a style="margin: 2px;" id="' . $page . '" class="page" href="index.php?pid=IEBook&List=' . $_GET['List'] . '&page=' . $page . '#IEBook">' . $page . '</a>';
     }
 
+    $next = $_GET['page'] + 1;
     $page--;
     if ($_GET['page'] != $page) {
-        print '<a style="margin: 2px;" id="Next" class="page" href="index.php?pid=IEBook&List=' . $_GET['List'] . '&page=' . $page++ . '#IEBook">Next</a>';
+        print '<a style="margin: 2px;" id="Next" class="page" href="index.php?pid=IEBook&List=' . $_GET['List'] . '&page=' . $next . '#IEBook">Next</a>';
     }
 
     echo "
@@ -1031,11 +1032,26 @@ function CollegeOprations($Name_University){
 
 function HomeOprations(){
 
+    if (empty($_GET['page'])) {
+        $_GET['page'] = '1';
+    }
+
     $con = new mysqli('localhost', 'root','' , 'db_iebook_8003115736_v');
 
-        $sql_ads = "SELECT * FROM Ads";
-        $result_Ads = $con->query($sql_ads);
-        if($result_Ads->num_rows > 0){
+    $results_per_page = 6;
+
+    isset($_GET['page']) ? $page = $_GET['page'] : $page = 0;
+
+    if ($page > 1) {
+        $this_page_first_result = ($page * $results_per_page) - $results_per_page;
+    } else {
+        $this_page_first_result = 0;
+    }
+
+
+    $sql_ads = "SELECT * FROM Ads";
+    $result_Ads = $con->query($sql_ads);
+    if($result_Ads->num_rows > 0){
         while ($row_Ads = $result_Ads->fetch_assoc()){
             echo '
                 <div class="w3-col m2">
@@ -1060,6 +1076,13 @@ function HomeOprations(){
         ';
 
     $sql = "SELECT * FROM university";
+    $result = $con->query($sql);
+    //universites
+    $number_of_results = $result->num_rows;
+    $totalPages = $number_of_results / $results_per_page;
+
+
+    $sql = "SELECT * FROM university LIMIT $this_page_first_result, $results_per_page";
     $result = $con->query($sql);
     if($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
@@ -1091,6 +1114,33 @@ echo '
             ';
         }
     }
+    echo '
+    <div class="div_page">
+    ';
+
+    $totalPages++;
+
+    if ($page > 1) {
+        print '<a style="margin: 2px;" id="Previous" class="page" href="index.php?pid=home&page=' . $page = $page - 1 . '#University">Prev</a>';
+    }
+
+    for ($page = 1; $page <= $totalPages; $page++) {
+        print '<a style="margin: 2px;" id="' . $page . '" class="page" href="index.php?pid=home&page=' . $page . '#University">' . $page . '</a>';
+    }
+
+    $next = $_GET['page'] + 1;
+    $page--;
+    if ($_GET['page'] != $page) {
+        print '<a style="margin: 2px;" id="Next" class="page" href="index.php?pid=home&page=' . $next . '#University">Next</a>';
+    }
+
+    echo "
+        </div>
+        <script>
+              document.getElementById('".$_GET['page']."').style.background = '#4D636F';
+              document.getElementById('".$_GET['page']."').style.color = 'white';
+          </script>
+        ";
     mysqli_close($con);
 }
 
