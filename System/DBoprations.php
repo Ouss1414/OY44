@@ -345,9 +345,23 @@ function Profile(){
                     echo '
                             <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
                                 <img src="Images/pic/' . $row_User['Image'] . '" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px;height: 55px">
-                                <span class="w3-right w3-opacity">'.$row_Post_Profile['Date_Post'].'</span>
+                                <span class="w3-right w3-opacity"> ' . $row_Post_Profile['Date_Post'] . ' </span>
+                                ';
+                    if(!empty($row_Post_Profile['Subject'])) {
+                        echo '
+                                <span class="w3-right w3-opacity w3-text-red w3-margin-right"> This post from university part </span>
+                                ';
+                    }
+                        echo '
                                 <h4>' . $row_User['First_Name'] . " " . $row_User['Last_Name'] . '</h4><br>
                                 <hr class="w3-clear">
+                                ';
+                    if(!empty($row_Post_Profile['Subject'])) {
+                        echo '
+                                <p class="w3-xlarge">Subject: ' . $row_Post_Profile['Subject'] . '</p>
+                                ';
+                    }
+                    echo '
                                 <p class="Post-Prof" id="' . $row_Post_Profile['Message'] . '">' . $row_Post_Profile['Message'] . '.</p>
                   ';
                     if (!empty($row_Post_Profile['Image'])){

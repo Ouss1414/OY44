@@ -58,7 +58,7 @@ if($result_Department->num_rows > 0) {
 
     $Subject = $_POST['Subject'];
     $Message = $_POST['myrichtext'];
-    $Date = date("Y/m/d m:i:s");
+    $Date = date("Y/m/d h:i:s");
 
     $sql = "INSERT INTO post (Subject,Message,User_Id,Date_Post,University_Id,College_Id,Department_Id)
                   VALUES ('$Subject','$Message','$Id_User','$Date','$Id_University','$Id_College','$Id_Department')";
