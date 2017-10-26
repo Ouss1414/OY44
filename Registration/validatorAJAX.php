@@ -1,6 +1,6 @@
 <?php
 // db connection
-$connection = mysqli_connect('localhost', 'root', '','iebook') or die(mysql_error());
+$connection = mysqli_connect('localhost', 'root', '','db_iebook_8003115736_v') or die(mysql_error());
 
 // function to verify the existence of usernames
 function isset_username($username){

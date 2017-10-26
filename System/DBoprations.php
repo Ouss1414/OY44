@@ -1,7 +1,7 @@
 <?php
 
 function Show_Book(){
-    $con = new mysqli('localhost','root','','iebook');
+    $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
 
     if(empty($_GET['Serial'])){
         echo '<script>location.href="http://localhost/OY44/index.php?pid=IEBook"</script>
@@ -48,7 +48,7 @@ function Show_Book(){
 
 function Catagories(){
 
-    $con = new mysqli('localhost','root','','iebook');
+    $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
 
     if(empty($_GET['List'])){
         $_GET['List'] = 'All';
@@ -103,7 +103,7 @@ function List_Books()
             <div class="Book w3-col s9">
                 <ul>
             ';
-    $con = new mysqli('localhost', 'root', '', 'iebook');
+    $con = new mysqli('localhost', 'root', '', 'db_iebook_8003115736_v');
     $results_per_page = 6;
 
     isset($_GET['page']) ? $page = $_GET['page'] : $page = 0;
@@ -214,7 +214,7 @@ function List_Books()
 
 function Profile(){
 
-    $con = new mysqli('localhost','root','','iebook');
+    $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
 
     $Name_User = $_SESSION['user'];
 
@@ -457,7 +457,7 @@ function Profile(){
 }
 
 function getPic(){
-    $con = new mysqli('localhost','root','','iebook');
+    $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
     $Name_User = $_SESSION['user'];
 
     //User
@@ -477,7 +477,7 @@ function getPic(){
 
 function Edit_Profile(){
 
-    $con = new mysqli('localhost','root','','iebook');
+    $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
 
     $Name_User = $_SESSION['user'];
 
@@ -623,7 +623,7 @@ function Edit_Profile(){
 
 function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Subject){
 
-    $con = new mysqli('localhost','root','','iebook');
+    $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
 
     echo '
         <div class="w3-margin-top w3-margin-left w3-padding-small w3-hover-text-gray w3-text-blue">
@@ -723,7 +723,7 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
 
 function DepartmentOperations($Name_University,$Name_College,$Name_Department){
 
-    $con = new mysqli('localhost', 'root','' , 'iebook');
+    $con = new mysqli('localhost', 'root','' , 'db_iebook_8003115736_v');
 
     //Department
     $sql_Department = "SELECT Id FROM department WHERE  Name = '$Name_Department'";
@@ -958,7 +958,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
 
 function CollegeOprations($Name_University){
 
-    $con = new mysqli('localhost', 'root','' , 'iebook');
+    $con = new mysqli('localhost', 'root','' , 'db_iebook_8003115736_v');
 
     // University
     $sql_University = "SELECT * FROM university WHERE Name = '$Name_University'";
@@ -1017,7 +1017,7 @@ function CollegeOprations($Name_University){
 
 function HomeOprations(){
 
-    $con = new mysqli('localhost', 'root','' , 'iebook');
+    $con = new mysqli('localhost', 'root','' , 'db_iebook_8003115736_v');
 
         $sql_ads = "SELECT * FROM Ads";
         $result_Ads = $con->query($sql_ads);
