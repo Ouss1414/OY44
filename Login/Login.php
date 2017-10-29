@@ -41,7 +41,7 @@ if(isset($_POST['btn-login']))
                         <form action="" method="post" class="sending-form">
                             <h1 style="text-transform: uppercase">Login</h1>
                             <div>
-                                <input type="text" name="Username" placeholder="Username" required="" id="username" />
+                                <input type="text" name="Username" placeholder="Username" required="" id="username" autofocus/>
                             </div>
                             <div>
                                 <input type="password" name="Password" placeholder="Password" required="" id="password" />
