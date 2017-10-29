@@ -1,25 +1,105 @@
 <?php
-
-function Show_Book(){
+function Questions_Page(){
     $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
 
-    if(empty($_GET['Serial'])){
+
+    $Serial_Book = $_GET['Serial'];
+    $this_page = $_GET['pid'];
+
+    $sql_check = "SELECT * FROM book WHERE Serial='$Serial_Book'";
+    $result_check = $con->query($sql_check);
+    if ($result_check->num_rows > 0){
+        while ($row_check = $result_check->fetch_assoc()){
+            echo '
+                <div class="w3-margin-top w3-margin-left w3-padding-small w3-hover-text-gray w3-text-blue">
+                    <a href="index.php?pid=IEBook#IEBook" style="text-transform: uppercase">IEBook</a> -
+                    <a href="index.php?pid=Show_Book&Serial='.$Serial_Book.'" style="text-transform: uppercase">'.$row_check['Name_Book'].'</a> -
+                    <a href="" style="text-transform: uppercase">'.$this_page.'</a> 
+                    
+                </div>
+            ';
+
+    $count = '';
+    echo '
+<div class="w3-padding-32" style="min-height: 70%">
+    <center>
+        <form action="index.php?pid=Answer_Question&Serial='.$Serial_Book.'" method="post" role="form">
+    ';
+    $sql_ques = "SELECT * FROM exercise WHERE Serial_Book = '$Serial_Book'";
+    $result_Ques = $con->query($sql_ques);
+    if($result_Ques->num_rows > 0){
+        while ($row_Ques = $result_Ques->fetch_assoc()) {
+            $count++;
+            echo '
+        <table class="w3-table" style="width: 80%">
+            <tr>
+                <input type="text" name="Id_Question" value="'.$row_Ques['Id'].'" style="display: none">
+                <td class="w3-border w3-light-gray"><i class="w3-text-red">Questions '.$count.' :</i> '.$row_Ques['Question'].'</td>
+            </tr>
+        </table>
+        <table class="w3-table" style="width: 80%">
+            <tr>
+                <td class="w3-border w3-light-gray"><label><input type="radio" name="'.$row_Ques['Id'].'" value="'.$row_Ques['Answer_1'].'" required> '.$row_Ques['Answer_1'].'</label></td>
+                <td class="w3-border w3-light-gray"><label><input type="radio" name="'.$row_Ques['Id'].'" value="'.$row_Ques['Answer_2'].'" required> '.$row_Ques['Answer_2'].'</label></td>
+                <td class="w3-border w3-light-gray"><label><input type="radio" name="'.$row_Ques['Id'].'" value="'.$row_Ques['Answer_3'].'" required> '.$row_Ques['Answer_3'].'</label></td>
+                <td class="w3-border w3-light-gray"><label><input type="radio" name="'.$row_Ques['Id'].'" value="'.$row_Ques['Answer_4'].'" required> '.$row_Ques['Answer_4'].'</label></td>
+            </tr>
+        </table>
+        <br>
+        ';
+        }
+        echo '
+        <input type="submit" name="Answer_ques" value="Answer" class="w3-margin-right w3-padding w3-btn w3-border-gray w3-gray">
+            <input type="reset" value="Reset" class="w3-margin-left w3-padding w3-btn w3-border-red w3-red">
+        </form>
+        ';
+    }else {
+        echo '<div style="margin-top: 10%">
+                      <p class="w3-xxxlarge w3-text-red">There is no question for this book</p>
+                  </div>';
+    }
+        }
+    }else {
+        echo '<div style="margin-top: 10%">
+                      <p class="w3-xxxlarge w3-text-red">There is no book like Serial ['.$_GET['Serial'].']</p>
+                  </div>';
+    }
+    echo '
+            
+    </center>
+</div>
+    ';
+
+}
+
+function Show_Book(){
+
+    $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
+
+    $Serial_Book = $_GET['Serial'];
+    if(empty($Serial_Book)){
         echo '<script>location.href="http://localhost/OY44/index.php?pid=IEBook"</script>
               <div class="w3-row">
              ';
     }
 
-    $Serial_Book = $_GET["Serial"];
     $result = $con->query("SELECT * FROM book,user WHERE User_Id=Id AND Serial='$Serial_Book'");
     if($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
+            echo '
+                <div class="w3-margin-top w3-margin-left w3-padding-small w3-hover-text-gray w3-text-blue">
+                    <a href="index.php?pid=IEBook#IEBook" style="text-transform: uppercase">IEBook</a> -
+                    <a href="" style="text-transform: uppercase">'.$row['Name_Book'].'</a>
+                </div>
+            ';
+
             echo '
                 <embed class="w3-right" style="margin-top:10px; margin-right:10px;" src="Upload_Books/' . $row["Location"] . '" width="800px" height="600px"></embed>
             </div>
         <div class="w3-row m5">
         
             <div class="Exam_btn w3-col s1">
-                <button class="w3-btn" name="exam" value="exam">Answer Questions</button>
+                <button class="w3-btn" name="exam" value="exam" onclick="location.href=\'index.php?pid=Questions_Page&Serial='.$_GET['Serial'].' \'">Answer Questions</button>
             </div>
             ';
             if (empty($row['Image'])) {

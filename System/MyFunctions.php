@@ -72,6 +72,12 @@ function isAuth($PageID){
         case "Delete" :
             $redirectToPage = "Delete";
             break;
+            case "Questions_Page" :
+            $redirectToPage = "Questions_Page";
+            break;
+            case "Answer_Question" :
+            $redirectToPage = "Answer_Question";
+            break;
         default :
             $redirectToPage = "Home";
             break;
