@@ -877,10 +877,11 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
         
         <div class="w3-row w3-card-2 w3-margin-top w3-margin-left w3-margin-right w3-padding">
             <a href="index.php?pid=Add_Post&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'" class="w3-button w3-border" style="text-decoration: none">Add Post</a>  -
-            <select class="w3-theme-2 w3-margin" style="width: 15%">
-                <option value="null">Sort --- </option>
-                <option>Date</option>
-                <option>Name</option>
+            <select name="list" id="list" class="w3-theme-2 w3-margin" style="width: 15%">
+                <option value="index.php?pid=Department&uni='.$uni.'&college='.$college.'&dep='.$dep.'">Sort --- </option>
+                <option value="index.php?pid=Department&uni='.$uni.'&college='.$college.'&dep='.$dep.'&sort=Date_Post">Date</option>
+                <option value="index.php?pid=Department&uni='.$uni.'&college='.$college.'&dep='.$dep.'&sort=Name_Book">Name</option>
+                <input type=button value="Sort" onclick="window.location = document.getElementById(\'list\').value" />
             </select>
         </div>
         
