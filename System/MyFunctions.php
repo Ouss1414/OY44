@@ -78,8 +78,32 @@ function isAuth($PageID){
             case "Answer_Question" :
             $redirectToPage = "Answer_Question";
             break;
+            case "ControlPanel" :
+            $redirectToPage = "ControlPanel";
+            break;
+            case "Mailbox" :
+            $redirectToPage = "Mailbox";
+            break;
         default :
             $redirectToPage = "Home";
+            break;
+    }
+    return $redirectToPage;
+}
+
+function ControlPanel($Pages){
+    switch ($Pages){
+        case "Mailbox" :
+            $redirectToPage = "Mailbox";
+            break;
+        case "Mailbox-compose" :
+            $redirectToPage = "Mailbox-compose";
+            break;
+        case "Mailbox-message" :
+            $redirectToPage = "Mailbox-message";
+            break;
+        default :
+            $redirectToPage = "ControlPanel";
             break;
     }
     return $redirectToPage;
