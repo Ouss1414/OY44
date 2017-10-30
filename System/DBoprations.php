@@ -854,6 +854,10 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
 
     $con = new mysqli('localhost', 'root','' , 'db_iebook_8003115736_v');
 
+    $uni = $_GET['uni'];
+    $college = $_GET['college'];
+    $dep = $_GET['dep'];
+
     //Department
     $sql_Department = "SELECT Id FROM department WHERE  Name = '$Name_Department'";
     $result_Department = $con->query($sql_Department);
@@ -875,8 +879,8 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
             <a href="index.php?pid=Add_Post&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'" class="w3-button w3-border" style="text-decoration: none">Add Post</a>  -
             <select class="w3-theme-2 w3-margin" style="width: 15%">
                 <option value="null">Sort --- </option>
-                <option value="ORDER BY Date_Post DESC">Date</option>
-                <option value="ORDER BY Subject ASC">Name</option>
+                <option>Date</option>
+                <option>Name</option>
             </select>
         </div>
         
@@ -999,6 +1003,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                             ';
                     if($_SESSION['user'] == $Name_User2) {
                         echo '
+                            <p class="Post-Prof" id="' . $row_Post['Message'] . '" style="display: none"></p>
                             <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="'.$row_Post['Subject'].'" id="'.$row_Post['Id'].'" value="pid=Department&uni='.$_GET['uni'].'&college='.$_GET['college'].'&dep='.$_GET['dep'].'"></div>
                         ';
                     }
