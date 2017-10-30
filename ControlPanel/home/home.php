@@ -51,3 +51,26 @@
 </div>
 
 <br />
+
+<hr>
+<div class="row">
+	<h2 align="center" class="margin-bottom">Your Book</h2>
+	<div align="center">
+		<table class="table-bordered text-center" width="90%">
+			<tr class="theme-skins">
+				<td style="padding: 5px">#</td>
+				<td style="padding: 10px">Serial</td>
+				<td style="padding: 10px">Book</td>
+				<td style="padding: 10px">Price</td>
+				<td style="padding: 10px">Add Exercise</td>
+				<td style="padding: 10px">Edit</td>
+				<td style="padding: 10px">Delete</td>
+			</tr>
+            <?php
+                Get_books();
+            ?>
+		</table>
+	</div>
+</div>
+
+<br />

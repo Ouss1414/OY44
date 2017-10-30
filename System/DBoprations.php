@@ -1,4 +1,38 @@
 <?php
+
+function Get_Books(){
+    $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
+
+    $UserName = $_SESSION['user'];
+    $count = '';
+    $sql_user = "SELECT * FROM user WHERE User_Name= '$UserName'";
+    $result_user = $con->query($sql_user);
+    if($result_user->num_rows > 0){
+        while ($row_user = $result_user->fetch_assoc()){
+            $user_Id = $row_user['Id'];
+            $sql_book = "SELECT * FROM book WHERE User_Id='$user_Id'";
+            $result_book = $con->query($sql_book);
+            if($result_book->num_rows > 0){
+                while ($row_book = $result_book->fetch_assoc()){
+                    $count++;
+                    echo '
+                        <tr>
+                            <td style="padding: 5px">'.$count.'</td>
+                            <td style="padding: 10px">'.$row_book['Serial'].'</td>
+                            <td style="padding: 10px">'.$row_book['Name_Book'].'</td>
+                            <td style="padding: 10px">'.$row_book['Price'].'</td>
+                            <td style="padding: 10px"><input type="button" name="add_exercise" value="Add Exercise" class="btn"></td>
+                            <td style="padding: 10px"><input type="button" name="Edit" value="Edit" class="btn"></td>
+                            <td style="padding: 10px"><input type="button" class="delete_data btn btn-red" name="'.$row_book['Name_Book'].'" id="'.$row_book['Serial'].'" value="Delete"></td>
+                        </tr>
+                    ';
+                }
+            }
+        }
+    }
+
+}
+
 function Questions_Page(){
     $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
 
@@ -461,7 +495,7 @@ function Profile(){
                                 <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  '. $row_Post_Profile['Like'] .'</button>
                                 <button type="button" class="w3-button w3-margin-bottom w3-red"><i class="fa fa-thumbs-down"></i>  '. $row_Post_Profile ['Dislike'].'</button>
                                 ';
-                                if($_SESSION['user'] == $user_name) {
+                                if($_SESSION['user'] = $user_name) {
                                     echo '
                             <div class="delete_data w3-padding fa fa-trash w3-btn w3-red right" style="margin-bottom: 5px" name="'.$row_Post_Profile['Subject'].'" id="'.$row_Post_Profile['Id'].'" value="pid=Profile"></div>
                         ';

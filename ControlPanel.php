@@ -4,6 +4,26 @@
     require "system/myFunctions.php";
     require "system/requestHandel.php";
     require "System/DBoprations.php";
+
+if(empty($_GET['CP'])){
+    $_GET['CP'] = 'home';
+}
+    if ($_GET['CP'] == 'home'){
+        $welcome = 'active';
+    }else if ($_GET['CP'] == 'file-upload'){
+        $file_upload = 'active';
+    }else if ($_GET['CP'] == 'new-post'){
+        $new_post = 'active';
+    }else if ($_GET['CP'] == 'Mailbox'){
+        $Mail = 'visible';
+        $Mailbox = 'active';
+    }else if ($_GET['CP'] == 'Mailbox-compose'){
+        $Mail = 'visible';
+        $Mailbox_compose = 'active';
+    }else if ($_GET['CP'] == 'Mailbox-message'){
+        $Mail = 'visible';
+        $Mailbox_message = 'active';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,28 +97,36 @@
 
 
             <ul id="main-menu" class="main-menu">
+
+                <li class="<?= $welcome ?>">
+                    <a href="ControlPanel.php?CP=home">
+                        <i class="entypo-home"></i>
+                        <span class="title">Welcome</span>
+                    </a>
+                </li>
+
                 <li class="has-sub">
-                    <a href="ControlPanel/Mail/Mailbox/mailbox.html">
+                    <a href="ControlPanel.php?CP=Mailbox">
                         <i class="entypo-mail"></i>
                         <span class="title">Mailbox</span>
                         <span class="badge badge-secondary">Soon</span>
                     </a>
-                    <ul>
-                        <li>
+                    <ul class=" <?= $Mail ?>">
+                        <li class="<?= $Mailbox ?>">
                             <a>
                                 <i class="entypo-inbox"></i>
                                 <span class="title">Inbox</span>
                                 <span class="badge badge-secondary">Soon</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="<?= $Mailbox_compose ?>">
                             <a>
                                 <i class="entypo-pencil"></i>
                                 <span class="title">Compose Message</span>
                                 <span class="badge badge-secondary">Soon</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="<?= $Mailbox_message ?>">
                             <a>
                                 <i class="entypo-attach"></i>
                                 <span class="title">View Message</span>
@@ -108,22 +136,15 @@
                     </ul>
                 </li>
 
-                <li class="has-sub active">
-                    <a href="ControlPanel/index.html">
-                        <i class="entypo-home"></i>
-                        <span class="title">Welcome</span>
-                    </a>
-                </li>
-
-                <li class="has-sub">
-                    <a href="ControlPanel/file-upload.html">
+                <li class="<?= $file_upload ?>">
+                    <a href="ControlPanel.php?CP=file-upload">
                         <i class="entypo-upload"></i>
                         <span class="title">File upload</span>
                     </a>
                 </li>
 
-                <li class="has-sub">
-                    <a href="ControlPanel/new-post.html">
+                <li class="<?= $new_post ?>">
+                    <a href="ControlPanel.php?CP=new-post">
                         <i class="entypo-pencil"></i>
                         <span class="title">New Post</span>
                     </a>
@@ -454,7 +475,13 @@
                 break;
             case "Mailbox-message" : include_once "ControlPanel/Mail/Mailbox-message/Mailbox-message.html";
                 break;
-            default: include_once "ControlPanel.php";
+            case "home" : include_once "ControlPanel/home/home.php";
+                break;
+            case "file-upload" : include_once "ControlPanel/file-upload.html";
+                break;
+            case "new-post" : include_once "ControlPanel/new-post.html";
+                break;
+            default: include_once "ControlPanel/home/home.php";
                 break;
         }
         ?>
@@ -618,6 +645,16 @@
 
 <!-- Demo Settings -->
 <script src="ControlPanel/assets/js/neon-demo.js"></script>
+
+
+<!-- Imported scripts on this page -->
+<script src="ControlPanel/assets/js/fileinput.js"></script>
+<script src="ControlPanel/assets/js/dropzone/dropzone.js"></script>
+<link rel="stylesheet" href="ControlPanel/assets/js/wysihtml5/bootstrap-wysihtml5.css">
+<link rel="stylesheet" href="ControlPanel/assets/js/selectboxit/jquery.selectBoxIt.css">
+<script src="System/delete_book.js"></script>
+
+
 
 </body>
 </html>

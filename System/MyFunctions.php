@@ -102,6 +102,15 @@ function ControlPanel($Pages){
         case "Mailbox-message" :
             $redirectToPage = "Mailbox-message";
             break;
+        case "home" :
+            $redirectToPage = "home";
+            break;
+        case "file-upload" :
+            $redirectToPage = "file-upload";
+            break;
+        case "new-post" :
+            $redirectToPage = "new-post";
+            break;
         default :
             $redirectToPage = "ControlPanel";
             break;
