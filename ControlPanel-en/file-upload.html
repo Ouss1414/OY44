@@ -10,7 +10,7 @@
 
 	<link rel="icon" href="assets/images/favicon.ico">
 
-	<title>Neon | New Post</title>
+	<title>Neon | File Upload</title>
 
 	<link rel="stylesheet" href="assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
 	<link rel="stylesheet" href="assets/css/font-icons/entypo/css/entypo.css">
@@ -36,7 +36,7 @@
 <body class="page-body" data-url="http://neon.dev">
 
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
-	
+
 	<div class="sidebar-menu">
 
 		<div class="sidebar-menu-inner">
@@ -104,15 +104,15 @@
 					</a>
 				</li>
 
-				<li class="has-sub">
-					<a href="forms-file-upload.html">
+				<li class="has-sub active">
+					<a href="file-upload.html">
 						<i class="entypo-upload"></i>
 						<span class="title">File upload</span>
 					</a>
 				</li>
 
-				<li class="has-sub active">
-					<a href="extra-new-post.html">
+				<li class="has-sub">
+					<a href="new-post.html">
 						<i class="entypo-pencil"></i>
 						<span class="title">New Post</span>
 					</a>
@@ -124,41 +124,49 @@
 	</div>
 
 	<div class="main-content">
-				
+
 		<div class="row">
-		
+
 			<!-- Profile Info and Notifications -->
 			<div class="col-md-6 col-sm-8 clearfix">
-		
+
 				<ul class="user-info pull-left pull-none-xsm">
-		
+
 					<!-- Profile Info -->
 					<li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
-		
+
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<img src="assets/images/thumb-1@2x.png" alt="" class="img-circle" width="44" />
 							John Henderson
 						</a>
-		
+
 						<ul class="dropdown-menu">
-		
+
 							<!-- Reverse Caret -->
 							<li class="caret"></li>
-		
+
+							<!-- Profile sub-links -->
+							<li>
+								<a href="extra-timeline.html">
+									<i class="entypo-user"></i>
+									Edit Profile
+								</a>
+							</li>
+
 							<li>
 								<a href="mailbox.html">
 									<i class="entypo-mail"></i>
 									Inbox
 								</a>
 							</li>
-		
+
 							<li>
 								<a href="extra-calendar.html">
 									<i class="entypo-calendar"></i>
 									Calendar
 								</a>
 							</li>
-		
+
 							<li>
 								<a href="#">
 									<i class="entypo-clipboard"></i>
@@ -167,19 +175,19 @@
 							</li>
 						</ul>
 					</li>
-		
+
 				</ul>
-				
+
 				<ul class="user-info pull-left pull-right-xs pull-none-xsm">
-		
+
 					<!-- Raw Notifications -->
 					<li class="notifications dropdown">
-		
+
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 							<i class="entypo-attention"></i>
 							<span class="badge badge-info">6</span>
 						</a>
-		
+
 						<ul class="dropdown-menu">
 							<li class="top">
 								<p class="small">
@@ -187,87 +195,87 @@
 									You have <strong>3</strong> new notifications.
 								</p>
 							</li>
-							
+
 							<li>
 								<ul class="dropdown-menu-list scroller">
 									<li class="unread notification-success">
 										<a href="#">
 											<i class="entypo-user-add pull-right"></i>
-											
+
 											<span class="line">
 												<strong>New user registered</strong>
 											</span>
-											
+
 											<span class="line small">
 												30 seconds ago
 											</span>
 										</a>
 									</li>
-									
+
 									<li class="unread notification-secondary">
 										<a href="#">
 											<i class="entypo-heart pull-right"></i>
-											
+
 											<span class="line">
 												<strong>Someone special liked this</strong>
 											</span>
-											
+
 											<span class="line small">
 												2 minutes ago
 											</span>
 										</a>
 									</li>
-									
+
 									<li class="notification-primary">
 										<a href="#">
 											<i class="entypo-user pull-right"></i>
-											
+
 											<span class="line">
 												<strong>Privacy settings have been changed</strong>
 											</span>
-											
+
 											<span class="line small">
 												3 hours ago
 											</span>
 										</a>
 									</li>
-									
+
 									<li class="notification-danger">
 										<a href="#">
 											<i class="entypo-cancel-circled pull-right"></i>
-											
+
 											<span class="line">
 												John cancelled the event
 											</span>
-											
+
 											<span class="line small">
 												9 hours ago
 											</span>
 										</a>
 									</li>
-									
+
 									<li class="notification-info">
 										<a href="#">
 											<i class="entypo-info pull-right"></i>
-											
+
 											<span class="line">
 												The server is status is stable
 											</span>
-											
+
 											<span class="line small">
 												yesterday at 10:30am
 											</span>
 										</a>
 									</li>
-									
+
 									<li class="notification-warning">
 										<a href="#">
 											<i class="entypo-rss pull-right"></i>
-											
+
 											<span class="line">
 												New comments waiting approval
 											</span>
-											
+
 											<span class="line small">
 												last week
 											</span>
@@ -275,95 +283,95 @@
 									</li>
 								</ul>
 							</li>
-							
+
 							<li class="external">
 								<a href="#">View all notifications</a>
 							</li>
 						</ul>
-		
+
 					</li>
-		
+
 					<!-- Message Notifications -->
 					<li class="notifications dropdown">
-		
+
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 							<i class="entypo-mail"></i>
 							<span class="badge badge-secondary">10</span>
 						</a>
-		
+
 						<ul class="dropdown-menu">
 							<li>
 								<form class="top-dropdown-search">
-									
+
 									<div class="form-group">
 										<input type="text" class="form-control" placeholder="Search anything..." name="s" />
 									</div>
-									
+
 								</form>
-								
+
 								<ul class="dropdown-menu-list scroller">
 									<li class="active">
 										<a href="#">
 											<span class="image pull-right">
 												<img src="assets/images/thumb-1@2x.png" width="44" alt="" class="img-circle" />
 											</span>
-											
+
 											<span class="line">
 												<strong>Luc Chartier</strong>
 												- yesterday
 											</span>
-											
+
 											<span class="line desc small">
 												This ain’t our first item, it is the best of the rest.
 											</span>
 										</a>
 									</li>
-									
+
 									<li class="active">
 										<a href="#">
 											<span class="image pull-right">
 												<img src="assets/images/thumb-2@2x.png" width="44" alt="" class="img-circle" />
 											</span>
-											
+
 											<span class="line">
 												<strong>Salma Nyberg</strong>
 												- 2 days ago
 											</span>
-											
+
 											<span class="line desc small">
-												Oh he decisively impression attachment friendship so if everything. 
+												Oh he decisively impression attachment friendship so if everything.
 											</span>
 										</a>
 									</li>
-									
+
 									<li>
 										<a href="#">
 											<span class="image pull-right">
 												<img src="assets/images/thumb-3@2x.png" width="44" alt="" class="img-circle" />
 											</span>
-											
+
 											<span class="line">
 												Hayden Cartwright
 												- a week ago
 											</span>
-											
+
 											<span class="line desc small">
 												Whose her enjoy chief new young. Felicity if ye required likewise so doubtful.
 											</span>
 										</a>
 									</li>
-									
+
 									<li>
 										<a href="#">
 											<span class="image pull-right">
 												<img src="assets/images/thumb-4@2x.png" width="44" alt="" class="img-circle" />
 											</span>
-											
+
 											<span class="line">
 												Sandra Eberhardt
 												- 16 days ago
 											</span>
-											
+
 											<span class="line desc small">
 												On so attention necessary at by provision otherwise existence direction.
 											</span>
@@ -371,27 +379,27 @@
 									</li>
 								</ul>
 							</li>
-							
+
 							<li class="external">
 								<a href="mailbox.html">All Messages</a>
 							</li>
 						</ul>
-		
+
 					</li>
-		
+
 					<!-- Task Notifications -->
 					<li class="notifications dropdown">
-		
+
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 							<i class="entypo-list"></i>
 							<span class="badge badge-warning">1</span>
 						</a>
-		
+
 						<ul class="dropdown-menu">
 							<li class="top">
 								<p>You have 6 pending tasks</p>
 							</li>
-							
+
 							<li>
 								<ul class="dropdown-menu-list scroller">
 									<li>
@@ -400,7 +408,7 @@
 												<span class="desc">Procurement</span>
 												<span class="percent">27%</span>
 											</span>
-										
+
 											<span class="progress">
 												<span style="width: 27%;" class="progress-bar progress-bar-success">
 													<span class="sr-only">27% Complete</span>
@@ -414,7 +422,7 @@
 												<span class="desc">App Development</span>
 												<span class="percent">83%</span>
 											</span>
-											
+
 											<span class="progress progress-striped">
 												<span style="width: 83%;" class="progress-bar progress-bar-danger">
 													<span class="sr-only">83% Complete</span>
@@ -428,7 +436,7 @@
 												<span class="desc">HTML Slicing</span>
 												<span class="percent">91%</span>
 											</span>
-											
+
 											<span class="progress">
 												<span style="width: 91%;" class="progress-bar progress-bar-success">
 													<span class="sr-only">91% Complete</span>
@@ -442,7 +450,7 @@
 												<span class="desc">Database Repair</span>
 												<span class="percent">12%</span>
 											</span>
-											
+
 											<span class="progress progress-striped">
 												<span style="width: 12%;" class="progress-bar progress-bar-warning">
 													<span class="sr-only">12% Complete</span>
@@ -456,7 +464,7 @@
 												<span class="desc">Backup Create Progress</span>
 												<span class="percent">54%</span>
 											</span>
-											
+
 											<span class="progress progress-striped">
 												<span style="width: 54%;" class="progress-bar progress-bar-info">
 													<span class="sr-only">54% Complete</span>
@@ -470,7 +478,7 @@
 												<span class="desc">Upgrade Progress</span>
 												<span class="percent">17%</span>
 											</span>
-											
+
 											<span class="progress progress-striped">
 												<span style="width: 17%;" class="progress-bar progress-bar-important">
 													<span class="sr-only">17% Complete</span>
@@ -480,32 +488,32 @@
 									</li>
 								</ul>
 							</li>
-							
+
 							<li class="external">
 								<a href="#">See all tasks</a>
 							</li>
 						</ul>
-		
+
 					</li>
-		
+
 				</ul>
-		
+
 			</div>
-		
-		
+
+
 			<!-- Raw Links -->
 			<div class="col-md-6 col-sm-4 clearfix hidden-xs">
-		
+
 				<ul class="list-inline links-list pull-right">
-		
+
 					<!-- Language Selector -->
 					<li class="dropdown language-selector">
-		
+
 						Language: &nbsp;
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
 							<img src="assets/images/flags/flag-uk.png" width="16" height="16" />
 						</a>
-		
+
 						<ul class="dropdown-menu pull-right">
 							<li>
 								<a href="#">
@@ -538,273 +546,255 @@
 								</a>
 							</li>
 						</ul>
-		
+
 					</li>
-		
+
 					<li class="sep"></li>
-		
-					
+
+
 					<li>
 						<a href="#" data-toggle="chat" data-collapse-sidebar="1">
 							<i class="entypo-chat"></i>
 							Chat
-		
+
 							<span class="badge badge-success chat-notifications-badge is-hidden">0</span>
 						</a>
 					</li>
-		
+
 					<li class="sep"></li>
-		
+
 					<li>
 						<a href="extra-login.html">
 							Log Out <i class="entypo-logout right"></i>
 						</a>
 					</li>
 				</ul>
-		
+
 			</div>
-		
+
 		</div>
-		
+
 		<hr />
-		
-		<h1 class="margin-bottom">Add New Post</h1>
-					<ol class="breadcrumb 2" >
+
+					<ol class="breadcrumb bc-3" >
 								<li>
 						<a href="index.html"><i class="fa-home"></i>Home</a>
 					</li>
 							<li>
-		
-									<a href="extra-icons.html">Extra</a>
+
+									<a href="forms-main.html">Forms</a>
 							</li>
 						<li class="active">
-		
-									<strong>New Post</strong>
+
+									<strong>File Upload</strong>
 							</li>
 							</ol>
-					
+
+		<h2>File Upload Inputs</h2>
+
 		<br />
-		
-		<style>
-		.ms-container .ms-list {
-			width: 135px;
-			height: 205px;
-		}
-		
-		.post-save-changes {
-			float: right;
-		}
-		
-		@media screen and (max-width: 789px)
-		{
-			.post-save-changes {
-				float: none;
-				margin-bottom: 20px;
-			}
-		}
-		</style>
-		
-		<form method="post" role="form">
-			
-			<!-- Title and Publish Buttons -->
-			<div class="row">
-				<div class="col-sm-2 post-save-changes">
-					<button type="button" class="btn btn-green btn-lg btn-block btn-icon">
-						Publish
-						<i class="entypo-check"></i>
-					</button>
+
+
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="panel panel-primary" data-collapsed="0">
+
+					<div class="panel-heading">
+						<div class="panel-title">
+							Styled File Input
+						</div>
+
+						<div class="panel-options">
+							<a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg"><i class="entypo-cog"></i></a>
+							<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+							<a href="#" data-rel="reload"><i class="entypo-arrows-ccw"></i></a>
+							<a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
+						</div>
+					</div>
+
+					<div class="panel-body">
+
+						<form role="form" class="form-horizontal form-groups-bordered">
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Normal File Input</label>
+
+								<div class="col-sm-5">
+
+									<input type="file" class="form-control" />
+
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Replaced File Input</label>
+
+								<div class="col-sm-5">
+
+									<input type="file" class="form-control file2 inline btn btn-primary" data-label="<i class='glyphicon glyphicon-file'></i> Browse" />
+
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Multiple files</label>
+
+								<div class="col-sm-5">
+
+									<input type="file" class="form-control file2 inline btn btn-primary" multiple="1" data-label="<i class='glyphicon glyphicon-circle-arrow-up'></i> &nbsp;Browse Files" />
+
+								</div>
+							</div>
+
+						</form>
+
+					</div>
+
 				</div>
-				
-				<div class="col-sm-10">
-					<input type="text" class="form-control input-lg" name="post_title" placeholder="Post title" />
-				</div>
+
 			</div>
-			
+		</div>
+
+
+
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="panel panel-primary" data-collapsed="0">
+
+					<div class="panel-heading">
+						<div class="panel-title">
+							Jasny File Input
+						</div>
+					</div>
+
+					<div class="panel-body">
+
+						<form role="form" class="form-horizontal form-groups-bordered">
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">File Select</label>
+
+								<div class="col-sm-5">
+
+									<div class="fileinput fileinput-new" data-provides="fileinput">
+										<div class="input-group">
+											<div class="form-control uneditable-input" data-trigger="fileinput">
+												<i class="glyphicon glyphicon-file fileinput-exists"></i>
+												<span class="fileinput-filename"></span>
+											</div>
+											<span class="input-group-addon btn btn-default btn-file">
+												<span class="fileinput-new">Select file</span>
+												<span class="fileinput-exists">Change</span>
+												<input type="file" name="...">
+											</span>
+											<a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Button Select</label>
+
+								<div class="col-sm-5">
+
+									<div class="fileinput fileinput-new" data-provides="fileinput">
+										<span class="btn btn-info btn-file">
+											<span class="fileinput-new">Select file</span>
+											<span class="fileinput-exists">Change</span>
+											<input type="file" name="...">
+										</span>
+										<span class="fileinput-filename"></span>
+										<a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Image Upload</label>
+
+								<div class="col-sm-5">
+
+									<div class="fileinput fileinput-new" data-provides="fileinput">
+										<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;" data-trigger="fileinput">
+											<img src="http://placehold.it/200x150" alt="...">
+										</div>
+										<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px"></div>
+										<div>
+											<span class="btn btn-white btn-file">
+												<span class="fileinput-new">Select image</span>
+												<span class="fileinput-exists">Change</span>
+												<input type="file" name="..." accept="image/*">
+											</span>
+											<a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</form>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<hr />
+
+		<h3>
+			Dropzone - Drag n' Drop File Upload
 			<br />
-			
-			<!-- WYSIWYG - Content Editor -->
-			<div class="row">
-				<div class="col-sm-12">
-					<textarea class="form-control wysihtml5" rows="18" data-stylesheet-url="assets/css/wysihtml5-color.css" name="post_content" id="post_content"></textarea>
-				</div>
+			<small>The upload script will generate random response status (error or success), files are not uploaded.</small>
+		</h3>
+
+		<br />
+
+		<form action="data/upload-file.php" class="dropzone" id="dropzone_example">
+			<div class="fallback">
+				<input name="file" type="file" multiple />
 			</div>
-			
-			<br />
-			
-			<!-- Metaboxes -->
-			<div class="row">
-				
-				<!-- Metabox :: Publish Settings -->
-				<div class="col-sm-4">
-					
-					<div class="panel panel-primary" data-collapsed="0">
-				
-						<div class="panel-heading">
-							<div class="panel-title">
-								Publish Settings
-							</div>
-							
-							<div class="panel-options">
-								<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
-							</div>
-						</div>
-						
-						<div class="panel-body">
-							
-							<div class="checkbox checkbox-replace">
-								<input type="checkbox" id="chk-1" checked>
-								<label>Show in frontpage</label>
-							</div>
-							
-							<br />
-							
-							<div class="checkbox checkbox-replace">
-								<input type="checkbox" id="chk-2" checked>
-								<label>Stick this post</label>
-							</div>
-							
-							<br />
-					
-							<p>Publish Date</p>
-							<div class="input-group">
-								<input type="text" class="form-control datepicker" value="Wed, 04 November 2015" data-format="D, dd MM yyyy">
-								
-								<div class="input-group-addon">
-									<a href="#"><i class="entypo-calendar"></i></a>
-								</div>
-							</div>
-								
-							<br />
-							
-							<p>Post Status</p>
-							<select name="test" class="selectboxit">
-								<optgroup label="Post Status">
-									<option value="1">Publish</option>
-									<option value="2">Private</option>
-									<option value="3">Protected</option>
-									<option value="4">Scheduled</option>
-								</optgroup>
-							</select>
-							
-						</div>
-					
-					</div>
-					
-				</div>
-				
-				
-				<!-- Metabox :: Featured Image -->
-				<div class="col-sm-4">
-					
-					<div class="panel panel-primary" data-collapsed="0">
-				
-						<div class="panel-heading">
-							<div class="panel-title">
-								Featured Image
-							</div>
-							
-							<div class="panel-options">
-								<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
-							</div>
-						</div>
-						
-						<div class="panel-body">
-							
-							<div class="fileinput fileinput-new" data-provides="fileinput">
-								<div class="fileinput-new thumbnail" style="max-width: 310px; height: 160px;" data-trigger="fileinput">
-									<img src="http://placehold.it/320x160" alt="...">
-								</div>
-								<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 320px; max-height: 160px"></div>
-								<div>
-									<span class="btn btn-white btn-file">
-										<span class="fileinput-new">Select image</span>
-										<span class="fileinput-exists">Change</span>
-										<input type="file" name="..." accept="image/*">
-									</span>
-									<a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
-								</div>
-							</div>
-							
-						</div>
-					
-					</div>
-					
-				</div>
-				
-				
-				<!-- Metabox :: Categories -->
-				<div class="col-sm-4">
-					
-					<div class="panel panel-primary" data-collapsed="0">
-				
-						<div class="panel-heading">
-							<div class="panel-title">
-								Categories
-							</div>
-							
-							<div class="panel-options">
-								<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
-							</div>
-						</div>
-						
-						<div class="panel-body">
-							
-							<select multiple="multiple" name="categories[]" class="form-control multi-select">
-								<option value="elem_1">Art</option>
-								<option value="elem_2" selected>Entertainment</option>
-								<option value="elem_3">Sports</option>
-								<option value="elem_4">Gaming</option>
-								<option value="elem_5" selected>Abstraction</option>
-								<option value="elem_6">Nature</option>
-								<option value="elem_7">Summer</option>
-								<option value="elem_8">Adventures</option>
-								<option value="elem_9">Movies</option>
-								<option value="elem_10">Music</option>
-								<option value="elem_11">Technology</option>
-							</select>
-							
-						</div>
-					
-					</div>
-					
-				</div>
-				
-				<div class="clear"></div>
-				
-				<!-- Metabox :: Tags -->
-				<div class="col-sm-12">
-					
-					<div class="panel panel-primary" data-collapsed="0">
-				
-						<div class="panel-heading">
-							<div class="panel-title">
-								Tags
-							</div>
-							
-							<div class="panel-options">
-								<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
-							</div>
-						</div>
-						
-						<div class="panel-body">
-							
-							<p>Add Post Tags</p>
-							<input type="text" value="weekend,friday,happy,awesome,chill,healthy" class="form-control tagsinput" />
-							
-						</div>
-					
-					</div>
-					
-				</div>
-				
-			</div>
-			
 		</form>
+
+		<div id="dze_info" class="hidden">
+
+			<br />
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="panel-title">Dropzone Uploaded Files Info</div>
+				</div>
+
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th width="40%">File name</th>
+							<th width="15%">Size</th>
+							<th width="15%">Type</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="4"></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+
+		<br />
 		<!-- Footer -->
 		<footer class="main">
-			
+
 			&copy; 2015 <strong>Neon</strong> Admin Theme by <a href="http://laborator.co" target="_blank">Laborator</a>
-		
+
 		</footer>
 	</div>
 
@@ -930,8 +920,7 @@
 
 
 	<!-- Imported styles on this page -->
-	<link rel="stylesheet" href="assets/js/wysihtml5/bootstrap-wysihtml5.css">
-	<link rel="stylesheet" href="assets/js/selectboxit/jquery.selectBoxIt.css">
+	<link rel="stylesheet" href="assets/js/dropzone/dropzone.css">
 
 	<!-- Bottom scripts (common) -->
 	<script src="assets/js/gsap/TweenMax.min.js"></script>
@@ -940,16 +929,11 @@
 	<script src="assets/js/joinable.js"></script>
 	<script src="assets/js/resizeable.js"></script>
 	<script src="assets/js/neon-api.js"></script>
-	<script src="assets/js/wysihtml5/wysihtml5-0.4.0pre.min.js"></script>
 
 
 	<!-- Imported scripts on this page -->
-	<script src="assets/js/wysihtml5/bootstrap-wysihtml5.js"></script>
-	<script src="assets/js/jquery.multi-select.js"></script>
 	<script src="assets/js/fileinput.js"></script>
-	<script src="assets/js/bootstrap-datepicker.js"></script>
-	<script src="assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
-	<script src="assets/js/bootstrap-tagsinput.min.js"></script>
+	<script src="assets/js/dropzone/dropzone.js"></script>
 	<script src="assets/js/neon-chat.js"></script>
 
 
