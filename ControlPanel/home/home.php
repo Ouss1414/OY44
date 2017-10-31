@@ -54,7 +54,8 @@
 
 <hr>
 <div class="row">
-	<h2 align="center" class="margin-bottom">Your Book</h2>
+	    <h2 align="center">Your Book</h2>
+        <button class="btn btn-green" style="margin-left: 87.4%;margin-bottom: 1.5%" onclick="location.href='ControlPanel.php?CP=New-Book'">New Book</button>
 	<div align="center">
 		<table class="table-bordered text-center" width="90%">
 			<tr class="theme-skins">

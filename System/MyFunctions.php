@@ -105,8 +105,8 @@ function ControlPanel($Pages){
         case "home" :
             $redirectToPage = "home";
             break;
-        case "file-upload" :
-            $redirectToPage = "file-upload";
+        case "New-Book" :
+            $redirectToPage = "New-Book";
             break;
         case "new-post" :
             $redirectToPage = "new-post";

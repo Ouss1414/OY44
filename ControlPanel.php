@@ -10,8 +10,8 @@ if(empty($_GET['CP'])){
 }
     if ($_GET['CP'] == 'home'){
         $welcome = 'active';
-    }else if ($_GET['CP'] == 'file-upload'){
-        $file_upload = 'active';
+    }else if ($_GET['CP'] == 'New-Book'){
+        $New_Book = 'active';
     }else if ($_GET['CP'] == 'new-post'){
         $new_post = 'active';
     }else if ($_GET['CP'] == 'Mailbox'){
@@ -136,10 +136,10 @@ if(empty($_GET['CP'])){
                     </ul>
                 </li>
 
-                <li class="<?= $file_upload ?>">
-                    <a href="ControlPanel.php?CP=file-upload">
+                <li class="<?= $New_Book ?>">
+                    <a href="ControlPanel.php?CP=New-Book">
                         <i class="entypo-upload"></i>
-                        <span class="title">File upload</span>
+                        <span class="title">New Book</span>
                     </a>
                 </li>
 
@@ -477,7 +477,7 @@ if(empty($_GET['CP'])){
                 break;
             case "home" : include_once "ControlPanel/home/home.php";
                 break;
-            case "file-upload" : include_once "ControlPanel/file-upload.html";
+            case "New-Book" : include_once "ControlPanel/New-Book.php";
                 break;
             case "new-post" : include_once "ControlPanel/new-post.html";
                 break;
