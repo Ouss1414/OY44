@@ -16,6 +16,9 @@ if(isset($_POST['btn-login']))
     if ($result->num_rows != 1) {
         $msg_login = '<div class="w3-text-red">The username or password uncorrect</div>';
     } else {
+        while ($row = $result->fetch_assoc()){
+            $UserNameLog = $row['User_Name'];
+        }
         $_SESSION['user']  = $UserNameLog ;
 
         if(!empty($_GET['uni'])) {
