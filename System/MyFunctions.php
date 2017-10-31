@@ -111,6 +111,9 @@ function ControlPanel($Pages){
         case "new-post" :
             $redirectToPage = "new-post";
             break;
+        case "Edit_Book" :
+            $redirectToPage = "Edit_Book";
+            break;
         default :
             $redirectToPage = "ControlPanel";
             break;

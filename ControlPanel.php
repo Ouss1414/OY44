@@ -481,6 +481,8 @@ if(empty($_GET['CP'])){
                 break;
             case "new-post" : include_once "ControlPanel/new-post.html";
                 break;
+            case "Edit_Book" : include_once "ControlPanel/home/Edit_book.php";
+                break;
             default: include_once "ControlPanel/home/home.php";
                 break;
         }

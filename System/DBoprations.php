@@ -22,7 +22,7 @@ function Get_Books(){
                             <td style="padding: 10px">'.$row_book['Name_Book'].'</td>
                             <td style="padding: 10px">'.$row_book['Price'].'</td>
                             <td style="padding: 10px"><input type="button" name="add_exercise" value="Add Exercise" class="btn"></td>
-                            <td style="padding: 10px"><input type="button" name="Edit" value="Edit" class="btn"></td>
+                            <td style="padding: 10px"><input type="button" name="Edit" value="Edit" class="btn" onclick="location.href=\'ControlPanel.php?CP=Edit_Book\'"></td>
                             <td style="padding: 10px"><input type="button" class="delete_data btn btn-red" name="'.$row_book['Name_Book'].'" id="'.$row_book['Serial'].'" value="Delete"></td>
                         </tr>
                     ';
