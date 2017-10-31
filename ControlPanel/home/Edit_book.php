@@ -1,26 +1,28 @@
 <div class="row" align="center">
     <h2 class="margin-bottom">Edit Book (##########)</h2>
     <form>
-        <table class="table">
+        <table class="table" style="max-width: 60%">
             <tr>
                 <td><label for="Serial">Serial book: </label></td>
-                <td><input type="text" value="" class="form-control" name="Serial" placeholder="Serial number" required></td>
+                <td><input type="text" class="form-control" name="Serial" placeholder="Serial number" required></td>
             </tr>
 
             <tr>
                 <td><label for="Name_book">Name book: </label></td>
-                <td><input type="text" value="" class="form-control" name="Name_book" placeholder="Name book" required></td>
+                <td><input type="text" class="form-control" name="Name_book" placeholder="Name book" required></td>
             </tr>
 
             <tr>
                 <td><label for="Page_book"  >Pages: </label></td>
-                <td><input type="number" value="" class="form-control" name="Page_book" placeholder="Number only"  required></td>
+                <td><input type="number" class="form-control" name="Page_book" placeholder="Number only"  required></td>
             </tr>
 
             <tr>
                 <td><label for="Price_book"  >Price: </label></td>
-                <td><input type="number" value="" class="form-control" name="Price_book" placeholder="Free"></td>
-                <td><p style="color: red">* If it's FREE please don't add a value.</p></td>
+                <td>
+                    <input type="number" class="form-control" name="Price_book" placeholder="Free">
+                    <p style="color: red">* If it's FREE please don't add a value.</p>
+                </td>
             </tr>
 
             <tr>
@@ -28,10 +30,10 @@
                 <td><select class="form-control" name="catagories_book">
                         <option>Choose one...</option>
                         <option value="Sport">Sport</option>
-                        <option value="Sport">Programing</option>
-                        <option value="Sport">History</option>
-                        <option value="Sport">Cars</option>
-                        <option value="Sport">Math</option>
+                        <option value="Programing">Programing</option>
+                        <option value="Hestory">Hestory</option>
+                        <option value="Cars">Cars</option>
+                        <option value="Math">Math</option>
                     </select>
                 </td>
             </tr>
@@ -46,14 +48,14 @@
                 <td><label for="File_book">File book: </label></td>
                 <td><div class="fileinput fileinput-new" data-provides="fileinput">
                         <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;" data-trigger="fileinput">
-                            <img src="http://placehold.it/200x150" alt="...">
+                            <div style="margin-top: 30%; font-size: 24px">Click Here</div>
                         </div>
                         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px"></div>
                         <div>
                             <span class="btn btn-white btn-file">
-                                <span class="fileinput-new">Select image</span>
+                                <span class="fileinput-new">Select File</span>
                                 <span class="fileinput-exists">Change</span>
-                                <input type="file" name="File_book" accept="image/*" required>
+                                <input type="file" name="File_book" accept="application/pdf" required>
                             </span>
                             <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
                         </div>
@@ -77,6 +79,7 @@
                             <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
                         </div>
                     </div>
+                <p style="color: red;">* Only images [JPG,JPEG,JPG2,PNG,GIF].</p>
                 </td>
             </tr>
 
