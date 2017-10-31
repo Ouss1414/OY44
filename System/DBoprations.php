@@ -497,7 +497,7 @@ function Profile(){
                                 ';
                                 if($_SESSION['user'] = $user_name) {
                                     echo '
-                            <div class="delete_data w3-padding fa fa-trash w3-btn w3-red right" style="margin-bottom: 5px" name="'.$row_Post_Profile['Subject'].'" id="'.$row_Post_Profile['Id'].'" value="pid=Profile"></div>
+                            <div class="delete_data w3-padding fa fa-trash w3-btn w3-red right" style="margin-bottom: 5px" name="'.$row_Post_Profile['Message'].'" id="'.$row_Post_Profile['Id'].'" value="pid=Profile"></div>
                         ';
                                 }
                 echo '
@@ -858,6 +858,50 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
     $college = $_GET['college'];
     $dep = $_GET['dep'];
 
+    if (empty($_GET['Sort'])){
+        $Sort = 'ORDER BY Date_Post DESC';
+        $select = '';
+        $select_new_post = '';
+        $select_old_post = '';
+        $select_subject_A_Z = '';
+        $select_subject_Z_A = '';
+    }else if ($_GET['Sort'] == 'new_post'){
+        $Sort = 'ORDER BY Date_Post DESC';
+        $select_new_post = 'selected';
+        $select_old_post = '';
+        $select_subject_A_Z = '';
+        $select_subject_Z_A = '';
+        $select = '';
+    }else if ($_GET['Sort'] == 'old_post'){
+        $Sort = 'ORDER BY Date_Post ASC';
+        $select_old_post = 'selected';
+        $select_new_post = '';
+        $select_subject_A_Z = '';
+        $select_subject_Z_A = '';
+        $select = '';
+    }else if ($_GET['Sort'] == 'subject-(A-Z)'){
+        $Sort = 'ORDER BY Subject ASC';
+        $select_subject_A_Z = 'selected';
+        $select_subject_Z_A = '';
+        $select_new_post = '';
+        $select_old_post = '';
+        $select = '';
+    }else if ($_GET['Sort'] == 'subject-(Z-A)'){
+        $Sort = 'ORDER BY Subject DESC';
+        $select_subject_Z_A = 'selected';
+        $select_subject_A_Z = '';
+        $select_new_post = '';
+        $select_old_post = '';
+        $select = '';
+    }else {
+        $Sort = 'ORDER BY Date_Post DESC';
+        $select_new_post = '';
+        $select_old_post = '';
+        $select_subject_A_Z = '';
+        $select_subject_Z_A = '';
+        $select = '';
+    }
+
     //Department
     $sql_Department = "SELECT Id FROM department WHERE  Name = '$Name_Department'";
     $result_Department = $con->query($sql_Department);
@@ -877,11 +921,13 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
         
         <div class="w3-row w3-card-2 w3-margin-top w3-margin-left w3-margin-right w3-padding">
             <a href="index.php?pid=Add_Post&uni='.$Name_University.'&college='.$Name_College.'&dep='.$Name_Department.'" class="w3-button w3-border" style="text-decoration: none">Add Post</a>  -
-            <select name="list" id="list" class="w3-theme-2 w3-margin" style="width: 15%">
-                <option value="index.php?pid=Department&uni='.$uni.'&college='.$college.'&dep='.$dep.'">Sort --- </option>
-                <option value="index.php?pid=Department&uni='.$uni.'&college='.$college.'&dep='.$dep.'&sort=Date_Post">Date</option>
-                <option value="index.php?pid=Department&uni='.$uni.'&college='.$college.'&dep='.$dep.'&sort=Name_Book">Name</option>
-                <input type=button value="Sort" onclick="window.location = document.getElementById(\'list\').value" />
+            <select name="list" id="list" class="w3-theme-2 w3-margin-right" style="width: 15%">
+                <option '.$select.' value="index.php?pid=Department&uni='.$uni.'&college='.$college.'&dep='.$dep.'">sort by...</option>
+                <option '.$select_new_post.' value="index.php?pid=Department&uni='.$uni.'&college='.$college.'&dep='.$dep.'&Sort=new_post">new post</option>
+                <option '.$select_old_post.' value="index.php?pid=Department&uni='.$uni.'&college='.$college.'&dep='.$dep.'&Sort=old_post">old post</option>
+                <option '.$select_subject_A_Z.' value="index.php?pid=Department&uni='.$uni.'&college='.$college.'&dep='.$dep.'&Sort=subject-(A-Z)">subject-(A-Z)</option>
+                <option '.$select_subject_Z_A.' value="index.php?pid=Department&uni='.$uni.'&college='.$college.'&dep='.$dep.'&Sort=subject-(Z-A)">subject-(Z-A)</option>
+                <input type=button value=" Sort " class="w3-btn w3-border" onclick="window.location = document.getElementById(\'list\').value" style="padding-left: 2%; padding-right: 2%"/>
             </select>
         </div>
         
@@ -905,7 +951,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                 ';
 
             //Post
-            $sql_Post_User = "SELECT * FROM post WHERE Department_Id = $Id_Department ";
+            $sql_Post_User = "SELECT * FROM post WHERE Department_Id = $Id_Department $Sort";
             $result_Post = $con->query($sql_Post_User);
             if($result_Post->num_rows > 0) {
                 while ($row_Post = $result_Post->fetch_assoc()) {
@@ -971,8 +1017,9 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                     <!-- Border -->
                     <div class="w3-border-bottom" style="margin-top: 13%"></div>
                     ';
+
             //Post
-            $sql_Post_User = "SELECT * FROM post WHERE Department_Id = $Id_Department ";
+            $sql_Post_User = "SELECT * FROM post WHERE Department_Id = $Id_Department $Sort";
             $result_Post = $con->query($sql_Post_User);
             if($result_Post->num_rows > 0) {
                 while ($row_Post = $result_Post->fetch_assoc()) {
@@ -1004,7 +1051,6 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                             ';
                     if($_SESSION['user'] == $Name_User2) {
                         echo '
-                            <p class="Post-Prof" id="' . $row_Post['Message'] . '" style="display: none"></p>
                             <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="'.$row_Post['Subject'].'" id="'.$row_Post['Id'].'" value="pid=Department&uni='.$_GET['uni'].'&college='.$_GET['college'].'&dep='.$_GET['dep'].'"></div>
                         ';
                     }
@@ -1041,7 +1087,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
         ';
 
         //Post
-        $sql_Post_User = "SELECT * FROM post WHERE Department_Id = $Id_Department ";
+        $sql_Post_User = "SELECT * FROM post WHERE Department_Id = $Id_Department $Sort";
         $result_Post = $con->query($sql_Post_User);
         if($result_Post->num_rows > 0) {
             while ($row_Post = $result_Post->fetch_assoc()) {

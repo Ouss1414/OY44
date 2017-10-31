@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $(".delete_data").click(function () {
-        var Post = $(".Post-Prof").attr('id');
+        var Post = $(this).attr('name');
         var result = confirm("Are you want to delete post ( " + Post.substring(0,20) + " ...) ?");
         if (result) {
             //Logic to delete the item
