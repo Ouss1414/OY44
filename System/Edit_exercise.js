@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $(".Add_Exercise").click(function () {
+    $(".Update_Exercise").click(function () {
         var Num_Question = $("#Num_Question").val();
         var Question = $("#Question").val();
         var Answer_1 = $("#Answer_1").val();
@@ -11,7 +11,7 @@ $(document).ready(function() {
         var Serial_Book = $(this).attr('name');
         $.ajax({
             type: 'POST',
-            url: 'System/Add_exercise.php',
+            url: 'System/Edit_exercise.php',
             data: {
                 Num_Question: Num_Question,
                 Question: Question,

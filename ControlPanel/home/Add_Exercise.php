@@ -2,13 +2,16 @@
     <li>
         <a href="ControlPanel.php?CP=home"><i class="fa-home"></i>Home</a>
     </li>
+    <li>
+        <a href="ControlPanel.php?CP=Exercise"><i class="fa-home"></i>Exercise</a>
+    </li>
     <li class="active">
-        <strong>Add Exercise</strong>
+        <strong>New Exercise</strong>
     </li>
 </ol>
 
 <div class="row" align="center">
-    <h2 class="margin-bottom">Add Exercise</h2>
+    <h2 class="margin-bottom">New Exercise</h2>
         <table class="table" style="max-width: 70%">
             <?php
                 Get_Id_book();
@@ -35,7 +38,7 @@
                 <td><label for="Answer_1">Answer 1: </label></td>
                 <td>
                     <input type="text" class="form-control" name="Answer_1" id="Answer_1" placeholder="Answer 1" style="max-width: 70%; display: inline;margin-right: 5px" required>
-                    <label><input type="radio" name="Q_Answer" class="Q_Answer" value="1" required>! Correct answer</label>
+                    <label><input type="radio" name="Q_Answer" class="Q_Answer" value="1" required> Correct answer!</label>
                 </td>
             </tr>
 
@@ -43,7 +46,7 @@
                 <td><label for="Answer_2">Answer 2: </label></td>
                 <td>
                     <input type="text" class="form-control" name="Answer_2" id="Answer_2" placeholder="Answer 2" style="max-width: 70%; display: inline;margin-right: 5px" required>
-                    <label><input type="radio" name="Q_Answer" class="Q_Answer" value="2" required>! Correct answer</label>
+                    <label><input type="radio" name="Q_Answer" class="Q_Answer" value="2" required> Correct answer!</label>
                 </td>
             </tr>
 
@@ -51,7 +54,7 @@
                 <td><label for="Answer_3">Answer 3: </label></td>
                 <td>
                     <input type="text" class="form-control" name="Answer_3" id="Answer_3" placeholder="Answer 3" style="max-width: 70%; display: inline;margin-right: 5px" required>
-                    <label><input type="radio" name="Q_Answer" class="Q_Answer" value="3" required>! Correct answer</label>
+                    <label><input type="radio" name="Q_Answer" class="Q_Answer" value="3" required> Correct answer!</label>
                 </td>
             </tr>
 
@@ -59,7 +62,7 @@
                 <td><label for="Answer_4">Answer 4: </label></td>
                 <td>
                     <input type="text" class="form-control" name="Answer_4" id="Answer_4" placeholder="Answer 4" style="max-width: 70%; display: inline;margin-right: 5px" required>
-                    <label><input type="radio" name="Q_Answer" class="Q_Answer" value="4" required>! Correct answer</label>
+                    <label><input type="radio" name="Q_Answer" class="Q_Answer" value="4" required> Correct answer!</label>
 
                 </td>
             </tr>
@@ -74,7 +77,7 @@
                 $Serial_Book = "<script>getElementById('books').val();</script>";
             }
             ?>
-            <input type="submit" value="Add" name="<?= $Serial_Book ?>" class="Update_book btn btn-green" id="<?= $_SESSION['user'] ?>"/>
+            <input type="submit" value="Add" name="<?= $Serial_Book ?>" class="Add_Exercise btn btn-green" id="<?= $_SESSION['user'] ?>"/>
             <input type="reset" value="Reset" name="reset_book" class="btn btn-red margin-left"/>
         </div>
 </div>

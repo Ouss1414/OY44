@@ -663,6 +663,7 @@ if(empty($_GET['CP'])){
 <script src="System/delete_book.js"></script>
 <script src="System/Add_exercise.js"></script>
 <script src="System/Delete_exercise.js"></script>
+<script src="System/Edit_exercise.js"></script>
 
 
 

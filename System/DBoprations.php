@@ -1,5 +1,88 @@
 <?php
 
+function Edit_Exercise(){
+    $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
+
+    $UserName = $_SESSION['user'];
+    $Id_Exercise = $_GET['Serial'];
+
+    $sql_user = "SELECT * FROM user WHERE User_Name= '$UserName'";
+    $result_user = $con->query($sql_user);
+    if($result_user->num_rows > 0) {
+        while ($row_user = $result_user->fetch_assoc()) {
+            $user_Id = $row_user['Id'];
+            $sql_exercise = "SELECT * FROM exercise WHERE User_Id='$user_Id' AND Id='$Id_Exercise'";
+            $result_exercise = $con->query($sql_exercise);
+            if ($result_exercise->num_rows > 0) {
+                while ($row_exercise = $result_exercise->fetch_assoc()) {
+                    $Q_Answer_1 = '';
+                    $Q_Answer_2 = '';
+                    $Q_Answer_3 = '';
+                    $Q_Answer_4 = '';
+                    if($row_exercise['Q_answer'] == $row_exercise['Answer_1']){
+                        $Q_Answer_1 = 'checked';
+                    }else if($row_exercise['Q_answer'] == $row_exercise['Answer_2']){
+                        $Q_Answer_2 = 'checked';
+                    }else if($row_exercise['Q_answer'] == $row_exercise['Answer_3']){
+                        $Q_Answer_3 = 'checked';
+                    }else if($row_exercise['Q_answer'] == $row_exercise['Answer_4']){
+                        $Q_Answer_4 = 'checked';
+                    }
+                    echo'
+            <table class="table" style="max-width: 70%">
+        <tr>
+            <td><label for="Num_Question">Question number: </label></td>
+            <td><input type="number" class="form-control" name="Num_Question" id="Num_Question" value="'.$row_exercise['Number_Q'].'" style="max-width: 50%" autofocus required></td>
+        </tr>
+
+        <tr>
+            <td><label for="Question">Question: </label></td>
+            <td><input type="text" class="form-control" name="Question" id="Question" value="'.$row_exercise['Question'].'" required></td>
+        </tr>
+
+        <tr>
+            <td><label for="Answer_1">Answer 1: </label></td>
+            <td>
+                <input type="text" class="form-control" name="Answer_1" id="Answer_1" value="'.$row_exercise['Answer_1'].'" style="max-width: 70%; display: inline;margin-right: 5px" required>
+                <label><input type="radio" name="Q_Answer" class="Q_Answer" value="1" '.$Q_Answer_1.' required> Correct answer!</label>
+            </td>
+        </tr>
+
+        <tr>
+            <td><label for="Answer_2">Answer 2: </label></td>
+            <td>
+                <input type="text" class="form-control" name="Answer_2" id="Answer_2" value="'.$row_exercise['Answer_2'].'" style="max-width: 70%; display: inline;margin-right: 5px" required>
+                <label><input type="radio" name="Q_Answer" class="Q_Answer" value="2" '.$Q_Answer_2.' required> Correct answer!</label>
+            </td>
+        </tr>
+
+        <tr>
+            <td><label for="Answer_3">Answer 3: </label></td>
+            <td>
+                <input type="text" class="form-control" name="Answer_3" id="Answer_3" value="'.$row_exercise['Answer_3'].'" style="max-width: 70%; display: inline;margin-right: 5px" required>
+                <label><input type="radio" name="Q_Answer" class="Q_Answer" value="3" '.$Q_Answer_3.' required> Correct answer!</label>
+            </td>
+        </tr>
+
+        <tr>
+            <td><label for="Answer_4">Answer 4: </label></td>
+            <td>
+                <input type="text" class="form-control" name="Answer_4" id="Answer_4" value="'.$row_exercise['Answer_4'].'" style="max-width: 70%; display: inline;margin-right: 5px" required>
+                <label><input type="radio" name="Q_Answer" class="Q_Answer" value="4" '.$Q_Answer_4.' required> Correct answer!</label>
+
+            </td>
+        </tr>
+
+    </table>
+
+    ';
+                }
+            }
+        }
+    }
+
+}
+
 function Get_Exercise(){
     $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
 
