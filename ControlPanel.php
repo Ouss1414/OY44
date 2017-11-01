@@ -73,8 +73,8 @@ if(empty($_GET['CP'])){
 
                 <!-- logo -->
                 <div class="logo">
-                    <a href="index.html">
-                        <img src="assets/images/logo@2x.png" width="120" alt="" />
+                    <a href="ControlPanel.php?CP=home">
+                        <img src="ControlPanel/assets/images/logo@2x.png" width="120" alt="" />
                     </a>
                 </div>
 
@@ -219,7 +219,7 @@ if(empty($_GET['CP'])){
                                     <li class="active">
                                         <a href="#">
 											<span class="image pull-right">
-												<img src="assets/images/thumb-1@2x.png" width="44" alt="" class="img-circle" />
+												<img src="ControlPanel/assets/images/thumb-1@2x.png" width="44" alt="" class="img-circle" />
 											</span>
 
                                             <span class="line">
@@ -236,7 +236,7 @@ if(empty($_GET['CP'])){
                                     <li class="active">
                                         <a href="#">
 											<span class="image pull-right">
-												<img src="assets/images/thumb-2@2x.png" width="44" alt="" class="img-circle" />
+												<img src="ControlPanel/assets/images/thumb-2@2x.png" width="44" alt="" class="img-circle" />
 											</span>
 
                                             <span class="line">
@@ -253,7 +253,7 @@ if(empty($_GET['CP'])){
                                     <li>
                                         <a href="#">
 											<span class="image pull-right">
-												<img src="assets/images/thumb-3@2x.png" width="44" alt="" class="img-circle" />
+												<img src="ControlPanel/assets/images/thumb-3@2x.png" width="44" alt="" class="img-circle" />
 											</span>
 
                                             <span class="line">
@@ -270,7 +270,7 @@ if(empty($_GET['CP'])){
                                     <li>
                                         <a href="#">
 											<span class="image pull-right">
-												<img src="assets/images/thumb-4@2x.png" width="44" alt="" class="img-circle" />
+												<img src="ControlPanel/assets/images/thumb-4@2x.png" width="44" alt="" class="img-circle" />
 											</span>
 
                                             <span class="line">
@@ -287,7 +287,7 @@ if(empty($_GET['CP'])){
                             </li>
 
                             <li class="external">
-                                <a href="mailbox.html">All Messages</a>
+                                <a href="ControlPanel.php?CP=mailbox">All Messages</a>
                             </li>
                         </ul>
 
@@ -417,19 +417,19 @@ if(empty($_GET['CP'])){
 
                         Language: &nbsp;
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
-                            <img src="assets/images/flags/flag-uk.png" width="16" height="16" />
+                            <img src="ControlPanel/assets/images/flags/flag-uk.png" width="16" height="16" />
                         </a>
 
                         <ul class="dropdown-menu pull-right">
                             <li class="active">
                                 <a href="#">
-                                    <img src="assets/images/flags/flag-uk.png" width="16" height="16" />
+                                    <img src="ControlPanel/assets/images/flags/flag-uk.png" width="16" height="16" />
                                     <span>English</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="assets/images/flags/flag-sa.png" width="16" height="16" />
+                                    <img src="ControlPanel/assets/images/flags/flag-sa.png" width="16" height="16" />
                                     <span>Arabic</span>
                                 </a>
                             </li>
@@ -482,6 +482,12 @@ if(empty($_GET['CP'])){
             case "new-post" : include_once "ControlPanel/new-post.html";
                 break;
             case "Edit_Book" : include_once "ControlPanel/home/Edit_book.php";
+                break;
+            case "Add_Exercise" : include_once "ControlPanel/home/Add_Exercise.php";
+                break;
+            case "Exercise" : include_once "ControlPanel/home/Exercises.php";
+                break;
+            case "Edit_Exercise" : include_once "ControlPanel/home/Edit_Exercise.php";
                 break;
             default: include_once "ControlPanel/home/home.php";
                 break;
@@ -655,6 +661,8 @@ if(empty($_GET['CP'])){
 <link rel="stylesheet" href="ControlPanel/assets/js/wysihtml5/bootstrap-wysihtml5.css">
 <link rel="stylesheet" href="ControlPanel/assets/js/selectboxit/jquery.selectBoxIt.css">
 <script src="System/delete_book.js"></script>
+<script src="System/Add_exercise.js"></script>
+<script src="System/Delete_exercise.js"></script>
 
 
 

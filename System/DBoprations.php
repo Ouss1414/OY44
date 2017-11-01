@@ -1,5 +1,73 @@
 <?php
 
+function Get_Exercise(){
+    $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
+
+    $UserName = $_SESSION['user'];
+    $count = '';
+    $sql_user = "SELECT * FROM user WHERE User_Name= '$UserName'";
+    $result_user = $con->query($sql_user);
+    if($result_user->num_rows > 0){
+        while ($row_user = $result_user->fetch_assoc()){
+            $user_Id = $row_user['Id'];
+            $sql_exercise = "SELECT * FROM exercise WHERE User_Id='$user_Id'";
+            $result_exercise = $con->query($sql_exercise);
+            if($result_exercise->num_rows > 0){
+                while ($row_exercise = $result_exercise->fetch_assoc()){
+                    $count++;
+                    echo '
+                        <tr>
+                            <td style="padding: 5px">'.$count.'</td>
+                            <td style="padding: 10px">'.substr($row_exercise['Question'],0,55).'</td>
+                            <td style="padding: 10px">'.$row_exercise['Number_Q'].'</td>
+                            <td style="padding: 10px">'.$row_exercise['Answer_1'].'</td>
+                            <td style="padding: 10px">'.$row_exercise['Answer_2'].'</td>
+                            <td style="padding: 10px">'.$row_exercise['Answer_3'].'</td>
+                            <td style="padding: 10px">'.$row_exercise['Answer_4'].'</td>
+                            <td style="padding: 10px">'.$row_exercise['Q_answer'].'</td>
+                            <td style="padding: 10px"><input type="button" name="Edit" value="Edit" class="btn" onclick="location.href=\'ControlPanel.php?CP=Edit_Exercise&Serial='.$row_exercise['Id'].'\'"></td>
+                            <td style="padding: 10px"><input type="button" class="delete_exercise btn btn-red" name="'.$row_exercise['Question'].'" id="'.$row_exercise['Id'].'" value="Delete"></td>
+                        </tr>
+                    ';
+                }
+            }
+        }
+    }
+
+}
+
+function Get_Id_book(){
+    $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
+
+        echo '
+            <tr>
+                <td><label for="books">Choose book: </label></td>
+                <td>
+                    <select class="form-control" id="books" onchange="Id_Book()" required>
+                        <option>choose book...</option>
+        ';
+
+        $sql_book = "SELECT * FROM book";
+        $result_book = $con->query($sql_book);
+        if ($result_book->num_rows > 0){
+            while ($row_book = $result_book->fetch_assoc()){
+                $select = "";
+                if ($_GET['Serial'] == $row_book['Serial']){
+                    $select = "selected";
+                }
+                echo '
+                    <option '.$select.' value="'.$row_book['Serial'].'">'.$row_book['Name_Book'].'</option>
+                    ';
+            }
+        }
+
+        echo '
+                    </select>
+                </td>
+            </tr>
+        ';
+}
+
 function Get_Books(){
     $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
 
@@ -21,8 +89,8 @@ function Get_Books(){
                             <td style="padding: 10px">'.$row_book['Serial'].'</td>
                             <td style="padding: 10px">'.$row_book['Name_Book'].'</td>
                             <td style="padding: 10px">'.$row_book['Price'].'</td>
-                            <td style="padding: 10px"><input type="button" name="add_exercise" value="Add Exercise" class="btn"></td>
-                            <td style="padding: 10px"><input type="button" name="Edit" value="Edit" class="btn" onclick="location.href=\'ControlPanel.php?CP=Edit_Book\'"></td>
+                            <td style="padding: 10px"><input type="button" name="add_exercise" value="Add Exercise" class="btn" onclick="location.href=\'ControlPanel.php?CP=Add_Exercise&Serial='.$row_book['Serial'].'\'"></td>
+                            <td style="padding: 10px"><input type="button" name="Edit" value="Edit" class="btn" onclick="location.href=\'ControlPanel.php?CP=Edit_Book&Serial='.$row_book['Serial'].'\'"></td>
                             <td style="padding: 10px"><input type="button" class="delete_data btn btn-red" name="'.$row_book['Name_Book'].'" id="'.$row_book['Serial'].'" value="Delete"></td>
                         </tr>
                     ';

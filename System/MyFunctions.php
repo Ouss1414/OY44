@@ -6,7 +6,7 @@ function login(){
         $Name_User = $_SESSION['user'];
 
         //User
-        $sql_User = "SELECT Image FROM user WHERE  User_Name = '$Name_User'";
+        $sql_User = "SELECT Image,User_Type FROM user WHERE  User_Name = '$Name_User'";
         $result_user = $con->query($sql_User);
         if ($result_user->num_rows > 0) {
             while ($row_User = $result_user->fetch_assoc()) {
@@ -26,10 +26,15 @@ function login(){
                 if (empty($row_User['Image'])) {
                     $row_User['Image'] = 'defult.png';
                 }
-                echo '
+                    echo'
                     <a href="Login/Logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="Log out"><i class="fa fa-sign-out"></i></a>
                     <a href="index.php?pid=Profile" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account"><img src="Images/Pic/' . $row_User['Image'] . '" class="w3-circle" style="height:25px;width:25px" alt="Avatar"></a>    
                 ';
+                if($row_User['User_Type'] == 'doctor' || $row_User['User_Type'] == 'dean' || $row_User['User_Type'] == 'author') {
+                    echo '
+                    <a href="ControlPanel.php?CP=home" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">Control Panel</a>
+                    ';
+                }
             }
         }
     }else{
@@ -114,10 +119,20 @@ function ControlPanel($Pages){
         case "Edit_Book" :
             $redirectToPage = "Edit_Book";
             break;
+        case "Add_Exercise" :
+            $redirectToPage = "Add_Exercise";
+            break;
+        case "Exercise" :
+            $redirectToPage = "Exercise";
+            break;
+        case "Edit_Exercise" :
+            $redirectToPage = "Edit_Exercise";
+            break;
         default :
             $redirectToPage = "ControlPanel";
             break;
     }
     return $redirectToPage;
 }
+
 ?>
