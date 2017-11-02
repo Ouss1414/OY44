@@ -7,6 +7,7 @@ require "System/DBoprations.php";
 ?>
 <!DOCTYPE html>
 <html>
+<head>
 <title>My University | <?= $PageID ?></title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,6 +24,21 @@ require "System/DBoprations.php";
 <script src="http://yui.yahooapis.com/2.8.0r4/build/menu/menu-min.js"></script>
 <script src="http://yui.yahooapis.com/2.8.0r4/build/button/button-min.js"></script>
 <script src="http://yui.yahooapis.com/2.8.0r4/build/editor/editor-min.js"></script>
+
+<script>
+    var t;
+    document.onmousemove=to
+    document.onkeypress=to
+    function logout()
+    {
+        location.href='Login/Logout.php'
+        alert('You have been logged out.');
+    }
+    function to(){
+        clearTimeout(t);
+        t=setTimeout(logout,60000)//logs out in 1 minutes
+    }
+</script>
 
 </head>
 
