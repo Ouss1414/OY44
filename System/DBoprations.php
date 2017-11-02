@@ -459,7 +459,7 @@ function List_Books()
         print '<a style="margin: 2px;" id="Previous" class="page" href="index.php?pid=IEBook&List=' . $_GET['List'] . '&page=' . $page = $page - 1 . '#IEBook">Prev</a>';
     }
 
-    for ($page = 1; $page <= $totalPages; $page++) {
+    for ($page = 1; $page < $totalPages+1; $page++) {
         print '<a style="margin: 2px;" id="' . $page . '" class="page" href="index.php?pid=IEBook&List=' . $_GET['List'] . '&page=' . $page . '#IEBook">' . $page . '</a>';
     }
 
