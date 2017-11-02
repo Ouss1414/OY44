@@ -44,16 +44,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
+    //book
+    $sql = "SELECT * FROM book";
+    $result_book = $con->query($sql);
+    if ($result_book->num_rows > 0) {
+        while ($row_book = $result_book->fetch_assoc()) {
+            if ($Serial == $row_book['Serial']){
+                echo '<script>alert("This Serial ('.$row_book['Serial'].') is already exists.")</script>';
+            }elseif ($File_book == $row_book['Location']){
+                echo '<script>alert("This File ('.$row_book['Location'].') is already exists.")</script>';
+            }elseif ($Name_book == $row_book['Name_Book']) {
+                echo '<script>alert("This name book ('.$row_book['Name_Book'].') is already exists.")</script>';
+            }elseif ($Image_book == $row_book['Image_Book']){
+                echo '<script>alert("This image name ('.$row_book['Image_Book'].') is already exists.")</script>';
+            }
+        }
+        echo '<meta http-equiv="refresh" content="0; \'/OY44/ControlPanel.php?CP=New-Book"/>';
+    }
 
         $sql = "INSERT INTO book (Serial, Location, Name_Book, Available, Page, Price, Catagories, Image_Book, User_Id, Summary) 
             VALUE('$Serial','$File_book','$Name_book','$Available_book','$Page_book','$Price_book','$catagories_book','$Image_book','$User_Id','$Summary_book')";
 
-        $con->query($sql);
+        if ($con->query($sql)) {
 
             move_uploaded_file($_FILES["File_book"]["tmp_name"], $target_File);
             move_uploaded_file($_FILES["Image_book"]["tmp_name"], $target_Image);
 
-    echo '<meta http-equiv="refresh" content="0; \'/OY44/ControlPanel.php?CP=ControlPanel"/>';
-
+            echo '<meta http-equiv="refresh" content="0; \'/OY44/ControlPanel.php?CP=ControlPanel"/>';
+        }
 }
 ?>
