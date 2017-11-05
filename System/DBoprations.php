@@ -990,7 +990,7 @@ function Profile(){
                                     <div class="w3-center"><p><button class="w3-btn w3-border" style="min-width: 100px"> FOLLOW </button> <button class="w3-btn w3-border" style="min-width: 100px"> CV </button></p></div>
                                     <hr>
                                     <p style="text-transform: uppercase"><i class="fa fa-university fa-fw w3-margin-right w3-text-theme"></i>'.$row_User['University']. "," . $row_User['Department'] .'</p>
-                                    <p style="text-transform: uppercase"><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> '.$row_User['Country'] . "," . $row_User['City'] .'</p>
+                                    <p style="text-transform: uppercase"><i class="fa fa-Author fa-fw w3-margin-right w3-text-theme"></i> '.$row_User['Country'] . "," . $row_User['City'] .'</p>
                                     <p style="text-transform: uppercase"><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>'.$row_User['Date_Of_Birth'].'</p>
                                 </div>
                             </div>
@@ -1117,17 +1117,18 @@ function Profile(){
                         echo '
                                 <div class="w3-row-padding" style="margin:0 -16px">
                                     <div class="w3-half">
-                                        <img src="Images/'.$result_Post_Profile['Image'].'" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+                                        <img src="Images/'.$row_Post_Profile['Image'].'" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
                                     </div>
                                     <div class="w3-half">
-                                        <img src="Images/'.$result_Post_Profile['Image'].'" style="width:100%" alt="Nature" class="w3-margin-bottom">
+                                        <img src="Images/'.$row_Post_Profile['Image'].'" style="width:100%" alt="Nature" class="w3-margin-bottom">
                                     </div>
                                 </div>
                                 ';
                     }
                                 echo '
-                                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  '. $row_Post_Profile['Like'] .'</button>
-                                <button type="button" class="w3-button w3-margin-bottom w3-red"><i class="fa fa-thumbs-down"></i>  '. $row_Post_Profile ['Dislike'].'</button>
+                                <button type="button" id="'.$row_Post_Profile['Id'].'" class="Like-profile w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  '. $row_Post_Profile['Like_Post'] .'</button>
+                                
+                                <button type="button" id="'.$row_Post_Profile['Id'].'" class="Dislike-profile w3-button w3-margin-bottom w3-red"><i class="fa fa-thumbs-down"></i>  '. $row_Post_Profile ['Dislike'].'</button>
                                 ';
                                 if($_SESSION['user'] = $user_name) {
                                     echo '
@@ -1423,7 +1424,10 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
          echo '
             <!-- left Column -->
             <div class="w3-col m10">
-        
+        <input type="text" id="uni" name="'.$_GET['uni'].'" style="display: none">
+        <input type="text" id="college" name="'.$_GET['college'].'" style="display: none">
+        <input type="text" id="dep" name="'.$_GET['dep'].'" style="display: none">
+        <input type="text" id="Subject" name="'.$row_Post['Subject'].'" style="display: none">
                 <!-- Background Post -->
                 <div class="w3-card-2 w3-round w3-white w3-padding-16 w3-margin" style="width: 95%;min-height: 400px">
         
@@ -1442,8 +1446,9 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
                                 <div class="w3-row s1 w3-text-black" style="text-align: left;margin: 5px;width: 1000px">Date: <i>'.$row_Post['Date_Post'].'</i></div>
                                 <div class="w3-row s1 w3-text-black" style="text-align: left;margin: 5px;width: 1000px">writer: <i>'.$Name_User.'</i></div>
                                 <div class="w3-row w3-margin-bottom" style="display: inline">
-                                    <div title="LIKE" class="fa fa-thumbs-up w3-large w3-hover-green w3-padding" style="min-width: 70px;"> '.$row_Post['Like'].' </div>
-                                    <div title="DISLIKE" class="fa fa-thumbs-down w3-large w3-hover-red w3-padding" style="min-width: 70px;"> '.$row_Post['Dislike'].' </div>
+                                    <button type="button" title="LIKE" id="'.$row_Post['Id'].'" class="Like fa fa-thumbs-up w3-large w3-hover-green w3-padding w3-button" style="min-width: 70px;"> '.$row_Post['Like_Post'].' </button>
+                                    
+                                    <button type="button" title="DISLIKE" id="'.$row_Post['Id'].'" class="Dislike fa fa-thumbs-down w3-large w3-hover-red w3-padding w3-button w3-margin-bottom" style="min-width: 70px;"> '.$row_Post['Dislike'].' </button>
                                 ';
                     if($_SESSION['user'] == $Name_User2) {
                         echo '
@@ -1611,7 +1616,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                             </div>
                         </div>
                         <div class="w3-dark-grey" style="width: 95%;margin-left: 2.5%;padding-bottom: 3px;padding-top: 3px">
-                            <div title="LIKE" class="fa fa-thumbs-up w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Like'].' </div>
+                            <div title="LIKE" class="fa fa-thumbs-up w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Like_Post'].' </div>
                             <div title="DISLIKE" class="fa fa-thumbs-down w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Dislike'].' </div>
                             ';
                     if($_SESSION['user'] == $Name_User2) {
@@ -1680,7 +1685,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                             </div>
                         </div>
                         <div class="w3-dark-grey" style="width: 95%;margin-left: 2.5%;padding-bottom: 3px;padding-top: 3px">
-                            <div title="LIKE" class="fa fa-thumbs-up w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Like'].' </div>
+                            <div title="LIKE" class="fa fa-thumbs-up w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Like_Post'].' </div>
                             <div title="DISLIKE" class="fa fa-thumbs-down w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Dislike'].' </div>
                             ';
                     if($_SESSION['user'] == $Name_User2) {
@@ -1746,7 +1751,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                             </div>
                         </div>
                         <div class="w3-dark-grey" style="width: 95%;margin-left: 2.5%;padding-bottom: 3px;padding-top: 3px">
-                                <div title="LIKE" class="fa fa-thumbs-up w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Like'].' </div>
+                                <div title="LIKE" class="fa fa-thumbs-up w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Like_Post'].' </div>
                                 <div title="DISLIKE" class="fa fa-thumbs-down w3-large w3-dark-grey w3-padding" style="text-decoration: none;"> '.$row_Post['Dislike'].' </div>
                                 ';
                 if ($_SESSION['user'] == $Name_User) {
@@ -1921,17 +1926,17 @@ echo '
     $totalPages++;
 
     if ($page > 1) {
-        print '<a style="margin: 2px;" id="Previous" class="page" href="index.php?pid=home&page=' . $page = $page - 1 . '#University">Prev</a>';
+        print '<a style="margin: 2px;" id="Previous" class="page" href="index.php?pid=Author&page=' . $page = $page - 1 . '#University">Prev</a>';
     }
 
     for ($page = 1; $page <= $totalPages; $page++) {
-        print '<a style="margin: 2px;" id="' . $page . '" class="page" href="index.php?pid=home&page=' . $page . '#University">' . $page . '</a>';
+        print '<a style="margin: 2px;" id="' . $page . '" class="page" href="index.php?pid=Author&page=' . $page . '#University">' . $page . '</a>';
     }
 
     $next = $_GET['page'] + 1;
     $page--;
     if ($_GET['page'] != $page) {
-        print '<a style="margin: 2px;" id="Next" class="page" href="index.php?pid=home&page=' . $next . '#University">Next</a>';
+        print '<a style="margin: 2px;" id="Next" class="page" href="index.php?pid=Author&page=' . $next . '#University">Next</a>';
     }
 
     echo "

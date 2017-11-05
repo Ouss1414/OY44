@@ -1,3 +1,20 @@
+<?php
+
+$user_name = $_SESSION['user'];
+$Type='';
+
+//user
+$sql = "SELECT * FROM user WHERE User_Name='$user_name'";
+$result = $con->query($sql);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $Type = $row['User_Type'];
+    }
+}
+if ($Type == 'author'){
+
+            echo '
+                
 <!--<div class="row">-->
 <!--	<div class="col-sm-3 col-xs-6">-->
 <!---->
@@ -56,8 +73,8 @@
 <div class="row">
 	    <h2 align="center">Your Book</h2>
     <div class="row" style="margin-left: 80.4%; margin-bottom: 1.5%">
-            <button class="btn btn-green" onclick="location.href='ControlPanel.php?CP=Exercise'">Exercise</button>
-            <button class="btn btn-green" onclick="location.href='ControlPanel.php?CP=New-Book'">New Book</button>
+            <button class="btn btn-green" onclick="location.href=\'ControlPanel.php?CP=Exercise\'">Exercise</button>
+            <button class="btn btn-green" onclick="location.href=\'ControlPanel.php?CP=New-Book\'">New Book</button>
     </div>
 	<div align="center">
 		<table class="table-bordered text-center" width="90%">
@@ -70,11 +87,24 @@
 				<td style="padding: 10px">Edit</td>
 				<td style="padding: 10px">Delete</td>
 			</tr>
-            <?php
+            ';
                 Get_books();
-            ?>
+            echo '
 		</table>
 	</div>
 </div>
 
 <br />
+            ';
+
+}else if ($Type == 'dean') {
+
+}else if ($Type == 'admin') {
+
+}else{
+    echo '<div style="font-size: 32px; font-family: Tahoma; margin-top: 20%" align="center">Sorry, You do not have permission to access this page.</div>';
+    echo '<div style="margin-top: 20px;  padding-bottom: 17%" align="center"><a class="btn btn-green" href="ControlPanel.php?CP=Home">Home</a></div>';
+
+}
+
+?>

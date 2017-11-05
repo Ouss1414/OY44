@@ -1,3 +1,20 @@
+<?php
+
+$user_name = $_SESSION['user'];
+$Type='';
+
+//user
+$sql = "SELECT * FROM user WHERE User_Name='$user_name'";
+$result = $con->query($sql);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $Type = $row['User_Type'];
+    }
+}
+if ($Type == 'author') {
+
+    echo '
+               
 <ol class="breadcrumb 2" >
 	<li>
 		<a href="ControlPanel.php?CP=home"><i class="fa-home"></i>Home</a>
@@ -30,7 +47,7 @@
 				<td><label for="Price_book"  >Price: </label></td>
 				<td>
 					<input type="number" class="form-control" name="Price_book" id="Price_book" placeholder="Free">
-					<p style="color: red">* If it's FREE please don't add a value.</p>
+					<p style="color: red">* If it\'s FREE please don\'t add a value.</p>
 				</td>
 			</tr>
 
@@ -39,9 +56,10 @@
 				<td>
                     <select class="form-control" name="catagories_book" id="catagories_book">
                         <option>Choose one...</option>
-                    <?php
-                        select_catagories();
-                    ?>
+                    ';
+
+    select_catagories();
+    echo '
                     </select>
                 </td>
 			</tr>
@@ -106,3 +124,11 @@
 </div>
 
 <hr />
+';
+}else{
+    echo '<div style="font-size: 32px; font-family: Tahoma; margin-top: 20%" align="center">Sorry, You do not have permission to access this page.</div>';
+    echo '<div style="margin-top: 20px;  padding-bottom: 17%" align="center"><a class="btn btn-green" href="ControlPanel.php?CP=Home">Home</a></div>';
+
+}
+
+?>

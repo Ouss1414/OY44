@@ -175,6 +175,7 @@ require "System/DBoprations.php";
 <script src="JS/JS_Slider.js"></script>
 <script src="System/delete.js"></script>
 <script src="System/Add_Post_Profile.js"></script>
+<script src="System/Like_or_Dislike_Post.js"></script>
 
 </body>
 </html>
