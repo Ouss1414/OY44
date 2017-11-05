@@ -36,15 +36,14 @@
 
 			<tr>
 				<td><label for="Catagories_book"  >Catagories: </label></td>
-				<td><select class="form-control" name="catagories_book" id="catagories_book">
-					<option>Choose one...</option>
-					<option value="Sport">Sport</option>
-					<option value="Programing">Programing</option>
-					<option value="Hestory">Hestory</option>
-					<option value="Cars">Cars</option>
-					<option value="Math">Math</option>
-				</select>
-				</td>
+				<td>
+                    <select class="form-control" name="catagories_book" id="catagories_book">
+                        <option>Choose one...</option>
+                    <?php
+                        select_catagories();
+                    ?>
+                    </select>
+                </td>
 			</tr>
 
 			<tr>
@@ -69,6 +68,7 @@
 						<a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
 					</div>
 				</div>
+                    <p style="color: red;">* Only files [PDF].</p>
 				</td>
 			</tr>
 

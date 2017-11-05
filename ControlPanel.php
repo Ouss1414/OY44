@@ -99,7 +99,7 @@ if(empty($_GET['CP'])){
             <ul id="main-menu" class="main-menu">
 
                 <li class="<?= $welcome ?>">
-                    <a href="ControlPanel.php?CP=home">
+                    <a href="ControlPanel.php?CP=Home">
                         <i class="entypo-home"></i>
                         <span class="title">Welcome</span>
                     </a>
@@ -475,7 +475,7 @@ if(empty($_GET['CP'])){
                 break;
             case "Mailbox-message" : include_once "ControlPanel/Mail/Mailbox-message/Mailbox-message.html";
                 break;
-            case "home" : include_once "ControlPanel/home/home.php";
+            case "Home" : include_once "ControlPanel/home/home.php";
                 break;
             case "New-Book" : include_once "ControlPanel/New-Book.php";
                 break;

@@ -62,6 +62,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo '<meta http-equiv="refresh" content="0; \'/OY44/ControlPanel.php?CP=New-Book"/>';
     }
 
+    if(
+        !empty($Serial) && !ctype_space($Serial) &&
+        !empty($Name_book) && !ctype_space($Name_book) &&
+        !empty($Page_book) && !ctype_space($Page_book) &&
+        !empty($catagories_book) && !ctype_space($catagories_book) &&
+        !empty($Available_book) && !ctype_space($Available_book) &&
+        !empty($File_book) && !ctype_space($File_book) &&
+        !empty($Image_book) && !ctype_space($Image_book)
+
+    ){
         $sql = "INSERT INTO book (Serial, Location, Name_Book, Available, Page, Price, Catagories, Image_Book, User_Id, Summary) 
             VALUE('$Serial','$File_book','$Name_book','$Available_book','$Page_book','$Price_book','$catagories_book','$Image_book','$User_Id','$Summary_book')";
 
@@ -72,5 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             echo '<meta http-equiv="refresh" content="0; \'/OY44/ControlPanel.php?CP=ControlPanel"/>';
         }
+    }
 }
 ?>

@@ -107,8 +107,8 @@ function ControlPanel($Pages){
         case "Mailbox-message" :
             $redirectToPage = "Mailbox-message";
             break;
-        case "home" :
-            $redirectToPage = "home";
+        case "Home" :
+            $redirectToPage = "Home";
             break;
         case "New-Book" :
             $redirectToPage = "New-Book";
