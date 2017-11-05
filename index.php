@@ -38,7 +38,7 @@ require "System/DBoprations.php";
                 }
                 function to(){
                     clearTimeout(t);
-                    t=setTimeout(logout,60000)//logs out in 1 minutes
+                    t=setTimeout(logout,300000)//logs out in 1 minutes
                 }
             </script>
         ';

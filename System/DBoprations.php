@@ -1126,9 +1126,10 @@ function Profile(){
                                 ';
                     }
                                 echo '
-                                <button type="button" id="'.$row_Post_Profile['Id'].'" class="Like-profile w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  '. $row_Post_Profile['Like_Post'] .'</button>
+                                <input id="Id_User" type="text" name="'.$row_User['Id'].'" style="Display: none">
+    <button type="button" id="'.$row_Post_Profile['Id'].'" class="Like-profile w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  '. $row_Post_Profile['Like_Post'] .'</button>
                                 
-                                <button type="button" id="'.$row_Post_Profile['Id'].'" class="Dislike-profile w3-button w3-margin-bottom w3-red"><i class="fa fa-thumbs-down"></i>  '. $row_Post_Profile ['Dislike'].'</button>
+    <button type="button" id="'.$row_Post_Profile['Id'].'" class="Dislike-profile w3-button w3-margin-bottom w3-red"><i class="fa fa-thumbs-down"></i>  '. $row_Post_Profile ['Dislike'].'</button>
                                 ';
                                 if($_SESSION['user'] = $user_name) {
                                     echo '
