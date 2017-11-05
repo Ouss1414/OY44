@@ -177,7 +177,7 @@
                     case 34: // pgdown
                         item = focused.length ? this._nextPage(focused) : this._first();
                         break;
-                    case 36: // home
+                    case 36: // Author
                         item = this._first();
                         break;
                     case 35: // end
