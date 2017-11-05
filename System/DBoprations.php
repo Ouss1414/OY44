@@ -1163,7 +1163,7 @@ function Profile(){
                     }
                                 if($_SESSION['user'] = $user_name) {
                                     echo '
-                            <div class="delete_data w3-padding fa fa-trash w3-btn w3-red right" style="margin-bottom: 5px" name="'.$row_Post_Profile['Message'].'" id="'.$row_Post_Profile['Id'].'" value="pid=Profile"></div>
+                            <div class="delete_data w3-padding w3-button w3-red right" style="margin-bottom: 5px" name="'.$row_Post_Profile['Message'].'" id="'.$row_Post_Profile['Id'].'" value="pid=Profile"><i class="fa fa-trash"></i></div>
                         ';
                                 }
                 echo '
@@ -1483,7 +1483,7 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
                             <div class="w3-col s1">
                                 <div class="w3-row s1 w3-text-black" style="text-align: left;margin: 5px;width: 1000px">Date: <i>'.$row_Post['Date_Post'].'</i></div>
                                 <div class="w3-row s1 w3-text-black" style="text-align: left;margin: 5px;width: 1000px">writer: <i>'.$Name_User.'</i></div>
-                                <div class="w3-row w3-margin-bottom" style="display: inline">
+                                <div class="w3-row w3-margin-bottom">
                                 ';
 
                     $Id_Post = $row_Post['Id'];
@@ -1494,38 +1494,50 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
                     if ($result_likes->num_rows > 0) {
                         while ($row_likes = $result_likes->fetch_assoc()) {
                             if ($row_likes['Type_Like'] == 'Like'){
-                                echo '         
+                                echo '
+                                <table>
+                                <tr>
                                 <input id="Id_User" type="text" name="' . $Id_User . '" style="Display: none">
                                 
-                                <lable class="w3-button  "><i class="fa fa-thumbs-up"></i>  ' . $row_Post['Like_Post'] . '</lable>
+                                <td><lable class="w3-button w3-text-green w3-large"><i class="fa fa-thumbs-up"></i>  ' . $row_Post['Like_Post'] . '</lable></td>
                                                             
-                                <button type="button" id="'.$Id_Post.'" class="Dislike-profile-update w3-button w3-margin-bottom"><i class="fa fa-thumbs-down"></i>  ' . $row_Post ['Dislike'] . '</button>
+                                <td><button type="button" id="'.$Id_Post.'" class="Dislike-profile-update w3-button w3-text-red w3-large"><i class="fa fa-thumbs-down"></i>  ' . $row_Post ['Dislike'] . '</button></td>
+                                </tr>
+                                </table>
                                 ';
                             }
                             if ($row_likes['Type_Like'] == 'Dislike'){
                                 echo '
+                                <table>
+                                <tr>
                                 <input id="Id_User" type="text" name="' . $Id_User . '" style="Display: none">
                                                                 
-                                <button type="button" id="'.$Id_Post.'" class="Like-profile-update w3-button"><i class="fa fa-thumbs-up"></i>  ' . $row_Post['Like_Post'] . '</button>
+                                <td><button type="button" id="'.$Id_Post.'" class="Like-profile-update w3-button w3-text-green w3-large"><i class="fa fa-thumbs-up"></i>  ' . $row_Post['Like_Post'] . '</button></td>
                                 
-                                <lable class="w3-button w3-margin-bottom"><i class="fa fa-thumbs-down"></i>  ' . $row_Post ['Dislike'] . '</lable>
+                                <td><lable class="w3-button w3-text-red w3-large"><i class="fa fa-thumbs-down"></i>  ' . $row_Post ['Dislike'] . '</lable></td>
+                                </tr>
+                                </table>
                                 ';
                             }
                         }
                     }else{
                         echo '
+                                <table>
+                                <tr>
                                 <input id="Id_User" type="text" name="' . $Id_User . '" style="Display: none">
                                 
-                                <button type="button" id="'.$Id_Post.'" class="Like-profile w3-button"><i class="fa fa-thumbs-up"></i>  ' . $row_Post['Like_Post'] . '</button>
+                                <td><button type="button" id="'.$Id_Post.'" class="Like-profile w3-button w3-text-green w3-large"><i class="fa fa-thumbs-up"></i>  ' . $row_Post['Like_Post'] . '</button></td>
                                                             
-                                <button type="button" id="'.$Id_Post.'" class="Dislike-profile w3-button w3-margin-bottom"><i class="fa fa-thumbs-down"></i>  ' . $row_Post ['Dislike'] . '</button>
+                                <td><button type="button" id="'.$Id_Post.'" class="Dislike-profile w3-button w3-text-red w3-large"><i class="fa fa-thumbs-down"></i>  ' . $row_Post ['Dislike'] . '</button></td>
+                                </tr>
+                                </table>
                                 ';
                     }
 
 
                     if($_SESSION['user'] == $Name_User2) {
                         echo '
-                            <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="'.$row_Post['Subject'].'" id="'.$row_Post['Id'].'" value="pid=Department&uni='.$_GET['uni'].'&college='.$_GET['college'].'&dep='.$_GET['dep'].'"></div>
+                            <div class="delete_data w3-button w3-red" style="margin-bottom: 5px; margin-left: 1150%" name="'.$row_Post['Subject'].'" id="'.$row_Post['Id'].'" value="pid=Department&uni='.$_GET['uni'].'&college='.$_GET['college'].'&dep='.$_GET['dep'].'"><i class="fa fa-trash"></i></div>
                         ';
                     }
                     echo '
