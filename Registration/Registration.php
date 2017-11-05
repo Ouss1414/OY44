@@ -15,7 +15,7 @@ if (isset($_SESSION['user'])) {
     <title>My University | Sign Up </title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../CSS/w3-theme-blue-grey.css">
-    <link href="https://bootswatch.com/yeti/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/BootStrap.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
