@@ -1125,8 +1125,8 @@ function Profile(){
                                 </div>
                                 ';
                     }
-                                echo '
-                                <input id="Id_User" type="text" name="'.$row_User['Id'].'" style="Display: none">
+    echo '
+    <input id="Id_User" type="text" name="'.$row_User['Id'].'" style="Display: none">
     <button type="button" id="'.$row_Post_Profile['Id'].'" class="Like-profile w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  '. $row_Post_Profile['Like_Post'] .'</button>
                                 
     <button type="button" id="'.$row_Post_Profile['Id'].'" class="Dislike-profile w3-button w3-margin-bottom w3-red"><i class="fa fa-thumbs-down"></i>  '. $row_Post_Profile ['Dislike'].'</button>
@@ -1422,13 +1422,20 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
                             }
                         }
                     }
+                    $UserName = $_SESSION['user'];
+                    $Id_User = '';
+                    //User
+                    $sql_User = "SELECT * FROM user WHERE  User_Name= '$UserName'";
+                    $result_user = $con->query($sql_User);
+                    if ($result_user->num_rows > 0) {
+                        while ($row_User = $result_user->fetch_assoc()) {
+                            $Id_User = $row_User['Id'];
+                        }
+                    }
          echo '
             <!-- left Column -->
             <div class="w3-col m10">
-        <input type="text" id="uni" name="'.$_GET['uni'].'" style="display: none">
-        <input type="text" id="college" name="'.$_GET['college'].'" style="display: none">
-        <input type="text" id="dep" name="'.$_GET['dep'].'" style="display: none">
-        <input type="text" id="Subject" name="'.$row_Post['Subject'].'" style="display: none">
+            <input id="Id_User" type="text" name="'.$Id_User.'" style="Display: none">
                 <!-- Background Post -->
                 <div class="w3-card-2 w3-round w3-white w3-padding-16 w3-margin" style="width: 95%;min-height: 400px">
         
