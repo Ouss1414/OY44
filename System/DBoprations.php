@@ -1125,12 +1125,42 @@ function Profile(){
                                 </div>
                                 ';
                     }
-    echo '
-    <input id="Id_User" type="text" name="'.$row_User['Id'].'" style="Display: none">
-    <button type="button" id="'.$row_Post_Profile['Id'].'" class="Like-profile w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  '. $row_Post_Profile['Like_Post'] .'</button>
+
+                    $Id_Post = $row_Post_Profile['Id'];
+
+                    //Post_likes
+                    $sql_likes = "SELECT * FROM likes WHERE  User_Id = '$user_id' AND Post_Id='$Id_Post'";
+                    $result_likes = $con->query($sql_likes);
+                    if ($result_likes->num_rows > 0) {
+                        while ($row_likes = $result_likes->fetch_assoc()) {
+                            if ($row_likes['Type_Like'] == 'Like'){
+                                echo '         
+                                <input id="Id_User" type="text" name="' . $row_User['Id'] . '" style="Display: none">
                                 
-    <button type="button" id="'.$row_Post_Profile['Id'].'" class="Dislike-profile w3-button w3-margin-bottom w3-red"><i class="fa fa-thumbs-down"></i>  '. $row_Post_Profile ['Dislike'].'</button>
+                                <lable class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  ' . $row_Post_Profile['Like_Post'] . '</lable>
+                                                            
+                                <button type="button" id="'.$Id_Post.'" class="Dislike-profile-update w3-button w3-margin-bottom w3-red"><i class="fa fa-thumbs-down"></i>  ' . $row_Post_Profile ['Dislike'] . '</button>
                                 ';
+                            }
+                            if ($row_likes['Type_Like'] == 'Dislike'){
+                                echo '
+                                <input id="Id_User" type="text" name="' . $row_User['Id'] . '" style="Display: none">
+                                                                
+                                <button type="button" id="'.$Id_Post.'" class="Like-profile-update w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  ' . $row_Post_Profile['Like_Post'] . '</button>
+                                
+                                <lable class="w3-button w3-margin-bottom w3-red"><i class="fa fa-thumbs-down"></i>  ' . $row_Post_Profile ['Dislike'] . '</lable>
+                                ';
+                            }
+                        }
+                    }else{
+                        echo '
+                                <input id="Id_User" type="text" name="' . $row_User['Id'] . '" style="Display: none">
+                                
+                                <button type="button" id="'.$Id_Post.'" class="Like-profile w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  ' . $row_Post_Profile['Like_Post'] . '</button>
+                                                            
+                                <button type="button" id="'.$Id_Post.'" class="Dislike-profile w3-button w3-margin-bottom w3-red"><i class="fa fa-thumbs-down"></i>  ' . $row_Post_Profile ['Dislike'] . '</button>
+                                ';
+                    }
                                 if($_SESSION['user'] = $user_name) {
                                     echo '
                             <div class="delete_data w3-padding fa fa-trash w3-btn w3-red right" style="margin-bottom: 5px" name="'.$row_Post_Profile['Message'].'" id="'.$row_Post_Profile['Id'].'" value="pid=Profile"></div>
@@ -1454,10 +1484,45 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
                                 <div class="w3-row s1 w3-text-black" style="text-align: left;margin: 5px;width: 1000px">Date: <i>'.$row_Post['Date_Post'].'</i></div>
                                 <div class="w3-row s1 w3-text-black" style="text-align: left;margin: 5px;width: 1000px">writer: <i>'.$Name_User.'</i></div>
                                 <div class="w3-row w3-margin-bottom" style="display: inline">
-                                    <button type="button" title="LIKE" id="'.$row_Post['Id'].'" class="Like fa fa-thumbs-up w3-large w3-hover-green w3-padding w3-button" style="min-width: 70px;"> '.$row_Post['Like_Post'].' </button>
-                                    
-                                    <button type="button" title="DISLIKE" id="'.$row_Post['Id'].'" class="Dislike fa fa-thumbs-down w3-large w3-hover-red w3-padding w3-button w3-margin-bottom" style="min-width: 70px;"> '.$row_Post['Dislike'].' </button>
                                 ';
+
+                    $Id_Post = $row_Post['Id'];
+
+                    //Post_likes
+                    $sql_likes = "SELECT * FROM likes WHERE  User_Id = '$Id_User' AND Post_Id='$Id_Post'";
+                    $result_likes = $con->query($sql_likes);
+                    if ($result_likes->num_rows > 0) {
+                        while ($row_likes = $result_likes->fetch_assoc()) {
+                            if ($row_likes['Type_Like'] == 'Like'){
+                                echo '         
+                                <input id="Id_User" type="text" name="' . $Id_User . '" style="Display: none">
+                                
+                                <lable class="w3-button  "><i class="fa fa-thumbs-up"></i>  ' . $row_Post['Like_Post'] . '</lable>
+                                                            
+                                <button type="button" id="'.$Id_Post.'" class="Dislike-profile-update w3-button w3-margin-bottom"><i class="fa fa-thumbs-down"></i>  ' . $row_Post ['Dislike'] . '</button>
+                                ';
+                            }
+                            if ($row_likes['Type_Like'] == 'Dislike'){
+                                echo '
+                                <input id="Id_User" type="text" name="' . $Id_User . '" style="Display: none">
+                                                                
+                                <button type="button" id="'.$Id_Post.'" class="Like-profile-update w3-button"><i class="fa fa-thumbs-up"></i>  ' . $row_Post['Like_Post'] . '</button>
+                                
+                                <lable class="w3-button w3-margin-bottom"><i class="fa fa-thumbs-down"></i>  ' . $row_Post ['Dislike'] . '</lable>
+                                ';
+                            }
+                        }
+                    }else{
+                        echo '
+                                <input id="Id_User" type="text" name="' . $Id_User . '" style="Display: none">
+                                
+                                <button type="button" id="'.$Id_Post.'" class="Like-profile w3-button"><i class="fa fa-thumbs-up"></i>  ' . $row_Post['Like_Post'] . '</button>
+                                                            
+                                <button type="button" id="'.$Id_Post.'" class="Dislike-profile w3-button w3-margin-bottom"><i class="fa fa-thumbs-down"></i>  ' . $row_Post ['Dislike'] . '</button>
+                                ';
+                    }
+
+
                     if($_SESSION['user'] == $Name_User2) {
                         echo '
                             <div class="delete_data w3-padding fa fa-trash w3-btn w3-red" style="margin-bottom: 5px" name="'.$row_Post['Subject'].'" id="'.$row_Post['Id'].'" value="pid=Department&uni='.$_GET['uni'].'&college='.$_GET['college'].'&dep='.$_GET['dep'].'"></div>
