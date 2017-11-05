@@ -15,7 +15,8 @@
             <tr class="theme-skins">
                 <td style="padding: 5px">#</td>
                 <td style="padding: 10px">Question</td>
-                <td style="padding: 10px">Number of question</td>
+                <td style="padding: 10px; max-width: 60px">Number of question</td>
+                <td style="padding: 10px">Book</td>
                 <td style="padding: 10px">Answer 1</td>
                 <td style="padding: 10px">Answer 2</td>
                 <td style="padding: 10px">Answer 3</td>

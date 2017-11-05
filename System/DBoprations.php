@@ -1,10 +1,337 @@
 <?php
 
-function Edit_Book(){
+function ControlPanel_head(){
 
     $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
 
     $UserName = $_SESSION['user'];
+
+    //user
+    $sql_user = "SELECT * FROM user WHERE User_Name= '$UserName'";
+    $result_user = $con->query($sql_user);
+    if ($result_user->num_rows > 0){
+        while ($row_user = $result_user->fetch_assoc()){
+            $user_name = $row_user['User_Name'];
+
+            echo '
+        <div class="row">
+
+            <!-- Profile Info and Notifications -->
+            <div class="col-md-6 col-sm-8 clearfix">
+
+                <ul class="user-info pull-left pull-none-xsm">
+
+                    <!-- Profile Info -->
+                    <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        ';
+                        if (empty($row_user['Image'])){
+                            $row_user['Image'] = 'defult.png';
+                        }
+                        echo '
+                            <img src="Images/Pic/'.$row_user['Image'].'" alt="" class="img-circle" width="44" />
+                            '.$row_user['First_Name']. " " . $row_user['Last_Name'] .'
+                        </a>
+
+                        <ul class="dropdown-menu">
+
+                            <!-- Reverse Caret -->
+                            <li class="caret"></li>
+
+                            <li>
+                                <a href="ControlPanel/Mail/Mailbox/mailbox.html">
+                                    <i class="entypo-mail"></i>
+                                    Inbox
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="entypo-clipboard"></i>
+                                    Tasks
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+                <ul class="user-info pull-left pull-right-xs pull-none-xsm">
+
+                    <!-- Message Notifications -->
+                    <li class="notifications dropdown">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <i class="entypo-mail"></i>
+                            <span class="badge badge-secondary">10</span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <form class="top-dropdown-search">
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Search anything..." name="s" />
+                                    </div>
+
+                                </form>
+
+                                <ul class="dropdown-menu-list scroller">
+                                    <li class="active">
+                                        <a href="#">
+											<span class="image pull-right">
+												<img src="ControlPanel/assets/images/thumb-1@2x.png" width="44" alt="" class="img-circle" />
+											</span>
+
+                                            <span class="line">
+												<strong>Luc Chartier</strong>
+												- yesterday
+											</span>
+
+                                            <span class="line desc small">
+												This ain’t our first item, it is the best of the rest.
+											</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="active">
+                                        <a href="#">
+											<span class="image pull-right">
+												<img src="ControlPanel/assets/images/thumb-2@2x.png" width="44" alt="" class="img-circle" />
+											</span>
+
+                                            <span class="line">
+												<strong>Salma Nyberg</strong>
+												- 2 days ago
+											</span>
+
+                                            <span class="line desc small">
+												Oh he decisively impression attachment friendship so if everything.
+											</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+											<span class="image pull-right">
+												<img src="ControlPanel/assets/images/thumb-3@2x.png" width="44" alt="" class="img-circle" />
+											</span>
+
+                                            <span class="line">
+												Hayden Cartwright
+												- a week ago
+											</span>
+
+                                            <span class="line desc small">
+												Whose her enjoy chief new young. Felicity if ye required likewise so doubtful.
+											</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+											<span class="image pull-right">
+												<img src="ControlPanel/assets/images/thumb-4@2x.png" width="44" alt="" class="img-circle" />
+											</span>
+
+                                            <span class="line">
+												Sandra Eberhardt
+												- 16 days ago
+											</span>
+
+                                            <span class="line desc small">
+												On so attention necessary at by provision otherwise existence direction.
+											</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="external">
+                                <a href="ControlPanel.php?CP=mailbox">All Messages</a>
+                            </li>
+                        </ul>
+
+                    </li>
+
+                    <!-- Task Notifications -->
+                    <li class="notifications dropdown">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <i class="entypo-list"></i>
+                            <span class="badge badge-warning">1</span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li class="top">
+                                <p>You have 6 pending tasks</p>
+                            </li>
+
+                            <li>
+                                <ul class="dropdown-menu-list scroller">
+                                    <li>
+                                        <a href="#">
+											<span class="task">
+												<span class="desc">Procurement</span>
+												<span class="percent">27%</span>
+											</span>
+
+                                            <span class="progress">
+												<span style="width: 27%;" class="progress-bar progress-bar-success">
+													<span class="sr-only">27% Complete</span>
+												</span>
+											</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+											<span class="task">
+												<span class="desc">App Development</span>
+												<span class="percent">83%</span>
+											</span>
+
+                                            <span class="progress progress-striped">
+												<span style="width: 83%;" class="progress-bar progress-bar-danger">
+													<span class="sr-only">83% Complete</span>
+												</span>
+											</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+											<span class="task">
+												<span class="desc">HTML Slicing</span>
+												<span class="percent">91%</span>
+											</span>
+
+                                            <span class="progress">
+												<span style="width: 91%;" class="progress-bar progress-bar-success">
+													<span class="sr-only">91% Complete</span>
+												</span>
+											</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+											<span class="task">
+												<span class="desc">Database Repair</span>
+												<span class="percent">12%</span>
+											</span>
+
+                                            <span class="progress progress-striped">
+												<span style="width: 12%;" class="progress-bar progress-bar-warning">
+													<span class="sr-only">12% Complete</span>
+												</span>
+											</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+											<span class="task">
+												<span class="desc">Backup Create Progress</span>
+												<span class="percent">54%</span>
+											</span>
+
+                                            <span class="progress progress-striped">
+												<span style="width: 54%;" class="progress-bar progress-bar-info">
+													<span class="sr-only">54% Complete</span>
+												</span>
+											</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+											<span class="task">
+												<span class="desc">Upgrade Progress</span>
+												<span class="percent">17%</span>
+											</span>
+
+                                            <span class="progress progress-striped">
+												<span style="width: 17%;" class="progress-bar progress-bar-important">
+													<span class="sr-only">17% Complete</span>
+												</span>
+											</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="external">
+                                <a href="#">See all tasks</a>
+                            </li>
+                        </ul>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- Raw Links -->
+            <div class="col-md-6 col-sm-4 clearfix hidden-xs">
+
+                <ul class="list-inline links-list pull-right">
+
+                    <!-- Language Selector -->
+                    <li class="dropdown language-selector">
+
+                        Language: &nbsp;
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
+                            <img src="ControlPanel/assets/images/flags/flag-uk.png" width="16" height="16" />
+                        </a>
+
+                        <ul class="dropdown-menu pull-right">
+                            <li class="active">
+                                <a href="#">
+                                    <img src="ControlPanel/assets/images/flags/flag-uk.png" width="16" height="16" />
+                                    <span>English</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="ControlPanel/assets/images/flags/flag-sa.png" width="16" height="16" />
+                                    <span>Arabic</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li>
+
+                    <li class="sep"></li>
+
+
+                    <li>
+                        <a href="#" data-toggle="chat" data-collapse-sidebar="1">
+                            <i class="entypo-chat"></i>
+                            Chat
+
+                            <span class="badge badge-success chat-notifications-badge is-hidden">0</span>
+                        </a>
+                    </li>
+
+                    <li class="sep"></li>
+
+                    <li>
+                        <a href="Login/Logout.php">
+                            Log Out <i class="entypo-logout right"></i>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+    ';
+        }
+    }
+}
+
+function Edit_Book(){
+
+    $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
+
     $Serial_Book = $_GET['Serial'];
 
     //book
@@ -246,20 +573,28 @@ function Get_Exercise(){
             if($result_exercise->num_rows > 0){
                 while ($row_exercise = $result_exercise->fetch_assoc()){
                     $count++;
-                    echo '
+                    $Serial_Book = $row_exercise['Serial_Book'];
+                    $sql_book = "SELECT * FROM book WHERE Serial='$Serial_Book'";
+                    $result_book = $con->query($sql_book);
+                    if($result_book->num_rows > 0){
+                        while ($row_book = $result_book->fetch_assoc()) {
+                            echo '
                         <tr>
-                            <td style="padding: 5px">'.$count.'</td>
-                            <td style="padding: 10px">'.substr($row_exercise['Question'],0,55).'</td>
-                            <td style="padding: 10px">'.$row_exercise['Number_Q'].'</td>
-                            <td style="padding: 10px">'.$row_exercise['Answer_1'].'</td>
-                            <td style="padding: 10px">'.$row_exercise['Answer_2'].'</td>
-                            <td style="padding: 10px">'.$row_exercise['Answer_3'].'</td>
-                            <td style="padding: 10px">'.$row_exercise['Answer_4'].'</td>
-                            <td style="padding: 10px">'.$row_exercise['Q_answer'].'</td>
-                            <td style="padding: 10px"><input type="button" name="Edit" value="Edit" class="btn" onclick="location.href=\'ControlPanel.php?CP=Edit_Exercise&Serial='.$row_exercise['Id'].'\'"></td>
-                            <td style="padding: 10px"><input type="button" class="delete_exercise btn btn-red" name="'.$row_exercise['Question'].'" id="'.$row_exercise['Id'].'" value="Delete"></td>
+                            <td style="padding: 5px">' . $count . '</td>
+                            <td style="padding: 10px">' . substr($row_exercise['Question'], 0, 55) . '</td>
+                            <td style="padding: 10px">' . $row_exercise['Number_Q'] . '</td>
+                            <td style="padding: 10px">' . $row_book['Name_Book'] . '</td>
+                            <td style="padding: 10px">' . $row_exercise['Answer_1'] . '</td>
+                            <td style="padding: 10px">' . $row_exercise['Answer_2'] . '</td>
+                            <td style="padding: 10px">' . $row_exercise['Answer_3'] . '</td>
+                            <td style="padding: 10px">' . $row_exercise['Answer_4'] . '</td>
+                            <td style="padding: 10px">' . $row_exercise['Q_answer'] . '</td>
+                            <td style="padding: 10px"><input type="button" name="Edit" value="Edit" class="btn" onclick="location.href=\'ControlPanel.php?CP=Edit_Exercise&Serial=' . $row_exercise['Id'] . '\'"></td>
+                            <td style="padding: 10px"><input type="button" class="delete_exercise btn btn-red" name="' . $row_exercise['Question'] . '" id="' . $row_exercise['Id'] . '" value="Delete"></td>
                         </tr>
                     ';
+                        }
+                    }
                 }
             }
         }

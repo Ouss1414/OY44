@@ -25,6 +25,8 @@ if(isset($_POST['btn-login']))
             header("Location: http://localhost/OY44/index.php?pid=Colleges&uni=$_GET[uni]");
         }else if(!empty($_GET['Serial'])) {
             header("Location: http://localhost/OY44/index.php?pid=Show_Book&Serial=$_GET[Serial]");
+        }else if(!empty($_GET['CP'])) {
+            header("Location: http://localhost/OY44/ControlPanel.php?CP=ControlPanel");
         }else{
             header('Location: http://localhost/OY44/index.php?pid=Home');
         }
