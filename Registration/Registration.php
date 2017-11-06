@@ -106,34 +106,15 @@ if (isset($_SESSION['user'])) {
                         </optgroup>
                     </select>
                 </div>
-        
-                <div class="form-group col-md-6">
-                    <select class="form-control" name="university">
-                        <optgroup label="University">
-                            <option value="">Choose University ---</option>
-                            <option value="Taibah University">Taibah University</option>
-                        </optgroup>
-                    </select>
-                </div>
-        
-                <div class="form-group col-md-6">
-                    <select class="form-control" name="college">
-                        <optgroup label="College">
-                            <option value="">Choose College ---</option>
-                            <option value="College Of Computer Science and Engineering">College Of Computer Science and Engineering</option>
-                        </optgroup>
-                    </select>
-                </div>
-        
-                <div class="form-group col-md-6">
-                    <select class="form-control" name="department">
-                        <optgroup label="Department">
-                            <option value="">Choose Department ---</option>
-                           <option value="CS">CS</option>
-                        </optgroup>
-                    </select>
-                </div>
-        
+                
+                ';
+                    select_uni();
+
+                    select_college();
+
+                    select_dep();
+
+        echo '
                 <div class="form-group col-md-12">
                     <div style="margin-left: 45px; margin-right: 25px; margin-bottom: 10px">
                         <legend>Gender</legend>

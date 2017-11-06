@@ -34,7 +34,6 @@ require "System/DBoprations.php";
                 function logout()
                 {
                     location.href=\'Login/Logout.php\'
-                    alert(\'You have been logged out.\');
                 }
                 function to(){
                     clearTimeout(t);

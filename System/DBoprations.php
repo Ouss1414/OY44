@@ -1,5 +1,105 @@
 <?php
 
+function select_dep(){
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "db_iebook_8003115736_v";
+
+    $con = new mysqli($servername, $username, $password, $dbname);
+
+    echo '
+                <div class="form-group col-md-6">
+                    <select class="form-control" name="department">
+                        <optgroup label="Department">
+                            <option value="">Choose Department ---</option>
+                            ';
+    //department
+    $sql_dep = "SELECT * FROM department";
+    $result_dep = $con->query($sql_dep);
+    if ($result_dep->num_rows > 0){
+        while ($row_dep = $result_dep->fetch_assoc()) {
+            echo '                   
+                           <option value="'.$row_dep['Name'].'">'.$row_dep['Name'].'</option>
+                 ';
+        }
+    }
+    echo '
+                        </optgroup>
+                    </select>
+                </div>
+        ';
+
+}
+
+function select_college(){
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "db_iebook_8003115736_v";
+
+    $con = new mysqli($servername, $username, $password, $dbname);
+
+    echo '
+<div class="form-group col-md-6">
+     <select class="form-control" name="college">
+           <optgroup label="College">
+                 <option value="">Choose College ---</option>
+                            
+                            ';
+    //college
+    $sql_college = "SELECT * FROM college";
+    $result_college = $con->query($sql_college);
+    if ($result_college->num_rows > 0){
+        while ($row_college = $result_college->fetch_assoc()) {
+            echo '
+                <option value="'.$row_college['Name'].'">'.$row_college['Name'].'</option>
+                            ';
+        }
+    }
+    echo '
+        </optgroup>
+    </select>
+ </div>
+                ';
+}
+
+function select_uni(){
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "db_iebook_8003115736_v";
+
+    $con = new mysqli($servername, $username, $password, $dbname);
+
+    echo '
+        <div class="form-group col-md-6">
+                    <select class="university form-control" name="university">
+                        <optgroup label="University">
+                            <option value="">Choose University ---</option>
+    ';
+    //university
+    $sql_uni = "SELECT * FROM university";
+    $result_uni = $con->query($sql_uni);
+    if ($result_uni->num_rows > 0){
+        while ($row_uni = $result_uni->fetch_assoc()){
+            echo '
+        
+               <option value="'.$row_uni['Name'].'">'.$row_uni['Name'].'</option>
+                      
+            ';
+        }
+    }
+    echo '
+                        </optgroup>
+                    </select>
+                </div>
+    ';
+}
+
 function ControlPanel_head(){
 
     $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
@@ -1270,6 +1370,75 @@ function getPic(){
     }
 }
 
+function select_uni_info($uni_info){
+
+    $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
+
+    //uni
+    $sql = "SELECT * FROM university";
+    $result_uni = $con->query($sql);
+    if ($result_uni->num_rows > 0) {
+        while ($row_uni = $result_uni->fetch_assoc()) {
+
+            if ($uni_info == $row_uni['Name']){
+                echo '
+                <option selected value="'.$row_uni['Name'].'">'.$row_uni['Name'].'</option>
+                ';
+            }else{
+                echo '  
+                <option value="'.$row_uni['Name'].'">'.$row_uni['Name'].'</option>
+                ';
+            }
+        }
+    }
+}
+
+function select_college_info($college_info){
+
+    $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
+
+    //college
+    $sql = "SELECT * FROM college";
+    $result_college = $con->query($sql);
+    if ($result_college->num_rows > 0) {
+        while ($row_college = $result_college->fetch_assoc()) {
+
+            if ($college_info == $row_college['Name']){
+                echo '
+                <option selected value="'.$row_college['Name'].'">'.$row_college['Name'].'</option>
+                ';
+            }else{
+                echo '  
+                <option value="'.$row_college['Name'].'">'.$row_college['Name'].'</option>
+                ';
+            }
+        }
+    }
+}
+
+function select_dep_info($dep_info){
+
+    $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
+
+    //college
+    $sql = "SELECT * FROM department";
+    $result_dep = $con->query($sql);
+    if ($result_dep->num_rows > 0) {
+        while ($row_dep = $result_dep->fetch_assoc()) {
+
+            if ($dep_info == $row_dep['Name']){
+                echo '
+                <option selected value="'.$row_dep['Name'].'">'.$row_dep['Name'].'</option>
+                ';
+            }else{
+                echo '  
+                <option value="'.$row_dep['Name'].'">'.$row_dep['Name'].'</option>
+                ';
+            }
+        }
+    }
+}
+
 function Edit_Profile(){
 
     $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
@@ -1364,27 +1533,30 @@ function Edit_Profile(){
         
                             <div class="form-group col-md-6">
                                 <select class="form-control" name="university">
-                                    <option value="'.$row_User['University'].'">'.$row_User['University'].'</option>
                                     <optgroup label="Choose University ---">
-                                        <option value="Taibah University">Taibah University</option>
+                                    ';
+                                        select_uni_info($row_User['University']);
+                                    echo '
                                     </optgroup>
                                 </select>
                             </div>
         
                             <div class="form-group col-md-6">
                                 <select class="form-control" name="college">
-                                    <option value="'.$row_User['College'].'">'.$row_User['College'].'</option>
                                     <optgroup label="Choose College ---">
-                                        <option value="College Of Computer Science and Engineering">College Of Computer Science and Engineering</option>
+                                         ';
+                                        select_college_info($row_User['College']);
+                                    echo '
                                     </optgroup>
                                 </select>
                             </div>
         
                             <div class="form-group col-md-6">
                                 <select class="form-control" name="department">
-                                    <option value="'.$row_User['Department'].'">'.$row_User['Department'].'</option>
                                     <optgroup label="Choose Department ---">
-                                        <option value="CS">CS</option>
+                                        ';
+                                        select_dep_info($row_User['Department']);
+                                    echo '
                                     </optgroup>
                                 </select>
                             </div>
