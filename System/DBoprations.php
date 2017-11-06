@@ -1298,117 +1298,119 @@ function Edit_Profile(){
                         </label>
                         </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <input class="form-control" name="firstName" value="'.$row_User['First_Name'].'" placeholder="First name" type="text">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <input class="form-control" name="secondName" value="'.$row_User['Last_Name'].'" placeholder="Last name" type="text">
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <input class="form-control" name="email" value="'.$row_User['Email'].'" placeholder="Email address - Ex : ( example@example.com )" type="email">
-                    </div>
-
-                    <div class="form-group col-md-4">
-                        <input class="form-control" name="username" value="'.$row_User['User_Name'].'" placeholder="User name" type="text" disabled>
-                    </div>
-
-                    <div class="form-group col-md-4">
-                        <input class="form-control" name="phone" value="'.$row_User['Phone_Number'].'" placeholder="Phone number" type="text">
-                    </div>
-
-                    <div class="form-group col-md-4">
-                        <input class="form-control" type="text" name="Academic_Number" value="'.$row_User['Academic_Number'].'" placeholder="Academic number" id="Academic_Number" />
-                    </div>
-
-                    <div class="clearfix">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <input class="form-control" name="password" value="'.$row_User['Password'].'" id="password" placeholder="Password" type="password">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input class="form-control" name="password2" value="'.$row_User['Password'].'" placeholder="Re-enter password" type="password">
-                    </div>
-                    <div class="clearfix">
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <input class="form-control" name="website" value="'.$row_User['Web_Site'].'" placeholder="Website - Ex : ( http://www.example.com )" type="url">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <input class="form-control" type="date" name="Date_of_berth" value="'.$row_User['Date_Of_Birth'].'" placeholder="Date of berth" id="Date_of_berth"/>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <select class="form-control" name="country">
-                        <option value="'.$row_User['Country'].'">'.$row_User['Country'].'</option>
-                            <optgroup label="Choose Country ---">
-                                <option value="Soudi Arabia">Soudi Arabia</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <select class="form-control" name="city">
-                            <option value="'.$row_User['City'].'">'.$row_User['City'].'</option>
-                            <optgroup label="Choose City ---" style="width: 200px">
-                                <option value="Madinah">Madinah</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <select class="form-control" name="university">
-                            <option value="'.$row_User['University'].'">'.$row_User['University'].'</option>
-                            <optgroup label="Choose University ---">
-                                <option value="Taibah University">Taibah University</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <select class="form-control" name="college">
-                            <option value="'.$row_User['College'].'">'.$row_User['College'].'</option>
-                            <optgroup label="Choose College ---">
-                                <option value="College Of Computer Science and Engineering">College Of Computer Science and Engineering</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <select class="form-control" name="department">
-                            <option value="'.$row_User['Department'].'">'.$row_User['Department'].'</option>
-                            <optgroup label="Choose Department ---">
-                                <option value="CS">CS</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <div style="margin-left: 45px; margin-right: 25px; margin-bottom: 10px">
-                            <legend>Gender</legend>
+                    
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <input class="form-control" name="firstName" value="'.$row_User['First_Name'].'" placeholder="First name" type="text">
+                            </div>
+        
+                            <div class="form-group col-md-6">
+                                <input class="form-control" name="secondName" value="'.$row_User['Last_Name'].'" placeholder="Last name" type="text">
+                            </div>
+        
+                            <div class="form-group col-md-12">
+                                <input class="form-control" name="email" value="'.$row_User['Email'].'" placeholder="Email address - Ex : ( example@example.com )" type="email">
+                            </div>
+        
+                            <div class="form-group col-md-4">
+                                <input class="form-control" name="username" value="'.$row_User['User_Name'].'" placeholder="User name" type="text" disabled>
+                            </div>
+        
+                            <div class="form-group col-md-4">
+                                <input class="form-control" name="phone" value="'.$row_User['Phone_Number'].'" placeholder="Phone number" type="text">
+                            </div>
+        
+                            <div class="form-group col-md-4">
+                                <input class="form-control" type="text" name="Academic_Number" value="'.$row_User['Academic_Number'].'" placeholder="Academic number" id="Academic_Number" />
+                            </div>
+        
+                            <div class="clearfix">
+                            </div>
+        
+                            <div class="form-group col-md-6">
+                                <input class="form-control" name="password" value="'.$row_User['Password'].'" id="password" placeholder="Password" type="password">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input class="form-control" name="password2" value="'.$row_User['Password'].'" placeholder="Re-enter password" type="password">
+                            </div>
+                            <div class="clearfix">
+                            </div>
+        
+                            <div class="form-group col-md-12">
+                                <input class="form-control" name="website" value="'.$row_User['Web_Site'].'" placeholder="Website - Ex : ( http://www.example.com )" type="url">
+                            </div>
+        
+                            <div class="form-group col-md-6">
+                                <input class="form-control" type="date" name="Date_of_berth" value="'.$row_User['Date_Of_Birth'].'" placeholder="Date of berth" id="Date_of_berth"/>
+                            </div>
+        
+                            <div class="form-group col-md-6">
+                                <select class="form-control" name="country">
+                                <option value="'.$row_User['Country'].'">'.$row_User['Country'].'</option>
+                                    <optgroup label="Choose Country ---">
+                                        <option value="Soudi Arabia">Soudi Arabia</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+        
+                            <div class="form-group col-md-6">
+                                <select class="form-control" name="city">
+                                    <option value="'.$row_User['City'].'">'.$row_User['City'].'</option>
+                                    <optgroup label="Choose City ---" style="width: 200px">
+                                        <option value="Madinah">Madinah</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+        
+                            <div class="form-group col-md-6">
+                                <select class="form-control" name="university">
+                                    <option value="'.$row_User['University'].'">'.$row_User['University'].'</option>
+                                    <optgroup label="Choose University ---">
+                                        <option value="Taibah University">Taibah University</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+        
+                            <div class="form-group col-md-6">
+                                <select class="form-control" name="college">
+                                    <option value="'.$row_User['College'].'">'.$row_User['College'].'</option>
+                                    <optgroup label="Choose College ---">
+                                        <option value="College Of Computer Science and Engineering">College Of Computer Science and Engineering</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+        
+                            <div class="form-group col-md-6">
+                                <select class="form-control" name="department">
+                                    <option value="'.$row_User['Department'].'">'.$row_User['Department'].'</option>
+                                    <optgroup label="Choose Department ---">
+                                        <option value="CS">CS</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+        
+                            <div class="form-group col-md-12">
+                                <div style="margin-left: 45px; margin-right: 25px; margin-bottom: 10px">
+                                    <legend>Gender</legend>
+                                    ';
+                    if ($row_User['Gender'] == 'M'){
+                        echo '<label style="margin-right: 10px"><input type="radio" value="Male" name="gender" id="M_gender" checked required/> Male</label>
+                              <label><input type="radio" value="Female" name="gender" id="F_gender" required/> Female</label>
                             ';
-            if ($row_User['Gender'] == 'M'){
-                echo '<label style="margin-right: 10px"><input type="radio" value="Male" name="gender" id="M_gender" checked required/> Male</label>
-                      <label><input type="radio" value="Female" name="gender" id="F_gender" required/> Female</label>
-                    ';
-            }else{
-                echo '
-                      <label style="margin-right: 10px"><input type="radio" value="Male" name="gender" id="M_gender" required/> Male</label>
-                      <label><input type="radio" value="Female" name="gender" id="F_gender" checked required/> Female</label>
-                     ';
+                    }else{
+                        echo '
+                              <label style="margin-right: 10px"><input type="radio" value="Male" name="gender" id="M_gender" required/> Male</label>
+                              <label><input type="radio" value="Female" name="gender" id="F_gender" checked required/> Female</label>
+                             ';
 
-                 }
-            echo '
-                        </div>
+                         }
+                    echo '
+                                </div>
+                            </div>
+                         <div>
+                            <input class="btn btn-primary" id="submit-button" type="submit" value="Edit Profile">
+                         </div>
                     </div>
-                 <div>
-                    <input class="btn btn-primary" id="submit-button" type="submit" value="Edit Profile">
-                 </div>
-
                 </form>
         </div>
     ';

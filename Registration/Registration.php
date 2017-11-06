@@ -39,11 +39,12 @@ if (isset($_SESSION['user'])) {
     <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
 </div>
 
-        <div class="container well" style="margin-top: 80px">
+        <div class="container well" style="margin-top: 80px; margin-bottom: 80px">
          
             <form id="register-form" method="post" action="Registration_process.php">
                     <legend style="text-transform: uppercase">Sign up</legend>
         
+        <div class="row">
                 <div class="form-group col-md-6">
                     <input class="form-control" name="firstName" placeholder="First name" type="text">
                 </div>
@@ -155,7 +156,7 @@ if (isset($_SESSION['user'])) {
                 <div>
                     <input class="btn btn-primary" id="submit-button" type="submit" value="Sign Up">
                 </div>
-        
+        </div>
             </form>
         </div>
 
