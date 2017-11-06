@@ -106,7 +106,6 @@ if (isset($_SESSION['user'])) {
                         </optgroup>
                     </select>
                 </div>
-                
                 ';
                     select_uni();
 

@@ -77,7 +77,7 @@ function select_uni(){
 
     echo '
         <div class="form-group col-md-6">
-                    <select class="university form-control" name="university">
+                    <select class="form-control" name="university">
                         <optgroup label="University">
                             <option value="">Choose University ---</option>
     ';
