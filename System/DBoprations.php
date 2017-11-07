@@ -989,6 +989,19 @@ function List_Books(){
     $result_book = $con->query($sql);
     if ($result_book->num_rows > 0) {
         while ($row_book = $result_book->fetch_assoc()) {
+
+            $Id_Book = $row_book['Id_Book'];
+            $User_Name = $_SESSION['user'];
+            $Id_User = '';
+
+            $sql_user = "SELECT * FROM user WHERE User_Name='$User_Name'";
+            $result_user = $con->query($sql_user);
+            if ($result_user->num_rows > 0) {
+                while ($row_user = $result_user->fetch_assoc()){
+                    $Id_User = $row_user['Id'];
+                }
+            }
+
             echo '
                     <div class="w3-container w3-card w3-padding-small w3-margin w3-col s3">
                                     <li>
@@ -997,7 +1010,20 @@ function List_Books(){
                                                 <img src="Upload_Books/' . $row_book['Image_Book'] . '" alt="" width="100%" height="217">
                                                 <div class="s-product-hover">
                                                     <ul>
-                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                    ';
+
+            $sql_favorite = "SELECT * FROM favorite_book WHERE User_Id=$Id_User AND Book_Id=$Id_Book";
+            $result_favorite = $con->query($sql_favorite);
+            if ($result_favorite->num_rows > 0) {
+                        echo '
+                    <li><a class="UnFavorite" title="Un Favorite" value="'.$Id_Book.'" name="'.$Id_User.'"><i class="fa fa-heart w3-text-red"></i></a></li>
+                    ';
+            }else{
+                echo '
+                <li><a class="Favorite" title="Favorite" value="'.$Id_Book.'" name="'.$Id_User.'"><i class="fa fa-heart"></i></a></li>
+                ';
+            }
+            echo'
                                                         <li><a href="index.php?pid=Show_Book&Serial='.$row_book['Serial'].'"><i class="fa fa-book"></i></a></li>
                                                     </ul>
                                                 </div>
@@ -1099,6 +1125,7 @@ function Profile(){
                             <!-- Accordion -->
                             <div class="w3-card-2 w3-round">
                                 <div class="w3-white">
+                                    <button class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-heart-o fa-fw w3-margin-right"></i> My Favorite</button>
                                     <button onclick="myFunction(\'Demo1\')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
                                     <div id="Demo1" class="w3-hide w3-container">
                                         <p class="w3-text-red">Coming Soon ...</p>

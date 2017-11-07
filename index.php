@@ -179,6 +179,7 @@ require "System/DBoprations.php";
 <script src="System/Add_Post_Profile.js"></script>
 <script src="System/Like_or_Dislike_Post.js"></script>
 <script src="System/Contact.js"></script>
+<script src="System/favorite.js"></script>
 
 </body>
 </html>
