@@ -941,8 +941,8 @@ function Catagories(){
              ';
 }
 
-function List_Books()
-{
+function List_Books(){
+
     if (empty($_GET['page'])) {
         $_GET['page'] = '1';
     }
@@ -1034,9 +1034,9 @@ function List_Books()
     ';
 
     // display the links to the pages
-    if ($lisst != 'All') {
-        $totalPages++;
-    }
+//    if ($lisst != 'All') {
+//        $totalPages++;
+//    }
 
     if ($page > 1) {
         print '<a style="margin: 2px;" id="Previous" class="page" href="index.php?pid=IEBook&List=' . $_GET['List'] . '&page=' . $page = $page - 1 . '#IEBook">Prev</a>';

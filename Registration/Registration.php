@@ -14,6 +14,8 @@ if (isset($_SESSION['user'])) {
 <head>
     <title>My University | Sign Up </title>
     <meta charset="UTF-8">
+    <!-- icon browser -->
+    <link rel="icon" href="../icon.gif">   
     <link rel="stylesheet" href="../CSS/w3-theme-blue-grey.css">
     <link href="bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/BootStrap.css">

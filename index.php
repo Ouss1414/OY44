@@ -11,7 +11,10 @@ require "System/DBoprations.php";
 <title>My University | <?= $PageID ?></title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="CSS/BootStrap.css">
+<!-- icon browser -->
+<link rel="icon" href="icon.gif">
+
+    <link rel="stylesheet" href="CSS/BootStrap.css">
 <link rel="stylesheet" href="CSS/w3-theme-blue-grey.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -175,6 +178,7 @@ require "System/DBoprations.php";
 <script src="System/delete.js"></script>
 <script src="System/Add_Post_Profile.js"></script>
 <script src="System/Like_or_Dislike_Post.js"></script>
+<script src="System/Contact.js"></script>
 
 </body>
 </html>

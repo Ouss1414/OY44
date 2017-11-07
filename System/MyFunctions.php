@@ -15,12 +15,15 @@ function login(){
                 <a href="sites_Profile/Edit_Profile/Edit_Profile.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Edit Profile"><i class="fa fa-pencil-square-o"></i></a>
                 <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
                 <div class="w3-dropdown-hover w3-hide-small">
-                    <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>
-                    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
-                        <a href="#" class="w3-bar-item w3-button">One new friend request</a>
-                        <a href="#" class="w3-bar-item w3-button">John Doe posted on your wall</a>
-                        <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
-                    </div>
+                    <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">   </span></button>
+                    ';
+
+//                    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
+//                        <a href="#" class="w3-bar-item w3-button">One new friend request</a>
+//                        <a href="#" class="w3-bar-item w3-button">John Doe posted on your wall</a>
+//                        <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
+//                    </div>
+                echo'
                 </div>
                 ';
                 if (empty($row_User['Image'])) {
