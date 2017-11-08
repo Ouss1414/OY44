@@ -80,17 +80,20 @@ function isAuth($PageID){
         case "Delete" :
             $redirectToPage = "Delete";
             break;
-            case "Questions_Page" :
+        case "Questions_Page" :
             $redirectToPage = "Questions_Page";
             break;
-            case "Answer_Question" :
+        case "Answer_Question" :
             $redirectToPage = "Answer_Question";
             break;
-            case "ControlPanel" :
+        case "ControlPanel" :
             $redirectToPage = "ControlPanel";
             break;
-            case "Mailbox" :
+        case "Mailbox" :
             $redirectToPage = "Mailbox";
+            break;
+        case "Favorite" :
+            $redirectToPage = "Favorite";
             break;
         default :
             $redirectToPage = "Home";

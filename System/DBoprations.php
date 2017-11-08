@@ -1125,7 +1125,7 @@ function Profile(){
                             <!-- Accordion -->
                             <div class="w3-card-2 w3-round">
                                 <div class="w3-white">
-                                    <button class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-heart-o fa-fw w3-margin-right"></i> My Favorite</button>
+                                    <button onclick="location.href=\'index.php?pid=Favorite\'" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-heart-o fa-fw w3-margin-right"></i> My Favorite</button>
                                     <button onclick="myFunction(\'Demo1\')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
                                     <div id="Demo1" class="w3-hide w3-container">
                                         <p class="w3-text-red">Coming Soon ...</p>

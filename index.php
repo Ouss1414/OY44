@@ -138,6 +138,8 @@ require "System/DBoprations.php";
             break;
         case "Answer_Question" : include_once "sites_Iebook/Questions_Page/Answer_Question.php";
             break;
+        case "Favorite" : include_once "sites_Profile/Favorite/Favorite.php";
+            break;
         default: include_once "sites_Forum/Home/Home.php";
             break;
     }
