@@ -39,20 +39,32 @@ function login(){
                     ';
                 }
                 echo '
-                    <div class="w3-show-inline-block w3-right">
-                        <input type="text" name="Search" id="Search" height="20px" style="border:0 solid ;border-radius: 20px; padding: 3px;margin-top: 3.5%; display: none; outline: none; padding: 5px 15px 5px 15px" dir="rtl">
-                        <a class="w3-bar-item w3-hide-small w3-right w3-padding-large" title="Search" onclick="document.getElementById(\'Search\').style.display = \'inline\'; document.getElementById(\'Search\').focus();" style="cursor: pointer"><i class="fa fa-search"></i></a>
-                    </div>
+                    <form id="FormSearch" action="System/Search.php" method="post">             
+                           <div class="w3-show-inline-block w3-right">
+                               <a class="w3-bar-item w3-hide-small w3-right w3-padding-large" href="#" onclick="FormSearch.submit()"><i class="fa fa-search" ></i></a>
+                           </div>
+                            <div class="w3-show-inline-block w3-right">
+                                <input type="text" name="search" placeholder="search..." title="search" style="border: 0 solid ; border-radius: 20px ; padding: 3px ; margin-top: 3% ; outline: none ; padding: 5px 15px 5px 15px">
+                            </div>
+
+                        </form>
                 ';
             }
         }
     }else{
         echo ' 
- <a href="index.php?pid=Login" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="Log in"><i class="fa fa-sign-in"></i></a>
-<div class="w3-show-inline-block w3-right">
-                        <input type="text" name="Search" id="Search" height="20px" style="border:0 solid ;border-radius: 20px; padding: 3px;margin-top: 3.5%; display: none; outline: none; padding: 5px 15px 5px 15px" dir="rtl">
-                        <a class="w3-bar-item w3-hide-small w3-right w3-padding-large" title="Search" onclick="document.getElementById(\'Search\').style.display = \'inline\'; document.getElementById(\'Search\').focus();" style="cursor: pointer"><i class="fa fa-search"></i></a>
-                    </div>
+            <a href="index.php?pid=Login" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="Log in"><i class="fa fa-sign-in"></i></a>
+           
+                        <form id="FormSearch" action="System/Search.php" method="post">             
+                           <div class="w3-show-inline-block w3-right">
+                               <a class="w3-bar-item w3-hide-small w3-right w3-padding-large" href="#" onclick="FormSearch.submit()"><i class="fa fa-search" ></i></a>
+                           </div>
+                            <div class="w3-show-inline-block w3-right">
+                                <input type="text" name="search" placeholder="search..." title="search" style="border: 0 solid ; border-radius: 20px ; padding: 3px ; margin-top: 3% ; outline: none ; padding: 5px 15px 5px 15px" >
+                            </div>
+
+                        </form>
+                    
  ';
     }
 }
