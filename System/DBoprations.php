@@ -1113,7 +1113,16 @@ function Profile(){
                                 <div class="w3-container">
                                     <h4 class="w3-center">'.$row_User['First_Name'] . " " . $row_User['Last_Name'] .'</h4>
                                     <p class="w3-center"><img src="Images/Pic/'.$row_User['Image'].'" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-                                    <div class="w3-center"><p><button class="w3-btn w3-border" style="min-width: 100px"> FOLLOW </button> <button class="w3-btn w3-border" style="min-width: 100px"> CV </button></p></div>
+                                    <div class="w3-center">
+                                    ';
+                              if ($row_User['User_Name'] != $Name_User){
+                                   echo'
+                                    <p><button class="w3-btn w3-border" style="min-width: 100px"> FOLLOW </button> 
+                                    ';
+                                   }
+                                   echo'
+                                    <button class="w3-btn w3-border" style="min-width: 100px"> CV </button></p>
+                                    </div>
                                     <hr>
                                     <p style="text-transform: uppercase"><i class="fa fa-university fa-fw w3-margin-right w3-text-theme"></i>'.$row_User['University']. "," . $row_User['Department'] .'</p>
                                     <p style="text-transform: uppercase"><i class="fa fa-Author fa-fw w3-margin-right w3-text-theme"></i> '.$row_User['Country'] . "," . $row_User['City'] .'</p>
