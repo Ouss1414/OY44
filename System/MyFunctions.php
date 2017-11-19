@@ -35,7 +35,7 @@ function login(){
                 ';
                 if($row_User['User_Type'] == 'admin' || $row_User['User_Type'] == 'dean' || $row_User['User_Type'] == 'author') {
                     echo '
-                    <a href="ControlPanel.php?CP=Author" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">Control Panel</a>
+                    <a href="ControlPanel.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">Control Panel</a>
                     ';
                 }
                 echo '
@@ -145,6 +145,21 @@ function ControlPanel($Pages){
             break;
         case "Edit_Exercise" :
             $redirectToPage = "Edit_Exercise";
+            break;
+        case "Add_University" :
+            $redirectToPage = "Add_University";
+            break;
+        case "Remove_University" :
+            $redirectToPage = "Remove_University";
+            break;
+        case "Edit_University" :
+            $redirectToPage = "Edit_University";
+            break;
+        case "Manage_Books" :
+            $redirectToPage = "Manage_Books";
+            break;
+        case "Add_User" :
+            $redirectToPage = "Add_User";
             break;
         default :
             $redirectToPage = "ControlPanel";

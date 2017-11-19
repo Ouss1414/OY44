@@ -28,9 +28,9 @@ if ($Type == 'author'){
 
 <div class="row" align="center">
     <h2 class="margin-bottom">Edit Exercise</h2>
-    <?php
+    ';
         Edit_Exercise();
-    ?>
+    echo '
     <div align="center">
         <input type="submit" value="Update" name="'. $_GET['Serial'] .'" class="Update_Exercise btn btn-green" id=""/>
         <input type="reset" value="Reset" name="reset_book" class="btn btn-red margin-left"/>

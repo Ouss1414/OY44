@@ -37,6 +37,15 @@ if ($result->num_rows > 0) {
             } else if ($_GET['CP'] == 'Mailbox-message') {
                 $Mail = 'visible';
                 $Mailbox_message = 'active';
+            } else if ($_GET['CP'] == 'Add_University') {
+                $Control_University = 'visible';
+                $Control_Add_University = 'active';
+            } else if ($_GET['CP'] == 'Manage_Books') {
+                $Control_IEBook = 'visible';
+                $Control_Manage_Books = 'active';
+            } else if ($_GET['CP'] == 'Add_User') {
+                $Control_Users = 'visible';
+                $Control_Add_User = 'active';
             }
             ?>
             <!DOCTYPE html>
@@ -164,12 +173,69 @@ if ($result->num_rows > 0) {
                             <?php
                             }
                             ?>
+                            <?php
+                            if ($Type == 'dean'){
+                            ?>
                             <li class="<?= $new_post ?>">
                                 <a href="ControlPanel.php?CP=new-post">
                                     <i class="entypo-pencil"></i>
                                     <span class="title">New Post</span>
                                 </a>
                             </li>
+                            <?php
+                            }
+                            ?>
+
+                            <?php
+                            if ($Type == 'admin'){
+                            ?>
+                                <li class="has-sub">
+                                    <a href="ControlPanel.php?CP=Control_University">
+                                        <i class="entypo-graduation-cap"></i>
+                                        <span class="title">Control University</span>
+                                    </a>
+                                    <ul class=" <?= $Control_University ?>">
+                                        <li class="<?= $Control_Add_University ?>">
+                                            <a href="ControlPanel.php?CP=Add_University">
+                                                <i class="entypo-user"></i>
+                                                <span class="title">Add University</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="has-sub">
+                                    <a href="ControlPanel.php?CP=Control_IEBook">
+                                        <i class="entypo-book-open"></i>
+                                        <span class="title">Control IEBook</span>
+                                    </a>
+                                    <ul class=" <?= $Control_IEBook ?>">
+                                        <li class="<?= $Control_Manage_Books ?>">
+                                            <a href="ControlPanel.php?CP=Manage_Books">
+                                                <i class="entypo-user"></i>
+                                                <span class="title">Manage Books</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="has-sub">
+                                    <a href="ControlPanel.php?CP=Control_Users">
+                                        <i class="entypo-user"></i>
+                                        <span class="title">Control Users</span>
+                                    </a>
+                                    <ul class=" <?= $Control_Users ?>">
+                                        <li class="<?= $Control_Add_User ?>">
+                                            <a href="ControlPanel.php?CP=Add_User">
+                                                <i class="entypo-user-add"></i>
+                                                <span class="title">Add user</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            <?php
+                            }
+                            ?>
                         </ul>
 
                     </div>
@@ -199,13 +265,13 @@ if ($result->num_rows > 0) {
                             include_once "ControlPanel/Mail/Mailbox-message/Mailbox-message.html";
                             break;
                         case "Home" :
-                            include_once "ControlPanel/Author/home.php";
+                            include_once "ControlPanel/home.php";
                             break;
                         case "New-Book" :
                             include_once "ControlPanel/Author/New-Book.php";
                             break;
                         case "new-post" :
-                            include_once "ControlPanel/new-post.html";
+                            include_once "ControlPanel/new-post.php";
                             break;
                         case "Edit_Book" :
                             include_once "ControlPanel/Author/Edit_book.php";
@@ -219,8 +285,23 @@ if ($result->num_rows > 0) {
                         case "Edit_Exercise" :
                             include_once "ControlPanel/Author/Edit_Exercise.php";
                             break;
+                        case "Add_University" :
+                            include_once "ControlPanel/Admin/University/Add_University.php";
+                            break;
+                        case "Remove_University" :
+                            include_once "ControlPanel/Admin/University/Remove_University.php";
+                            break;
+                        case "Edit_University" :
+                            include_once "ControlPanel/Admin/University/Edit_University.php";
+                            break;
+                        case "Manage_Books" :
+                            include_once "ControlPanel/Admin/IEBook/Manage_Books.php";
+                            break;
+                        case "Add_User" :
+                            include_once "ControlPanel/Admin/Users_Folder/Add_User.php";
+                            break;
                         default:
-                            include_once "ControlPanel/Author/home.php";
+                            include_once "ControlPanel/home.php";
                             break;
                     }
                     ?>
@@ -366,6 +447,13 @@ if ($result->num_rows > 0) {
 
 
             <!-- Imported scripts on this page -->
+            <script src="ControlPanel/assets/js/jquery.bootstrap.wizard.min.js"></script>
+            <script src="ControlPanel/assets/js/jquery.validate.min.js"></script>
+            <script src="ControlPanel/assets/js/jquery.inputmask.bundle.js"></script>
+            <script src="ControlPanel/assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
+            <script src="ControlPanel/assets/js/bootstrap-datepicker.js"></script>
+            <script src="ControlPanel/assets/js/bootstrap-switch.min.js"></script>
+            <script src="ControlPanel/assets/js/jquery.multi-select.js"></script>
             <script src="ControlPanel/assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>
             <script src="ControlPanel/assets/js/jquery.sparkline.min.js"></script>
             <script src="ControlPanel/assets/js/rickshaw/vendor/d3.v3.js"></script>

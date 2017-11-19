@@ -41,17 +41,17 @@ if ($Type == 'author'){
                 }
             </script>
             <tr>
-                <td><label for="Num_Question">Question number: </label></td>
+                <td><label for="Num_Question"><span style="color: red">*</span> Question number: </label></td>
                 <td><input type="number" class="form-control" name="Num_Question" id="Num_Question" placeholder="Question number?" style="max-width: 50%" autofocus required></td>
             </tr>
 
             <tr>
-                <td><label for="Question">Question: </label></td>
+                <td><label for="Question"><span style="color: red">*</span> Question: </label></td>
                 <td><input type="text" class="form-control" name="Question" id="Question" placeholder="Question?" required></td>
             </tr>
 
             <tr>
-                <td><label for="Answer_1">Answer 1: </label></td>
+                <td><label for="Answer_1"><span style="color: red">*</span> Answer 1: </label></td>
                 <td>
                     <input type="text" class="form-control" name="Answer_1" id="Answer_1" placeholder="Answer 1" style="max-width: 70%; display: inline;margin-right: 5px" required>
                     <label><input type="radio" name="Q_Answer" class="Q_Answer" value="1" required> Correct answer!</label>
@@ -59,7 +59,7 @@ if ($Type == 'author'){
             </tr>
 
             <tr>
-                <td><label for="Answer_2">Answer 2: </label></td>
+                <td><label for="Answer_2"><span style="color: red">*</span> Answer 2: </label></td>
                 <td>
                     <input type="text" class="form-control" name="Answer_2" id="Answer_2" placeholder="Answer 2" style="max-width: 70%; display: inline;margin-right: 5px" required>
                     <label><input type="radio" name="Q_Answer" class="Q_Answer" value="2" required> Correct answer!</label>
@@ -67,7 +67,7 @@ if ($Type == 'author'){
             </tr>
 
             <tr>
-                <td><label for="Answer_3">Answer 3: </label></td>
+                <td><label for="Answer_3"><span style="color: red">*</span> Answer 3: </label></td>
                 <td>
                     <input type="text" class="form-control" name="Answer_3" id="Answer_3" placeholder="Answer 3" style="max-width: 70%; display: inline;margin-right: 5px" required>
                     <label><input type="radio" name="Q_Answer" class="Q_Answer" value="3" required> Correct answer!</label>
@@ -75,7 +75,7 @@ if ($Type == 'author'){
             </tr>
 
             <tr>
-                <td><label for="Answer_4">Answer 4: </label></td>
+                <td><label for="Answer_4"><span style="color: red">*</span> Answer 4: </label></td>
                 <td>
                     <input type="text" class="form-control" name="Answer_4" id="Answer_4" placeholder="Answer 4" style="max-width: 70%; display: inline;margin-right: 5px" required>
                     <label><input type="radio" name="Q_Answer" class="Q_Answer" value="4" required> Correct answer!</label>

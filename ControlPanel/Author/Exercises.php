@@ -42,9 +42,9 @@ if ($Type == 'author'){
                 <td style="padding: 10px">Edit</td>
                 <td style="padding: 10px">Delete</td>
             </tr>
-            <?php
+            ';
                 Get_Exercise();
-            ?>
+            echo '
         </table>
     </div>
 </div>

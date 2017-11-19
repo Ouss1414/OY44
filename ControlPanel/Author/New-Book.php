@@ -29,22 +29,22 @@ if ($Type == 'author') {
     <form action="System/Upload_book.php" method="post" enctype="multipart/form-data">
 		<table class="table" style="max-width: 60%">
 			<tr>
-				<td><label for="Serial">Serial book: </label></td>
+				<td><label for="Serial"><span style="color: red">*</span> Serial book: </label></td>
 				<td><input type="text" class="form-control" name="Serial" id="Serial" placeholder="Serial number" autofocus required></td>
 			</tr>
 
 			<tr>
-				<td><label for="Name_book">Name book: </label></td>
+				<td><label for="Name_book"><span style="color: red">*</span> Name book: </label></td>
 				<td><input type="text" class="form-control" name="Name_book" id="Name_book" placeholder="Name book" required></td>
 			</tr>
 
 			<tr>
-				<td><label for="Page_book"  >Pages: </label></td>
+				<td><label for="Page_book"  ><span style="color: red">*</span> Pages: </label></td>
 				<td><input type="number" class="form-control" name="Page_book" id="Page_book" placeholder="Number only"  required></td>
 			</tr>
 
 			<tr>
-				<td><label for="Price_book"  >Price: </label></td>
+				<td><label for="Price_book"  ><span style="color: red">*</span> Price: </label></td>
 				<td>
 					<input type="number" class="form-control" name="Price_book" id="Price_book" placeholder="Free">
 					<p style="color: red">* If it\'s FREE please don\'t add a value.</p>
@@ -52,7 +52,7 @@ if ($Type == 'author') {
 			</tr>
 
 			<tr>
-				<td><label for="Catagories_book"  >Catagories: </label></td>
+				<td><label for="Catagories_book"  ><span style="color: red">*</span> Catagories: </label></td>
 				<td>
                     <select class="form-control" name="catagories_book" id="catagories_book">
                         <option>Choose one...</option>
@@ -65,13 +65,13 @@ if ($Type == 'author') {
 			</tr>
 
 			<tr>
-				<td><label for="Available_book">Available book: </label></td>
+				<td><label for="Available_book"><span style="color: red">*</span> Available book: </label></td>
 				<td><label><input type="radio" value="1" name="Available_book" class="Available_book" checked required> Yes</label></br>
 					<label><input type="radio" value="0" name="Available_book" class="Available_book" required> No</label></td>
 			</tr>
 
 			<tr>
-				<td><label for="File_book">File book: </label></td>
+				<td><label for="File_book"><span style="color: red">*</span> File book: </label></td>
 				<td><div class="fileinput fileinput-new" data-provides="fileinput">
 					<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;" data-trigger="fileinput">
 						<div style="margin-top: 30%; font-size: 24px">Click Here</div>
@@ -91,7 +91,7 @@ if ($Type == 'author') {
 			</tr>
 
 			<tr>
-				<td><label for="Image_book">Image book: </label></td>
+				<td><label for="Image_book"><span style="color: red">*</span> Image book: </label></td>
 				<td><div class="fileinput fileinput-new" data-provides="fileinput">
 					<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;" data-trigger="fileinput">
 						<img src="http://placehold.it/200x150" alt="...">

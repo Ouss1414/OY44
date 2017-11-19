@@ -446,22 +446,22 @@ function Edit_Book(){
                     <table class="table" style="max-width: 60%">
                     <input type="text" style="display: none" name="Serial" value="'.$row_book['Serial'].'">
                         <tr>
-                            <td><label for="Serial">Serial book: </label></td>
+                            <td><label for="Serial"><span style="color: red">*</span> Serial book: </label></td>
                             <td><input type="text" class="form-control" name="New_Serial" value="'.$row_book['Serial'].'" placeholder="Serial number" required></td>
                         </tr>
             
                         <tr>
-                            <td><label for="Name_book">Name book: </label></td>
+                            <td><label for="Name_book"><span style="color: red">*</span> Name book: </label></td>
                             <td><input type="text" class="form-control" name="Name_book" value="'.$row_book['Name_Book'].'" placeholder="Name book" required></td>
                         </tr>
             
                         <tr>
-                            <td><label for="Page_book"  >Pages: </label></td>
+                            <td><label for="Page_book"  ><span style="color: red">*</span> Pages: </label></td>
                             <td><input type="number" class="form-control" name="Page_book" value="'.$row_book['Page'].'" placeholder="Number only"  required></td>
                         </tr>
             
                         <tr>
-                            <td><label for="Price_book"  >Price: </label></td>
+                            <td><label for="Price_book"  ><span style="color: red">*</span> Price: </label></td>
                             <td>
                                 <input type="number" class="form-control" name="Price_book" value="'.$row_book['Price'].'" placeholder="Free">
                                 <p style="color: red">* If it\'s FREE please don\'t add a value.</p>
@@ -469,7 +469,7 @@ function Edit_Book(){
                         </tr>
                         
                         <tr>
-                            <td><label for="Catagories_book"  >Catagories: </label></td>
+                            <td><label for="Catagories_book"  ><span style="color: red">*</span> Catagories: </label></td>
                             <td><select class="form-control" name="catagories_book">
                                     <option>Choose one...</option>
                                     ';
@@ -489,13 +489,13 @@ function Edit_Book(){
                          }
                         echo '
                         <tr>
-                            <td><label for="Available_book">Available book: </label></td>
+                            <td><label for="Available_book"><span style="color: red">*</span> Available book: </label></td>
                             <td><label><input type="radio" value="1" name="Available_book" '.$checked_true.' required> Yes</label></br>
                                 <label><input type="radio" value="0" name="Available_book" '.$checked_false.' required> No</label></td>
                         </tr>
             
                         <tr>
-                            <td><label for="File_book">File book: </label></td>
+                            <td><label for="File_book"><span style="color: red">*</span> File book: </label></td>
                             <td><div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;" data-trigger="fileinput">
                                         <div style="margin-top: 30%; font-size: 24px">Click Here</div>
@@ -515,7 +515,7 @@ function Edit_Book(){
                         </tr>
             
                         <tr>
-                            <td><label for="Image_book">Image book: </label></td>
+                            <td><label for="Image_book"><span style="color: red">*</span> Image book: </label></td>
                             <td><div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;" data-trigger="fileinput">
                                         <img src="http://placehold.it/200x150" alt="...">
@@ -606,17 +606,17 @@ function Edit_Exercise(){
                     echo'
             <table class="table" style="max-width: 70%">
         <tr>
-            <td><label for="Num_Question">Question number: </label></td>
+            <td><label for="Num_Question"><span style="color: red">*</span> Question number: </label></td>
             <td><input type="number" class="form-control" name="Num_Question" id="Num_Question" value="'.$row_exercise['Number_Q'].'" style="max-width: 50%" autofocus required></td>
         </tr>
 
         <tr>
-            <td><label for="Question">Question: </label></td>
+            <td><label for="Question"><span style="color: red">*</span> Question: </label></td>
             <td><input type="text" class="form-control" name="Question" id="Question" value="'.$row_exercise['Question'].'" required></td>
         </tr>
 
         <tr>
-            <td><label for="Answer_1">Answer 1: </label></td>
+            <td><label for="Answer_1"><span style="color: red">*</span> Answer 1: </label></td>
             <td>
                 <input type="text" class="form-control" name="Answer_1" id="Answer_1" value="'.$row_exercise['Answer_1'].'" style="max-width: 70%; display: inline;margin-right: 5px" required>
                 <label><input type="radio" name="Q_Answer" class="Q_Answer" value="1" '.$Q_Answer_1.' required> Correct answer!</label>
@@ -624,7 +624,7 @@ function Edit_Exercise(){
         </tr>
 
         <tr>
-            <td><label for="Answer_2">Answer 2: </label></td>
+            <td><label for="Answer_2"><span style="color: red">*</span> Answer 2: </label></td>
             <td>
                 <input type="text" class="form-control" name="Answer_2" id="Answer_2" value="'.$row_exercise['Answer_2'].'" style="max-width: 70%; display: inline;margin-right: 5px" required>
                 <label><input type="radio" name="Q_Answer" class="Q_Answer" value="2" '.$Q_Answer_2.' required> Correct answer!</label>
@@ -632,7 +632,7 @@ function Edit_Exercise(){
         </tr>
 
         <tr>
-            <td><label for="Answer_3">Answer 3: </label></td>
+            <td><label for="Answer_3"><span style="color: red">*</span> Answer 3: </label></td>
             <td>
                 <input type="text" class="form-control" name="Answer_3" id="Answer_3" value="'.$row_exercise['Answer_3'].'" style="max-width: 70%; display: inline;margin-right: 5px" required>
                 <label><input type="radio" name="Q_Answer" class="Q_Answer" value="3" '.$Q_Answer_3.' required> Correct answer!</label>
@@ -640,7 +640,7 @@ function Edit_Exercise(){
         </tr>
 
         <tr>
-            <td><label for="Answer_4">Answer 4: </label></td>
+            <td><label for="Answer_4"><span style="color: red">*</span> Answer 4: </label></td>
             <td>
                 <input type="text" class="form-control" name="Answer_4" id="Answer_4" value="'.$row_exercise['Answer_4'].'" style="max-width: 70%; display: inline;margin-right: 5px" required>
                 <label><input type="radio" name="Q_Answer" class="Q_Answer" value="4" '.$Q_Answer_4.' required> Correct answer!</label>
