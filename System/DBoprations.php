@@ -991,14 +991,15 @@ function List_Books(){
         while ($row_book = $result_book->fetch_assoc()) {
 
             $Id_Book = $row_book['Id_Book'];
-            $User_Name = $_SESSION['user'];
             $Id_User = '';
-
-            $sql_user = "SELECT * FROM user WHERE User_Name='$User_Name'";
-            $result_user = $con->query($sql_user);
-            if ($result_user->num_rows > 0) {
-                while ($row_user = $result_user->fetch_assoc()){
-                    $Id_User = $row_user['Id'];
+            if (!empty($_SESSION['user'])) {
+                $User_Name = $_SESSION['user'];
+                $sql_user = "SELECT * FROM user WHERE User_Name='$User_Name'";
+                $result_user = $con->query($sql_user);
+                if ($result_user->num_rows > 0) {
+                    while ($row_user = $result_user->fetch_assoc()) {
+                        $Id_User = $row_user['Id'];
+                    }
                 }
             }
 
@@ -1011,18 +1012,23 @@ function List_Books(){
                                                 <div class="s-product-hover">
                                                     <ul>
                                                     ';
-
-            $sql_favorite = "SELECT * FROM favorite_book WHERE User_Id=$Id_User AND Book_Id=$Id_Book";
-            $result_favorite = $con->query($sql_favorite);
-            if ($result_favorite->num_rows > 0) {
-                        echo '
-                    <li><a class="UnFavorite" title="Un Favorite" value="'.$Id_Book.'" name="'.$Id_User.'"><i class="fa fa-heart w3-text-red"></i></a></li>
-                    ';
-            }else{
-                echo '
-                <li><a class="Favorite" title="Favorite" value="'.$Id_Book.'" name="'.$Id_User.'"><i class="fa fa-heart"></i></a></li>
+if (empty($_SESSION['user'])){
+    echo '
+                <li><a class="Favorite" title="Favorite"><i class="fa fa-heart"></i></a></li>
                 ';
-            }
+}else {
+    $sql_favorite = "SELECT * FROM favorite_book WHERE User_Id=$Id_User AND Book_Id=$Id_Book";
+    $result_favorite = $con->query($sql_favorite);
+    if ($result_favorite->num_rows > 0) {
+        echo '
+                    <li><a class="UnFavorite" title="Un Favorite" value="' . $Id_Book . '" name="' . $Id_User . '"><i class="fa fa-heart w3-text-red"></i></a></li>
+                    ';
+    } else {
+        echo '
+                <li><a class="Favorite" title="Favorite" value="' . $Id_Book . '" name="' . $Id_User . '"><i class="fa fa-heart"></i></a></li>
+                ';
+    }
+}
             echo'
                                                         <li><a href="index.php?pid=Show_Book&Serial='.$row_book['Serial'].'"><i class="fa fa-book"></i></a></li>
                                                     </ul>
