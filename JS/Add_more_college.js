@@ -12,7 +12,6 @@ $(document).ready(function(){
 
         newTextBoxDiv.appendTo("#TextBoxesGroup");
 
-
         counter++;
     });
 

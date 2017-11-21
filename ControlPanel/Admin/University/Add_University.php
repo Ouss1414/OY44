@@ -26,7 +26,7 @@ if ($Type == 'admin'){
 <div class="row">
     <h2 class="margin-bottom" align="center">Add University</h2>	
     
-        <form id="rootwizard" method="post" action="" class="form-horizontal form-wizard">
+        <form id="rootwizard" method="post" action="System/Add_university.php" class="form-horizontal form-wizard" enctype="multipart/form-data">
 
 			<div class="steps-progress">
 				<div class="progress-indicator"></div>
@@ -62,7 +62,7 @@ if ($Type == 'admin'){
                                         <span class="btn btn-white btn-file">
                                             <span class="fileinput-new">Select image</span>
                                             <span class="fileinput-exists">Change</span>
-                                            <input type="file" name="Image_book" id="Image_book" accept="image/*" required>
+                                            <input type="file" name="Image_Uni" id="Image_Uni" accept="image/*" required>
                                         </span>
                                     <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
                                 </div>
@@ -83,19 +83,20 @@ if ($Type == 'admin'){
                                     <td><input type="text" class="form-control" name="Name_college1" id="Name_college1" placeholder="Name of College" autofocus required></td>
                                 </tr>
                             </div>
-                        
-            
                     </table>
+                    
                     <table class="table" style="max-width: 70%">
                         <tr>
                             <td><a id="addButton" style="cursor: pointer">+ Add more college ... </a></td>
                             <td><a id="removeButton" style="cursor: pointer">- Remove text filed</a></td>
                         </tr>
                     </table>
+                    
                     <div align="center">
-            <input type="submit" value="Add" name="Add_University" class="Add_University btn btn-green"/>
-            <input type="reset" value="Reset" name="reset_uni" class="btn btn-red margin-left"/>
-        </div>
+                        <input type="submit" value="Add University" name="Add_University" class="Add_University btn btn-green"/>
+                        <input type="reset" value="Reset" name="reset_uni" class="btn btn-red margin-left"/>
+                    </div>
+                    
                 </div>
                 
 
