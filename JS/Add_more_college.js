@@ -8,7 +8,7 @@ $(document).ready(function(){
             .attr("id", 'TextBoxDiv' + counter);
 
         newTextBoxDiv.after().html('<td><label for="Name_college">Name of College ' + counter +' : </label></td>' +
-            '<td><input type="text" class="form-control" name="Name_college'+counter+'" id="Name_college'+counter+'" placeholder="Name of College" autofocus required></td>');
+            '<td><input type="text" class="form-control" name="Name_college'+counter+'" id="Name_college'+counter+'" placeholder="Name of College" autofocus></td>');
 
         newTextBoxDiv.appendTo("#TextBoxesGroup");
 

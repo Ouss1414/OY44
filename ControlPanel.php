@@ -507,6 +507,7 @@ if ($result->num_rows > 0) {
             <script src="System/Delete_exercise.js"></script>
             <script src="System/Edit_exercise.js"></script>
             <script src="JS/Add_more_college.js"></script>
+            <script src="JS/Add_more_dep.js"></script>
 
 
             </body>
