@@ -40,6 +40,12 @@ if ($result->num_rows > 0) {
             } else if ($_GET['CP'] == 'Add_University') {
                 $Control_University = 'visible';
                 $Control_Add_University = 'active';
+            } else if ($_GET['CP'] == 'Add_College') {
+                $Control_University = 'visible';
+                $Control_Add_College = 'active';
+            } else if ($_GET['CP'] == 'Add_Department') {
+                $Control_University = 'visible';
+                $Control_Add_Department = 'active';
             } else if ($_GET['CP'] == 'Manage_Books') {
                 $Control_IEBook = 'visible';
                 $Control_Manage_Books = 'active';
@@ -197,8 +203,21 @@ if ($result->num_rows > 0) {
                                     <ul class=" <?= $Control_University ?>">
                                         <li class="<?= $Control_Add_University ?>">
                                             <a href="ControlPanel.php?CP=Add_University">
-                                                <i class="entypo-user"></i>
                                                 <span class="title">Add University</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class=" <?= $Control_University ?>">
+                                        <li class="<?= $Control_Add_College ?>">
+                                            <a href="ControlPanel.php?CP=Add_College">
+                                                <span class="title">Add College</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class=" <?= $Control_University ?>">
+                                        <li class="<?= $Control_Add_Department ?>">
+                                            <a href="ControlPanel.php?CP=Add_Department">
+                                                <span class="title">Add Department</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -287,6 +306,12 @@ if ($result->num_rows > 0) {
                             break;
                         case "Add_University" :
                             include_once "ControlPanel/Admin/University/Add_University.php";
+                            break;
+                        case "Add_College" :
+                            include_once "ControlPanel/Admin/University/Add_College.php";
+                            break;
+                        case "Add_Department" :
+                            include_once "ControlPanel/Admin/University/Add_Department.php";
                             break;
                         case "Remove_University" :
                             include_once "ControlPanel/Admin/University/Remove_University.php";

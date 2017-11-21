@@ -169,6 +169,22 @@ if ($Type == 'author'){
                     <p>You can Add universities on one click.</p>
                 </div>
         
+            </div><div class="col-sm-4 col-xs-6">
+        
+                <div class="tile-stats w3-dark-gray">
+                    <div class="icon"><i class="entypo-graduation-cap"></i></div>
+                    <a href="ControlPanel.php?CP=Add_College"><h3>Add College</h3></a>
+                    <p>You can Add colleges on one click.</p>
+                </div>
+        
+            </div><div class="col-sm-4 col-xs-6">
+        
+                <div class="tile-stats w3-dark-gray">
+                    <div class="icon"><i class="entypo-graduation-cap"></i></div>
+                    <a href="ControlPanel.php?CP=Add_Department"><h3>Add Department</h3></a>
+                    <p>You can Add Departments on one click.</p>
+                </div>
+        
             </div>
             
             <div class="col-sm-4 col-xs-6">
