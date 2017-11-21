@@ -169,7 +169,9 @@ if ($Type == 'author'){
                     <p>You can Add universities on one click.</p>
                 </div>
         
-            </div><div class="col-sm-4 col-xs-6">
+            </div>
+            
+            <div class="col-sm-4 col-xs-6">
         
                 <div class="tile-stats w3-dark-gray">
                     <div class="icon"><i class="entypo-graduation-cap"></i></div>
@@ -177,7 +179,9 @@ if ($Type == 'author'){
                     <p>You can Add colleges on one click.</p>
                 </div>
         
-            </div><div class="col-sm-4 col-xs-6">
+            </div>
+            
+            <div class="col-sm-4 col-xs-6">
         
                 <div class="tile-stats w3-dark-gray">
                     <div class="icon"><i class="entypo-graduation-cap"></i></div>

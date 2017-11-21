@@ -307,14 +307,14 @@ if ($result->num_rows > 0) {
                         case "Add_University" :
                             include_once "ControlPanel/Admin/University/Add_University.php";
                             break;
+                        case "Part_Add_University" :
+                            include_once "ControlPanel/Admin/University/Part_Add_University.php";
+                            break;
                         case "Add_College" :
                             include_once "ControlPanel/Admin/University/Add_College.php";
                             break;
                         case "Add_Department" :
                             include_once "ControlPanel/Admin/University/Add_Department.php";
-                            break;
-                        case "Remove_University" :
-                            include_once "ControlPanel/Admin/University/Remove_University.php";
                             break;
                         case "Edit_University" :
                             include_once "ControlPanel/Admin/University/Edit_University.php";

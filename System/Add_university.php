@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             VALUE('$Name_dep[$i]','$Id_college', '$Id_uni')";
         if ($con->query($sql_dep)) {
 
-            echo '<meta http-equiv="refresh" content="0; \'/OY44/ControlPanel.php?CP=ControlPanel"/>';
+            echo '<meta http-equiv="refresh" content="0; \'/OY44/ControlPanel.php?CP=Add_University"/>';
         }
     }
 
