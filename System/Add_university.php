@@ -20,14 +20,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $count = '0';
     $Id_uni = '';
+    $Id_college = '';
     $name_of_uni = $con->real_escape_string($_POST['Name_uni']);
+    $name_of_college = $con->real_escape_string($_POST['Name_college']);
     $Image_Uni = ($_FILES["Image_Uni"]["name"]);
-    $Name_college = array();
+    $Name_dep = array();
     for($i = 1; $i<10000; $i++) {
-        if (empty($_POST['Name_college'.$i])){
+        if (empty($_POST['Name_dep'.$i])){
             break;
         }
-        $Name_college[$i] = $_POST['Name_college'.$i];
+        $Name_dep[$i] = $_POST['Name_dep'.$i];
         $count++;
     }
 
@@ -47,10 +49,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
+    $sql_college = "INSERT INTO college (Name, University_Id) 
+            VALUE('$name_of_college','$Id_uni')";
+
+    $con->query($sql_college);
+
+
+    $result = $con->query("SELECT * FROM college WHERE Name='$name_of_college'");
+    if($result->num_rows > 0){
+        while($row = $result->fetch_assoc()){
+            $Id_college = $row['Id'];
+        }
+    }
+
     for($i = 1; $i<= $count; $i++) {
-        $sql_college = "INSERT INTO college (Name, University_Id) 
-            VALUE('$Name_college[$i]','$Id_uni')";
-        if ($con->query($sql_college)) {
+        $sql_dep = "INSERT INTO department (Name, College_Id, University_Id) 
+            VALUE('$Name_dep[$i]','$Id_college', '$Id_uni')";
+        if ($con->query($sql_dep)) {
 
             echo '<meta http-equiv="refresh" content="0; \'/OY44/ControlPanel.php?CP=ControlPanel"/>';
         }

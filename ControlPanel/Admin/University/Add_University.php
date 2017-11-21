@@ -38,6 +38,8 @@ if ($Type == 'admin'){
 				</li>
 				<li>
 					<a href="#tab2" data-toggle="tab"><span>2</span>Second</a>
+				</li><li>
+					<a href="#tab3" data-toggle="tab"><span>3</span>Third</a>
 				</li>
 			</ul>
 
@@ -75,20 +77,31 @@ if ($Type == 'admin'){
                 </div>
                 
 				<div class="tab-pane" id="tab2" align="center">
-				    <table id="TextBoxesGroup" class="table" style="max-width: 70%">
+				    <table class="table" style="max-width: 70%">
+                        <tr>
+                           <td><label for="Name_college"><span style="color: red">*</span> Name of College: </label></td>
+                           <td><input type="text" class="form-control" name="Name_college" id="Name_college" placeholder="Name of College" autofocus required></td>
+                        </tr>
+                    </table>
+                    
+                </div>
+                
+                <div class="tab-pane" id="tab3" align="center">
+				    
+                    <table id="AddDepartmentGroup" class="table" style="max-width: 70%">
                         
-                            <div id="TextBoxDiv1">
-                                <tr id="TextBoxDiv1">
-                                    <td><label for="Name_college"><span style="color: red">*</span> Name of College 1: </label></td>
-                                    <td><input type="text" class="form-control" name="Name_college1" id="Name_college1" placeholder="Name of College" autofocus required></td>
+                            <div id="AddDepartment1">
+                                <tr id="AddDepartment1">
+                                    <td><label for="Name_dep"><span style="color: red">*</span> Name of Department 1: </label></td>
+                                    <td><input type="text" class="form-control" name="Name_dep1" id="Name_dep1" placeholder="Name of Department" autofocus required></td>
                                 </tr>
                             </div>
                     </table>
                     
                     <table class="table" style="max-width: 70%">
                         <tr>
-                            <td><a id="addButton" style="cursor: pointer">+ Add more college ... </a></td>
-                            <td><a id="removeButton" style="cursor: pointer">- Remove text filed</a></td>
+                            <td><a id="addButtondep" style="cursor: pointer">+ Add more department ... </a></td>
+                            <td><a id="removeButtondep" style="cursor: pointer">- Remove text filed</a></td>
                         </tr>
                     </table>
                     
@@ -96,7 +109,6 @@ if ($Type == 'admin'){
                         <input type="submit" value="Add University" name="Add_University" class="Add_University btn btn-green"/>
                         <input type="reset" value="Reset" name="reset_uni" class="btn btn-red margin-left"/>
                     </div>
-                    
                 </div>
                 
 
