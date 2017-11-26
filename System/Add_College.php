@@ -39,7 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             VALUE('$Name_college[$i]', '$Id_uni')";
         if ($con->query($sql_college)) {
 
-            echo '<meta http-equiv="refresh" content="0; \'/OY44/ControlPanel.php?CP=Add_Department&uni='.$Name_uni.'&college='.$Name_college[1].'"/>';
+            echo '
+            <script>confirm("You should add department for colleges for activation.")</script>
+            <meta http-equiv="refresh" content="0; \'/OY44/ControlPanel.php?CP=Add_Department&uni='.$Name_uni.'&college='.$Name_college[1].'"/>';
         }
     }
 
