@@ -9,7 +9,7 @@ $(document).ready(function(){
                 data: 'Id_uni=' + Id_uni,
                 success: function (data) {
                     if (data) { // Sucess
-                        location.href = "ControlPanel.php?CP=Control_University";
+                        window.location.reload();
                     } else { // Error }
                         alert("Error, Please try again>")
                     }

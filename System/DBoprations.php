@@ -1648,8 +1648,9 @@ function PostOperations($Name_University,$Name_College,$Name_Department,$Name_Su
         <div class="w3-row">
         ';
 
+    $Id = $_GET['post'];
         //Post
-            $sql_Post_User = "SELECT * FROM post WHERE Subject = '$Name_Subject'";
+            $sql_Post_User = "SELECT * FROM post WHERE Subject = '$Name_Subject' AND Id=$Id";
             $result_Post = $con->query($sql_Post_User);
             if($result_Post->num_rows > 0) {
                 while ($row_Post = $result_Post->fetch_assoc()) {
@@ -1907,7 +1908,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                     }else{continue;}
                     echo'
                         <!-- Post -->
-                        <div class="w3-row" style="margin-top: 15px; cursor: pointer" onclick="window.location.href=\'index.php?pid=Posts&uni=' . $Name_University . '&college=' . $Name_College . '&dep=' . $Name_Department . '&sub=' . $row_Post['Subject'] . '\'">
+                        <div class="w3-row" style="margin-top: 15px; cursor: pointer" onclick="window.location.href=\'index.php?pid=Posts&uni=' . $Name_University . '&college=' . $Name_College . '&dep=' . $Name_Department . '&sub=' . $row_Post['Subject'] . '&post='.$row_Post['Id'].'\'">
                             <div  class="w3-padding w3-theme-d2" style="width: 95%; min-height: 110px;margin-left: 2.5%;">
                                 <div class="w3-col s1">
                                     <div class="w3-row s1 w3-text-light-gray w3-hover-text-black" style="text-align: left;margin: 5px;width: 1000px">Subject: <i>' . $row_Post['Subject'] . '</i></div>
@@ -1976,7 +1977,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
 
                     echo '
                         <!-- Post -->
-                        <div class="w3-row" style="margin-top: 15px; cursor: pointer" onclick="window.location.href=\'index.php?pid=Posts&uni=' . $Name_University . '&college=' . $Name_College . '&dep=' . $Name_Department . '&sub=' . $row_Post['Subject'] . '\'">
+                        <div class="w3-row" style="margin-top: 15px; cursor: pointer" onclick="window.location.href=\'index.php?pid=Posts&uni=' . $Name_University . '&college=' . $Name_College . '&dep=' . $Name_Department . '&sub=' . $row_Post['Subject'] . '&post='.$row_Post['Id'].'\'">
                             <div  class="w3-padding w3-theme-d2" style="width: 95%; min-height: 110px;margin-left: 2.5%;">
                                 <div class="w3-col s1">
                                     <div class="w3-row s1 w3-text-light-gray w3-hover-text-black" style="text-align: left;margin: 5px;width: 1000px">Subject: <i>' . $row_Post['Subject'] . '</i></div>
@@ -2042,7 +2043,7 @@ function DepartmentOperations($Name_University,$Name_College,$Name_Department){
                 }else{continue;}
                         echo '
                         <!-- Post -->
-                        <div class="w3-row" style="margin-top: 15px; cursor: pointer" onclick="window.location.href=\'index.php?pid=Posts&uni=' . $Name_University . '&college=' . $Name_College . '&dep=' . $Name_Department . '&sub=' . $row_Post['Subject'] . '\'">
+                        <div class="w3-row" style="margin-top: 15px; cursor: pointer" onclick="window.location.href=\'index.php?pid=Posts&uni=' . $Name_University . '&college=' . $Name_College . '&dep=' . $Name_Department . '&sub=' . $row_Post['Subject'] . '&post='.$row_Post['Id'].'\'">
                             <div  class="w3-padding w3-theme-d2" style="width: 95%; min-height: 110px;margin-left: 2.5%;">
                                 <div class="w3-col s1">
                                     <div class="w3-row s1 w3-text-light-gray w3-hover-text-black" style="text-align: left;margin: 5px;width: 1000px">Subject: <i>' . $row_Post['Subject'] . '</i></div>
