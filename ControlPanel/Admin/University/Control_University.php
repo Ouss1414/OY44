@@ -113,7 +113,7 @@ $result_uni = $con->query("SELECT * FROM university");
         
                 <div class="tile-stats w3-dark-gray">
                     <div class="icon"><i class="entypo-graduation-cap"></i></div>
-                    <a href="index.php?pid=Colleges&uni='.$row_uni['Name'].'"><h3 align="center">'.$row_uni['Name'].'</h3></a>
+                    <a href="ControlPanel.php?CP=Show_College_&_Dep"><h3 align="center">'.$row_uni['Name'].'</h3></a>
                 </div>
                 <a style="cursor: pointer" class="delete_uni" id="'.$row_uni['Id'].'">
                     <div class="tile-stats tile-red" style="margin-top: -2%">

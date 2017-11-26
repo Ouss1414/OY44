@@ -329,6 +329,9 @@ if ($result->num_rows > 0) {
                         case "Update_University" :
                             include_once "ControlPanel/Admin/University/Update_University.php";
                             break;
+                        case "Show_College_Dep" :
+                            include_once "ControlPanel/Admin/University/Show_College_&_Dep.php";
+                            break;
                         case "Manage_Books" :
                             include_once "ControlPanel/Admin/IEBook/Manage_Books.php";
                             break;

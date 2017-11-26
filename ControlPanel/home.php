@@ -196,7 +196,7 @@ if ($Type == 'author'){
         
                 <div class="tile-stats w3-dark-gray">
                     <div class="icon"><i class="entypo-graduation-cap"></i></div>
-                    <a href="ControlPanel.php?CP=Edit_University"><h3>Edit University</h3></a>
+                    <a href="ControlPanel.php?CP=Update_University"><h3>Update University</h3></a>
                     <p>You can Edit universities on one click.</p>
                 </div>
         

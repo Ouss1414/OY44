@@ -26,15 +26,14 @@ if ($Type == 'admin'){
 <div class="row">
     <h2 class="margin-bottom" align="center">Update University</h2>	
 
-		
-
+		<form action="System/Update_University.php" method="post" enctype="multipart/form-data">
 			    <table class="table" style="max-width: 70%">
 			    
 			    <tr>
                             <td><label for="Name_uni"><span style="color: red">*</span> Choose University: </label></td>
                             <td>
                                 <select name="Name_uni" class="form-control" id="Name_uni" onchange="location.href=\'ControlPanel.php?CP=Update_University&uni=\'+this.value">
-                                <option value="">Choose University</option>
+                                <option value="ChooseUniversity">Choose University</option>
                                 ';
     $result_uni = $con->query("SELECT * FROM university");
     if($result_uni->num_rows > 0){
@@ -56,10 +55,12 @@ if ($Type == 'admin'){
                         </tr>
                         
                         ';
-    $result_uni = $con->query("SELECT * FROM university WHERE Name='$_GET[uni]'");
-    if($result_uni->num_rows > 0) {
-        while ($row_uni = $result_uni->fetch_assoc()) {
-            echo '
+    if(!empty($_GET['uni'])){
+        $result_uni = $con->query("SELECT * FROM university WHERE Name='$_GET[uni]'");
+        if($result_uni->num_rows > 0) {
+            while ($row_uni = $result_uni->fetch_assoc()) {
+                echo '
+                        <input type="text" value="'.$_GET['uni'].'" name="real_name_uni" style="display: none">
                         <tr>
                             <td><label for="Name_uni"><span style="color: red">*</span> Name of University: </label></td>
                             <td><input type="text" class="form-control" name="Name_uni" id="Name_uni" value="'.$row_uni['Name'].'" placeholder="Name of university" autofocus required></td>
@@ -70,7 +71,7 @@ if ($Type == 'admin'){
                             <td>
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;" data-trigger="fileinput">
-                                    <img src="Images/'.$row_uni['Image'].'" alt="...">
+                                    <img src="http://placehold.it/200x150" alt="...">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px"></div>
                                 <div>
@@ -85,16 +86,18 @@ if ($Type == 'admin'){
                                 <p style="color: red;">* Only images [JPG,JPEG,JPG2,PNG,GIF].</p>
                             </td>
                         </tr>
-            
-                    </table>
                     ';
+            }
         }
     }
     echo '
+</table>
                     <div align="center">
                         <input type="submit" value="Update University" name="Update_University" class="Update_University btn btn-green"/>
                         <input type="reset" value="Reset" name="reset_uni" class="btn btn-red margin-left"/>
                     </div>
+                    
+          </form>
 </div>
 
 <hr />
