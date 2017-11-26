@@ -2127,12 +2127,12 @@ function CollegeOprations($Name_University){
                         </div>
                      </div>
                     ';
-            }else {
-                echo '<div class="w3-text-red w3-padding-48 w3-center" style="margin-top: 12%; margin-bottom: 20%;font-size: 40px; text-transform: uppercase">' . $Name_University . ' It currently has no colleges</div>';
             }
         }
         echo '</div>';
-    }
+    }else {
+            echo '<div class="w3-text-red w3-padding-48 w3-center" style="margin-top: 12%; margin-bottom: 20%;font-size: 40px; text-transform: uppercase">' . $Name_University . ' It currently has no colleges</div>';
+        }
     mysqli_close($con);
 }
 

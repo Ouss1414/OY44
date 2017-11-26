@@ -25,7 +25,7 @@ if ($Type == 'admin'){
 
 <div class="row">
     <h2 class="margin-bottom" align="center">Add Department</h2>	
-    
+        <form action="System/Add_Department.php" method="post" enctype="multipart/form-data">
 				<div class="tab-pane active" id="tab1" align="center">
 				     <table class="table" style="max-width: 70%">
                         <tr>
@@ -34,16 +34,18 @@ if ($Type == 'admin'){
                                 <select name="Name_uni" class="form-control" id="Name_uni" onchange="location.href=(\'ControlPanel.php?CP=Add_Department&uni=\'+this.value)">
                                 <option value="">Choose University</option>
                                 ';
+    $Id_uni= '';
     $result_uni = $con->query("SELECT * FROM university");
     if($result_uni->num_rows > 0){
         while ($row_uni = $result_uni->fetch_assoc()){
-            if($_GET['uni'] == $row_uni['Id']){
+            if($_GET['uni'] == $row_uni['Name']){
                 echo '
-              <option selected value="'.$row_uni['Id'].'">'.$row_uni['Name'].'</option>
+              <option selected value="'.$row_uni['Name'].'">'.$row_uni['Name'].'</option>
                ';
+                $Id_uni = $row_uni['Id'];
             }else {
                 echo '
-              <option value="'.$row_uni['Id'].'">'.$row_uni['Name'].'</option>
+              <option value="'.$row_uni['Name'].'">'.$row_uni['Name'].'</option>
                ';
             }
         }
@@ -58,12 +60,18 @@ if ($Type == 'admin'){
                                 <select name="Name_college" class="form-control" id="Name_college">
                                 <option value="">Choose College</option>
                                 ';
-    $result_college = $con->query("SELECT * FROM college WHERE University_Id=$_GET[uni]");
+    $result_college = $con->query("SELECT * FROM college WHERE University_Id=$Id_uni");
                                 if($result_college->num_rows > 0){
                                     while ($row_college = $result_college->fetch_assoc()){
-                                        echo '
-                                          <option value="'.$row_college['Id'].'">'.$row_college['Name'].'</option>
+                                        if($_GET['college'] == $row_college['Name']){
+                                            echo '
+                                          <option selected value="' . $row_college['Name'] . '">' . $row_college['Name'] . '</option>
                                            ';
+                                        }else {
+                                            echo '
+                                          <option value="' . $row_college['Name'] . '">' . $row_college['Name'] . '</option>
+                                           ';
+                                        }
                                     }
                                 }
                                     echo '
@@ -96,6 +104,7 @@ if ($Type == 'admin'){
                         <input type="submit" value="Add Department" name="Add_Department" class="Add_Department btn btn-green"/>
                         <input type="reset" value="Reset" name="reset_uni" class="btn btn-red margin-left"/>
                     </div>
+         </form>
                 
 </div>
 
