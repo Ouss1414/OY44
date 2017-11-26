@@ -170,8 +170,8 @@ function ControlPanel($Pages){
         case "Add_Department" :
             $redirectToPage = "Add_Department";
             break;
-        case "Edit_University" :
-            $redirectToPage = "Edit_University";
+        case "Update_University" :
+            $redirectToPage = "Update_University";
             break;
         case "Manage_Books" :
             $redirectToPage = "Manage_Books";

@@ -46,6 +46,9 @@ if ($result->num_rows > 0) {
             } else if ($_GET['CP'] == 'Add_Department') {
                 $Control_University = 'visible';
                 $Control_Add_Department = 'active';
+            } else if ($_GET['CP'] == 'Update_University') {
+                $Control_University = 'visible';
+                $Control_Update_University = 'active';
             } else if ($_GET['CP'] == 'Manage_Books') {
                 $Control_IEBook = 'visible';
                 $Control_Manage_Books = 'active';
@@ -221,6 +224,13 @@ if ($result->num_rows > 0) {
                                             </a>
                                         </li>
                                     </ul>
+                                    <ul class=" <?= $Control_University ?>">
+                                        <li class="<?= $Control_Update_University ?>">
+                                            <a href="ControlPanel.php?CP=Update_University">
+                                                <span class="title">Update University</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
 
                                 <li class="has-sub">
@@ -316,8 +326,8 @@ if ($result->num_rows > 0) {
                         case "Add_Department" :
                             include_once "ControlPanel/Admin/University/Add_Department.php";
                             break;
-                        case "Edit_University" :
-                            include_once "ControlPanel/Admin/University/Edit_University.php";
+                        case "Update_University" :
+                            include_once "ControlPanel/Admin/University/Update_University.php";
                             break;
                         case "Manage_Books" :
                             include_once "ControlPanel/Admin/IEBook/Manage_Books.php";
