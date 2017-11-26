@@ -37,7 +37,7 @@ if ($result->num_rows > 0) {
             } else if ($_GET['CP'] == 'Mailbox-message') {
                 $Mail = 'visible';
                 $Mailbox_message = 'active';
-            } else if ($_GET['CP'] == 'Add_University') {
+            } else if ($_GET['CP'] == 'Control_University') {
                 $Control_University = 'visible';
                 $Control_Add_University = 'active';
             } else if ($_GET['CP'] == 'Add_College') {
@@ -202,8 +202,8 @@ if ($result->num_rows > 0) {
                                     </a>
                                     <ul class=" <?= $Control_University ?>">
                                         <li class="<?= $Control_Add_University ?>">
-                                            <a href="ControlPanel.php?CP=Add_University">
-                                                <span class="title">Add University</span>
+                                            <a href="ControlPanel.php?CP=Control_University">
+                                                <span class="title">Control University</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -304,11 +304,11 @@ if ($result->num_rows > 0) {
                         case "Edit_Exercise" :
                             include_once "ControlPanel/Author/Edit_Exercise.php";
                             break;
+                        case "Control_University" :
+                            include_once "ControlPanel/Admin/University/Control_University.php";
+                            break;
                         case "Add_University" :
                             include_once "ControlPanel/Admin/University/Add_University.php";
-                            break;
-                        case "Part_Add_University" :
-                            include_once "ControlPanel/Admin/University/Part_Add_University.php";
                             break;
                         case "Add_College" :
                             include_once "ControlPanel/Admin/University/Add_College.php";
@@ -506,6 +506,7 @@ if ($result->num_rows > 0) {
             <script src="System/Add_exercise.js"></script>
             <script src="System/Delete_exercise.js"></script>
             <script src="System/Edit_exercise.js"></script>
+            <script src="System/Remove_university.js"></script>
             <script src="JS/Add_more_college.js"></script>
             <script src="JS/Add_more_dep.js"></script>
 

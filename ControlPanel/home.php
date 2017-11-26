@@ -165,7 +165,7 @@ if ($Type == 'author'){
         
                 <div class="tile-stats w3-dark-gray">
                     <div class="icon"><i class="entypo-graduation-cap"></i></div>
-                    <a href="ControlPanel.php?CP=Add_University"><h3>Add University</h3></a>
+                    <a href="ControlPanel.php?CP=Control_University"><h3>Control University</h3></a>
                     <p>You can Add universities on one click.</p>
                 </div>
         
