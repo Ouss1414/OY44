@@ -24,20 +24,23 @@ if ($Type == 'admin'){
 </ol>
 
 <div class="row">
-    <table>
-        <tr>
-            <td>College</td>
-            <td>Delete</td>
+<div class="tab-pane active" id="tab1" align="center">
+    <table class="table" style="max-width: 70%">
+        <tr style="background: cadetblue;">
+            <td style="font-size: 15px; color: white">Colleges</td>
+            <td style="font-size: 15px; color: white; width: 50px">Delete</td>
         </tr>
         <tr>
-            <td>dep1</td>
-            <td>Delete</td>
+            <td>
+                
+            </td>
+            <td align="center">
+                <a style="cursor: pointer; font-size: 20px; color: #ff3030;"><i class="entypo-trash"></i></a>
+            </td>
         </tr>
-        <tr>
-            <td>dep2</td>
-            <td>Delete</td>
-        </tr>
+        
     </table>
+</div>
 </div>
 
 <hr />
