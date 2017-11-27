@@ -41,7 +41,7 @@ if ($Type == 'admin') {
 <div class="row">
     <h2 class="margin-bottom" align="center">Update College and Departments</h2>	
 
-		<form action="System/Update_College.php" method="post" enctype="multipart/form-data">
+		<form action="System/Update_College.php" method="post">
 			    <table class="table" style="max-width: 70%">
 			    
 			    <tr>
@@ -117,6 +117,7 @@ if ($Type == 'admin') {
                 echo '
                         <input type="text" value="' . $college_name . '" name="real_name_uni" style="display: none">
                         <tr>
+                            <input type="text" name="Id_College" value="'.$row_college['Id'].'" style="display: none">
                             <td><label for="Name_college"><span style="color: red">*</span> Name of College: </label></td>
                             <td><input type="text" class="form-control" name="Name_college" id="Name_college" value="' . $row_college['Name'] . '" placeholder="Name of college" autofocus required></td>
                         </tr>
@@ -144,6 +145,7 @@ if ($Type == 'admin') {
                 while ($row_dep = $result_dep->fetch_assoc()) {
                     echo '
                         <tr>
+                            <input type="text" name="Id_dep1" value="'.$row_dep['Id'].'" style="display: none">
                             <td><label for="Name_dep"><span style="color: red">*</span> Name of department: </label></td>
                             <td><input type="text" class="form-control" name="Name_dep1" id="Name_dep1" value="' . $row_dep['Name'] . '" placeholder="Name of department" autofocus required></td>
                         </tr>
@@ -165,6 +167,7 @@ if ($Type == 'admin') {
                 while ($row_dep = $result_dep->fetch_assoc()) {
                     echo '
                         <tr>
+                            <input type="text" name="Id_dep'.$count_dep.'" value="'.$row_dep['Id'].'" style="display: none">
                             <td><label for="Name_dep"><span style="color: red">*</span> Name of department ' . $count_dep . ': </label></td>
                             <td><input type="text" class="form-control" name="Name_dep' . $count_dep . '" id="Name_dep' . $count_dep . '" value="' . $row_dep['Name'] . '" placeholder="Name of department" autofocus required></td>
                         </tr>
