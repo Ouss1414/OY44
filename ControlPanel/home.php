@@ -197,7 +197,17 @@ if ($Type == 'author'){
                 <div class="tile-stats w3-dark-gray">
                     <div class="icon"><i class="entypo-graduation-cap"></i></div>
                     <a href="ControlPanel.php?CP=Update_University"><h3>Update University</h3></a>
-                    <p>You can Edit universities on one click.</p>
+                    <p>You can Update universities on one click.</p>
+                </div>
+        
+            </div>
+            
+            <div class="col-sm-4 col-xs-6">
+        
+                <div class="tile-stats w3-dark-gray">
+                    <div class="icon"><i class="entypo-graduation-cap"></i></div>
+                    <a href="ControlPanel.php?CP=Update_College"><h3>Update College</h3></a>
+                    <p>You can Update Colleges on one click.</p>
                 </div>
         
             </div>

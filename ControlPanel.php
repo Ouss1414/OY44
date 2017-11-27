@@ -49,6 +49,9 @@ if ($result->num_rows > 0) {
             } else if ($_GET['CP'] == 'Update_University') {
                 $Control_University = 'visible';
                 $Control_Update_University = 'active';
+            } else if ($_GET['CP'] == 'Update_College') {
+                $Control_University = 'visible';
+                $Control_Update_College = 'active';
             } else if ($_GET['CP'] == 'Manage_Books') {
                 $Control_IEBook = 'visible';
                 $Control_Manage_Books = 'active';
@@ -231,6 +234,13 @@ if ($result->num_rows > 0) {
                                             </a>
                                         </li>
                                     </ul>
+                                    <ul class=" <?= $Control_University ?>">
+                                        <li class="<?= $Control_Update_College ?>">
+                                            <a href="ControlPanel.php?CP=Update_University">
+                                                <span class="title">Update College</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
 
                                 <li class="has-sub">
@@ -329,8 +339,14 @@ if ($result->num_rows > 0) {
                         case "Update_University" :
                             include_once "ControlPanel/Admin/University/Update_University.php";
                             break;
-                        case "Show_College_Dep" :
-                            include_once "ControlPanel/Admin/University/Show_College_&_Dep.php";
+                        case "Update_College" :
+                            include_once "ControlPanel/Admin/University/Update_College.php";
+                            break;
+                        case "Show_College" :
+                            include_once "ControlPanel/Admin/University/Show_College.php";
+                            break;
+                        case "Show_dep" :
+                            include_once "ControlPanel/Admin/University/Show_dep.php";
                             break;
                         case "Manage_Books" :
                             include_once "ControlPanel/Admin/IEBook/Manage_Books.php";
@@ -520,6 +536,8 @@ if ($result->num_rows > 0) {
             <script src="System/Delete_exercise.js"></script>
             <script src="System/Edit_exercise.js"></script>
             <script src="System/Remove_university.js"></script>
+            <script src="System/Delete_College.js"></script>
+            <script src="System/Delete_dep.js"></script>
             <script src="JS/Add_more_college.js"></script>
             <script src="JS/Add_more_dep.js"></script>
 

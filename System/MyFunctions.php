@@ -173,8 +173,14 @@ function ControlPanel($Pages){
         case "Update_University" :
             $redirectToPage = "Update_University";
             break;
-        case "Show_College_Dep" :
-            $redirectToPage = "Show_College_Dep";
+        case "Update_College" :
+            $redirectToPage = "Update_College";
+            break;
+        case "Show_College" :
+            $redirectToPage = "Show_College";
+            break;
+        case "Show_dep" :
+            $redirectToPage = "Show_dep";
             break;
         case "Manage_Books" :
             $redirectToPage = "Manage_Books";
