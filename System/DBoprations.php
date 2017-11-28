@@ -765,6 +765,34 @@ function Get_Books(){
         }
     }
 
+    if ($_SESSION['user'] == 'admin'){
+        $sql_book = "SELECT * FROM book";
+        $result_book = $con->query($sql_book);
+        if($result_book->num_rows > 0){
+            while ($row_book = $result_book->fetch_assoc()){
+                $sql_user = "SELECT * FROM user WHERE Id=$row_book[User_Id]";
+                $result_user = $con->query($sql_user);
+                if($result_user->num_rows > 0) {
+                    while ($row_user = $result_user->fetch_assoc()) {
+                        $name_user = $row_user['First_Name'] . " " . $row_user['Last_Name'];
+                    }
+                }
+                $count++;
+                echo '
+                        <tr>
+                            <td style="padding: 5px">'.$count.'</td>
+                            <td style="padding: 10px">'.$row_book['Serial'].'</td>
+                            <td style="padding: 10px">'.$row_book['Name_Book'].'</td>
+                            <td style="padding: 10px">'.$row_book['Price'].'</td>
+                            <td style="padding: 10px">'.$name_user.'</td>
+                            <td style="padding: 10px"><input type="button" name="Edit" value="Edit" class="btn" onclick="location.href=\'ControlPanel.php?CP=Edit_Book&Serial='.$row_book['Serial'].'\'"></td>
+                            <td style="padding: 10px"><input type="button" class="delete_data btn btn-red" name="'.$row_book['Name_Book'].'" id="'.$row_book['Serial'].'" value="Delete"></td>
+                        </tr>
+                    ';
+            }
+        }
+    }
+
 }
 
 function Questions_Page(){

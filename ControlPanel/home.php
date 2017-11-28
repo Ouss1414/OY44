@@ -101,6 +101,29 @@ if ($Type == 'author'){
 
 }else if ($Type == 'admin') {
 
+    $count_users = '';
+    $result_users = $con->query("SELECT * FROM user");
+    if ($result_users->num_rows > 0){
+        while ($row_users = $result_users->fetch_assoc()){
+            $count_users++;
+        }
+    }
+
+    $count_uni = '';
+    $result_uni = $con->query("SELECT * FROM university");
+    if ($result_uni->num_rows > 0){
+        while ($row_uni = $result_uni->fetch_assoc()){
+            $count_uni++;
+        }
+    }
+
+    $count_book = '';
+    $result_book = $con->query("SELECT * FROM book");
+    if ($result_book->num_rows > 0){
+        while ($row_book = $result_book->fetch_assoc()){
+            $count_book++;
+        }
+    }
     echo '
                 
 <div class="row">
@@ -108,10 +131,10 @@ if ($Type == 'author'){
 
 		<div class="tile-stats tile-red">
 			<div class="icon"><i class="entypo-users"></i></div>
-			<div class="num" data-start="0" data-end="83" data-postfix="" data-duration="1500" data-delay="0">0</div>
+			<div class="num" data-start="0" data-end="'.$count_users.'" data-postfix="" data-duration="1500" data-delay="0">0</div>
 
 			<h3>Registered users</h3>
-			<p>so far in our blog, and our website.</p>
+			<p>This number is registered on the site.</p>
 		</div>
 
 	</div>
@@ -119,11 +142,11 @@ if ($Type == 'author'){
 	<div class="col-sm-3 col-xs-6">
 
 		<div class="tile-stats tile-green">
-			<div class="icon"><i class="entypo-chart-bar"></i></div>
-			<div class="num" data-start="0" data-end="135" data-postfix="" data-duration="1500" data-delay="600">0</div>
+			<div class="icon"><i class="entypo-graduation-cap"></i></div>
+			<div class="num" data-start="0" data-end="'.$count_uni.'" data-postfix="" data-duration="1500" data-delay="600">0</div>
 
-			<h3>Daily Visitors</h3>
-			<p>this is the average value.</p>
+			<h3>Universities</h3>
+			<p>This is number of universities in site.</p>
 		</div>
 
 	</div>
@@ -132,24 +155,24 @@ if ($Type == 'author'){
 
 	<div class="col-sm-3 col-xs-6">
 
-		<div class="tile-stats tile-aqua">
-			<div class="icon"><i class="entypo-mail"></i></div>
-			<div class="num" data-start="0" data-end="23" data-postfix="" data-duration="1500" data-delay="1200">0</div>
+		<div class="tile-stats tile-blue">
+			<div class="icon"><i class="entypo-rss"></i></div>
+			<div class="num" data-start="0" data-end="'.$count_book.'" data-postfix="" data-duration="1500" data-delay="1800">0</div>
 
-			<h3>New Messages</h3>
-			<p>messages per day.</p>
+			<h3>IEBook</h3>
+			<p>This is number of books in site.</p>
 		</div>
 
 	</div>
-
+	
 	<div class="col-sm-3 col-xs-6">
 
-		<div class="tile-stats tile-blue">
-			<div class="icon"><i class="entypo-rss"></i></div>
-			<div class="num" data-start="0" data-end="52" data-postfix="" data-duration="1500" data-delay="1800">0</div>
+		<div class="tile-stats tile-aqua">
+			<div class="icon"><i class="entypo-mail"></i></div>
+			<div class="num" data-start="0" data-end="0" data-postfix="" data-duration="1500" data-delay="1200">0</div>
 
-			<h3>Subscribers</h3>
-			<p>on our site right now.</p>
+			<h3>New Messages</h3>
+			<p>messages per day.</p>
 		</div>
 
 	</div>
