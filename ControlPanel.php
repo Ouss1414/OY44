@@ -55,6 +55,9 @@ if ($result->num_rows > 0) {
             } else if ($_GET['CP'] == 'Manage_Books') {
                 $Control_IEBook = 'visible';
                 $Control_Manage_Books = 'active';
+            } else if ($_GET['CP'] == 'Admin_Update_Book') {
+                $Control_IEBook = 'visible';
+                $Control_Update_Books = 'active';
             } else if ($_GET['CP'] == 'Add_User') {
                 $Control_Users = 'visible';
                 $Control_Add_User = 'active';
@@ -256,6 +259,14 @@ if ($result->num_rows > 0) {
                                             </a>
                                         </li>
                                     </ul>
+                                    <ul class=" <?= $Control_IEBook ?>">
+                                        <li class="<?= $Control_Update_Books ?>">
+                                            <a href="ControlPanel.php?CP=Admin_Update_Book">
+                                                <i class="entypo-user"></i>
+                                                <span class="title">Update Books</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
 
                                 <li class="has-sub">
@@ -350,6 +361,9 @@ if ($result->num_rows > 0) {
                             break;
                         case "Manage_Books" :
                             include_once "ControlPanel/Admin/IEBook/Manage_Books.php";
+                            break;
+                        case "Admin_Update_Book" :
+                            include_once "ControlPanel/Admin/IEBook/Admin_Update_Book.php";
                             break;
                         case "Add_User" :
                             include_once "ControlPanel/Admin/Users_Folder/Add_User.php";

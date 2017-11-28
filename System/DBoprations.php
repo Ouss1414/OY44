@@ -432,38 +432,65 @@ function Edit_Book(){
 
     $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
 
-    $Serial_Book = $_GET['Serial'];
+    $user_name = $_SESSION['user'];
 
-    //book
-    $sql = "SELECT * FROM book WHERE Serial='$Serial_Book'";
-    $result_Book = $con->query($sql);
-    if ($result_Book->num_rows > 0){
-        while ($row_book = $result_Book->fetch_assoc()){
-            echo '
+//user
+    $User_type = '';
+    $sql = "SELECT * FROM user WHERE User_Name='$user_name'";
+    $result_user = $con->query($sql);
+    if ($result_user->num_rows > 0) {
+        while ($row_user = $result_user->fetch_assoc()) {
+            $User_type = $row_user['User_Type'];
+        }
+    }
+
+    if($User_type == 'author'){
+        $sbook = '';
+        $sql = "SELECT * FROM book";
+        $result_Book = $con->query($sql);
+        if ($result_Book->num_rows > 0) {
+            while ($row_book = $result_Book->fetch_assoc()) {
+                if ($_GET['Serial'] == $row_book['Serial']){
+                    $sbook = $row_book['Serial'];
+                }
+            }
+        }
+
+
+        if (!empty($_GET['Serial'] && $_GET['Serial'] == $sbook)) {
+
+            $Serial_Book = $_GET['Serial'];
+
+            //book
+            $sql = "SELECT * FROM book WHERE Serial='$Serial_Book'";
+            $result_Book = $con->query($sql);
+            if ($result_Book->num_rows > 0) {
+                while ($row_book = $result_Book->fetch_assoc()) {
+                    echo '
             <div class="row" align="center">
-                <h2 class="margin-bottom">Edit Book (<i style="color: #00a65a;">'.$row_book['Name_Book'].'</i>)</h2>
+                <h2 class="margin-bottom">Edit Book (<i style="color: #00a65a;">' . $row_book['Name_Book'] . '</i>)</h2>
                 <form action="System/Update_Book.php" method="post" enctype="multipart/form-data">
                     <table class="table" style="max-width: 60%">
-                    <input type="text" style="display: none" name="Serial" value="'.$row_book['Serial'].'">
+                    <input type="text" style="display: none" name="Serial" value="' . $row_book['Serial'] . '">
                         <tr>
                             <td><label for="Serial"><span style="color: red">*</span> Serial book: </label></td>
-                            <td><input type="text" class="form-control" name="New_Serial" value="'.$row_book['Serial'].'" placeholder="Serial number" required></td>
+                            <td><input type="text" class="form-control" name="New_Serial" value="' . $row_book['Serial'] . '" placeholder="Serial number" required></td>
                         </tr>
             
                         <tr>
                             <td><label for="Name_book"><span style="color: red">*</span> Name book: </label></td>
-                            <td><input type="text" class="form-control" name="Name_book" value="'.$row_book['Name_Book'].'" placeholder="Name book" required></td>
+                            <td><input type="text" class="form-control" name="Name_book" value="' . $row_book['Name_Book'] . '" placeholder="Name book" required></td>
                         </tr>
             
                         <tr>
                             <td><label for="Page_book"  ><span style="color: red">*</span> Pages: </label></td>
-                            <td><input type="number" class="form-control" name="Page_book" value="'.$row_book['Page'].'" placeholder="Number only"  required></td>
+                            <td><input type="number" class="form-control" name="Page_book" value="' . $row_book['Page'] . '" placeholder="Number only"  required></td>
                         </tr>
             
                         <tr>
                             <td><label for="Price_book"  ><span style="color: red">*</span> Price: </label></td>
                             <td>
-                                <input type="number" class="form-control" name="Price_book" value="'.$row_book['Price'].'" placeholder="Free">
+                                <input type="number" class="form-control" name="Price_book" value="' . $row_book['Price'] . '" placeholder="Free">
                                 <p style="color: red">* If it\'s FREE please don\'t add a value.</p>
                             </td>
                         </tr>
@@ -473,25 +500,25 @@ function Edit_Book(){
                             <td><select class="form-control" name="catagories_book">
                                     <option>Choose one...</option>
                                     ';
-                                        select_catagories($row_book['Catagories']);
-                                    echo '
+                    select_catagories($row_book['Catagories']);
+                    echo '
                                 </select>
                             </td>
                         </tr>
             
                         ';
-                         if ($row_book['Available'] == '1'){
-                             $checked_true = 'checked';
-                             $checked_false = '';
-                         }else{
-                             $checked_true = '';
-                             $checked_false = 'checked';
-                         }
-                        echo '
+                    if ($row_book['Available'] == '1') {
+                        $checked_true = 'checked';
+                        $checked_false = '';
+                    } else {
+                        $checked_true = '';
+                        $checked_false = 'checked';
+                    }
+                    echo '
                         <tr>
                             <td><label for="Available_book"><span style="color: red">*</span> Available book: </label></td>
-                            <td><label><input type="radio" value="1" name="Available_book" '.$checked_true.' required> Yes</label></br>
-                                <label><input type="radio" value="0" name="Available_book" '.$checked_false.' required> No</label></td>
+                            <td><label><input type="radio" value="1" name="Available_book" ' . $checked_true . ' required> Yes</label></br>
+                                <label><input type="radio" value="0" name="Available_book" ' . $checked_false . ' required> No</label></td>
                         </tr>
             
                         <tr>
@@ -536,7 +563,7 @@ function Edit_Book(){
             
                         <tr>
                             <td><label for="Summary_book"  >Summary: </label></td>
-                            <td><textarea class="form-control" name="Summary_book" placeholder="Summary" rows="5" style="resize: none" >'.$row_book['Summary'].'</textarea></td>
+                            <td><textarea class="form-control" name="Summary_book" placeholder="Summary" rows="5" style="resize: none" >' . $row_book['Summary'] . '</textarea></td>
                         </tr>
             
                     </table>
@@ -548,6 +575,185 @@ function Edit_Book(){
                 </form>
             </div>
     ';
+                }
+            }
+        } else {
+            echo '
+        <script>location.href="ControlPanel.php?CP=Manage_Books"</script>
+        ';
+        }
+    }
+
+    if ($User_type == 'admin') {
+
+            echo '
+				     <table class="table" style="max-width: 70%">
+                        <tr>
+                            <td><label for="Serial_Book"><span style="color: red">*</span> Choose Book: </label></td>
+                            <td>
+                                <select name="Serial_Book" class="form-control" id="Serial_Book" onchange="location.href=\'ControlPanel.php?CP=Admin_Update_Book&Serial=\'+this.value">
+                                <option value="">Choose Book</option>
+            ';
+            $result_book = $con->query("SELECT * FROM book");
+            if ($result_book->num_rows > 0) {
+                while ($row_book = $result_book->fetch_assoc()) {
+                    if($_GET['Serial'] == $row_book['Serial']){
+                        echo '
+                              <option selected value="' . $row_book['Serial'] . '">' . $row_book['Name_Book'] . '</option>
+                            ';
+                    }else {
+                        echo '
+                              <option value="' . $row_book['Serial'] . '">' . $row_book['Name_Book'] . '</option>
+                            ';
+                    }
+                }
+            }
+            echo '
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+            ';
+
+        if(!empty($_GET['Serial'])) {
+
+            $sbook = '';
+            $sql = "SELECT * FROM book";
+            $result_Book = $con->query($sql);
+            if ($result_Book->num_rows > 0) {
+                while ($row_book = $result_Book->fetch_assoc()) {
+                    if ($_GET['Serial'] == $row_book['Serial']) {
+                        $sbook = $row_book['Serial'];
+                    }
+                }
+            }
+
+
+            if (!empty($_GET['Serial'] && $_GET['Serial'] == $sbook)) {
+
+                $Serial_Book = $_GET['Serial'];
+
+                //book
+                $sql = "SELECT * FROM book WHERE Serial='$Serial_Book'";
+                $result_Book = $con->query($sql);
+                if ($result_Book->num_rows > 0) {
+                    while ($row_book = $result_Book->fetch_assoc()) {
+                        echo '
+            <div class="row" align="center">
+                <h2 class="margin-bottom">Edit Book (<i style="color: #00a65a;">' . $row_book['Name_Book'] . '</i>)</h2>
+                <form action="System/Admin_Update_Book.php" method="post" enctype="multipart/form-data">
+                    <table class="table" style="max-width: 60%">
+                    <input type="text" style="display: none" name="Serial" value="' . $row_book['Serial'] . '">
+                        <tr>
+                            <td><label for="Serial"><span style="color: red">*</span> Serial book: </label></td>
+                            <td><input type="text" class="form-control" name="New_Serial" value="' . $row_book['Serial'] . '" placeholder="Serial number" required></td>
+                        </tr>
+            
+                        <tr>
+                            <td><label for="Name_book"><span style="color: red">*</span> Name book: </label></td>
+                            <td><input type="text" class="form-control" name="Name_book" value="' . $row_book['Name_Book'] . '" placeholder="Name book" required></td>
+                        </tr>
+            
+                        <tr>
+                            <td><label for="Page_book"  ><span style="color: red">*</span> Pages: </label></td>
+                            <td><input type="number" class="form-control" name="Page_book" value="' . $row_book['Page'] . '" placeholder="Number only"  required></td>
+                        </tr>
+            
+                        <tr>
+                            <td><label for="Price_book"  ><span style="color: red">*</span> Price: </label></td>
+                            <td>
+                                <input type="number" class="form-control" name="Price_book" value="' . $row_book['Price'] . '" placeholder="Free">
+                                <p style="color: red">* If it\'s FREE please don\'t add a value.</p>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><label for="Catagories_book"  ><span style="color: red">*</span> Catagories: </label></td>
+                            <td><select class="form-control" name="catagories_book">
+                                    <option>Choose one...</option>
+                                    ';
+                        select_catagories($row_book['Catagories']);
+                        echo '
+                                </select>
+                            </td>
+                        </tr>
+            
+                        ';
+                        if ($row_book['Available'] == '1') {
+                            $checked_true = 'checked';
+                            $checked_false = '';
+                        } else {
+                            $checked_true = '';
+                            $checked_false = 'checked';
+                        }
+                        echo '
+                        <tr>
+                            <td><label for="Available_book"><span style="color: red">*</span> Available book: </label></td>
+                            <td><label><input type="radio" value="1" name="Available_book" ' . $checked_true . ' required> Yes</label></br>
+                                <label><input type="radio" value="0" name="Available_book" ' . $checked_false . ' required> No</label></td>
+                        </tr>
+            
+                        <tr>
+                            <td><label for="File_book"><span style="color: red">*</span> File book: </label></td>
+                            <td><div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;" data-trigger="fileinput">
+                                        <div style="margin-top: 30%; font-size: 24px">Click Here</div>
+                                    </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px"></div>
+                                    <div>
+                                        <span class="btn btn-white btn-file">
+                                            <span class="fileinput-new">Select File</span>
+                                            <span class="fileinput-exists">Change</span>
+                                            <input type="file" name="File_book" accept="application/pdf">
+                                        </span>
+                                        <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                    </div>
+                                </div>
+                                <p style="color: red;">* Only files [PDF].</p>
+                            </td>
+                        </tr>
+            
+                        <tr>
+                            <td><label for="Image_book"><span style="color: red">*</span> Image book: </label></td>
+                            <td><div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;" data-trigger="fileinput">
+                                        <img src="http://placehold.it/200x150" alt="...">
+                                    </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px"></div>
+                                    <div>
+                                        <span class="btn btn-white btn-file">
+                                            <span class="fileinput-new">Select image</span>
+                                            <span class="fileinput-exists">Change</span>
+                                            <input type="file" name="Image_book" accept="image/*">
+                                        </span>
+                                        <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                    </div>
+                                </div>
+                            <p style="color: red;">* Only images [JPG,JPEG,JPG2,PNG,GIF].</p>
+                            </td>
+                        </tr>
+            
+                        <tr>
+                            <td><label for="Summary_book"  >Summary: </label></td>
+                            <td><textarea class="form-control" name="Summary_book" placeholder="Summary" rows="5" style="resize: none" >' . $row_book['Summary'] . '</textarea></td>
+                        </tr>
+            
+                    </table>
+            
+                    <div align="center">
+                        <input type="submit" value="Update" name="Update_book" class="btn btn-green"/>
+                        <input type="reset" value="Reset" name="reset_book" class="btn btn-red margin-left"/>
+                    </div>
+                </form>
+            </div>
+    ';
+                    }
+                }
+            } else {
+                echo '
+        <script>location.href="ControlPanel.php?CP=Manage_Books"</script>
+        ';
+            }
         }
     }
 }
@@ -785,7 +991,7 @@ function Get_Books(){
                             <td style="padding: 10px">'.$row_book['Name_Book'].'</td>
                             <td style="padding: 10px">'.$row_book['Price'].'</td>
                             <td style="padding: 10px">'.$name_user.'</td>
-                            <td style="padding: 10px"><input type="button" name="Edit" value="Edit" class="btn" onclick="location.href=\'ControlPanel.php?CP=Edit_Book&Serial='.$row_book['Serial'].'\'"></td>
+                            <td style="padding: 10px"><input type="button" name="Edit" value="Edit" class="btn" onclick="location.href=\'ControlPanel.php?CP=Admin_Edit_Book&Serial='.$row_book['Serial'].'\'"></td>
                             <td style="padding: 10px"><input type="button" class="delete_data btn btn-red" name="'.$row_book['Name_Book'].'" id="'.$row_book['Serial'].'" value="Delete"></td>
                         </tr>
                     ';

@@ -250,6 +250,16 @@ if ($Type == 'author'){
                 </div>
         
             </div>
+            
+            <div class="col-sm-4 col-xs-6">
+        
+                <div class="tile-stats w3-dark-gray">
+                    <div class="icon"><i class="entypo-book-open"></i></div>
+                    <a href="ControlPanel.php?CP=Admin_Update_Book"><h3>Update Books</h3></a>
+                    <p>You can Update Books on one click.</p>
+                </div>
+        
+            </div>
         
     </fieldset>
     
