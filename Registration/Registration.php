@@ -92,7 +92,7 @@ if (isset($_SESSION['user'])) {
                 </div>
         
                 <div class="form-group col-md-6">
-                    <select class="form-control" name="country">
+                    <select class="form-control" id="selectCitys" name="country">
                         <optgroup label="Country">
                             <option value="">Choose Country ---</option>
                             <option value="Soudi Arabia">Soudi Arabia</option>
@@ -100,14 +100,15 @@ if (isset($_SESSION['user'])) {
                     </select>
                 </div>
         
-                <div class="form-group col-md-6">
-                    <select class="form-control" name="city">
+                <div  class="form-group col-md-6">
+                    <select class="form-control" id="selectUniversitys" name="city" required>
                         <optgroup label="City" style="width: 200px">
                             <option value="">Choose City ---</option>
                             <option value="Madinah">Madinah</option>
                         </optgroup>
                     </select>
                 </div>
+                
                 ';
                     select_uni();
 
@@ -146,6 +147,7 @@ if (isset($_SESSION['user'])) {
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
 <script src="validation.js"></script>
+<script src="../JS/Add_country.js"></script>
 
 </body>
 </html>

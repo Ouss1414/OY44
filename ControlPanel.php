@@ -554,6 +554,8 @@ if ($result->num_rows > 0) {
             <script src="System/Delete_dep.js"></script>
             <script src="JS/Add_more_college.js"></script>
             <script src="JS/Add_more_dep.js"></script>
+            <script src="JS/Add_country.js"></script>
+            <script src="Registration/validation.js"></script>
 
 
             </body>
