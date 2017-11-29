@@ -58,6 +58,9 @@ if ($result->num_rows > 0) {
             } else if ($_GET['CP'] == 'Admin_Update_Book') {
                 $Control_IEBook = 'visible';
                 $Control_Update_Books = 'active';
+            } else if ($_GET['CP'] == 'Control_User') {
+                $Control_Users = 'visible';
+                $Control_Control_User = 'active';
             } else if ($_GET['CP'] == 'Add_User') {
                 $Control_Users = 'visible';
                 $Control_Add_User = 'active';
@@ -254,7 +257,6 @@ if ($result->num_rows > 0) {
                                     <ul class=" <?= $Control_IEBook ?>">
                                         <li class="<?= $Control_Manage_Books ?>">
                                             <a href="ControlPanel.php?CP=Manage_Books">
-                                                <i class="entypo-user"></i>
                                                 <span class="title">Manage Books</span>
                                             </a>
                                         </li>
@@ -262,7 +264,6 @@ if ($result->num_rows > 0) {
                                     <ul class=" <?= $Control_IEBook ?>">
                                         <li class="<?= $Control_Update_Books ?>">
                                             <a href="ControlPanel.php?CP=Admin_Update_Book">
-                                                <i class="entypo-user"></i>
                                                 <span class="title">Update Books</span>
                                             </a>
                                         </li>
@@ -275,9 +276,12 @@ if ($result->num_rows > 0) {
                                         <span class="title">Control Users</span>
                                     </a>
                                     <ul class=" <?= $Control_Users ?>">
-                                        <li class="<?= $Control_Add_User ?>">
+                                        <li class="<?= $Control_Control_User ?>">
+                                            <a href="ControlPanel.php?CP=Control_User">
+                                                <span class="title">Control User</span>
+                                            </a>
+                                        </li><li class="<?= $Control_Add_User ?>">
                                             <a href="ControlPanel.php?CP=Add_User">
-                                                <i class="entypo-user-add"></i>
                                                 <span class="title">Add user</span>
                                             </a>
                                         </li>
@@ -364,6 +368,9 @@ if ($result->num_rows > 0) {
                             break;
                         case "Admin_Update_Book" :
                             include_once "ControlPanel/Admin/IEBook/Admin_Update_Book.php";
+                            break;
+                        case "Control_User" :
+                            include_once "ControlPanel/Admin/Users_Folder/Control_User.php";
                             break;
                         case "Add_User" :
                             include_once "ControlPanel/Admin/Users_Folder/Add_User.php";
@@ -556,6 +563,7 @@ if ($result->num_rows > 0) {
             <script src="JS/Add_more_dep.js"></script>
             <script src="JS/Add_country.js"></script>
             <script src="Registration/validation.js"></script>
+            <script src="System/Block_User.js"></script>
 
 
             </body>

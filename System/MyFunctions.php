@@ -188,6 +188,9 @@ function ControlPanel($Pages){
         case "Admin_Update_Book" :
             $redirectToPage = "Admin_Update_Book";
             break;
+        case "Control_User" :
+            $redirectToPage = "Control_User";
+            break;
         case "Add_User" :
             $redirectToPage = "Add_User";
             break;

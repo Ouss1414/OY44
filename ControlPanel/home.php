@@ -273,6 +273,16 @@ if ($Type == 'author'){
         
                 <div class="tile-stats w3-dark-gray">
                     <div class="icon"><i class="entypo-book-open"></i></div>
+                    <a href="ControlPanel.php?CP=Control_User"><h3>Control User</h3></a>
+                    <p>You can Control Users on one click.</p>
+                </div>
+        
+            </div>
+            
+            <div class="col-sm-4 col-xs-6">
+        
+                <div class="tile-stats w3-dark-gray">
+                    <div class="icon"><i class="entypo-book-open"></i></div>
                     <a href="ControlPanel.php?CP=Add_User"><h3>Add User</h3></a>
                     <p>You can Add User on one click.</p>
                 </div>
