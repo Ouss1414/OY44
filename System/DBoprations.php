@@ -785,7 +785,7 @@ function Edit_Exercise(){
     $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
 
     $UserName = $_SESSION['user'];
-    $Id_Exercise = $_GET['Serial'];
+    $Id_Exercise = $_GET['exercise'];
 
     $sql_user = "SELECT * FROM user WHERE User_Name= '$UserName'";
     $result_user = $con->query($sql_user);
@@ -895,7 +895,7 @@ function Get_Exercise(){
                             <td style="padding: 10px">' . $row_exercise['Answer_3'] . '</td>
                             <td style="padding: 10px">' . $row_exercise['Answer_4'] . '</td>
                             <td style="padding: 10px">' . $row_exercise['Q_answer'] . '</td>
-                            <td style="padding: 10px"><input type="button" name="Edit" value="Edit" class="btn" onclick="location.href=\'ControlPanel.php?CP=Edit_Exercise&Serial=' . $row_exercise['Id'] . '\'"></td>
+                            <td style="padding: 10px"><input type="button" name="Edit" value="Edit" class="btn" onclick="location.href=\'ControlPanel.php?CP=Edit_Exercise&Serial=' . $row_exercise['Serial_Book'] . '&exercise='.$row_exercise['Id'].'\'"></td>
                             <td style="padding: 10px"><input type="button" class="delete_exercise btn btn-red" name="' . $row_exercise['Question'] . '" id="' . $row_exercise['Id'] . '" value="Delete"></td>
                         </tr>
                     ';

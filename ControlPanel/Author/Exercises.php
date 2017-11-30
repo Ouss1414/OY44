@@ -2,6 +2,7 @@
 
 $user_name = $_SESSION['user'];
 $Type='';
+$user_id='';
 
 //user
 $sql = "SELECT * FROM user WHERE User_Name='$user_name'";
@@ -9,20 +10,29 @@ $result = $con->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $Type = $row['User_Type'];
+        $user_id=$row['Id'];
     }
 }
 if ($Type == 'author'){
 
-    echo '
+    $result_book = $con->query("SELECT * FROM book WHERE User_Id=$user_id");
+    if ($result_book->num_rows > 0) {
+
+        echo '
                
 <ol class="breadcrumb 2" >
     <li>
         <a href="ControlPanel.php?CP=home"><i class="fa-home"></i>Home</a>
     </li>
     <li class="active">
-        <strong>Add Exercise</strong>
+        <strong>Exercise</strong>
     </li>
 </ol>
+';
+
+        $result_ex = $con->query("SELECT * FROM exercise WHERE User_Id=$user_id");
+        if ($result_ex->num_rows > 0) {
+            echo '
 
 <div class="row">
     <h2 align="center">Exercises</h2>
@@ -43,7 +53,7 @@ if ($Type == 'author'){
                 <td style="padding: 10px">Delete</td>
             </tr>
             ';
-                Get_Exercise();
+            Get_Exercise();
             echo '
         </table>
     </div>
@@ -51,6 +61,14 @@ if ($Type == 'author'){
 
 <br />
 ';
+        } else {
+            echo '<div style="font-size: 32px; font-family: Tahoma; margin-top: 20%" align="center">Sorry, You do not have any Exercises, please Add new Exercise on click.</div>';
+            echo '<div style="margin-top: 20px;  padding-bottom: 17%" align="center"><a class="btn btn-green" href="ControlPanel.php?CP=Add_Exercise">Add Exercise</a></div>';
+        }
+    } else {
+        echo '<div style="font-size: 32px; font-family: Tahoma; margin-top: 20%" align="center">Sorry, You do not have any book, please Upload new book on click.</div>';
+        echo '<div style="margin-top: 20px;  padding-bottom: 17%" align="center"><a class="btn btn-green" href="ControlPanel.php?CP=New-Book">New Book</a></div>';
+    }
 }else{
     echo '<div style="font-size: 32px; font-family: Tahoma; margin-top: 20%" align="center">Sorry, You do not have permission to access this page.</div>';
     echo '<div style="margin-top: 20px;  padding-bottom: 17%" align="center"><a class="btn btn-green" href="ControlPanel.php?CP=Home">Home</a></div>';

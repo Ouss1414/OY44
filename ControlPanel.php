@@ -20,12 +20,28 @@ if ($result->num_rows > 0) {
         if ($Type == 'dean' || $Type == 'admin' || $Type == 'author') {
 
             if (empty($_GET['CP'])) {
-                $_GET['CP'] = 'Author';
+                $_GET['CP'] = 'Home';
             }
-            if ($_GET['CP'] == 'Author') {
+            if ($_GET['CP'] == 'Home') {
                 $welcome = 'active';
             } else if ($_GET['CP'] == 'New-Book') {
+                $Book = 'visible';
                 $New_Book = 'active';
+            } else if ($_GET['CP'] == 'Author_Manage_Book') {
+                $Book = 'visible';
+                $Author_Manage_Book = 'active';
+            } else if ($_GET['CP'] == 'Edit_Book') {
+                $Book = 'visible';
+                $Edit_Book = 'active';
+            } else if ($_GET['CP'] == 'Add_Exercise') {
+                $Exercise = 'visible';
+                $New_Exercise = 'active';
+            } else if ($_GET['CP'] == 'Exercise') {
+                $Exercise = 'visible';
+                $Author_Manage_Exercise = 'active';
+            } else if ($_GET['CP'] == 'Edit_Exercise') {
+                $Exercise = 'visible';
+                $Edit_Exercise = 'active';
             } else if ($_GET['CP'] == 'new-post') {
                 $new_post = 'active';
             } else if ($_GET['CP'] == 'Mailbox') {
@@ -182,12 +198,52 @@ if ($result->num_rows > 0) {
                             <?php
                             if ($Type == 'author'){
                             ?>
-                            <li class="<?= $New_Book ?>">
-                                <a href="ControlPanel.php?CP=New-Book">
-                                    <i class="entypo-upload"></i>
-                                    <span class="title">New Book</span>
+                            <li class="has-sub">
+                                <a href="ControlPanel.php?CP=Manage_Book">
+                                    <i class="entypo-book"></i>
+                                    <span class="title">Control Books</span>
                                 </a>
+                                <ul class=" <?= $Book ?>">
+                                    <li class="<?= $Author_Manage_Book ?>">
+                                        <a href="ControlPanel.php?CP=Author_Manage_Book">
+                                            <span class="title">Control Book</span>
+                                        </a>
+                                    </li>
+                                    <li class="<?= $New_Book ?>">
+                                        <a href="ControlPanel.php?CP=New-Book">
+                                            <span class="title">Add Book</span>
+                                        </a>
+                                    </li>
+                                    <li class="<?= $Edit_Book ?>">
+                                        <a href="ControlPanel.php?CP=Edit_Book">
+                                            <span class="title">Update Book</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
+                                <li class="has-sub">
+                                    <a href="ControlPanel.php?CP=Exercise">
+                                        <i class="entypo-doc-text"></i>
+                                        <span class="title">Control Exercise</span>
+                                    </a>
+                                    <ul class=" <?= $Exercise ?>">
+                                        <li class="<?= $Author_Manage_Exercise ?>">
+                                            <a href="ControlPanel.php?CP=Exercise">
+                                                <span class="title">Control Exercise</span>
+                                            </a>
+                                        </li>
+                                        <li class="<?= $New_Exercise ?>">
+                                            <a href="ControlPanel.php?CP=Add_Exercise">
+                                                <span class="title">Add Exercise</span>
+                                            </a>
+                                        </li>
+                                        <li class="<?= $Edit_Exercise ?>">
+                                            <a href="ControlPanel.php?CP=Edit_Exercise">
+                                                <span class="title">Update Exercise</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
                             <?php
                             }
                             ?>
@@ -320,6 +376,9 @@ if ($result->num_rows > 0) {
                             break;
                         case "Home" :
                             include_once "ControlPanel/home.php";
+                            break;
+                        case "Author_Manage_Book" :
+                            include_once "ControlPanel/Author/Manage_Book.php";
                             break;
                         case "New-Book" :
                             include_once "ControlPanel/Author/New-Book.php";

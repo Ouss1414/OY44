@@ -140,6 +140,9 @@ function ControlPanel($Pages){
         case "Home" :
             $redirectToPage = "Home";
             break;
+        case "Author_Manage_Book" :
+            $redirectToPage = "Author_Manage_Book";
+            break;
         case "New-Book" :
             $redirectToPage = "New-Book";
             break;
