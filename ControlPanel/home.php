@@ -265,7 +265,7 @@ if ($Type == 'author'){
             <div class="col-sm-4 col-xs-6">
         
                 <div class="tile-stats w3-dark-gray">
-                    <div class="icon"><i class="entypo-book-open"></i></div>
+                    <div class="icon"><i class="entypo-user"></i></div>
                     <a href="ControlPanel.php?CP=Control_User"><h3>Control User</h3></a>
                     <p>You can Control Users on one click.</p>
                 </div>
@@ -275,9 +275,23 @@ if ($Type == 'author'){
             <div class="col-sm-4 col-xs-6">
         
                 <div class="tile-stats w3-dark-gray">
-                    <div class="icon"><i class="entypo-book-open"></i></div>
+                    <div class="icon"><i class="entypo-user"></i></div>
                     <a href="ControlPanel.php?CP=Add_User"><h3>Add User</h3></a>
                     <p>You can Add User on one click.</p>
+                </div>
+        
+            </div>
+        
+    </fieldset>
+    
+    <fieldset id="Control_ADs" class="padding-lg">
+        <legend>Control ADs</legend>
+            <div class="col-sm-4 col-xs-6">
+        
+                <div class="tile-stats w3-dark-gray">
+                    <div class="icon"><i class="entypo-address"></i></div>
+                    <a href="ControlPanel.php?CP=ADs"><h3>Control ADs</h3></a>
+                    <p>You can Control ADs on one click.</p>
                 </div>
         
             </div>

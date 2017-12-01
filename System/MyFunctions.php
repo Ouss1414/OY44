@@ -197,6 +197,9 @@ function ControlPanel($Pages){
         case "Add_User" :
             $redirectToPage = "Add_User";
             break;
+        case "ADs" :
+            $redirectToPage = "ADs";
+            break;
         default :
             $redirectToPage = "ControlPanel";
             break;

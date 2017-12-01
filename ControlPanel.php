@@ -82,6 +82,8 @@ if ($result->num_rows > 0) {
             } else if ($_GET['CP'] == 'Add_User') {
                 $Control_Users = 'visible';
                 $Control_Add_User = 'active';
+            } else if ($_GET['CP'] == 'ADs') {
+                $ADs = 'active';
             }
             ?>
             <!DOCTYPE html>
@@ -348,6 +350,12 @@ if ($result->num_rows > 0) {
                                             </li>
                                         </ul>
                                     </li>
+                                <li class="<?= $ADs ?>">
+                                    <a href="ControlPanel.php?CP=ADs">
+                                       <i class="entypo-address"></i>
+                                       <span class="title">ADs</span>
+                                    </a>
+                                </li>
                                     <?php
                                 }
                                 ?>
@@ -438,6 +446,9 @@ if ($result->num_rows > 0) {
                                 break;
                             case "Add_User" :
                                 include_once "ControlPanel/Admin/Users_Folder/Add_User.php";
+                                break;
+                            case "ADs" :
+                                include_once "ControlPanel/Admin/Ads/ADs.php";
                                 break;
                             default:
                                 include_once "ControlPanel/home.php";
