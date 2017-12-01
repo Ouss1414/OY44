@@ -7,6 +7,6 @@
         CollegeOprations($Name_University);
 
     }else{
-        header("Location: http://localhost/OY44/index.php?pid=Login&uni=$_GET[uni]");
+        echo '<meta http-equiv="refresh" content="0; \'index.php?pid=Login&uni='.$_GET['uni'].'\'"/>';
     }
 ?>

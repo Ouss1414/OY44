@@ -38,7 +38,15 @@ if(isset($_POST['btn-login']))
 <?php
 
     if (isset($_SESSION['user'])) {
-        echo '<meta http-equiv="refresh" content="0; \'index.php?pid=Home\'"/>';
+        if(!empty($_GET['uni'])) {
+            echo '<meta http-equiv="refresh" content="0; \'index.php?pid=Colleges&uni='.$_GET['uni'].'\'"/>';
+        }else if(!empty($_GET['Serial'])) {
+            echo '<meta http-equiv="refresh" content="0; \'index.php?pid=Show_Book&Serial='.$_GET['Serial'].'\'"/>';
+        }else if(!empty($_GET['CP'])) {
+            echo '<meta http-equiv="refresh" content="0; \'ControlPanel.php?CP=ControlPanel\'"/>';
+        }else{
+            echo '<meta http-equiv="refresh" content="0; \'index.php?pid=Home\'"/>';
+        }
 
     } else {
         echo ' <div class="container" style="margin-top: 10%; margin-bottom: 10%">
