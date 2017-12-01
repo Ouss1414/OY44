@@ -16,7 +16,7 @@ if ($Type == 'author'){
             echo '
 <div class="row">
 
-    <fieldset id="Control_University" class="padding-lg">
+    <fieldset id="Control_Books" class="padding-lg">
         <legend>Control Books</legend>
             <div class="col-sm-4 col-xs-6">
         
@@ -47,12 +47,15 @@ if ($Type == 'author'){
                 </div>
         
             </div>
+    </fieldset>
             
+    <fieldset id="Control_Exercise" class="padding-lg">
+        <legend>Control Exercises</legend>
             <div class="col-sm-4 col-xs-6">
         
                 <div class="tile-stats w3-dark-gray">
                     <div class="icon"><i class="entypo-book"></i></div>
-                    <a href="ControlPanel.php?CP=Exercise"><h3>Control Exercise</h3></a>
+                    <a href="ControlPanel.php?CP=Exercise"><h3>Control Exercises</h3></a>
                     <p>You can control exercise on one click.</p>
                 </div>
         

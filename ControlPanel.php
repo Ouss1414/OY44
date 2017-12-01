@@ -635,6 +635,7 @@ if ($result->num_rows > 0) {
             } else {
                 echo '<div style="font-size: 32px; font-family: Tahoma; margin-top: 20%;" align="center">Sorry, You are <i STYLE="color: red">Blocked</i>,
  You don\'t have permission to access this wibsite.</div>';
+                echo '<div style="margin-top: 20px; padding-bottom: 17%" " align="center"><a class="btn btn-green" href="index.php?pid=Home">Home</a></div>';
             }
                 ?>
             </html>

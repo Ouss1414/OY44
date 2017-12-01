@@ -6,10 +6,12 @@ require "system/requestHandel.php";
 require "System/DBoprations.php";
 
 $Blocked = '';
-$result_user = $con->query("SELECT * FrOM user WHERE User_Name='$_SESSION[user]'");
-if($result_user->num_rows > 0){
-    while ($row_user = $result_user->fetch_assoc()){
-        $Blocked = $row_user['Block_User'];
+if (!empty($_SESSION['user'])) {
+    $result_user = $con->query("SELECT * FrOM user WHERE User_Name='$_SESSION[user]'");
+    if ($result_user->num_rows > 0) {
+        while ($row_user = $result_user->fetch_assoc()) {
+            $Blocked = $row_user['Block_User'];
+        }
     }
 }
 
@@ -102,7 +104,8 @@ if($result_user->num_rows > 0){
     <!-- Switchs -->
 
     <?php
-if($Blocked == '0') {
+if(empty($_SESSION['user']) || !empty($_SESSION['user']) && $Blocked == '0') {
+
     //switch for header
     switch ($PageID) {
         case "Contact" :
