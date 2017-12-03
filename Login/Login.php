@@ -22,13 +22,13 @@ if(isset($_POST['btn-login']))
         $_SESSION['user']  = $UserNameLog ;
 
         if(!empty($_GET['uni'])) {
-            header("Location: http://localhost/OY44/index.php?pid=Colleges&uni=$_GET[uni]");
+            echo '<meta http-equiv="refresh" content="0; \'index.php?pid=Colleges&uni='.$_GET['uni'].'\'"/>';
         }else if(!empty($_GET['Serial'])) {
-            header("Location: http://localhost/OY44/index.php?pid=Show_Book&Serial=$_GET[Serial]");
+            echo '<meta http-equiv="refresh" content="0; \'index.php?pid=Show_Book&Serial='.$_GET['Serial'].'\'"/>';
         }else if(!empty($_GET['CP'])) {
-            header("Location: http://localhost/OY44/ControlPanel.php?CP=ControlPanel");
+            echo '<meta http-equiv="refresh" content="0; \'ControlPanel.php?CP=ControlPanel\'"/>';
         }else{
-            header('Location: http://localhost/OY44/index.php?pid=Home');
+            echo '<meta http-equiv="refresh" content="0; \'index.php?pid=Home\'"/>';
         }
     }
 
