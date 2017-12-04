@@ -161,7 +161,7 @@ if($result_followers->num_rows > 0) {
                             
                                 ';
     }
-if (empty($_GET['user'])) {
+if ($_GET['user'] == $_SESSION['user']) {
     $count_Accept = '0';
     $result_followers = $con->query("SELECT * FROM followers WHERE Following=$row_User[Id] AND Status='NULL' OR Status=''");
     if ($result_followers->num_rows > 0) {
