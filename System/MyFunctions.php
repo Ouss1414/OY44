@@ -119,6 +119,12 @@ function isAuth($PageID){
         case "Favorite" :
             $redirectToPage = "Favorite";
             break;
+        case "Followers" :
+            $redirectToPage = "Followers";
+            break;
+        case "Following" :
+            $redirectToPage = "Following";
+            break;
         default :
             $redirectToPage = "Home";
             break;

@@ -185,7 +185,13 @@ if(empty($_SESSION['user']) || !empty($_SESSION['user']) && $Blocked == '0') {
             include_once "sites_Iebook/Questions_Page/Answer_Question.php";
             break;
         case "Favorite" :
-            include_once "sites_Profile/Favorite/Favorite.php";
+            include_once "sites_Profile/Profile/Profile.php";
+            break;
+        case "Followers" :
+            include_once "sites_Profile/Profile/Profile.php";
+            break;
+        case "Following" :
+            include_once "sites_Profile/Profile/Profile.php";
             break;
         default:
             include_once "sites_Forum/Home/Home.php";
