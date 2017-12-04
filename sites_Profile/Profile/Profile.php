@@ -27,14 +27,31 @@ while ($row_User = $result_user->fetch_assoc()) {
                             <!-- Profile -->
                             <div class="w3-card-2 w3-round w3-white">
                                 <div class="w3-container">
-                                    <h4 class="w3-center">' . $row_User['First_Name'] . " " . $row_User['Last_Name'] . '</h4>
+                                    <a href="index.php?pid=Profile&user='.$Name_User.'"><h4 class="w3-center">' . $row_User['First_Name'] . " " . $row_User['Last_Name'] . '</h4></a>
                                     <p class="w3-center"><img src="Images/Pic/' . $row_User['Image'] . '" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
                                     <div class="w3-center">
                                     ';
-    if ($row_User['User_Name'] != $Name_User) {
-        echo '
-                                    <p><button class="w3-btn w3-border" style="min-width: 100px"> FOLLOW </button> 
-                                    ';
+    if ($_GET['user']!= $_SESSION['user']) {
+
+        $result_user_session = $con->query("SELECT * FROM user WHERE User_Name='$_SESSION[user]'");
+        if ($result_user_session->num_rows > 0) {
+            while ($row_user_session = $result_user_session->fetch_assoc()) {
+                $result_followers_session = $con->query("SELECT * FROM followers WHERE Following=$row_User[Id] AND User_Id=$row_user_session[Id]");
+                $Id_Follow = '';
+                if ($result_followers_session->num_rows > 0) {
+                    while ($row_followers_session = $result_followers_session->fetch_assoc()){
+                        $Id_Follow = $row_followers_session['Id'];
+                    }
+                    echo '
+                        <p><button class="Unfollow w3-btn w3-border" id="'.$Id_Follow.'" style="min-width: 100px"> UNFOLLOW </button> 
+                       ';
+                } else {
+                    echo '
+                        <p><button class="Follow w3-btn w3-border" id="'.$row_user_session['Id'].'" name="'.$row_User['Id'].'" style="min-width: 100px"> FOLLOW </button> 
+                       ';
+                }
+            }
+        }
     }
     echo '
                                     <button class="w3-btn w3-border" style="min-width: 100px"> CV </button></p>
@@ -163,10 +180,10 @@ if($result_followers->num_rows > 0) {
     }
 if ($_GET['user'] == $_SESSION['user']) {
     $count_Accept = '0';
-    $result_followers = $con->query("SELECT * FROM followers WHERE Following=$row_User[Id] AND Status='NULL' OR Status=''");
+    $result_followers = $con->query("SELECT * FROM followers WHERE Following=$row_User[Id] AND Status=''");
     if ($result_followers->num_rows > 0) {
         while ($row_followers = $result_followers->fetch_assoc()) {
-            $sql_User_F = "SELECT * FROM user WHERE Id=$row_followers[User_Id]";
+            $sql_User_F = "SELECT * FROM user WHERE Id=$row_followers[User_Id] ";
             $result_user_F = $con->query($sql_User_F);
             if ($result_user_F->num_rows > 0) {
                 while ($row_User_F = $result_user_F->fetch_assoc()) {
