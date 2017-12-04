@@ -168,10 +168,10 @@ if($result_followers->num_rows > 0) {
                      <span>'.$row_User_F['User_Name'].'</span>
                      <div class="w3-row w3-opacity">
                         <div class="w3-half">
-                           <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
+                           <button class="Accept_Follow w3-button w3-block w3-green w3-section" id="'.$row_followers['Id'].'" title="Accept"><i class="fa fa-check"></i></button>
                         </div>
                         <div class="w3-half">
-                           <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
+                           <button class="Reject_Follow w3-button w3-block w3-red w3-section" id="'.$row_followers['Id'].'" title="Decline"><i class="fa fa-remove"></i></button>
                         </div>
                      </div>
                   </div>

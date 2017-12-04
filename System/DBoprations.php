@@ -170,7 +170,7 @@ function Following(){
                 <div class="w3-center w3-padding-16">
                    <img src="Images/Pic/' . $row_User_F['Image'] . '" width="100px" height="100px" class="w3-circle">
                    <p>' . $row_User_F['User_Name'] . '</p>
-                   <a class="w3-btn w3-border" name="Unfollow" id="'.$row_followers['Id'].'">Unfollow</a>
+                   <a class="Unfollow w3-btn w3-border" name="Unfollow" id="'.$row_followers['Id'].'">Unfollow</a>
                 </div>
            </a>
         </div>

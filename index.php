@@ -241,6 +241,8 @@ if(empty($_SESSION['user']) || !empty($_SESSION['user']) && $Blocked == '0') {
     <script src="System/Like_or_Dislike_Post.js"></script>
     <script src="System/Contact.js"></script>
     <script src="System/favorite.js"></script>
+    <script src="System/Unfollow.js"></script>
+    <script src="System/AcceptOrRejectFollow.js"></script>
 
     </body>
     </html>
