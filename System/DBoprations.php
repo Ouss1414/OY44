@@ -1,38 +1,40 @@
 <?php
 
 function Favorite(){
+    $Name_User = $_SESSION['user'];
 
-$con = new mysqli('localhost','root','','db_iebook_8003115736_v');
+    if ($_GET['user'] == $_SESSION['user']) {
 
-$Name_User = $_SESSION['user'];
-$Id_User= '';
-$Id_Book = '';
+    $con = new mysqli('localhost', 'root', '', 'db_iebook_8003115736_v');
+
+    $Id_User = '';
+    $Id_Book = '';
 
 //User
-$sql_User = "SELECT * FROM user WHERE  User_Name = '$Name_User'";
-$result_user = $con->query($sql_User);
-if ($result_user->num_rows > 0) {
-    while ($row_User = $result_user->fetch_assoc()) {
-        $Id_User = $row_User['Id'];
-        echo '
+    $sql_User = "SELECT * FROM user WHERE  User_Name = '$Name_User'";
+    $result_user = $con->query($sql_User);
+    if ($result_user->num_rows > 0) {
+        while ($row_User = $result_user->fetch_assoc()) {
+            $Id_User = $row_User['Id'];
+            echo '
 <!-- Middle Column -->
 <div class="Book w3-col s7" style="margin-left: -2%; margin-right: 2%">
     <ul>
 ';
-        //Favorite
-        $sql_favorite = "SELECT * FROM favorite_book WHERE User_Id=$Id_User";
-        $result_favorite = $con->query($sql_favorite);
-        if ($result_favorite->num_rows > 0) {
-            while ($row_favorite = $result_favorite->fetch_assoc()) {
-                $Id_Book_Favorite = $row_favorite['Book_Id'];
+            //Favorite
+            $sql_favorite = "SELECT * FROM favorite_book WHERE User_Id=$Id_User";
+            $result_favorite = $con->query($sql_favorite);
+            if ($result_favorite->num_rows > 0) {
+                while ($row_favorite = $result_favorite->fetch_assoc()) {
+                    $Id_Book_Favorite = $row_favorite['Book_Id'];
 
-                //book
-                $sql_book = "SELECT * FROM book,user WHERE Id_Book=$Id_Book_Favorite AND User_Id=Id";
-                $result_book = $con->query($sql_book);
-                if ($result_book->num_rows > 0) {
-                    while ($row_book = $result_book->fetch_assoc()) {
-                        $Id_Book = $row_book['Id_Book'];
-                        echo '
+                    //book
+                    $sql_book = "SELECT * FROM book,user WHERE Id_Book=$Id_Book_Favorite AND User_Id=Id";
+                    $result_book = $con->query($sql_book);
+                    if ($result_book->num_rows > 0) {
+                        while ($row_book = $result_book->fetch_assoc()) {
+                            $Id_Book = $row_book['Id_Book'];
+                            echo '
             <div class="w3-container w3-card-2 w3-padding-small w3-col" style="max-width: 235px; margin-left: 1%; margin-top: -1.7%; margin-bottom: 5%">
                                     <li>
                                         <div class="s-product" style="width:155px;">
@@ -40,8 +42,8 @@ if ($result_user->num_rows > 0) {
                                                 <img src="Upload_Books/' . $row_book['Image_Book'] . '" alt="" width="100%" height="217">
                                                 <div class="s-product-hover">
                                                     <ul>
-                      <li><a class="UnFavorite" title="Un Favorite" value="'.$Id_Book.'" name="'.$Id_User.'"><i class="fa fa-heart w3-text-red"></i></a></li>
-                                                        <li><a href="index.php?pid=Show_Book&Serial='.$row_book['Serial'].'"><i class="fa fa-book"></i></a></li>
+                      <li><a class="UnFavorite" title="Un Favorite" value="' . $Id_Book . '" name="' . $Id_User . '"><i class="fa fa-heart w3-text-red"></i></a></li>
+                                                        <li><a href="index.php?pid=Show_Book&Serial=' . $row_book['Serial'] . '"><i class="fa fa-book"></i></a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="s-product-tooltip">
@@ -67,74 +69,27 @@ if ($result_user->num_rows > 0) {
                                     </li>
                                 </div>
     ';
+                        }
                     }
                 }
-            }
-        }else{
-            echo '
+            } else {
+                echo '
                     <div class="w3-col w3-round w3-card-2 w3-white w3-xlarge w3-text-red" align="center" style="min-height: 300px; margin-top: -1.7%; min-width: 101.5%">
                         <p class="w3-padding-64">You don\'t have any favorite book.</p>
                         <a class="w3-button w3-green" style="text-decoration: none" href="index.php?pid=IEBook">Go Books</a>
                     </div>
                 ';
-        }
-        echo'
+            }
+            echo '
     </ul>
 </div>
 <!-- End Middle Column -->
 ';
 
-        echo '
-        <!-- Right Column -->
-        <div class="w3-col m2">
-            <div class="w3-card-2 w3-round w3-white w3-center">
-                <div class="w3-container">
-                    <p>Upcoming Events:</p>
-                    <img src="Images/forest.jpg" alt="Forest" style="width:100%;">
-                    <p><strong>Holiday</strong></p>
-                    <p>Friday 15:00</p>
-                    <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
-                </div>
-            </div>
-            <br>
-
-            <div class="w3-card-2 w3-round w3-white w3-center">
-                <div class="w3-container">
-                    <p>Friend Request</p>
-                    <img src="Images/Icons/avatar6.png" alt="Avatar" style="width:50%"><br>
-                    <span>Jane Doe</span>
-                    <div class="w3-row w3-opacity">
-                        <div class="w3-half">
-                            <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
-                        </div>
-                        <div class="w3-half">
-                            <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-
-            <div class="w3-card-2 w3-round w3-white w3-padding-16 w3-center">
-                <p>ADS</p>
-            </div>
-            <br>
-
-            <div class="w3-card-2 w3-round w3-white w3-padding-32 w3-center">
-                <p><i class="fa fa-bug w3-xxlarge"></i></p>
-            </div>
-
-            <!-- End Right Column -->
-        </div>
-
-        <!-- End Grid -->
-    </div>
-
-    <!-- End Page Container -->
-</div>
-<br>
-';
+        }
     }
+} else {
+    echo '<meta http-equiv="refresh" content="0; \'index.php?pid=Profile&user='.$Name_User.'\'"/>';
 }
 
 }
@@ -142,7 +97,7 @@ if ($result_user->num_rows > 0) {
 function Following(){
     $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
 
-    $Name_User = $_SESSION['user'];
+    $Name_User = $_GET['user'];
 
 //User
     $sql_User = "SELECT * FROM user WHERE  User_Name = '$Name_User'";
@@ -170,7 +125,13 @@ function Following(){
                 <div class="w3-center w3-padding-16">
                    <img src="Images/Pic/' . $row_User_F['Image'] . '" width="100px" height="100px" class="w3-circle">
                    <p>' . $row_User_F['User_Name'] . '</p>
-                   <a class="Unfollow w3-btn w3-border" name="Unfollow" id="'.$row_followers['Id'].'">Unfollow</a>
+                   ';
+                            if($_GET['user'] == $_SESSION['user']) {
+                                echo '
+                   <a class="Unfollow w3-btn w3-border" name="Unfollow" id="' . $row_followers['Id'] . '">Unfollow</a>
+                   ';
+                            }
+                            echo '
                 </div>
            </a>
         </div>
@@ -178,6 +139,12 @@ function Following(){
                         }
                     }
                 }
+            } else {
+                echo '
+                    <div class="w3-col w3-round w3-card-2 w3-white w3-xlarge w3-text-red" align="center" style="margin-left: 2%; min-height: 300px; max-width: 96%">
+                        <p class="w3-padding-64">Has no Following.</p>
+                    </div>
+                ';
             }
         }
     }
@@ -191,7 +158,7 @@ function Following(){
 function Followers(){
 $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
 
-    $Name_User = $_SESSION['user'];
+    $Name_User = $_GET['user'];
 
 //User
     $sql_User = "SELECT * FROM user WHERE  User_Name = '$Name_User'";
@@ -226,6 +193,12 @@ $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
                         }
                     }
                 }
+            } else {
+                echo '
+                    <div class="w3-col w3-round w3-card-2 w3-white w3-xlarge w3-text-red" align="center" style="margin-left: 2%; min-height: 300px; max-width: 96%">
+                        <p class="w3-padding-64">Has no Followers.</p>
+                    </div>
+                ';
             }
         }
     }
@@ -1566,7 +1539,7 @@ function Profile(){
 
     $con = new mysqli('localhost','root','','db_iebook_8003115736_v');
 
-    $Name_User = $_SESSION['user'];
+    $Name_User = $_GET['user'];
 
 //User
     $sql_User = "SELECT * FROM user WHERE  User_Name = '$Name_User'";
@@ -1666,7 +1639,7 @@ function Profile(){
                                 <button type="button" id="' . $Id_Post . '" class="Dislike-profile w3-button w3-margin-bottom w3-red"><i class="fa fa-thumbs-down"></i>  ' . $row_Post_Profile ['Dislike'] . '</button>
                                 ';
                     }
-                    if ($_SESSION['user'] = $user_name) {
+                    if ($_SESSION['user'] == $user_name) {
                         echo '
                             <div class="delete_data w3-padding w3-button w3-red right" style="margin-bottom: 5px" name="' . $row_Post_Profile['Message'] . '" id="' . $row_Post_Profile['Id'] . '" value="pid=Profile"><i class="fa fa-trash"></i></div>
                         ';
