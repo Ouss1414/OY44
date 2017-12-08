@@ -1,10 +1,11 @@
 $(function () {
-    $(document).on('submit', '#chatForm',function () {
-        var text = $.trim($("#text").val());
-        var name = $.trim($("#name").val());
+    $(document).on('submit', '.chatForm',function () {
+        var text = $("#text").val();
+        var name = $("#name").val();
+        var Sbook = $("#Sbook").val();
 
-        if(text != "" && name != ""){
-            $.post('ChatPoster.php',{text: text, name: name},function(data) {
+        if(text != "" && name != "" && Sbook != ""){
+            $.post('ChatPoster.php',{text: text, name: name, Sbook: Sbook},function(data) {
                 $(".chatMessages").append(data);
 
             });
@@ -16,7 +17,8 @@ $(function () {
 
 
     function getMessages() {
-        $.get('GetMessages.php',function (data) {
+        var SerialBook = $("#Sbook").val();
+        $.get('GetMessages.php',{Sbook: SerialBook},function (data) {
             $(".chatMessages").html(data);
 
         });
