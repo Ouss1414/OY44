@@ -28,7 +28,7 @@ $Date_Message = date("y-m-d");
                 }
             }
 
-            $sql = "INSERT INTO chat_book(User_Name,Message, Date, User_Id,Serial_Book, User_Type) 
+            $sql = "INSERT INTO chat_book (User_Name,Message, Date, User_Id,Serial_Book, User_Type) 
              VALUES ('$name','$text', '$Date_Message', '$Id_User','$Sbook', '$User_Type')";
 
             mysqli_query($con, $sql);

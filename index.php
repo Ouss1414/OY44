@@ -32,9 +32,9 @@ if (!empty($_SESSION['user'])) {
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="CSS/style.css">
         <link rel="stylesheet" href="CSS/Slider_Style.css">
+        <link rel="stylesheet" type="text/css" href="sites_Iebook/Show_Book/Css/Style.css">
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.0r4/build/assets/skins/sam/skin.css">
-        <script type="text/javascript"
-                src="http://yui.yahooapis.com/2.8.0r4/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+        <script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/yahoo-dom-event/yahoo-dom-event.js"></script>
         <script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/element/element-min.js"></script>
         <script src="http://yui.yahooapis.com/2.8.0r4/build/container/container_core-min.js"></script>
         <script src="http://yui.yahooapis.com/2.8.0r4/build/menu/menu-min.js"></script>
@@ -244,6 +244,8 @@ if(empty($_SESSION['user']) || !empty($_SESSION['user']) && $Blocked == '0') {
     <script src="System/Follow.js"></script>
     <script src="System/Unfollow.js"></script>
     <script src="System/AcceptOrRejectFollow.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="sites_Iebook/Show_Book/JavaScript/Chat.js"></script>
 
     </body>
     </html>

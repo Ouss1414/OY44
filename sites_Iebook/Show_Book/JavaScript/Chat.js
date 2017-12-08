@@ -5,9 +5,8 @@ $(function () {
         var Sbook = $("#Sbook").val();
 
         if(text != "" && name != "" && Sbook != ""){
-            $.post('ChatPoster.php',{text: text, name: name, Sbook: Sbook},function(data) {
+            $.post('sites_Iebook/Show_Book/ChatPoster.php',{text: text, name: name, Sbook: Sbook},function(data) {
                 $(".chatMessages").append(data);
-
             });
         }else{
             alert("Data Missing");
