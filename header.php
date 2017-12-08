@@ -7,7 +7,7 @@ if (empty($_GET["pid"])){
 ?>
 <body>
 <!-- Navbar (sit on top) -->
-<div style="margin-top: 50px;">
+<div style="margin-top: 45px;">
     <div class="w3-bar w3-white w3-wide w3-padding w3-card-2">
         <?php
             if ($PageID == 'IEBook' || $PageID == 'Show_Book'){
