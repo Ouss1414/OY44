@@ -36,7 +36,7 @@ $Date_Message = date("y-m-d");
 
 
 
-            echo "<li class='cm'><b>".ucwords($name)."</b> - ".$text."</li>";
+            echo "<div class='cm1'><b>".$text."</div>";
         }
     }
 

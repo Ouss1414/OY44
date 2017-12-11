@@ -3,32 +3,41 @@
 }
 
 .chatContainer {
-    width: 400px;
-    height: 500px;
-    border: 2px solid #ddd ;
+   position:fixed;
+   bottom:-5px;
+   width:400px;
+    min-height: 400px;
+   background:white;
+   border-radius:5px 5px 0px 0px;
+    margin-left: 10px;
 
 }
 
 .chatContainer > .chatHeader {
-    width: 100%;
-    background: white;
-    padding: 5px;
-    border-bottom: 1px solid #ddd;
+    background:#f39c12;
+    color:white;
+    padding:15px;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:5px 5px 0px 0px;
 
 }
 
 .chatContainer > .chatHeader h3 {
     margin: 0;
     padding: 0;
-
     font-weight: 400;
     color: #333;
 }
 
 .chatContainer > .chatMessages{
-    height: 420px;
-    border-bottom: 1px solid #dddd;
-    overflow-y: scroll;
+    background:white;
+    min-height:380px;
+    max-height:380px;
+    font-size:12px;
+    padding:15px;
+    overflow:auto;
+    overflow-x: hidden;
 }
 
 .chatContainer > .chatBottom form input[type='submit']{
@@ -40,17 +49,55 @@
 }
 
 .chatContainer > .chatBottom form input[type='text'] {
-    width: 85%;
-    padding: 3px;
-    padding-left: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin: 5px;
-    height: 30px;
+    width:75%;
+    border: 1px solid white;
+    border-top:1px solid #DDDDDD;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    margin: 15px;
+    padding: 5px;
 }
 
-.cm{
-    list-style: none;
-    border-bottom: 1px solid #dddddd;
-    padding: 5px;
+.cm1{
+    position:relative;
+    background:#FDE4CE;
+    padding:10px;
+    min-height:10px;
+    margin-bottom:5px;
+    margin-right:10px;
+    border-radius:5px;
+}
+
+.cm1:before{
+    content:"";
+    position:absolute;
+    width:0px;
+    height:0px;
+    border: 10px solid;
+    border-color: transparent #FDE4CE transparent transparent;
+    left:-20px;
+    top:7px;
+}
+
+.cm2{
+    background:#EEF2E7;
+    padding:10px;
+    min-height:15px;
+    margin-bottom:5px;
+    position:relative;
+    margin-left:10px;
+    border-radius:5px;
+    word-wrap: break-word;
+}
+
+.cm2:after{
+    content:"";
+    position:absolute;
+    width:0px;
+    height:0px;
+    border: 10px solid;
+    border-color: transparent transparent transparent #EEF2E7;
+    right:-20px;
+    top:7px;
 }

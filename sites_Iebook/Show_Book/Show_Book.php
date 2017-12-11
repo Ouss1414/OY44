@@ -39,20 +39,21 @@ $sb = $_GET['Serial'];
             $name = $fetch['User_Name'];
             $message = $fetch['Message'];
 
-            echo "<li class='cm'><b>".ucwords($name)."</b> - ".$message."</li>";
-
+            if ($name == $_SESSION['user']) {
+                echo "<div class='cm1'>" . $message . "</div>";
+            } else {
+                echo "<div class='cm2'><b>" . ucwords($name) . "</b> - " . $message . "</div>";
+            }
 
         }
         ?>
-
-
-
 
         <form style="display: none">
             <input type="hidden" id="Sbook" value="<?php echo $sb;?>">
         </form>
 
     </div>
+    <hr class="w3-border w3-light-gray w3-margin-right w3-margin-left">
     <div class="chatBottom">
         <form action="#" onsubmit="return false;" class="chatForm" enctype="multipart/form-data">
 
@@ -62,12 +63,7 @@ $sb = $_GET['Serial'];
 
             <input type="text" name="text" id="text" value="" placeholder="Type your message" >
             <input type="submit" name="submit" value="Post">
-
-
-
         </form>
-
     </div>
-
 </div>
 
