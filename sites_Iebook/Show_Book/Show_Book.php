@@ -35,6 +35,7 @@ while($fetch = $run->fetch_array()) {
         <div class="msg_body">
 
             <?php
+            $color_user = '';
             $query = "SELECT * FROM chat_book WHERE Serial_Book = '$sb'";
             $run = $con->query($query);
 
@@ -43,10 +44,17 @@ while($fetch = $run->fetch_array()) {
                 $name = $fetch['User_Name'];
                 $message = $fetch['Message'];
 
+                    $Type_User = $fetch['User_Type'];
+                    if($Type_User != 'user'){
+                        $color_user = 'red';
+                    }
+
                 if ($name == $_SESSION['user']) {
                     echo "<div class='msg_a'>" . $message . "</div>";
-                } else {
-                    echo "<div class='msg_b'><b>" . ucwords($name) . "</b> - " . $message . "</div>";
+                } elseif ($Type_User != 'user'){
+                    echo "<div class='msg_b'><b style='color: #0c455d; text-transform: uppercase'>" . $Type_User . " " . "</b>(<b style='color: ".$color_user."'>" . ucwords($name) . "</b>) : " . $message . "</div>";
+                }else{
+                    echo "<div class='msg_b'><b style='color: ".$color_user."'>" . ucwords($name) . "</b> : " . $message . "</div>";
                 }
 
             }

@@ -8,7 +8,7 @@
 .msg_box{
     position:fixed;
     bottom:-5px;
-    width:400px;
+    width:380px;
     background:white;
     border-radius:5px 5px 0px 0px;
     margin-left: 2%;
@@ -17,7 +17,7 @@
 
 .msg_body{
     background:white;
-    height:400px;
+    height:380px;
     font-size:12px;
     padding:15px;
     overflow:auto;
