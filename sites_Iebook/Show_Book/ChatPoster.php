@@ -36,7 +36,7 @@ $Date_Message = date("y-m-d");
 
 
 
-            echo "<div class='cm1'><b>".$text."</div>";
+            echo "<div class='msg_a'><b>".$text."</div>";
         }
     }
 

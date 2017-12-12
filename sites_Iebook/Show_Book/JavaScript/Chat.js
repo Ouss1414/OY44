@@ -1,4 +1,10 @@
 $(function () {
+    $('.msg_wrap').hide();
+    $('.msg_head').click(function(){
+        $('.msg_wrap').slideToggle('slow');
+        $('.msg_body').scrollTop($('.msg_body')[0].scrollHeight);
+    });
+
     $(document).on('submit', '.chatForm',function () {
         var text = $("#text").val();
         var name = $("#name").val();
@@ -6,9 +12,9 @@ $(function () {
 
         if(text != "" && name != "" && Sbook != ""){
             $.post('sites_Iebook/Show_Book/ChatPoster.php',{text: text, name: name, Sbook: Sbook},function(data) {
-                $(".chatMessages").append(data);
+                $(".msg_body").append(data);
                 $("#text").val('');
-                $('.chatMessages').scrollTop($('.chatMessages')[0].scrollHeight);
+                $('.msg_body').scrollTop($('.msg_body')[0].scrollHeight);
             });
         }else{
             alert("Data Missing");
@@ -20,15 +26,13 @@ $(function () {
     function getMessages() {
         var SerialBook = $("#Sbook").val();
         $.get('GetMessages.php',{Sbook: SerialBook},function (data) {
-            $(".chatMessages").html(data);
-
+            $(".msg_body").html(data);
         });
 
     }
 
     setInterval(function () {
         getMessages();
-
     },500);
 
 });

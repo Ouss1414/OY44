@@ -13,57 +13,62 @@ if (isset($_SESSION['user'])){
 
 <?php
 
+$con = new mysqli('localhost', 'root','' , 'db_iebook_8003115736_v');
+
 $user = $_SESSION['user'];
 $sb = $_GET['Serial'];
 
+$query = "SELECT * FROM book WHERE Serial = '$sb'";
+$run = $con->query($query);
+
+while($fetch = $run->fetch_array()) {
+    $name_book = $fetch['Name_Book'];
+}
 
 ?>
 
-<div class='chatContainer'>
-    <div class="chatHeader">
-        <h3>Welcome <?php echo ucwords($user); ?>   </h3>
-
-
+<div class='msg_box'>
+    <div class="msg_head w3-theme-d2">
+        <h3 class="w3-text-white w3-margin-left">Chat - <?= $name_book ?></h3>
     </div>
-    <div class="chatMessages">
+    <div class="msg_wrap">
+        <div class="msg_body">
 
-        <?php
+            <?php
+            $query = "SELECT * FROM chat_book WHERE Serial_Book = '$sb'";
+            $run = $con->query($query);
 
-        $con = new mysqli('localhost', 'root','' , 'db_iebook_8003115736_v');
+            while($fetch = $run->fetch_array()) {
 
-        $query = "SELECT * FROM chat_book WHERE Serial_Book = '$sb'";
-        $run = $con->query($query);
+                $name = $fetch['User_Name'];
+                $message = $fetch['Message'];
 
-        while($fetch = $run->fetch_array()) {
+                if ($name == $_SESSION['user']) {
+                    echo "<div class='msg_a'>" . $message . "</div>";
+                } else {
+                    echo "<div class='msg_b'><b>" . ucwords($name) . "</b> - " . $message . "</div>";
+                }
 
-            $name = $fetch['User_Name'];
-            $message = $fetch['Message'];
-
-            if ($name == $_SESSION['user']) {
-                echo "<div class='cm1'>" . $message . "</div>";
-            } else {
-                echo "<div class='cm2'><b>" . ucwords($name) . "</b> - " . $message . "</div>";
             }
+            ?>
 
-        }
-        ?>
+            <form style="display: none">
+                <input type="hidden" id="Sbook" value="<?php echo $sb;?>">
+            </form>
 
-        <form style="display: none">
-            <input type="hidden" id="Sbook" value="<?php echo $sb;?>">
-        </form>
+        </div>
+        <hr class="w3-border w3-light-gray w3-margin-right w3-margin-left">
+        <div class="chatBottom">
+            <form action="#" onsubmit="return false;" class="chatForm" enctype="multipart/form-data">
 
-    </div>
-    <hr class="w3-border w3-light-gray w3-margin-right w3-margin-left">
-    <div class="chatBottom">
-        <form action="#" onsubmit="return false;" class="chatForm" enctype="multipart/form-data">
+                <input type="hidden" id="name" value="<?php echo $user ?>" >
 
-            <input type="hidden" id="name" value="<?php echo $user ?>" >
+                <input type="hidden" id="Sbook" value="<?php echo $sb ?>" >
 
-            <input type="hidden" id="Sbook" value="<?php echo $sb ?>" >
-
-            <input type="text" name="text" id="text" value="" placeholder="Type your message" >
-            <input type="submit" name="submit" value="Post">
-        </form>
+                <input type="text" name="text" id="text" class="msg_input" value="" placeholder="Type your message" >
+                <input type="submit" class="w3-btn w3-border w3-theme-d2" name="submit" value="Post">
+            </form>
+        </div>
     </div>
 </div>
 
